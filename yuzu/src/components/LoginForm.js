@@ -40,7 +40,7 @@ class LoginForm extends Component {
 
     return (
       <Button onPress={this.onButtonPress.bind(this)}>
-        Log in
+        Sign in
       </Button>
     );
   }
@@ -48,10 +48,10 @@ class LoginForm extends Component {
   render() {
     return (
       <View style={styles.viewStyle}>
-      <Card>
+      {/*<Card>*/}
         <CardSection>
           <Input
-            placeholder="user@gmail.com"
+            placeholder="user@mail.com"
             label="Email"
             value={this.state.email}
             onChangeText={email => this.setState({ email })}
@@ -75,7 +75,7 @@ class LoginForm extends Component {
         <CardSection>
           {this.renderButton()}
         </CardSection>
-      </Card>
+      {/*</Card>*/}
       </View>
     );
   }

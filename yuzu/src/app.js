@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
 import firebase from 'firebase';
-import { Header, Button, Spinner, Input } from './components/common';
+import { Header, Button, Spinner, Input, TextButton } from './components/common';
 import LoginForm from './components/LoginForm';
 import Location from './components/Location'
 // import Search from './components/Search'
@@ -35,9 +35,9 @@ class App extends Component {
           <ScrollView>
             <Location />
 
-            <Button onPress={() => firebase.auth().signOut()}>
-              Log Out
-            </Button>
+            <TextButton onPress={() => firebase.auth().signOut()}>
+              Sign Out
+            </TextButton>
           </ScrollView>
         )
       case false:

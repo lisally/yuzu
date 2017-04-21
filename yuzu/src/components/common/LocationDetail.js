@@ -1,18 +1,18 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 
-const LocationDetail = ({ location }) => {
+const LocationDetail = ({ location, onPress }) => {
     const { name, street, city, state, zipcode, phone } = location
     const { containerStyle, nameStyle} = styles 
 
     return (
-        <View style={containerStyle}>
+        <TouchableOpacity style={containerStyle} onPress={onPress}>
             <Text style={nameStyle}>{name} Costco</Text>
             <Text>{street}</Text>
             <Text>{city}, {state}</Text>
             <Text>{zipcode}</Text>
             <Text>{phone}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 

@@ -4,7 +4,7 @@ import { Button, Card, CardSection, Input, Spinner, LocationDetail } from './com
 import firebase from 'firebase'
 
 class Location extends Component {
-  state = { zipcode: '', loading: false, locationData: [] };
+  state = { zipcode: '', loading: false, locationData: [], location: '' };
 
   render() {
     return (
@@ -19,7 +19,7 @@ class Location extends Component {
         </CardSection>
 
         <CardSection>
-          {this.renderButton()}
+          {this.renderSearch()}
         </CardSection>
           {this.renderLocation()}
 
@@ -27,18 +27,18 @@ class Location extends Component {
     );
   }
 
-  renderButton() {    
+  renderSearch() {    
     if (this.state.loading) {
       return <Spinner size="small" />;
     }
     return (
-      <Button onPress={this.onButtonPress.bind(this)}>
+      <Button onPress={this.onSearchPress.bind(this)}>
         Search
       </Button>
     );
   }
 
-  onButtonPress() {
+  onSearchPress() {
     /* HANDLE LOGIC FOR SEARCHING ZIPCODE HERE */
     // const { zipcode } = this.state;
     this.setState({ loading: true });
@@ -51,11 +51,20 @@ class Location extends Component {
     if (typeof(locationData) != 'undefined' && locationData.length > 0) {
       return (
         locationData.map(location =>
-          <LocationDetail key={location.name} location={location} />
+          <LocationDetail onPress={this.onLocationPress.bind(this)} key={location.name} location={location} />
         )
       )
     }
   }
+
+  onLocationPress(location) {
+    console.log(location)
+    console.log("LOCATION PRESSED")
+  }
+
+
 }
+
+
 
 export default Location
