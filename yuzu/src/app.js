@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Navigator } from 'react-native';
 import firebase from 'firebase';
 import { Header, Button, Spinner, Input, TextButton } from './components/common';
-import LoginForm from './components/LoginForm';
-import Location from './components/Location'
+import LoginScene from './components/LoginScene';
+import LocationScene from './components/LocationScene';
+
 // import Search from './components/Search'
 
 class App extends Component {
@@ -23,17 +24,34 @@ class App extends Component {
       if (user) {
         this.setState({ loggedIn: true, header: "Set Location" });
       } else {
-        this.setState({ loggedIn: false, header: "Sign in" });
+        this.setState({ loggedIn: false, header: "Yuzu" });
       }
     });
   }
 
-  renderContent() {
+  // renderScene(route, navigator) {
+  //   if (route.name == 'Login') {
+  //     return <LoginScene navigator={navigator} {...route.passProps} />
+  //   }
+  //   if (route.name == 'Location') {
+  //     return <LocationScene navigator={navigator} {...route.passProps} />
+  //   }
+
+  //   return <Spinner size="large" />
+  // }
+
+  // _navigate() {
+  //   this.props.navigator.push({
+  //     name: 'Login'
+  //   })
+  // }
+
+renderContent() {
     switch (this.state.loggedIn) {
       case true:
         return (
           <ScrollView>
-            <Location />
+            <LocationScene />
 
             <TextButton onPress={() => firebase.auth().signOut()}>
               Sign Out
@@ -41,14 +59,16 @@ class App extends Component {
           </ScrollView>
         )
       case false:
-        return <LoginForm />;
+        return <LoginScene />;
       default:
         return <Spinner size="large"/>;
     }
   }
 
   render() {
+    
     return (
+      
       <View style={{flex:1}}>
         <Header headerText={this.state.header} />
         {this.renderContent()}

@@ -3,7 +3,7 @@ import { Text, View, ScrollView } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, LocationDetail } from './common';
 import firebase from 'firebase'
 
-class Location extends Component {
+class LocationScene extends Component {
   state = { zipcode: '', loading: false, locationData: [], location: '' };
 
   render() {
@@ -58,8 +58,6 @@ class Location extends Component {
   }
 
   onLocationPress(location) {
-    console.log(location)
-    console.log("LOCATION PRESSED")
   }
 
 
@@ -67,4 +65,4 @@ class Location extends Component {
 
 
 
-export default Location
+export default LocationScene
