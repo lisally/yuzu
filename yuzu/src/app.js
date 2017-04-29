@@ -29,6 +29,17 @@ class App extends Component {
     });
   }
 
+  render() {
+    
+    return (
+      
+      <View style={{flex:1}}>
+        <Header headerText={this.state.header} />
+        {this.renderContent()}
+      </View>
+    );
+  }  
+
   // renderScene(route, navigator) {
   //   if (route.name == 'Login') {
   //     return <LoginScene navigator={navigator} {...route.passProps} />
@@ -65,16 +76,6 @@ renderContent() {
     }
   }
 
-  render() {
-    
-    return (
-      
-      <View style={{flex:1}}>
-        <Header headerText={this.state.header} />
-        {this.renderContent()}
-      </View>
-    );
-  }
 }
 
 export default App;

@@ -6,55 +6,6 @@ import { Button, Card, CardSection, Input, Spinner, TextButton } from './common'
 class LoginScene extends Component {
   state = { email: '', password: '', error: '', loading: false, hasAccount: true, password2: '', option: 'Sign up' };
 
-  onButtonPress() {
-    const { email, password } = this.state;
-
-    this.setState({ error: '', loading: true });
-
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(this.onLoginSuccess.bind(this))
-      .catch(this.onLoginFail.bind(this));
-  }
-  
-
-  onLoginFail() {
-    if (this.state.hasAccount) {
-      this.setState({ error: "                    Sign in failed. \nPlease check your email and password.", loading: false });
-    } else {
-      this.setState({ error: 'Please check that your passwords match.'})
-    }
-  }
-
-  onLoginSuccess() {
-    this.setState({
-      email: '',
-      password: '',
-      loading: false,
-      error: '',
-      hasAccount: true
-    });
-  }
-
-  renderButton() {
-    if (this.state.loading) {
-      return <Spinner size="small" />;
-    }
-
-    if (this.state.hasAccount) {
-      return (
-        <Button onPress={this.onButtonPress.bind(this)}>
-          Sign in
-        </Button>
-      );
-    } 
-
-    return (
-      <Button onPress={this.onSignUpPress.bind(this)}>
-        Sign up
-      </Button>
-    )
-  }
-
   render() {
     return (
       <View style={styles.viewStyle}>
@@ -85,7 +36,7 @@ class LoginScene extends Component {
         </Text>
 
         <CardSection>
-          {this.renderButton()}
+          {this.renderSignIn()}
         </CardSection>
       {/*</Card>*/}
 
@@ -106,29 +57,27 @@ class LoginScene extends Component {
       <TextButton onPress={this.signIn.bind(this)}>
           {this.state.option}
       </TextButton>
-    )
-    
+    ) 
   }
 
-  onSignUpPress() {
-    if (this.state.password == this.state.password2) {
-      const { email, password } = this.state;
-      this.setState({ error: '', loading: true, password2: '', hasAccount: true });
-
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then(this.onLoginSuccess.bind(this))
-          .catch(this.onLoginFail.bind(this))
-    } else {
-      this.onLoginFail()
+  renderSignIn() {
+    if (this.state.loading) {
+      return <Spinner size="small" />;
     }
-  }
-  
-  signIn() {
-    this.setState({ hasAccount: true, option: 'Sign up'})
-  }
 
-  signUp() {
-    this.setState({ hasAccount: false, option: 'Sign in' })
+    if (this.state.hasAccount) {
+      return (
+        <Button onPress={this.onSignInPress.bind(this)}>
+          Sign in
+        </Button>
+      );
+    } 
+
+    return (
+      <Button onPress={this.onSignUpPress.bind(this)}>
+        Sign up
+      </Button>
+    )
   }
 
   renderSignUp() {
@@ -145,6 +94,57 @@ class LoginScene extends Component {
         </CardSection>
       )
     }
+  }
+
+  onSignInPress() {
+    const { email, password } = this.state;
+
+    this.setState({ error: '', loading: true });
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(this.onLoginSuccess.bind(this))
+      .catch(this.onLoginFail.bind(this));
+  }
+
+  onSignUpPress() {
+    if (this.state.password == this.state.password2) {
+      const { email, password } = this.state;
+      this.setState({ error: '', loading: true, password2: '', hasAccount: true });
+
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then(this.onLoginSuccess.bind(this))
+          .catch(this.onLoginFail.bind(this))
+
+          console.log(this.state.hasAccount)
+    } else {
+      this.onLoginFail()
+    }
+  }
+
+  signIn() {
+    this.setState({ hasAccount: true, option: 'Sign up'})
+  }
+
+  signUp() {
+    this.setState({ hasAccount: false, option: 'Sign in' })
+  }
+
+  onLoginFail() {
+    if (this.state.hasAccount) {
+      this.setState({ error: "                    Sign in failed. \nPlease check your email and password.", loading: false });
+    } else {
+      this.setState({ error: 'Please check that your passwords match.'})
+    }
+  }
+
+  onLoginSuccess() {
+    this.setState({
+      email: '',
+      password: '',
+      loading: false,
+      error: '',
+      hasAccount: true
+    });
   }
 
 }
