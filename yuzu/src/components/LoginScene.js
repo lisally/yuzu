@@ -4,8 +4,11 @@ import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner, TextButton } from './common';
 
 class LoginScene extends Component {
-  state = { email: '', password: '', error: '', loading: false, hasAccount: true, password2: '', option: 'Sign up' };
-
+  constructor(props) {
+    super(props)
+    this.state = { email: '', password: '', error: '', loading: false, hasAccount: true, password2: '', option: 'Sign up' };
+  }
+  
   render() {
     return (
       <View style={styles.viewStyle}>
@@ -109,32 +112,31 @@ class LoginScene extends Component {
   onSignUpPress() {
     if (this.state.password == this.state.password2) {
       const { email, password } = this.state;
-      this.setState({ error: '', loading: true, password2: '', hasAccount: true });
+      this.setState({ error: '', loading: true, password2: '' });
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then(this.onLoginSuccess.bind(this))
-          .catch(this.onLoginFail.bind(this))
-
+          .catch(this.onSignUpFail.bind(this))
           console.log(this.state.hasAccount)
     } else {
-      this.onLoginFail()
+      this.onSignUpFail()
     }
   }
 
   signIn() {
-    this.setState({ hasAccount: true, option: 'Sign up'})
+    this.setState({ hasAccount: true, option: 'Sign up', error: '' })
   }
 
   signUp() {
-    this.setState({ hasAccount: false, option: 'Sign in' })
+    this.setState({ hasAccount: false, option: 'Sign in', error: ''  })
   }
 
   onLoginFail() {
-    if (this.state.hasAccount) {
-      this.setState({ error: "                    Sign in failed. \nPlease check your email and password.", loading: false });
-    } else {
-      this.setState({ error: 'Please check that your passwords match.'})
-    }
+    this.setState({ error: "                    Sign in failed. \nPlease check your email and password.", loading: false });
+  }
+
+  onSignUpFail() {
+    this.setState({ error: 'Please check that your passwords match.', loading: false })
   }
 
   onLoginSuccess() {
@@ -144,7 +146,13 @@ class LoginScene extends Component {
       loading: false,
       error: '',
       hasAccount: true
-    });
+    })
+
+    this.props.navigator.push({
+      title: 'Location',
+      passProps: this.props
+    })
+
   }
 
 }

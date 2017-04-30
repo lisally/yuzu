@@ -1,15 +1,32 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Navigator } from 'react-native';
 import firebase from 'firebase';
-import { Header, Button, Spinner, Input, TextButton } from './components/common';
+import { Header, Button, Spinner, Input } from './components/common';
 import LoginScene from './components/LoginScene';
 import LocationScene from './components/LocationScene';
+import MainScene from './components/MainScene'
+
+// import { Navigator } from 'react-native'
 
 // import Search from './components/Search'
 
-class App extends Component {
-  state = { loggedIn: null, header: '' };
 
+
+// class HomeScreen extends React.Component {
+//   static navigationOptions = {
+//     title: 'Welcome',
+//   };
+//   render() {
+//     return <Text>Hello, Navigation!</Text>;
+//   }
+// }
+
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { loggedIn: null, header: null, user: null };
+  }
   componentWillMount() {
     firebase.initializeApp({
       apiKey: "AIzaSyA2KHwa9wuVMqojjgq9vKWVRDzTitzTND0",
@@ -22,23 +39,61 @@ class App extends Component {
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ loggedIn: true, header: "Set Location" });
+        this.setState({ loggedIn: true, header: "Set Location", user: user.uid });
       } else {
-        this.setState({ loggedIn: false, header: "Yuzu" });
+        this.setState({ loggedIn: false, header: "Yuzu", user: null });
       }
     });
   }
 
+
   render() {
-    
     return (
-      
       <View style={{flex:1}}>
         <Header headerText={this.state.header} />
-        {this.renderContent()}
+        <Navigator
+          ref={(ref) => this._navigator = ref}
+          configureScene={this.configureScene.bind(this)}
+          renderScene={this.renderScene.bind(this)}
+          initialRoute={{
+            title: 'Location',
+            passProps: {
+              user: this.state.user,
+            }
+          }}
+        />
       </View>
     );
   }  
+
+  renderScene(route, navigator) {
+    switch(this.state.loggedIn) {
+      case true:
+        switch(route.title) {
+          case 'Location':
+            route.passProps.user = this.state.user
+            return (
+              <ScrollView>
+                <LocationScene {...route.passProps} navigator={navigator} />
+              </ScrollView>
+            )
+          case 'Login':
+            return <LoginScene {...route.passProps} navigator={navigator} />;
+          case 'Main':
+            return <MainScene {...route.passProps} navigator={navigator} />;
+          default:
+            return <Spinner size="large"/>;
+        }
+      case false:
+        return <LoginScene {...route.passProps} navigator={navigator} />;
+      default: 
+        return <Spinner size="large"/>;
+    }
+  }
+
+  configureScene(route, routeStack) {
+    return Navigator.SceneConfigs.PushFromRight
+  }
 
   // renderScene(route, navigator) {
   //   if (route.name == 'Login') {
@@ -57,7 +112,7 @@ class App extends Component {
   //   })
   // }
 
-renderContent() {
+/*renderContent() {
     switch (this.state.loggedIn) {
       case true:
         return (
@@ -74,7 +129,7 @@ renderContent() {
       default:
         return <Spinner size="large"/>;
     }
-  }
+  }*/
 
 }
 
