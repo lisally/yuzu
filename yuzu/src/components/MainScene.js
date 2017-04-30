@@ -13,14 +13,23 @@ class MainScene extends Component {
   render() {
     console.log(this.props)
     return (
-      // <Drawer>
-        <Card>
-          <CardSection>
-            <Text>HELLO</Text>
-          </CardSection>
-        </Card>
-      // </Drawer>
+
+    <Card>
+      <CardSection>
+        <Button onPress={this.onSearch.bind(this)}>
+          +
+        </Button>
+      </CardSection>
+      {/*<CardSection>*/}
+        {/*<Text>HELLO</Text>*/}
+      {/*</CardSection>*/}
+    </Card>
+
    )   
+  }
+
+  onSearch() {
+
   }
 
 }

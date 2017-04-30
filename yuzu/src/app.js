@@ -39,9 +39,9 @@ class App extends Component {
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ loggedIn: true, header: "Set Location", user: user.uid });
+        this.setState({ loggedIn: true, user: user.uid });
       } else {
-        this.setState({ loggedIn: false, header: "Yuzu", user: null });
+        this.setState({ loggedIn: false, user: null });
       }
     });
   }
@@ -50,7 +50,7 @@ class App extends Component {
   render() {
     return (
       <View style={{flex:1}}>
-        <Header headerText={this.state.header} />
+        <Header headerText="Yuzu" />
         <Navigator
           ref={(ref) => this._navigator = ref}
           configureScene={this.configureScene.bind(this)}
