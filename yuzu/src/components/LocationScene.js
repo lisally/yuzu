@@ -27,7 +27,8 @@ class LocationScene extends Component {
         <TextButton onPress={() => firebase.auth().signOut()
           .then(() => {this.props.navigator.push({
             title: 'Login',
-            passProps: this.props
+            passProps: this.props,
+            type: 'backward'
           })
         })}>
           Sign Out
@@ -51,7 +52,7 @@ class LocationScene extends Component {
     /* HANDLE LOGIC FOR SEARCHING ZIPCODE HERE */
     // const { zipcode } = this.state;
     this.setState({ loading: true });
-    firebase.database().ref('location').once('value')
+    firebase.database().ref('locations').once('value')
       .then(snapshot => this.setState({ locationData: snapshot.val(), loading: false }))
   }
   
@@ -71,7 +72,8 @@ class LocationScene extends Component {
       title: 'Main',
       passProps: {
         user: this.props.user,
-        location: location.name
+        location: location.name,
+        type: 'forward'
       }
     })
   }

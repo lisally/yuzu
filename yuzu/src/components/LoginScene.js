@@ -152,7 +152,8 @@ class LoginScene extends Component {
 
     this.props.navigator.push({
       title: 'Location',
-      passProps: this.props
+      passProps: this.props,
+      type: 'forward'
     })
 
   }

@@ -32,6 +32,12 @@ class MainScene extends Component {
         Find Matches
       </Button>*/}
 
+      <View>
+        <TextButton onPress={this.onBack.bind(this)}>
+          Back
+        </TextButton>
+      </View> 
+
     </Card>
 
    )   
@@ -40,12 +46,23 @@ class MainScene extends Component {
   onAdd() {
     this.props.navigator.push({
       title: 'Search',
-      passProps: this.props
+      passProps: this.props,
+      type: 'forward'
     })
   }
 
   onMatch() {
   }
+
+  onBack() {
+    this.props.navigator.push({
+      title: 'Location',
+      passProps: this.props,
+      type: 'backward'
+    })
+  }
+
+
 
 }
 

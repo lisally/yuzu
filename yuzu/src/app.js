@@ -58,11 +58,13 @@ class App extends Component {
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
             //title: 'Main',
-            //title: 'Location',
-            title: 'Search',
+            title: 'Location',
+            //title: 'Search',
             passProps: {
               user: this.state.user,
-            }
+            },
+            type: 'forward'
+
           }}
         />
       </View>
@@ -97,7 +99,11 @@ class App extends Component {
   }
 
   configureScene(route, routeStack) {
-    return Navigator.SceneConfigs.PushFromRight
+    if (route.type == 'backward') {
+      return Navigator.SceneConfigs.SwipeFromLeft
+    } else {
+      return Navigator.SceneConfigs.PushFromRight
+    }
   }
 
   // renderScene(route, navigator) {

@@ -34,6 +34,12 @@ class SearchScene extends Component {
 
         {this.onRenderResult()}
 
+        <View>
+          <TextButton onPress={this.onBack.bind(this)}>
+            Back
+          </TextButton>
+        </View>
+
       </View>
     )
   }
@@ -42,7 +48,7 @@ class SearchScene extends Component {
     var result = []
     var count = 0
     if (search.length > 0) {
-      firebase.database().ref('product').on('value', snapshot => {
+      firebase.database().ref('products').on('value', snapshot => {
         for (var item of snapshot.val()) {
           if (item.Product.toLowerCase().startsWith(search.toLowerCase())) {
             if (result.length < 12) {
@@ -73,16 +79,16 @@ class SearchScene extends Component {
   onItemPress(item) {
     this.setState({ searchResult: [] })
     this._input.clear()
+    firebase.database().ref('users/' + this.state.user + '/itemList').push(item)
   }
 
   onBack() {
     this.props.navigator.push({
       title: 'Main',
-      passProps: this.props
+      passProps: this.props,
+      type: 'backward'
     })
   }
-
-
 
 
 }
@@ -107,8 +113,6 @@ const styles = {
     color: '#000',
   }
 }
-
-
 
 
 export default SearchScene
