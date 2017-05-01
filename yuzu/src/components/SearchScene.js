@@ -6,7 +6,8 @@ import firebase from 'firebase'
 class SearchScene extends Component {
   constructor(props) {
     super(props)
-    this.state = { location: this.props.location, user: this.props.user, searchResult: [] };
+    // this.state = { location: this.props.location, user: 'this.props.user', searchResult: [] };
+    this.state = { location: 'Seattle', user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', searchResult: [] };  
   }
 
 
@@ -17,7 +18,9 @@ class SearchScene extends Component {
       <View>
       <CardSection>
           <View style={containerStyle}>
-          <TextInput placeholder="Search"
+          <TextInput 
+            ref={(ref) => this._input = ref}
+            placeholder="Search"
             autoCorrect={false}
             style={inputStyle}
             //value={this.state.search}
@@ -42,7 +45,7 @@ class SearchScene extends Component {
       firebase.database().ref('product').on('value', snapshot => {
         for (var item of snapshot.val()) {
           if (item.Product.toLowerCase().startsWith(search.toLowerCase())) {
-            if (result.length < 10) {
+            if (result.length < 12) {
               result.push(item)
             } else {
               break;
@@ -58,9 +61,7 @@ class SearchScene extends Component {
 
   onRenderResult() {
     const { searchResult } = this.state
-    // console.log(searchResult)
     if (typeof(searchResult) != 'undefined' && searchResult.length > 0) {
-      // console.log('returning')
       return (
         searchResult.map(item =>
           <ItemDetail onPress={this.onItemPress.bind(this, item)} item={item} key={item.Product} />
@@ -70,7 +71,8 @@ class SearchScene extends Component {
   }
 
   onItemPress(item) {
-
+    this.setState({ searchResult: [] })
+    this._input.clear()
   }
 
   onBack() {
@@ -95,7 +97,7 @@ const styles = {
     flex: 2
   },
   containerStyle: {
-    height: 32,
+    height: 38,
     flex: 3,
     flexDirection: 'row',
     alignItems: 'center'
