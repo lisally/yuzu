@@ -5,6 +5,7 @@ import { Header, Button, Spinner, Input } from './components/common';
 import LoginScene from './components/LoginScene';
 import LocationScene from './components/LocationScene';
 import MainScene from './components/MainScene'
+import SearchScene from './components/SearchScene'
 
 // import { Navigator } from 'react-native'
 
@@ -56,7 +57,9 @@ class App extends Component {
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            title: 'Location',
+            //title: 'Main',
+            //title: 'Location',
+            title: 'Search',
             passProps: {
               user: this.state.user,
             }
@@ -78,9 +81,11 @@ class App extends Component {
               </ScrollView>
             )
           case 'Login':
-            return <LoginScene {...route.passProps} navigator={navigator} />;
+            return <LoginScene {...route.passProps} navigator={navigator} />
           case 'Main':
-            return <MainScene {...route.passProps} navigator={navigator} />;
+            return <MainScene {...route.passProps} navigator={navigator} />
+          case 'Search':
+            return <SearchScene {...route.passProps} navigator={navigator} />
           default:
             return <Spinner size="large"/>;
         }

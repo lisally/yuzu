@@ -6,3 +6,4 @@ export * from './Input';
 export * from './Spinner';
 export * from './LocationDetail'
 export * from './TextButton'
+export * from './ItemDetail'

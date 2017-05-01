@@ -20,10 +20,9 @@ class LocationScene extends Component {
           />
         </CardSection>
 
-        <CardSection>
-          {this.renderSearch()}
-        </CardSection>
-          {this.renderLocation()}
+        {this.renderSearch()}
+
+        {this.renderLocation()}
 
         <TextButton onPress={() => firebase.auth().signOut()
           .then(() => {this.props.navigator.push({
@@ -39,7 +38,7 @@ class LocationScene extends Component {
 
   renderSearch() {    
     if (this.state.loading) {
-      return <Spinner size="small" />;
+      return <View><Spinner size="small" /></View>;
     }
     return (
       <Button onPress={this.onSearchPress.bind(this)}>

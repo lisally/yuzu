@@ -32,15 +32,9 @@ class LoginScene extends Component {
           />
         </CardSection>
 
-        {this.renderError()}
-
         {this.renderSignUp()}
-
-        <CardSection>
-          {this.renderSignIn()}
-        </CardSection>
-      {/*</Card>*/}
-
+        {this.renderError()}
+        {this.renderSignIn()}
         {this.renderOption()}
       </View>
     );
@@ -98,11 +92,13 @@ class LoginScene extends Component {
   }
 
   renderError() {
-    return (
-      <Text style={styles.errorTextStyle}>
-        {this.state.error}
-      </Text>
-    )
+    if (this.state.error != '') {
+      return (
+        <Text style={styles.errorTextStyle}>
+          {this.state.error}
+        </Text>
+      )
+    }
   }
 
   onSignInPress() {
