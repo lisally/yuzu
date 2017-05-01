@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
 // import { Drawer } from 'native-base'
-import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton } from './common';
+import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail } from './common';
 import firebase from 'firebase'
 
 class MainScene extends Component {
   constructor(props) {
     super(props)
-    this.state = { location: this.props.location };
-  }
+    // this.state = { location: this.props.location, user: this.props.user, loading: true, itemList: [] };
+    this.state = { location: 'Seattle', user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', loading: true, itemList: [] };  
+
+}
 
   render() {
     const { buttonStyle, buttonTextStyle, buttonContainerStyle } = styles;
-    console.log(this.props)
     return (
-
     <Card>
       <View style={buttonContainerStyle}>
       <TouchableOpacity onPress={this.onAdd.bind(this)} style={buttonStyle}>
@@ -25,12 +25,13 @@ class MainScene extends Component {
       </View>
 
       <ScrollView>
-        
+        {this.renderItemList()}
       </ScrollView>
 
       {/*<Button onPress={this.onMatch.bind(this)}>
         Find Matches
       </Button>*/}
+
 
       <View>
         <TextButton onPress={this.onBack.bind(this)}>
@@ -41,6 +42,31 @@ class MainScene extends Component {
     </Card>
 
    )   
+  }
+
+  renderItemList() {
+    const { itemList, loading, user } = this.state
+
+    if (loading) {
+      list = []
+      firebase.database().ref('users/' + user + '/itemList').once('value', snapshot => {
+        snapshot.forEach(function(item) {
+          // console.log(item.val());
+          list.push(item.val())
+        });
+        this.setState({ itemList: list, loading: false })
+      })
+    }        
+    // console.log(itemList)
+    return (
+      itemList.map(item =>
+        <ItemDetail onPress={this.onItemPress.bind(this, item)} item={item} key={item.Product} />
+      )
+    )
+  }
+
+  onItemPress() {
+
   }
 
   onAdd() {

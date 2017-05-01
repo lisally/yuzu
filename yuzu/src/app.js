@@ -30,12 +30,12 @@ class App extends Component {
   }
   componentWillMount() {
     firebase.initializeApp({
-      apiKey: "AIzaSyA2KHwa9wuVMqojjgq9vKWVRDzTitzTND0",
-      authDomain: "yuzu-f1238.firebaseapp.com",
-      databaseURL: "https://yuzu-f1238.firebaseio.com",
-      projectId: "yuzu-f1238",
-      storageBucket: "yuzu-f1238.appspot.com",
-      messagingSenderId: "293647243508"
+        apiKey: "AIzaSyA2KHwa9wuVMqojjgq9vKWVRDzTitzTND0",
+        authDomain: "yuzu-f1238.firebaseapp.com",
+        databaseURL: "https://yuzu-f1238.firebaseio.com",
+        projectId: "yuzu-f1238",
+        storageBucket: "yuzu-f1238.appspot.com",
+        messagingSenderId: "293647243508"
     });
 
     firebase.auth().onAuthStateChanged((user) => {
@@ -57,8 +57,8 @@ class App extends Component {
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            //title: 'Main',
-            title: 'Location',
+            title: 'Main',
+            //title: 'Location',
             //title: 'Search',
             passProps: {
               user: this.state.user,

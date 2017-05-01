@@ -2,13 +2,13 @@ import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 
 const ItemDetail = ({ item, onPress }) => {
-    const { name, street, city, state, zipcode, phone } = location
+    const { Product, Price, Quantity, Size, Measure } = item
     const { containerStyle, nameStyle} = styles 
 
     return (
         <TouchableOpacity style={containerStyle} onPress={onPress}>
-            <Text>{item.Product}</Text>
-            <Text>${item.Price} - ({item.Quantity}) {item.Size} {item.Measure}</Text>
+            <Text>{Product}</Text>
+            <Text>${Price} - ({Quantity}) {Size} {Measure}</Text>
         </TouchableOpacity>
     )
 }
