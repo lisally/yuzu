@@ -13,7 +13,7 @@ class MainScene extends Component {
 }
 
   render() {
-    const { buttonStyle, buttonTextStyle, buttonContainerStyle } = styles;
+    const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle } = styles;
     return (
     <View style={{flex:1}}>
       <View style={buttonContainerStyle}>
@@ -24,17 +24,16 @@ class MainScene extends Component {
       </TouchableOpacity>
       </View>
 
-      {/*<View style={{flex:1}}>*/}
       <ScrollView>
         {this.renderItemList()}
       </ScrollView>
-      {/*</View>*/}
-      {/*<Button onPress={this.onMatch.bind(this)}>
+
+      <Button onPress={this.onMatch.bind(this)}>
         Find Matches
-      </Button>*/}
+      </Button>
 
 
-      <View>
+      <View style={backStyle}>
         <TextButton onPress={this.onBack.bind(this)}>
           Back
         </TextButton>
@@ -52,13 +51,11 @@ class MainScene extends Component {
       list = []
       firebase.database().ref('users/' + user + '/itemList').once('value', snapshot => {
         snapshot.forEach(function(item) {
-          // console.log(item.val());
           list.push(item.val())
         });
         this.setState({ itemList: list, loading: false })
       })
     }        
-    // console.log(itemList)
     return (
       itemList.map(item =>
         <ItemDetail onPress={this.onDeletePress.bind(this, item)} item={item} key={item.Product} />
@@ -120,6 +117,9 @@ const styles = {
     justifyContent: 'flex-start',
     flexDirection: 'row',
     position: 'relative'
+  },
+  backStyle: {
+    // marginRight: 300
   }
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View, TouchableOpacity, ScrollView, ListView } from 'react-native';
+import { Text, TextInput, View, TouchableOpacity, ScrollView, Animated } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, SearchDetail, TextButton } from './common';
 import firebase from 'firebase'
 
@@ -7,15 +7,20 @@ class SearchScene extends Component {
   constructor(props) {
     super(props)
     // this.state = { location: this.props.location, user: 'this.props.user', searchResult: [] };
-    this.state = { location: 'Seattle', user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', searchResult: [] };  
+    this.state = { 
+      location: 'Seattle', 
+      user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', 
+      searchResult: [], 
+      itemAdded: false,
+      // fadeIn: new Animated.Value(0),
+      // fadeOut: new Animated.Value(0)
+    };  
   }
-
-
 
   render() {
     const { containerStyle, inputStyle, cameraStyle } = styles;
     return (
-      <View>
+      <View style={{flex:1}}>
       <CardSection>
           <View style={containerStyle}>
           <TextInput 
@@ -32,7 +37,14 @@ class SearchScene extends Component {
           </View>
         </CardSection>
 
-        {this.onRenderResult()}
+        <ScrollView>
+
+        {this.renderResult()}
+
+        {/*{this.renderFadeIn()}*/}
+        {/*{this.renderFadeOut()}*/}
+
+        </ScrollView>
 
         <View>
           <TextButton onPress={this.onBack.bind(this)}>
@@ -51,21 +63,21 @@ class SearchScene extends Component {
       firebase.database().ref('products').on('value', snapshot => {
         for (var item of snapshot.val()) {
           if (item.Product.toLowerCase().startsWith(search.toLowerCase())) {
-            if (result.length < 12) {
+            if (result.length < 20) {
               result.push(item)
             } else {
               break;
             }
           }
         }
-        this.setState({ searchResult: result })
+        this.setState({ searchResult: result})
       })
     } else {
       this.setState({ searchResult: [] })
     }
   }
 
-  onRenderResult() {
+  renderResult() {
     const { searchResult } = this.state
     if (typeof(searchResult) != 'undefined' && searchResult.length > 0) {
       return (
@@ -76,10 +88,58 @@ class SearchScene extends Component {
     }
   }
 
+  /*renderFadeIn() {
+    if (this.state.itemAdded) {
+      Animated.timing(                            
+        this.state.fadeIn,                      
+        {
+          toValue: 1,                         
+        }
+      ).start();
+
+      return (
+        <Animated.View        
+          style={{
+            opacity: this.state.fadeIn,
+          }}
+        >
+          <Text>
+            Item Added!
+          </Text>
+        </Animated.View>
+      )
+    }
+  }
+
+  renderFadeOut() {
+    if (this.state.itemAdded) {
+      Animated.timing(                            
+        this.state.fadeOut,                      
+        {
+          toValue: 1,                         
+        }
+      ).start();
+
+      return (
+        <Animated.View        
+          style={{
+            opacity: this.state.fadeIn,
+          }}
+        >
+          <Text style={{color:'red'}}>
+            Item Added!
+          </Text>
+        </Animated.View>
+      )
+    }
+  }*/
+
   onItemPress(item) {
     this.setState({ searchResult: [] })
     this._input.clear()
     firebase.database().ref('users/' + this.state.user + '/itemList').push(item)
+    this.setState({ itemAdded: true })
+    // this.setState({ itemAdded: false })
   }
 
   onBack() {

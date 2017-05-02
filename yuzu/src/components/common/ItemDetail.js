@@ -46,7 +46,7 @@ const styles = {
     borderColor: '#ddd',
     position: 'relative',
     width: 320,
-    alignSelf: 'center',
+    alignSelf: 'center'
   },
   clearStyle: {
     marginTop: -12,
