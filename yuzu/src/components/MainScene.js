@@ -15,7 +15,7 @@ class MainScene extends Component {
   render() {
     const { buttonStyle, buttonTextStyle, buttonContainerStyle } = styles;
     return (
-    <Card>
+    <View style={{flex:1}}>
       <View style={buttonContainerStyle}>
       <TouchableOpacity onPress={this.onAdd.bind(this)} style={buttonStyle}>
         <Text style={buttonTextStyle}>
@@ -24,10 +24,11 @@ class MainScene extends Component {
       </TouchableOpacity>
       </View>
 
+      {/*<View style={{flex:1}}>*/}
       <ScrollView>
         {this.renderItemList()}
       </ScrollView>
-
+      {/*</View>*/}
       {/*<Button onPress={this.onMatch.bind(this)}>
         Find Matches
       </Button>*/}
@@ -39,7 +40,7 @@ class MainScene extends Component {
         </TextButton>
       </View> 
 
-    </Card>
+    </View>
 
    )   
   }

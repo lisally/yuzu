@@ -29,6 +29,7 @@ class App extends Component {
     this.state = { loggedIn: null, header: null, user: null };
   }
   componentWillMount() {
+    console.disableYellowBox = true;
     firebase.initializeApp({
         apiKey: "AIzaSyA2KHwa9wuVMqojjgq9vKWVRDzTitzTND0",
         authDomain: "yuzu-f1238.firebaseapp.com",
@@ -78,9 +79,9 @@ class App extends Component {
           case 'Location':
             route.passProps.user = this.state.user
             return (
-              <ScrollView>
+              // <ScrollView>
                 <LocationScene {...route.passProps} navigator={navigator} />
-              </ScrollView>
+              // </ScrollView>
             )
           case 'Login':
             return <LoginScene {...route.passProps} navigator={navigator} />

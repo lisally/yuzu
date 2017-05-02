@@ -18,16 +18,12 @@ const LocationDetail = ({ location, onPress }) => {
 
 const styles = {
   nameStyle: {
-    // margin: 10,
     fontSize: 14,
     fontWeight: 'bold'
-    // flexDirection: 'column',
-    // alignItems: 'stretch',
-    // justifyContent: 'space-between',
-    // flex: 1
   },
   containerStyle: {
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
+    borderTopWidth: 0.5,
     padding: 5,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
@@ -35,7 +31,6 @@ const styles = {
     alignItems: 'center',
     borderColor: '#ddd',
     position: 'relative'
-    // flex: 1
   }
 }
 

@@ -10,7 +10,7 @@ class LocationScene extends Component {
   }
   render() {
     return (
-      <Card>
+      <View style={{flex:1}}>
         <CardSection>
           <Input
             label="Zipcode"
@@ -19,11 +19,14 @@ class LocationScene extends Component {
             onChangeText={zipcode => this.setState({ zipcode })}
           />
         </CardSection>
-
+        {/*<ScrollView>*/}
         {this.renderSearch()}
+
+        <ScrollView>
 
         {this.renderLocation()}
 
+        </ScrollView>
         <TextButton onPress={() => firebase.auth().signOut()
           .then(() => {this.props.navigator.push({
             title: 'Login',
@@ -33,7 +36,7 @@ class LocationScene extends Component {
         })}>
           Sign Out
         </TextButton>
-      </Card>
+      </View>
     );
   }
 
