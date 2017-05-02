@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, TextInput, View, TouchableOpacity, ScrollView, ListView } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner, ItemDetail, TextButton } from './common';
+import { Button, Card, CardSection, Input, Spinner, SearchDetail, TextButton } from './common';
 import firebase from 'firebase'
 
 class SearchScene extends Component {
@@ -70,7 +70,7 @@ class SearchScene extends Component {
     if (typeof(searchResult) != 'undefined' && searchResult.length > 0) {
       return (
         searchResult.map(item =>
-          <ItemDetail onPress={this.onItemPress.bind(this, item)} item={item} key={item.Product} />
+          <SearchDetail onPress={this.onItemPress.bind(this, item)} item={item} key={item.Product} />
         )
       )
     }

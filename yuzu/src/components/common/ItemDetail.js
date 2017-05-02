@@ -1,32 +1,64 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 
 const ItemDetail = ({ item, onPress }) => {
-    const { Product, Price, Quantity, Size, Measure } = item
-    const { containerStyle, nameStyle} = styles 
+    const { Product, Price, Quantity, Size, Measure, Category } = item
+    const { containerStyle, nameStyle, clearStyle, textStyle, productStyle, priceStyle } = styles 
 
     return (
-        <TouchableOpacity style={containerStyle} onPress={onPress}>
-            <Text>{Product}</Text>
-            <Text>${Price} - ({Quantity}) {Size} {Measure}</Text>
-        </TouchableOpacity>
+      <View>
+        <View style={containerStyle}>
+          <Text style={productStyle}>{Product}</Text>
+          <Text style={priceStyle}>Price: ${Price} </Text>
+          <Text>Quantity: ({Quantity}) {Size} {Measure}</Text>
+          <Text>Category: {Category}</Text>
+        </View>
+        <View style={clearStyle} >
+           <TouchableOpacity onPress={onPress}>
+            <Text style={textStyle}>
+              ×
+            </Text>
+          </TouchableOpacity>
+          </View>
+      </View>
     )
 }
 
 const styles = {
-  nameStyle: {
+  productStyle: {
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    // color: '#89bc4f'
+  },
+  priceStyle: {
+    // fontSize: 14,
+    // color: '#89bc4f',
+    
   },
   containerStyle: {
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
+    borderTopWidth: 0.5,
     padding: 5,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    alignItems: 'center',
+    // alignItems: 'center',
     borderColor: '#ddd',
-    position: 'relative'
+    position: 'relative',
+    width: 320,
+    alignSelf: 'center',
+  },
+  clearStyle: {
+    marginTop: -12,
+    marginLeft: 330,
+    position: 'absolute'
+  },
+  textStyle: {
+    alignSelf: 'center',
+    color: '#89bc4f',
+    fontSize: 22,
+    paddingTop: 10,
+    paddingBottom: 10
   }
 }
 

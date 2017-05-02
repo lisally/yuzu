@@ -60,13 +60,21 @@ class MainScene extends Component {
     // console.log(itemList)
     return (
       itemList.map(item =>
-        <ItemDetail onPress={this.onItemPress.bind(this, item)} item={item} key={item.Product} />
+        <ItemDetail onPress={this.onDeletePress.bind(this, item)} item={item} key={item.Product} />
       )
     )
   }
 
-  onItemPress() {
-
+  onDeletePress(deletedItem) {
+    const { user } = this.state
+    firebase.database().ref('users/' + user + '/itemList').once('value', snapshot => {
+      snapshot.forEach(function(item) {
+        if (item.val().Product === deletedItem.Product) {
+          firebase.database().ref('users/' + user + '/itemList/' + item.key).remove()
+        }
+      })
+      this.setState({ loading: true })
+    })
   }
 
   onAdd() {
