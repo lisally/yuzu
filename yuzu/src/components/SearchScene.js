@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { Text, TextInput, View, TouchableOpacity, ScrollView, Animated } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner, SearchDetail, TextButton } from './common';
+import { Button, CardSection, Input, Spinner, SearchDetail, TextButton } from './common';
 import firebase from 'firebase'
 
 class SearchScene extends Component {
   constructor(props) {
     super(props)
-    // this.state = { location: this.props.location, user: 'this.props.user', searchResult: [] };
+    // this.state = { location: this.props.location, user: 'this.props.user', searchResult: [], loading: false };
     this.state = { 
       location: 'Seattle', 
       user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', 
       searchResult: [], 
-      itemAdded: false,
-      // fadeIn: new Animated.Value(0),
-      // fadeOut: new Animated.Value(0)
+      loading: false
+    //   // itemAdded: false,
+    //   // fadeIn: new Animated.Value(0),
+    //   // fadeOut: new Animated.Value(0)
     };  
   }
 
@@ -37,14 +38,14 @@ class SearchScene extends Component {
           </View>
         </CardSection>
 
-        <ScrollView>
-
+        {/*<ScrollView>*/}
+        <View>
         {this.renderResult()}
 
         {/*{this.renderFadeIn()}*/}
         {/*{this.renderFadeOut()}*/}
-
-        </ScrollView>
+        </View>
+        {/*</ScrollView>*/}
 
         <View>
           <TextButton onPress={this.onBack.bind(this)}>
@@ -60,6 +61,7 @@ class SearchScene extends Component {
     var result = []
     var count = 0
     if (search.length > 0) {
+      this.setState({ loading: true })
       firebase.database().ref('products').on('value', snapshot => {
         for (var item of snapshot.val()) {
           if (item.Product.toLowerCase().startsWith(search.toLowerCase())) {
@@ -70,7 +72,7 @@ class SearchScene extends Component {
             }
           }
         }
-        this.setState({ searchResult: result})
+        this.setState({ searchResult: result, loading: false})
       })
     } else {
       this.setState({ searchResult: [] })
@@ -78,7 +80,11 @@ class SearchScene extends Component {
   }
 
   renderResult() {
-    const { searchResult } = this.state
+    const { searchResult, loading } = this.state
+    if (loading) {
+      return <View><Spinner size="small"/></View>
+    }
+
     if (typeof(searchResult) != 'undefined' && searchResult.length > 0) {
       return (
         searchResult.map(item =>
@@ -138,7 +144,7 @@ class SearchScene extends Component {
     this.setState({ searchResult: [] })
     this._input.clear()
     firebase.database().ref('users/' + this.state.user + '/itemList').push(item)
-    this.setState({ itemAdded: true })
+    // this.setState({ itemAdded: true })
     // this.setState({ itemAdded: false })
   }
 

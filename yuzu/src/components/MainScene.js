@@ -102,7 +102,8 @@ const styles = {
   buttonTextStyle: {
     alignSelf: 'center',
     color: '#fff',
-    fontSize: 32
+    // fontSize: 32,
+    fontSize: 35
   },
   buttonStyle: {
     flex: 1,
@@ -111,7 +112,11 @@ const styles = {
     borderRadius: 5
   },
     buttonContainerStyle: {
-    padding: 20,
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingLeft: 20,
+    paddingRight: 20,
+    // padding: 20,
     margin: -10,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
