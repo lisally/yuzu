@@ -26,6 +26,9 @@ class MainScene extends Component {
 
       <ScrollView>
         {this.renderItemList()}
+        <TextButton onPress={this.onClearAll.bind(this)}>
+          Clear All
+        </TextButton>
       </ScrollView>
 
       <View style={backStyle}>
@@ -84,6 +87,12 @@ class MainScene extends Component {
       })
       this.setState({ itemListLoaded: false })
     })
+  }
+
+  onClearAll() {
+    const { user } = this.state
+    firebase.database().ref('users/' + user + '/itemList/').remove() 
+    this.setState({ itemListLoaded: false})
   }
 
   onAdd() {

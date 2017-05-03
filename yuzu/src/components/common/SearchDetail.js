@@ -7,8 +7,8 @@ const SearchDetail = ({ item, onPress }) => {
 
     return (
         <TouchableOpacity style={containerStyle} onPress={onPress}>
-            <Text>{Product}</Text>
-            <Text>${Price} - ({Quantity}) {Size} {Measure}</Text>
+            <Text style={{color: '#404040'}}>{Product}</Text>
+            <Text style={{color: '#404040'}}>${Price} - ({Quantity}) {Size} {Measure}</Text>
         </TouchableOpacity>
     )
 }
@@ -16,7 +16,8 @@ const SearchDetail = ({ item, onPress }) => {
 const styles = {
   nameStyle: {
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#404040'
   },
   containerStyle: {
     borderBottomWidth: 1,

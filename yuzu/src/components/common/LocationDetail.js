@@ -8,10 +8,10 @@ const LocationDetail = ({ location, onPress }) => {
     return (
         <TouchableOpacity style={containerStyle} onPress={onPress}>
             <Text style={nameStyle}>{name} Costco</Text>
-            <Text>{street}</Text>
-            <Text>{city}, {state}</Text>
-            <Text>{zipcode}</Text>
-            <Text>{phone}</Text>
+            <Text style={{color: '#404040'}}>{street}</Text>
+            <Text style={{color: '#404040'}}>{city}, {state}</Text>
+            <Text style={{color: '#404040'}}>{zipcode}</Text>
+            <Text style={{color: '#404040'}}>{phone}</Text>
         </TouchableOpacity>
     )
 }
@@ -19,7 +19,8 @@ const LocationDetail = ({ location, onPress }) => {
 const styles = {
   nameStyle: {
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#404040'
   },
   containerStyle: {
     borderBottomWidth: 0.5,

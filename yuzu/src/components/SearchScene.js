@@ -115,7 +115,7 @@ class SearchScene extends Component {
 
 const styles = {
   inputStyle: {
-    color: '#000',
+    color: '#404040',
     paddingRight: 5,
     paddingLeft: 5,
     fontSize: 18,

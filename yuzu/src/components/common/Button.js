@@ -33,6 +33,8 @@ const styles = {
     // borderColor: '#f6c501',
     // marginLeft: 5,
     // marginRight: 5
+    paddingTop: 3,
+    paddingBottom: 3
   },
   containerStyle: {
     // paddingTop: 5,
