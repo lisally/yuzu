@@ -12,9 +12,6 @@ class SearchScene extends Component {
       user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', 
       searchResult: [], 
       loading: false
-    //   // itemAdded: false,
-    //   // fadeIn: new Animated.Value(0),
-    //   // fadeOut: new Animated.Value(0)
     };  
   }
 
@@ -44,9 +41,6 @@ class SearchScene extends Component {
         >
         {/*<View>*/}
         {this.renderResult()}
-
-        {/*{this.renderFadeIn()}*/}
-        {/*{this.renderFadeOut()}*/}
         {/*</View>*/}
         </ScrollView>
 
@@ -97,52 +91,6 @@ class SearchScene extends Component {
     }
   }
 
-  /*renderFadeIn() {
-    if (this.state.itemAdded) {
-      Animated.timing(                            
-        this.state.fadeIn,                      
-        {
-          toValue: 1,                         
-        }
-      ).start();
-
-      return (
-        <Animated.View        
-          style={{
-            opacity: this.state.fadeIn,
-          }}
-        >
-          <Text>
-            Item Added!
-          </Text>
-        </Animated.View>
-      )
-    }
-  }
-
-  renderFadeOut() {
-    if (this.state.itemAdded) {
-      Animated.timing(                            
-        this.state.fadeOut,                      
-        {
-          toValue: 1,                         
-        }
-      ).start();
-
-      return (
-        <Animated.View        
-          style={{
-            opacity: this.state.fadeIn,
-          }}
-        >
-          <Text style={{color:'red'}}>
-            Item Added!
-          </Text>
-        </Animated.View>
-      )
-    }
-  }*/
-
   onItemPress(item) {
     Keyboard.dismiss()
     this.setState({ searchResult: [] })
@@ -154,9 +102,6 @@ class SearchScene extends Component {
       passProps: this.props,
       type: 'backward'
     })
-
-    // this.setState({ itemAdded: true })
-    // this.setState({ itemAdded: false })
   }
 
   onBack() {
@@ -166,8 +111,6 @@ class SearchScene extends Component {
       type: 'backward'
     })
   }
-
-
 }
 
 const styles = {

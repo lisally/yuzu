@@ -3,19 +3,19 @@ import { View, Text, TouchableOpacity } from 'react-native'
 
 const ItemDetail = ({ item, onPress }) => {
     const { Product, Price, Quantity, Size, Measure, Category } = item
-    const { containerStyle, nameStyle, clearStyle, textStyle, productStyle, priceStyle } = styles 
+    const { containerStyle, nameStyle, clearStyle, clearTextStyle, textStyle, productStyle, priceStyle } = styles 
 
     return (
       <View>
         <View style={containerStyle}>
           <Text style={productStyle}>{Product}</Text>
           <Text style={priceStyle}>Price: ${Price} </Text>
-          <Text>Quantity: {Quantity} × {Size} {Measure}</Text>
-          <Text>Category: {Category}</Text>
+          <Text style={textStyle}>Quantity: {Quantity} × {Size} {Measure}</Text>
+          <Text style={textStyle}>Category: {Category}</Text>
         </View>
         <View style={clearStyle} >
            <TouchableOpacity onPress={onPress}>
-            <Text style={textStyle}>
+            <Text style={clearTextStyle}>
               ×
             </Text>
           </TouchableOpacity>
@@ -28,11 +28,10 @@ const styles = {
   productStyle: {
     fontSize: 14,
     fontWeight: 'bold',
-    // color: '#89bc4f'
+    color: '#404040'
   },
   priceStyle: {
-    // fontSize: 14,
-    // color: '#89bc4f',
+    color: '#404040'
     
   },
   containerStyle: {
@@ -42,7 +41,6 @@ const styles = {
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    // alignItems: 'center',
     borderColor: '#ddd',
     position: 'relative',
     width: 320,
@@ -53,12 +51,15 @@ const styles = {
     marginLeft: 330,
     position: 'absolute'
   },
-  textStyle: {
+  clearTextStyle: {
     alignSelf: 'center',
     color: '#89bc4f',
     fontSize: 26,
     paddingTop: 10,
     paddingBottom: 10
+  },
+  textStyle: {
+    color: '#404040'
   }
 }
 

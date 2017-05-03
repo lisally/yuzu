@@ -28,18 +28,21 @@ const styles = {
     flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#f6c501',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#f6c501',
-    marginLeft: 5,
-    marginRight: 5
+    // borderRadius: 5,
+    // borderWidth: 1,
+    // borderColor: '#f6c501',
+    // marginLeft: 5,
+    // marginRight: 5
   },
   containerStyle: {
-    padding: 5,
+    // paddingTop: 5,
+    // paddingBottom: 5,
+    // paddingLeft: 20,
+    // paddingRight: 20,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     flexDirection: 'row',
-    position: 'relative'
+    position: 'relative',
   }
 };
 

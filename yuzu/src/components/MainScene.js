@@ -7,8 +7,8 @@ import firebase from 'firebase'
 class MainScene extends Component {
   constructor(props) {
     super(props)
-    // this.state = { location: this.props.location, user: this.props.user, loading: true, itemList: [] };
-    this.state = { location: 'Seattle', user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', loading: true, itemList: [] };  
+    // this.state = { location: this.props.location, user: this.props.user, itemListLoaded: false, loading: false, itemList: [] };
+    this.state = { location: 'Seattle', user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', itemListLoaded: false, loading: false, itemList: [] };  
 
 }
 
@@ -28,16 +28,22 @@ class MainScene extends Component {
         {this.renderItemList()}
       </ScrollView>
 
-      <Button onPress={this.onMatch.bind(this)}>
-        Find Matches
-      </Button>
-
-
       <View style={backStyle}>
         <TextButton onPress={this.onBack.bind(this)}>
           Back
         </TextButton>
       </View> 
+
+      <Button onPress={this.onMatch.bind(this)}>
+        Find Matches
+      </Button>
+
+
+      {/*<View style={backStyle}>
+        <TextButton onPress={this.onBack.bind(this)}>
+          Back
+        </TextButton>
+      </View> */}
 
     </View>
 
@@ -45,15 +51,20 @@ class MainScene extends Component {
   }
 
   renderItemList() {
-    const { itemList, loading, user } = this.state
+    const { itemList, itemListLoaded, loading, user } = this.state
 
     if (loading) {
+      return <View><Spinner size="small" /></View>
+    }
+
+    if (!itemListLoaded) {
+      this.setState({ loading: true })
       list = []
       firebase.database().ref('users/' + user + '/itemList').once('value', snapshot => {
         snapshot.forEach(function(item) {
           list.push(item.val())
         });
-        this.setState({ itemList: list, loading: false })
+        this.setState({ itemList: list, itemListLoaded: true, loading: false })
       })
     }        
     return (
@@ -71,7 +82,7 @@ class MainScene extends Component {
           firebase.database().ref('users/' + user + '/itemList/' + item.key).remove()
         }
       })
-      this.setState({ loading: true })
+      this.setState({ itemListLoaded: false })
     })
   }
 
@@ -102,21 +113,18 @@ const styles = {
   buttonTextStyle: {
     alignSelf: 'center',
     color: '#fff',
-    // fontSize: 32,
     fontSize: 35
   },
   buttonStyle: {
     flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#f6c501',
-    borderRadius: 5
   },
     buttonContainerStyle: {
     paddingTop: 15,
     paddingBottom: 15,
-    paddingLeft: 20,
-    paddingRight: 20,
-    // padding: 20,
+    paddingLeft: 35,
+    paddingRight: 35,
     margin: -10,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',

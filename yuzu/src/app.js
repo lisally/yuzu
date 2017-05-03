@@ -7,20 +7,11 @@ import LocationScene from './components/LocationScene';
 import MainScene from './components/MainScene'
 import SearchScene from './components/SearchScene'
 
-// import { Navigator } from 'react-native'
-
-// import Search from './components/Search'
-
-
-
-// class HomeScreen extends React.Component {
-//   static navigationOptions = {
-//     title: 'Welcome',
-//   };
-//   render() {
-//     return <Text>Hello, Navigation!</Text>;
-//   }
-// }
+// Yuzu Colors
+// #557123
+// #f6c501
+// #89bc4f
+// #dddee2
 
 
 class App extends Component {
@@ -52,14 +43,14 @@ class App extends Component {
   render() {
     return (
       <View style={{flex:1}}>
-        <Header headerText="Yuzu" />
+        <Header image={false} />
         <Navigator
           ref={(ref) => this._navigator = ref}
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            title: 'Main',
-            //title: 'Location',
+            //title: 'Main',
+            title: 'Location',
             //title: 'Search',
             passProps: {
               user: this.state.user,
@@ -79,16 +70,27 @@ class App extends Component {
           case 'Location':
             route.passProps.user = this.state.user
             return (
-              // <ScrollView>
-                <LocationScene {...route.passProps} navigator={navigator} />
-              // </ScrollView>
+                // <View>
+                  // <Header />
+                  <LocationScene {...route.passProps} navigator={navigator} />
+                // </View>
             )
           case 'Login':
             return <LoginScene {...route.passProps} navigator={navigator} />
           case 'Main':
-            return <MainScene {...route.passProps} navigator={navigator} />
+            return (
+              // <View>
+                // <Header />
+                <MainScene {...route.passProps} navigator={navigator} />
+              // </View>
+            )
           case 'Search':
-            return <SearchScene {...route.passProps} navigator={navigator} />
+            return (
+              // <View>
+                // <Header />
+                <SearchScene {...route.passProps} navigator={navigator} />
+              // </View>
+            )
           default:
             return <Spinner size="large"/>;
         }
@@ -107,41 +109,6 @@ class App extends Component {
     }
   }
 
-  // renderScene(route, navigator) {
-  //   if (route.name == 'Login') {
-  //     return <LoginScene navigator={navigator} {...route.passProps} />
-  //   }
-  //   if (route.name == 'Location') {
-  //     return <LocationScene navigator={navigator} {...route.passProps} />
-  //   }
-
-  //   return <Spinner size="large" />
-  // }
-
-  // _navigate() {
-  //   this.props.navigator.push({
-  //     name: 'Login'
-  //   })
-  // }
-
-/*renderContent() {
-    switch (this.state.loggedIn) {
-      case true:
-        return (
-          <ScrollView>
-            <LocationScene />
-
-            <TextButton onPress={() => firebase.auth().signOut()}>
-              Sign Out
-            </TextButton>
-          </ScrollView>
-        )
-      case false:
-        return <LoginScene />;
-      default:
-        return <Spinner size="large"/>;
-    }
-  }*/
 
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner, TextButton } from './common';
 
@@ -11,31 +11,36 @@ class LoginScene extends Component {
   
   render() {
     return (
-      <View style={styles.viewStyle}>
-      {/*<Card>*/}
-        <CardSection>
-          <Input
-            placeholder="user@mail.com"
-            label="Email"
-            value={this.state.email}
-            onChangeText={email => this.setState({ email })}
-          />
-        </CardSection>
+      <View>
+        <View style={{alignItems: 'center', paddingTop: 40, paddingBottom: 40, borderBottomColor: '#ddd', borderBottomWidth: 1 }}>
+          <Image style={{height: 150, width: 165}} source={require('../images/yuzu.png')} />
+        </View>
 
-        <CardSection>
-          <Input
-            secureTextEntry
-            placeholder="password"
-            label="Password"
-            value={this.state.password}
-            onChangeText={password => this.setState({ password })}
-          />
-        </CardSection>
+        <View style={styles.viewStyle}>
+          <CardSection>
+            <Input
+              placeholder="user@mail.com"
+              label="Email"
+              value={this.state.email}
+              onChangeText={email => this.setState({ email })}
+            />
+          </CardSection>
 
-        {this.renderSignUp()}
-        {this.renderError()}
-        {this.renderSignIn()}
-        {this.renderOption()}
+          <CardSection>
+            <Input
+              secureTextEntry
+              placeholder="password"
+              label="Password"
+              value={this.state.password}
+              onChangeText={password => this.setState({ password })}
+            />
+          </CardSection>
+
+          {this.renderSignUp()}
+          {this.renderError()}
+          {this.renderSignIn()}
+          {this.renderOption()}
+        </View>
       </View>
     );
   }
@@ -172,6 +177,8 @@ const styles = {
         // flexDirection:'row',
         // alignItems:'stretch',
         // justifyContent:'center'
+      // paddingTop: 30
+      // margin: 100
   }
 };
 
