@@ -10,7 +10,7 @@ const ItemDetail = ({ item, onPress }) => {
         <View style={containerStyle}>
           <Text style={productStyle}>{Product}</Text>
           <Text style={priceStyle}>Price: ${Price} </Text>
-          <Text>Quantity: ({Quantity}) {Size} {Measure}</Text>
+          <Text>Quantity: {Quantity} × {Size} {Measure}</Text>
           <Text>Category: {Category}</Text>
         </View>
         <View style={clearStyle} >
@@ -49,14 +49,14 @@ const styles = {
     alignSelf: 'center'
   },
   clearStyle: {
-    marginTop: -12,
+    marginTop: -14,
     marginLeft: 330,
     position: 'absolute'
   },
   textStyle: {
     alignSelf: 'center',
     color: '#89bc4f',
-    fontSize: 24,
+    fontSize: 26,
     paddingTop: 10,
     paddingBottom: 10
   }

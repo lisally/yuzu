@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView } from 'react-native';
+import { Text, View, ScrollView, Keyboard } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton } from './common';
 import firebase from 'firebase'
 
@@ -54,6 +54,7 @@ class LocationScene extends Component {
   onSearchPress() {
     /* HANDLE LOGIC FOR SEARCHING ZIPCODE HERE */
     // const { zipcode } = this.state;
+    Keyboard.dismiss()
     this.setState({ loading: true });
     firebase.database().ref('locations').once('value')
       .then(snapshot => this.setState({ locationData: snapshot.val(), loading: false }))

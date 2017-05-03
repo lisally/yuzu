@@ -26,7 +26,9 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     borderColor: '#ddd',
-    position: 'relative'
+    position: 'relative',
+    paddingTop: 7,
+    paddingBottom: 7
   }
 }
 

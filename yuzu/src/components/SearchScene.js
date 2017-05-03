@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View, TouchableOpacity, ScrollView, Animated } from 'react-native';
+import { Text, TextInput, View, TouchableOpacity, ScrollView, Keyboard, Animated } from 'react-native';
 import { Button, CardSection, Input, Spinner, SearchDetail, TextButton } from './common';
 import firebase from 'firebase'
 
@@ -33,19 +33,22 @@ class SearchScene extends Component {
             onChangeText={this.onSearch.bind(this)}
           />
           <Text style={cameraStyle}>
-            Camera
+            {/*Camera*/}
           </Text>
           </View>
         </CardSection>
 
-        {/*<ScrollView>*/}
-        <View>
+        <ScrollView 
+          keyboardDismissMode='on-drag'
+          keyboardShouldPersistTaps='always'
+        >
+        {/*<View>*/}
         {this.renderResult()}
 
         {/*{this.renderFadeIn()}*/}
         {/*{this.renderFadeOut()}*/}
-        </View>
-        {/*</ScrollView>*/}
+        {/*</View>*/}
+        </ScrollView>
 
         <View>
           <TextButton onPress={this.onBack.bind(this)}>
@@ -64,7 +67,7 @@ class SearchScene extends Component {
       this.setState({ loading: true })
       firebase.database().ref('products').on('value', snapshot => {
         for (var item of snapshot.val()) {
-          if (item.Product.toLowerCase().startsWith(search.toLowerCase())) {
+          if (item.Product.toLowerCase().includes(search.toLowerCase())) {
             if (result.length < 20) {
               result.push(item)
             } else {
@@ -141,9 +144,17 @@ class SearchScene extends Component {
   }*/
 
   onItemPress(item) {
+    Keyboard.dismiss()
     this.setState({ searchResult: [] })
     this._input.clear()
     firebase.database().ref('users/' + this.state.user + '/itemList').push(item)
+
+    this.props.navigator.push({
+      title: 'Main',
+      passProps: this.props,
+      type: 'backward'
+    })
+
     // this.setState({ itemAdded: true })
     // this.setState({ itemAdded: false })
   }
