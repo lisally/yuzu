@@ -13,7 +13,6 @@ class MainScene extends Component {
 }
 
   render() {
-    console.log(this.props.user)
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle } = styles;
     return (
     <View style={{flex:1}}>
@@ -107,8 +106,10 @@ class MainScene extends Component {
   onAdd() {
     this.props.navigator.push({
       title: 'Search',
-      passProps: this.props,
-      type: 'forward'
+      passProps: {
+        user: this.props.user,
+        type: 'forward'
+      }
     })
   }
 
@@ -118,8 +119,10 @@ class MainScene extends Component {
   onBack() {
     this.props.navigator.push({
       title: 'Location',
-      passProps: this.props,
-      type: 'backward'
+      passProps: {
+        user: this.props.user,
+        type: 'backward'
+      }
     })
   }
 

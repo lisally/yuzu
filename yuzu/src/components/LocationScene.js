@@ -31,8 +31,10 @@ class LocationScene extends Component {
         <TextButton onPress={() => firebase.auth().signOut()
           .then(() => {this.props.navigator.push({
             title: 'SignIn',
-            passProps: this.props,
-            type: 'backward'
+            passProps: {
+              user: null,
+              type: 'backward'
+            }
           })
         })}>
           Sign Out

@@ -58,8 +58,8 @@ class App extends Component {
             //title: 'SignIn',
             passProps: {
               user: this.state.user,
-            },
-            type: 'forward'
+              type: 'forward'
+            }
 
           }}
         />
@@ -73,18 +73,17 @@ class App extends Component {
       case true:
         switch(route.title) {
           case 'Location':
-
             route.passProps.user = this.state.user
             return <LocationScene {...route.passProps} navigator={navigator} />
           case 'Main':
-            route.passProps.user = this.state.user                     
+            route.passProps.user = this.state.user               
             return <MainScene {...route.passProps} navigator={navigator} />
           case 'Search':
-            route.passProps.user = this.state.user 
+            route.passProps.user = this.state.user            
             return <SearchScene {...route.passProps} navigator={navigator} />
           case 'SignIn':
             return <SignInScene {...route.passProps} navigator={navigator} />
-          case 'SignUp':
+          case 'SignUp':                 
             return <SignUpScene {...route.passProps} navigator={navigator} />
           default:
             return <Spinner size="large"/>;
@@ -93,11 +92,9 @@ class App extends Component {
       // Not logged in
       case false:     
         switch(route.title) {
-          case 'SignIn':
-            route.passProps.user = null                      
+          case 'SignIn':                   
             return <SignInScene {...route.passProps} navigator={navigator} />;
-          case 'SignUp':
-            route.passProps.user = null                        
+          case 'SignUp':                       
             return <SignUpScene {...route.passProps} navigator={navigator} />;
           default: 
             return <SignInScene {...route.passProps} navigator={navigator} />;
@@ -110,7 +107,7 @@ class App extends Component {
   }
 
   configureScene(route, routeStack) {
-    if (route.type == 'backward') {
+    if (route.passProps.type == 'backward') {
       // return Navigator.SceneConfigs.SwipeFromLeft
       return Navigator.SceneConfigs.PushFromLeft
     } else {

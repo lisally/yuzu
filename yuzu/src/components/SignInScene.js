@@ -86,23 +86,25 @@ class SignInScene extends Component {
     Keyboard.dismiss()
     this.setState({ error: '', loading: true });
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(this.onLoginSuccess.bind(this))
-      .catch(this.onLoginFail.bind(this));
+      .then(this.onSignInSuccess.bind(this))
+      .catch(this.onSignInFail.bind(this));
   }
 
   onSignUpPress() {
     this.props.navigator.push({
       title: 'SignUp',
-      passProps: this.props,
-      type: 'forward'
+      passProps: {
+        user: this.props.user,
+        type: 'forward'
+      }
     })
   }
 
-  onLoginFail() {
+  onSignInFail() {
     this.setState({ error: "                    Sign in failed. \nPlease check your email and password.", loading: false });
   }
 
-  onLoginSuccess() {
+  onSignInSuccess(user) {
     this.setState({
       email: '',
       password: '',
@@ -112,8 +114,10 @@ class SignInScene extends Component {
 
     this.props.navigator.push({
       title: 'Location',
-      passProps: this.props,
-      type: 'forward'
+      passProps: {
+        user: user.uid,
+        type: 'forward'
+      }
     })
   }
 

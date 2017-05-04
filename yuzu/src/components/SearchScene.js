@@ -17,7 +17,6 @@ class SearchScene extends Component {
 
 
   render() {
-    console.log(this.props.user)
     const { containerStyle, inputStyle, cameraStyle } = styles;
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
@@ -103,16 +102,20 @@ class SearchScene extends Component {
 
     this.props.navigator.push({
       title: 'Main',
-      passProps: this.props,
-      type: 'backward'
+      passProps: {
+        user: this.props.user,
+        type: 'backward'
+      }
     })
   }
 
   onBack() {
     this.props.navigator.push({
       title: 'Main',
-      passProps: this.props,
-      type: 'backward'
+      passProps: {
+        user: this.props.user,
+        type: 'backward'
+      }
     })
   }
 }

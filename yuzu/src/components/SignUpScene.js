@@ -10,8 +10,7 @@ class SignUpScene extends Component {
     
   }
 
-  render() {
-    
+  render() {    
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
       <View>  
@@ -21,6 +20,7 @@ class SignUpScene extends Component {
 
         <View>
           <CardSection>
+
             <Input
               placeholder="spongebob"
               label="First Name"
@@ -122,8 +122,10 @@ class SignUpScene extends Component {
   onSignInPress() {
     this.props.navigator.push({
       title: 'SignIn',
-      passProps: this.props,
-      type: 'backward'
+      passProps: {
+        user: this.props.user, 
+        type: 'backward'
+      }
     })
   }
 
@@ -134,7 +136,7 @@ class SignUpScene extends Component {
       this.setState({ error: '', loading: true, password2: '' });
 
       firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(this.onSignUpSuccess.bind(this))
+        .then(this.onSignUpSuccess.bind(this)) 
         .catch(this.onSignUpFail.bind(this))
 
     } else {
@@ -146,14 +148,14 @@ class SignUpScene extends Component {
     this.setState({ error: 'Please check that your passwords match.', loading: false })
   }
 
-  onSignUpSuccess() {
-    // firebase.database().ref('users/' + this.props.user + '/profile').push()
-    //   .set({
-    //     'username': this.state.username,
-    //     'fname': this.state.fname,
-    //     'lname': this.state.lname,
-    //     'email': this.state.email
-    //   })
+  onSignUpSuccess(user) {  
+    firebase.database().ref('users/' + user.uid + '/profile').push()
+      .set({
+        'username': this.state.username,
+        'fname': this.state.fname,
+        'lname': this.state.lname,
+        'email': this.state.email
+      })
 
     this.setState({
       email: '',
@@ -161,11 +163,13 @@ class SignUpScene extends Component {
       loading: false,
       error: '',
     })
-    
+
     this.props.navigator.push({
       title: 'Location',
-      passProps: this.props,
-      type: 'forward'
+      passProps: {
+        user: user.uid,
+        type: 'forward'
+      }
     })
     
   }
