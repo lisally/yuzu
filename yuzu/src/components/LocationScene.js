@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Keyboard } from 'react-native';
+import { Text, View, ScrollView, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton } from './common';
 import firebase from 'firebase'
 
@@ -10,6 +10,7 @@ class LocationScene extends Component {
   }
   render() {
     return (
+      <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
       <View style={{flex:1}}>
         <CardSection>
           <Input
@@ -28,7 +29,7 @@ class LocationScene extends Component {
 
         <TextButton onPress={() => firebase.auth().signOut()
           .then(() => {this.props.navigator.push({
-            title: 'Login',
+            title: 'SignIn',
             passProps: this.props,
             type: 'backward'
           })
@@ -36,6 +37,7 @@ class LocationScene extends Component {
           Sign Out
         </TextButton>
       </View>
+      </TouchableWithoutFeedback>
     );
   }
 

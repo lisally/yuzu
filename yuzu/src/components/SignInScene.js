@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner, TextButton } from './common';
 
-class LoginScene extends Component {
+class SignInScene extends Component {
   constructor(props) {
     super(props)
-    this.state = { email: '', password: '', error: '', loading: false, hasAccount: true, password2: '', option: 'Sign up' };
+    this.state = { email: '', password: '', error: '', loading: false, };
   }
   
   render() {
     return (
-      <View>
+      <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
+      <View>  
         <View style={{alignItems: 'center', paddingTop: 40, paddingBottom: 40, borderBottomColor: '#ddd', borderBottomWidth: 1 }}>
           <Image style={{height: 150, width: 165}} source={require('../images/yuzu.png')} />
         </View>
 
-        <View style={styles.viewStyle}>
+        <View>
           <CardSection>
             <Input
+              keyboardType='email-address'
               placeholder="user@mail.com"
               label="Email"
               value={this.state.email}
@@ -36,62 +38,34 @@ class LoginScene extends Component {
             />
           </CardSection>
 
-          {this.renderSignUp()}
-          {this.renderError()}
           {this.renderSignIn()}
-          {this.renderOption()}
+          {this.renderError()}
+          {this.renderSignUp()}
+
         </View>
       </View>
+      </TouchableWithoutFeedback>
     );
-  }
-
-  renderOption() {
-    if (this.state.hasAccount) {
-      return (
-        <TextButton onPress={this.signUp.bind(this)}>
-          {this.state.option}
-        </TextButton>
-      )
-    }
-    return (
-      <TextButton onPress={this.signIn.bind(this)}>
-          {this.state.option}
-      </TextButton>
-    ) 
   }
 
   renderSignIn() {
     if (this.state.loading) {
       return <Spinner size="small" />;
     }
-
-    if (this.state.hasAccount) {
-      return (
-        <Button onPress={this.onSignInPress.bind(this)}>
-          Sign in
-        </Button>
-      );
-    } 
-
     return (
-      <Button onPress={this.onSignUpPress.bind(this)}>
-        Sign up
+      <Button onPress={this.onSignInPress.bind(this)}>
+        Sign in
       </Button>
-    )
+    );
   }
 
   renderSignUp() {
-    if (!this.state.hasAccount) {
+    if (!this.state.loading) {
       return (
-        <CardSection>
-          <Input
-            secureTextEntry
-            placeholder="re-enter password"
-            label="Re-enter"
-            value={this.state.password2}
-            onChangeText={password2 => this.setState({ password2 })}
-          />
-        </CardSection>
+        <View style={{paddingTop: 6, justifyContent: 'center', flexDirection: 'row'}}>
+          <Text style={{fontSize: 16, color: '#404040',}}>Don't have an account?</Text>
+          <Text style={{fontSize: 16, color: '#89bc4f',}} onPress={this.onSignUpPress.bind(this)}> Sign up </Text>
+        </View>
       )
     }
   }
@@ -108,42 +82,23 @@ class LoginScene extends Component {
 
   onSignInPress() {
     const { email, password } = this.state;
-
+    Keyboard.dismiss()
     this.setState({ error: '', loading: true });
-
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(this.onLoginSuccess.bind(this))
       .catch(this.onLoginFail.bind(this));
   }
 
   onSignUpPress() {
-    if (this.state.password == this.state.password2) {
-      const { email, password } = this.state;
-      this.setState({ error: '', loading: true, password2: '' });
-
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then(this.onLoginSuccess.bind(this))
-          .catch(this.onSignUpFail.bind(this))
-          console.log(this.state.hasAccount)
-    } else {
-      this.onSignUpFail()
-    }
-  }
-
-  signIn() {
-    this.setState({ hasAccount: true, option: 'Sign up', error: '' })
-  }
-
-  signUp() {
-    this.setState({ hasAccount: false, option: 'Sign in', error: ''  })
+    this.props.navigator.push({
+      title: 'SignUp',
+      passProps: this.props,
+      type: 'forward'
+    })
   }
 
   onLoginFail() {
     this.setState({ error: "                    Sign in failed. \nPlease check your email and password.", loading: false });
-  }
-
-  onSignUpFail() {
-    this.setState({ error: 'Please check that your passwords match.', loading: false })
   }
 
   onLoginSuccess() {
@@ -152,34 +107,23 @@ class LoginScene extends Component {
       password: '',
       loading: false,
       error: '',
-      hasAccount: true
     })
-
     this.props.navigator.push({
       title: 'Location',
       passProps: this.props,
       type: 'forward'
     })
-
   }
 
 }
 
 const styles = {
   errorTextStyle: {
-    fontSize: 16,
+    fontSize: 15,
     alignSelf: 'center',
     color: 'red',
+    marginTop: 4,
   },
-
-  viewStyle: {
-        // flex:1,
-        // flexDirection:'row',
-        // alignItems:'stretch',
-        // justifyContent:'center'
-      // paddingTop: 30
-      // margin: 100
-  }
 };
 
-export default LoginScene;
+export default SignInScene;

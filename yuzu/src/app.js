@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { ScrollView, View, Navigator } from 'react-native';
 import firebase from 'firebase';
 import { Header, Button, Spinner, Input } from './components/common';
-import LoginScene from './components/LoginScene';
+import SignInScene from './components/SignInScene';
 import LocationScene from './components/LocationScene';
 import MainScene from './components/MainScene'
 import SearchScene from './components/SearchScene'
+import SignUpScene from './components/SignUpScene'
 
 // Yuzu Colors
 // #557123
@@ -49,9 +50,10 @@ class App extends Component {
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            title: 'Main',
-            //title: 'Location',
+            //title: 'Main',
+            title: 'Location',
             //title: 'Search',
+            //title: 'SignUp',
             passProps: {
               user: this.state.user,
             },
@@ -65,18 +67,16 @@ class App extends Component {
 
   renderScene(route, navigator) {
     switch(this.state.loggedIn) {
+      // Logged in
       case true:
         switch(route.title) {
           case 'Location':
             route.passProps.user = this.state.user
-            return (
-                // <View>
-                  // <Header />
-                  <LocationScene {...route.passProps} navigator={navigator} />
-                // </View>
-            )
-          case 'Login':
-            return <LoginScene {...route.passProps} navigator={navigator} />
+            return <LocationScene {...route.passProps} navigator={navigator} />
+          case 'SignIn':
+            return <SignInScene {...route.passProps} navigator={navigator} />
+          case 'SignUp':
+            return <SignUpScene {...route.passProps} navigator={navigator} />
           case 'Main':
             return (
               // <View>
@@ -94,8 +94,18 @@ class App extends Component {
           default:
             return <Spinner size="large"/>;
         }
+      
+      // Not logged in
       case false:
-        return <LoginScene {...route.passProps} navigator={navigator} />;
+        switch(route.title) {
+          case 'SignIn':
+            return <SignInScene {...route.passProps} navigator={navigator} />;
+          case 'SignUp':
+            return <SignUpScene {...route.passProps} navigator={navigator} />;
+          default: 
+            return <SignInScene {...route.passProps} navigator={navigator} />;
+        }
+      // Loading 
       default: 
         return <Spinner size="large"/>;
     }
@@ -103,7 +113,8 @@ class App extends Component {
 
   configureScene(route, routeStack) {
     if (route.type == 'backward') {
-      return Navigator.SceneConfigs.SwipeFromLeft
+      // return Navigator.SceneConfigs.SwipeFromLeft
+      return Navigator.SceneConfigs.PushFromLeft
     } else {
       return Navigator.SceneConfigs.PushFromRight
     }

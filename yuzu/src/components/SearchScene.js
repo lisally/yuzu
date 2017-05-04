@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View, TouchableOpacity, ScrollView, Keyboard, Animated } from 'react-native';
+import { Text, TextInput, View, TouchableOpacity, ScrollView, Keyboard, TouchableWithoutFeedback, Animated } from 'react-native';
 import { Button, CardSection, Input, Spinner, SearchDetail, TextButton } from './common';
 import firebase from 'firebase'
 
@@ -18,6 +18,7 @@ class SearchScene extends Component {
   render() {
     const { containerStyle, inputStyle, cameraStyle } = styles;
     return (
+      <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
       <View style={{flex:1}}>
       <CardSection>
           <View style={containerStyle}>
@@ -49,8 +50,8 @@ class SearchScene extends Component {
             Back
           </TextButton>
         </View>
-
       </View>
+      </TouchableWithoutFeedback>
     )
   }
 
@@ -73,6 +74,7 @@ class SearchScene extends Component {
       })
     } else {
       this.setState({ searchResult: [] })
+      Keyboard.dismiss()
     }
   }
 
