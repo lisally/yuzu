@@ -7,9 +7,11 @@ class SignUpScene extends Component {
   constructor(props) {
     super(props)
     this.state = { fname: '', lname: '', username: '', email: '', password: '', password2: '', error: '', loading: false,};
+    
   }
-  
+
   render() {
+    
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
       <View>  
@@ -145,19 +147,27 @@ class SignUpScene extends Component {
   }
 
   onSignUpSuccess() {
+    // firebase.database().ref('users/' + this.props.user + '/profile').push()
+    //   .set({
+    //     'username': this.state.username,
+    //     'fname': this.state.fname,
+    //     'lname': this.state.lname,
+    //     'email': this.state.email
+    //   })
+
     this.setState({
       email: '',
       password: '',
       loading: false,
       error: '',
     })
-
+    
     this.props.navigator.push({
       title: 'Location',
       passProps: this.props,
       type: 'forward'
     })
-
+    
   }
 
 }

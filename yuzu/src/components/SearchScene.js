@@ -6,16 +6,18 @@ import firebase from 'firebase'
 class SearchScene extends Component {
   constructor(props) {
     super(props)
-    // this.state = { location: this.props.location, user: 'this.props.user', searchResult: [], loading: false };
-    this.state = { 
-      location: 'Seattle', 
-      user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', 
-      searchResult: [], 
-      loading: false
-    };  
+    this.state = { location: this.props.location, user: this.props.user, searchResult: [], loading: false };
+    // this.state = { 
+    //   location: 'Seattle', 
+    //   user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', 
+    //   searchResult: [], 
+    //   loading: false
+    // };
   }
 
+
   render() {
+    console.log(this.props.user)
     const { containerStyle, inputStyle, cameraStyle } = styles;
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>

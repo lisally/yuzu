@@ -20,6 +20,7 @@ class App extends Component {
     super(props)
     this.state = { loggedIn: null, header: null, user: null };
   }
+
   componentWillMount() {
     console.disableYellowBox = true;
     firebase.initializeApp({
@@ -36,10 +37,10 @@ class App extends Component {
         this.setState({ loggedIn: true, user: user.uid });
       } else {
         this.setState({ loggedIn: false, user: null });
+        
       }
     });
   }
-
 
   render() {
     return (
@@ -54,6 +55,7 @@ class App extends Component {
             title: 'Location',
             //title: 'Search',
             //title: 'SignUp',
+            //title: 'SignIn',
             passProps: {
               user: this.state.user,
             },
@@ -71,40 +73,36 @@ class App extends Component {
       case true:
         switch(route.title) {
           case 'Location':
+
             route.passProps.user = this.state.user
             return <LocationScene {...route.passProps} navigator={navigator} />
+          case 'Main':
+            route.passProps.user = this.state.user                     
+            return <MainScene {...route.passProps} navigator={navigator} />
+          case 'Search':
+            route.passProps.user = this.state.user 
+            return <SearchScene {...route.passProps} navigator={navigator} />
           case 'SignIn':
             return <SignInScene {...route.passProps} navigator={navigator} />
           case 'SignUp':
             return <SignUpScene {...route.passProps} navigator={navigator} />
-          case 'Main':
-            return (
-              // <View>
-                // <Header />
-                <MainScene {...route.passProps} navigator={navigator} />
-              // </View>
-            )
-          case 'Search':
-            return (
-              // <View>
-                // <Header />
-                <SearchScene {...route.passProps} navigator={navigator} />
-              // </View>
-            )
           default:
             return <Spinner size="large"/>;
         }
       
       // Not logged in
-      case false:
+      case false:     
         switch(route.title) {
           case 'SignIn':
+            route.passProps.user = null                      
             return <SignInScene {...route.passProps} navigator={navigator} />;
           case 'SignUp':
+            route.passProps.user = null                        
             return <SignUpScene {...route.passProps} navigator={navigator} />;
           default: 
             return <SignInScene {...route.passProps} navigator={navigator} />;
         }
+
       // Loading 
       default: 
         return <Spinner size="large"/>;

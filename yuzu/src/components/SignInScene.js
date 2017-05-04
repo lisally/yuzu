@@ -7,6 +7,7 @@ class SignInScene extends Component {
   constructor(props) {
     super(props)
     this.state = { email: '', password: '', error: '', loading: false, };
+  
   }
   
   render() {
@@ -108,6 +109,7 @@ class SignInScene extends Component {
       loading: false,
       error: '',
     })
+
     this.props.navigator.push({
       title: 'Location',
       passProps: this.props,

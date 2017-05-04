@@ -7,12 +7,13 @@ import firebase from 'firebase'
 class MainScene extends Component {
   constructor(props) {
     super(props)
-    // this.state = { location: this.props.location, user: this.props.user, itemListLoaded: false, loading: false, itemList: [] };
-    this.state = { location: 'Seattle', user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', itemListLoaded: false, loading: false, itemList: [] };  
+    this.state = { location: this.props.location, user: this.props.user, itemListLoaded: false, loading: false, itemList: [] };
+    // this.state = { location: 'Seattle', user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', itemListLoaded: false, loading: false, itemList: [] };  
 
 }
 
   render() {
+    console.log(this.props.user)
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle } = styles;
     return (
     <View style={{flex:1}}>
@@ -26,9 +27,7 @@ class MainScene extends Component {
 
       <ScrollView>
         {this.renderItemList()}
-        <TextButton onPress={this.onClearAll.bind(this)}>
-          Clear All
-        </TextButton>
+        {this.renderClearAll()}
       </ScrollView>
 
       <View style={backStyle}>
@@ -51,6 +50,16 @@ class MainScene extends Component {
     </View>
 
    )   
+  }
+
+  renderClearAll() {
+    if (this.state.itemList.length > 1) {
+      return (
+        <TextButton onPress={this.onClearAll.bind(this)}>
+          Clear All
+        </TextButton>
+      )
+    }
   }
 
   renderItemList() {

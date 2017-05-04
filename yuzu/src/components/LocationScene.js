@@ -8,6 +8,7 @@ class LocationScene extends Component {
     super(props)
     this.state = { zipcode: '', loading: false, locationData: [], location: '' };
   }
+
   render() {
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
