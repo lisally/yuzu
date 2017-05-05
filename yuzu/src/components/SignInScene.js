@@ -14,8 +14,8 @@ class SignInScene extends Component {
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
       <View>  
-        <View style={{alignItems: 'center', paddingTop: 40, paddingBottom: 40, borderBottomColor: '#ddd', borderBottomWidth: 1 }}>
-          <Image style={{height: 150, width: 165}} source={require('../images/yuzu.png')} />
+        <View style={{alignItems: 'center', paddingTop: 60, paddingBottom: 40, borderBottomColor: '#ddd', borderBottomWidth: 1 }}>
+          <Image style={{height: 180, width: 140}} source={require('../images/logo.png')} />
         </View>
 
         <View>

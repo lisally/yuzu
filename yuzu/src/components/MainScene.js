@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
 // import { Drawer } from 'native-base'
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail } from './common';
 import firebase from 'firebase'
@@ -7,7 +7,14 @@ import firebase from 'firebase'
 class MainScene extends Component {
   constructor(props) {
     super(props)
-    this.state = { location: this.props.location, user: this.props.user, itemListLoaded: false, loading: false, itemList: [] };
+    this.state = { 
+      location: this.props.location, 
+      user: this.props.user, 
+      itemListLoaded: false, 
+      loading: false, 
+      itemList: [],
+      matchLoading: false,
+     };
     // this.state = { location: 'Seattle', user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', itemListLoaded: false, loading: false, itemList: [] };  
 
 }
@@ -35,9 +42,7 @@ class MainScene extends Component {
         </TextButton>
       </View> 
 
-      <Button onPress={this.onMatch.bind(this)}>
-        Find Matches
-      </Button>
+      {this.renderMatchButton()}
 
 
       {/*<View style={backStyle}>
@@ -85,6 +90,22 @@ class MainScene extends Component {
     )
   }
 
+  renderMatchButton() {
+    if (this.state.matchLoading) {
+      return (
+        <View style={{backgroundColor: '#f6c501', height: 47, justifyContent: 'center'}}>
+          <ActivityIndicator color='white' size="small" />
+        </View>
+      )
+    }
+
+    return (
+    <Button onPress={this.onMatch.bind(this)}>
+        Find Matches
+    </Button>
+    )
+  }
+
   onDeletePress(deletedItem) {
     const { user } = this.state
     firebase.database().ref('users/' + user + '/itemList').once('value', snapshot => {
@@ -99,8 +120,9 @@ class MainScene extends Component {
 
   onClearAll() {
     const { user } = this.state
-    firebase.database().ref('users/' + user + '/itemList/').remove() 
-    this.setState({ itemListLoaded: false})
+    firebase.database().ref('users/' + user + '/itemList/').remove()
+    firebase.database().ref('matches/' + this.props.location + '/' + this.props.user + '/').remove()    
+    this.setState({ itemListLoaded: false, matchLoading: false})
   }
 
   onAdd() {
@@ -108,12 +130,20 @@ class MainScene extends Component {
       title: 'Search',
       passProps: {
         user: this.props.user,
-        type: 'forward'
+        type: 'forward',
+        location: this.props.location
       }
     })
   }
 
   onMatch() {
+    this.setState({ matchLoading: true })
+
+    firebase.database().ref('matches/' + this.props.location + '/' + this.props.user + '/').remove()
+    for (var item of this.state.itemList) {
+      firebase.database().ref('matches/' + this.props.location + '/' + 
+        this.props.user + '/').push(item)
+    }
   }
 
   onBack() {
@@ -121,7 +151,8 @@ class MainScene extends Component {
       title: 'Location',
       passProps: {
         user: this.props.user,
-        type: 'backward'
+        type: 'backward',
+        location: null
       }
     })
   }
@@ -142,11 +173,11 @@ const styles = {
     backgroundColor: '#f6c501',
   },
     buttonContainerStyle: {
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 35,
-    paddingRight: 35,
-    margin: -10,
+    // paddingTop: 15,
+    // paddingBottom: 15,
+    paddingLeft: 20,
+    paddingRight: 20,
+    margin: 10,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     flexDirection: 'row',

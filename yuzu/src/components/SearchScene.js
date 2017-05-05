@@ -104,7 +104,8 @@ class SearchScene extends Component {
       title: 'Main',
       passProps: {
         user: this.props.user,
-        type: 'backward'
+        type: 'backward',
+        location: this.props.location
       }
     })
   }
@@ -114,7 +115,8 @@ class SearchScene extends Component {
       title: 'Main',
       passProps: {
         user: this.props.user,
-        type: 'backward'
+        type: 'backward',
+        location: this.props.location
       }
     })
   }

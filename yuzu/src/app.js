@@ -7,6 +7,8 @@ import LocationScene from './components/LocationScene';
 import MainScene from './components/MainScene'
 import SearchScene from './components/SearchScene'
 import SignUpScene from './components/SignUpScene'
+import MenuScene from './components/MenuScene'
+
 
 // Yuzu Colors
 // #557123
@@ -18,7 +20,7 @@ import SignUpScene from './components/SignUpScene'
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { loggedIn: null, header: null, user: null };
+    this.state = { loggedIn: null, header: null, user: null, menu: false };
   }
 
   componentWillMount() {
@@ -45,7 +47,8 @@ class App extends Component {
   render() {
     return (
       <View style={{flex:1}}>
-        <Header image={false} />
+      {/*<View>*/}
+        {/*<Header onPress={this.onMenuPress.bind(this)}/>*/}
         <Navigator
           ref={(ref) => this._navigator = ref}
           configureScene={this.configureScene.bind(this)}
@@ -56,35 +59,78 @@ class App extends Component {
             //title: 'Search',
             //title: 'SignUp',
             //title: 'SignIn',
+            //title: 'Menu',
             passProps: {
               user: this.state.user,
               type: 'forward'
             }
-
           }}
         />
       </View>
     );
-  }  
+  }
+
+  onMenuPress(navigator) {
+    navigator.push({
+      title: 'Menu',
+      passProps: {
+        user: this.props.user, 
+        type: 'menu'
+      }
+    })
+  }
 
   renderScene(route, navigator) {
     switch(this.state.loggedIn) {
       // Logged in
       case true:
         switch(route.title) {
+          case 'Menu':
+            route.passProps.user = this.state.user
+            return <MenuScene {...route.passProps} navigator={navigator} />   
           case 'Location':
             route.passProps.user = this.state.user
-            return <LocationScene {...route.passProps} navigator={navigator} />
+            // return <LocationScene {...route.passProps} navigator={navigator} />
+            return (
+              <View style={{flex:1}}>
+                <Header onPress={this.onMenuPress.bind(this, navigator)}/>
+                <LocationScene {...route.passProps} navigator={navigator} />
+              </View>
+            )
           case 'Main':
             route.passProps.user = this.state.user               
-            return <MainScene {...route.passProps} navigator={navigator} />
+            // return <MainScene {...route.passProps} navigator={navigator} />
+            return (
+              <View style={{flex:1}}>
+                <Header onPress={this.onMenuPress.bind(this, navigator)}/>
+                <MainScene {...route.passProps} navigator={navigator} />
+              </View>
+            )
           case 'Search':
             route.passProps.user = this.state.user            
-            return <SearchScene {...route.passProps} navigator={navigator} />
-          case 'SignIn':
-            return <SignInScene {...route.passProps} navigator={navigator} />
+            // return <SearchScene {...route.passProps} navigator={navigator} />
+            return (
+              <View style={{flex:1}}>
+                <Header onPress={this.onMenuPress.bind(this, navigator)}/>
+                <SearchScene {...route.passProps} navigator={navigator} />
+              </View>
+            )
+          /*case 'SignIn':
+            // return <SignInScene {...route.passProps} navigator={navigator} />
+            return (
+              <View style={{flex:1}}>
+                <Header onPress={this.onMenuPress.bind(this)}/>
+                <SignInScene {...route.passProps} navigator={navigator} />
+              </View>
+            )
           case 'SignUp':                 
-            return <SignUpScene {...route.passProps} navigator={navigator} />
+            // return <SignUpScene {...route.passProps} navigator={navigator} />
+            return (
+              <View style={{flex:1}}>
+                <Header onPress={this.onMenuPress.bind(this)}/>
+                <SignUpScene {...route.passProps} navigator={navigator} />
+              </View>
+            )*/
           default:
             return <Spinner size="large"/>;
         }
@@ -110,8 +156,11 @@ class App extends Component {
     if (route.passProps.type == 'backward') {
       // return Navigator.SceneConfigs.SwipeFromLeft
       return Navigator.SceneConfigs.PushFromLeft
-    } else {
+    } 
+    else if (route.passProps.type == 'forward') {
       return Navigator.SceneConfigs.PushFromRight
+    } else {
+      return Navigator.SceneConfigs.SwipeFromLeft
     }
   }
 

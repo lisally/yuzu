@@ -14,13 +14,11 @@ class SignUpScene extends Component {
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
       <View>  
-        {/*<View style={{alignItems: 'center', paddingTop: 20, paddingBottom: 20, borderBottomColor: '#ddd', borderBottomWidth: 1 }}>
-          <Image style={{height: 100, width: 110}} source={require('../images/yuzu.png')} />
-        </View>*/}
-
         <View>
+          <View style={styles.viewStyle}>
+            <Image style={styles.imageStyle} source={require('../images/header.png')} />
+          </View>
           <CardSection>
-
             <Input
               placeholder="spongebob"
               label="First Name"
@@ -183,6 +181,24 @@ const styles = {
     color: 'red',
     marginTop: 4,
   },
+  viewStyle: {
+    backgroundColor: '#F8F8F8',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 70,
+    paddingTop: 20,
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+    elevation: 2,
+    position: 'relative',
+    paddingRight: 5,
+    // flexDirection: 'row'
+  },
+  imageStyle: {
+    width: 110,
+    height: 34
+  }
 };
 
 export default SignUpScene;
