@@ -6,7 +6,7 @@ const MenuDetail = ( {children, onPress }) => {
 
     return (
         <TouchableOpacity style={containerStyle} onPress={onPress}>
-          <Text style={{nameStyle}}>
+          <Text style={nameStyle}>
             {children}
           </Text>
         </TouchableOpacity>

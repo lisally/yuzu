@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image } from 'react-native';
 // import { Drawer } from 'native-base'
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail } from './common';
 import firebase from 'firebase'
@@ -20,9 +20,18 @@ class MainScene extends Component {
 }
 
   render() {
-    const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle } = styles;
+    const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
+    
+    firebase.database().ref('matches/' + this.props.location + '/').on('child_changed', snapshot => {
+      console.log('changed')
+      console.log(snapshot.val())
+    })
+
     return (
     <View style={{flex:1}}>
+      <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
+        <Image style={menuStyle} source={require('../images/menu.png')} />
+      </TouchableHighlight>
       <View style={buttonContainerStyle}>
       <TouchableOpacity onPress={this.onAdd.bind(this)} style={buttonStyle}>
         <Text style={buttonTextStyle}>
@@ -37,9 +46,9 @@ class MainScene extends Component {
       </ScrollView>
 
       <View style={backStyle}>
-        <TextButton onPress={this.onBack.bind(this)}>
-          Back
-        </TextButton>
+        <Text style={backTextStyle} onPress={this.onBack.bind(this)}>
+          ‹
+        </Text>
       </View> 
 
       {this.renderMatchButton()}
@@ -157,6 +166,18 @@ class MainScene extends Component {
     })
   }
 
+  onMenuPress() {
+    this.props.navigator.push({
+      title: 'Menu',
+      passProps: {
+        user: this.props.user,
+        location: this.props.location,
+        screen: 'Main',
+        type: 'menu'
+      }
+    })
+  }
+
 
 
 }
@@ -172,7 +193,7 @@ const styles = {
     alignSelf: 'stretch',
     backgroundColor: '#f6c501',
   },
-    buttonContainerStyle: {
+  buttonContainerStyle: {
     // paddingTop: 15,
     // paddingBottom: 15,
     paddingLeft: 20,
@@ -184,7 +205,17 @@ const styles = {
     position: 'relative'
   },
   backStyle: {
-    // marginRight: 300
+    marginLeft: 10
+  },
+  backTextStyle: {
+    color: '#89bc4f',
+    fontSize: 40
+  },
+  menuStyle: {
+    width: 22,
+    height: 20,
+    marginTop: -38,
+    marginLeft: 14
   }
 }
 

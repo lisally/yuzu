@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, ScrollView, Keyboard, TouchableWithoutFeedback, TouchableHighlight, TouchableOpacity, Image } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton } from './common';
 import firebase from 'firebase'
 
@@ -12,34 +12,38 @@ class LocationScene extends Component {
   render() {
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
-      <View style={{flex:1}}>
-        <CardSection>
-          <Input
-            label="Zipcode"
-            placeholder="12345"
-            value={this.state.zipcode}
-            onChangeText={zipcode => this.setState({ zipcode })}
-          />
-        </CardSection>
+        <View style={{flex:1}}>
+          <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
+            <Image style={styles.menuStyle} source={require('../images/menu.png')} />
+          </TouchableHighlight>
+          
+          <CardSection>
+            <Input
+              label="Zipcode"
+              placeholder="12345"
+              value={this.state.zipcode}
+              onChangeText={zipcode => this.setState({ zipcode })}
+            />
+          </CardSection>
 
-        {this.renderSearch()}
+          {this.renderSearch()}
 
-        <ScrollView>
-          {this.renderLocation()}
-        </ScrollView>
+          <ScrollView>
+            {this.renderLocation()}
+          </ScrollView>
 
-        <TextButton onPress={() => firebase.auth().signOut()
-          .then(() => {this.props.navigator.push({
-            title: 'SignIn',
-            passProps: {
-              user: null,
-              type: 'backward'
-            }
-          })
-        })}>
-          Sign Out
-        </TextButton>
-      </View>
+          {/*<TextButton onPress={() => firebase.auth().signOut()
+            .then(() => {this.props.navigator.push({
+              title: 'SignIn',
+              passProps: {
+                user: null,
+                type: 'backward'
+              }
+            })
+          })}>
+            Sign Out
+          </TextButton>*/}
+        </View>
       </TouchableWithoutFeedback>
     );
   }
@@ -76,6 +80,7 @@ class LocationScene extends Component {
   }
 
   onLocationPress(location) {
+    this.setState({ location: location.name})
     this.props.navigator.push({
       title: 'Main',
       passProps: {
@@ -85,8 +90,28 @@ class LocationScene extends Component {
       }
     })
   }
+
+  onMenuPress() {
+    this.props.navigator.push({
+      title: 'Menu',
+      passProps: {
+        user: this.props.user,
+        location: this.state.location,
+        screen: 'Location',
+        type: 'menu'
+      }
+    })
+  }
 }
 
+const styles = {
+  menuStyle: {
+    width: 22,
+    height: 20,
+    marginTop: -38,
+    marginLeft: 14
+  }
+};
 
 
 export default LocationScene

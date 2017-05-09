@@ -14,7 +14,7 @@ class SignUpScene extends Component {
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
       <View>  
-        <View>
+        {/*<View>*/}
           <View style={styles.viewStyle}>
             <Image style={styles.imageStyle} source={require('../images/header.png')} />
           </View>
@@ -79,7 +79,7 @@ class SignUpScene extends Component {
           {this.renderError()}
           {this.renderSignIn()}
 
-        </View>
+        {/*</View>*/}
       </View>
       </TouchableWithoutFeedback>
     );

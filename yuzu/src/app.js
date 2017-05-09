@@ -15,7 +15,7 @@ import MenuScene from './components/MenuScene'
 // #f6c501
 // #89bc4f
 // #dddee2
-
+// avenir
 
 class App extends Component {
   constructor(props) {
@@ -39,7 +39,6 @@ class App extends Component {
         this.setState({ loggedIn: true, user: user.uid });
       } else {
         this.setState({ loggedIn: false, user: null });
-        
       }
     });
   }
@@ -54,8 +53,8 @@ class App extends Component {
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            //title: 'Main',
-            title: 'Location',
+            title: 'Main',
+            //title: 'Location',
             //title: 'Search',
             //title: 'SignUp',
             //title: 'SignIn',
@@ -70,15 +69,16 @@ class App extends Component {
     );
   }
 
-  onMenuPress(navigator) {
-    navigator.push({
-      title: 'Menu',
-      passProps: {
-        user: this.props.user, 
-        type: 'menu'
-      }
-    })
-  }
+  // onMenuPress(navigator) {
+  //   navigator.push({
+  //     title: 'Menu',
+  //     passProps: {
+  //       user: this.props.user,
+  //       location: this.props.location,
+  //       type: 'menu'
+  //     }
+  //   })
+  // }
 
   renderScene(route, navigator) {
     switch(this.state.loggedIn) {
@@ -93,7 +93,7 @@ class App extends Component {
             // return <LocationScene {...route.passProps} navigator={navigator} />
             return (
               <View style={{flex:1}}>
-                <Header onPress={this.onMenuPress.bind(this, navigator)}/>
+                <Header />
                 <LocationScene {...route.passProps} navigator={navigator} />
               </View>
             )
@@ -102,7 +102,7 @@ class App extends Component {
             // return <MainScene {...route.passProps} navigator={navigator} />
             return (
               <View style={{flex:1}}>
-                <Header onPress={this.onMenuPress.bind(this, navigator)}/>
+                <Header />
                 <MainScene {...route.passProps} navigator={navigator} />
               </View>
             )
@@ -111,7 +111,7 @@ class App extends Component {
             // return <SearchScene {...route.passProps} navigator={navigator} />
             return (
               <View style={{flex:1}}>
-                <Header onPress={this.onMenuPress.bind(this, navigator)}/>
+                <Header />
                 <SearchScene {...route.passProps} navigator={navigator} />
               </View>
             )
@@ -159,7 +159,7 @@ class App extends Component {
     } 
     else if (route.passProps.type == 'forward') {
       return Navigator.SceneConfigs.PushFromRight
-    } else {
+    } else if (route.passProps.type == 'menu') {
       return Navigator.SceneConfigs.SwipeFromLeft
     }
   }

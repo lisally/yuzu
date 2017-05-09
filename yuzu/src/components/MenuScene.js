@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import { Text, View, Image, TouchableOpacity, ScrollView, ActivityIndicator, TouchableHighlight } from 'react-native';
 // import { Drawer } from 'native-base'
 import { MenuDetail } from './common';
 import firebase from 'firebase'
@@ -13,13 +13,12 @@ class MenuScene extends Component {
 }
 
   render() {
-    console.log(this.props)
     return (
     <View>
       <View style={styles.viewStyle}>
-        <TouchableOpacity onPress={this.onMenuPress.bind(this)}>
+        <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
           <Image style={styles.menuStyle} source={require('../images/menu.png')} />
-        </TouchableOpacity>
+        </TouchableHighlight>
         <Image style={styles.imageStyle} source={require('../images/header.png')} />
       </View>
 
@@ -35,18 +34,10 @@ class MenuScene extends Component {
         Terms and Conditions
       </MenuDetail>
 
-      <MenuDetail onPress={() => firebase.auth().signOut()
-        .then(() => {this.props.navigator.push({
-          title: 'SignIn',
-          passProps: {
-            user: null,
-            type: 'backward'
-          }
-        })
-      })}>
+      <MenuDetail onPress={this.onSignOutPress.bind(this)}>
         Sign Out
-      </MenuDetail>
-   
+      </MenuDetail> 
+
     </View>
    )
   }
@@ -63,12 +54,29 @@ class MenuScene extends Component {
 
   }
 
-  onBackPress() {
+  onSignOutPress() {
+    firebase.database().ref('matches/' + this.props.location + '/' + this.props.user + '/').remove()    
+    firebase.auth().signOut()
+    // firebase.database().ref('matches/' + this.props.location + '/' + this.props.user + '/').remove()    
 
+    this.props.navigator.push({
+      title: 'SignIn',
+      passProps: {
+        user: null,
+        type: 'backward'
+      }
+    })
   }
 
   onMenuPress() {
-
+    this.props.navigator.push({
+      title: this.props.screen,
+      passProps: {
+        user: this.props.user,
+        location: this.props.location,
+        type: 'forward'
+      }
+    })
   }
 
 }
@@ -93,8 +101,8 @@ const styles = {
     height: 34
   },
   menuStyle: {
-    width: 18,
-    height: 18,
+    width: 22,
+    height: 20,
     marginLeft: -115
   }
 };

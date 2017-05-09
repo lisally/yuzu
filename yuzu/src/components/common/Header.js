@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 
 // Make a component
-const Header = ({ onPress }) => {
+const Header = () => {
   const { viewStyle, imageStyle, menuStyle } = styles;
 
   return (
@@ -14,9 +14,9 @@ const Header = ({ onPress }) => {
         // </TouchableOpacity>
       // </View>
       <View style={viewStyle}>
-        <TouchableOpacity onPress={onPress}>
+        {/*<TouchableOpacity onPress={onPress}>
           <Image style={menuStyle} source={require('../../images/menu.png')} />
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
         <Image style={imageStyle} source={require('../../images/header.png')} />
       </View>
     // </View>

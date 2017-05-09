@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View, TouchableOpacity, ScrollView, Keyboard, TouchableWithoutFeedback, Animated } from 'react-native';
+import { Text, TextInput, View, TouchableOpacity, ScrollView, Keyboard, TouchableWithoutFeedback, TouchableHighlight, Image } from 'react-native';
 import { Button, CardSection, Input, Spinner, SearchDetail, TextButton } from './common';
 import firebase from 'firebase'
 
@@ -17,41 +17,45 @@ class SearchScene extends Component {
 
 
   render() {
-    const { containerStyle, inputStyle, cameraStyle } = styles;
+    const { containerStyle, inputStyle, cameraStyle, menuStyle, backStyle, backTextStyle } = styles;
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
       <View style={{flex:1}}>
-      <CardSection>
+        <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
+          <Image style={menuStyle} source={require('../images/menu.png')} />
+        </TouchableHighlight>
+        <CardSection>
           <View style={containerStyle}>
-          <TextInput 
-            ref={(ref) => this._input = ref}
-            placeholder="Search"
-            autoCorrect={false}
-            style={inputStyle}
-            //value={this.state.search}
-            onChangeText={this.onSearch.bind(this)}
-          />
-          <Text style={cameraStyle}>
-            {/*Camera*/}
+            <TextInput 
+              ref={(ref) => this._input = ref}
+              placeholder="Search"
+              autoCorrect={false}
+              style={inputStyle}
+              //value={this.state.search}
+              onChangeText={this.onSearch.bind(this)}
+            />
+            <Text style={cameraStyle}>
+              {/*Camera*/}
+            </Text>
+            </View>
+          </CardSection>
+
+          <ScrollView 
+            keyboardDismissMode='on-drag'
+            keyboardShouldPersistTaps='always'
+          >
+          {/*<View>*/}
+          {this.renderResult()}
+          {/*</View>*/}
+          </ScrollView>
+
+        <View style={backStyle}>
+          <Text style={backTextStyle} onPress={this.onBack.bind(this)}>
+            ‹
           </Text>
-          </View>
-        </CardSection>
-
-        <ScrollView 
-          keyboardDismissMode='on-drag'
-          keyboardShouldPersistTaps='always'
-        >
-        {/*<View>*/}
-        {this.renderResult()}
-        {/*</View>*/}
-        </ScrollView>
-
-        <View>
-          <TextButton onPress={this.onBack.bind(this)}>
-            Back
-          </TextButton>
         </View>
-      </View>
+
+        </View>
       </TouchableWithoutFeedback>
     )
   }
@@ -120,6 +124,18 @@ class SearchScene extends Component {
       }
     })
   }
+
+  onMenuPress() {
+    this.props.navigator.push({
+      title: 'Menu',
+      passProps: {
+        user: this.props.user,
+        location: this.props.location,
+        screen: 'Search',
+        type: 'menu'
+      }
+    })
+  }
 }
 
 const styles = {
@@ -140,7 +156,20 @@ const styles = {
   cameraStyle: {
     fontSize: 18,
     color: '#000',
-  }
+  },
+  menuStyle: {
+    width: 22,
+    height: 20,
+    marginTop: -38,
+    marginLeft: 14
+  },
+  backStyle: {
+    marginLeft: 10
+  },
+  backTextStyle: {
+    color: '#89bc4f',
+    fontSize: 40
+  },
 }
 
 
