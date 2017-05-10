@@ -8,24 +8,33 @@ class MainScene extends Component {
   constructor(props) {
     super(props)
     this.state = { 
-      location: this.props.location, 
+      // location: this.props.location,
+      location: 'Seattle',
       user: this.props.user, 
       itemListLoaded: false, 
       loading: false, 
       itemList: [],
       matchLoading: false,
+      matching: false,
+      matchList: []
      };
-    // this.state = { location: 'Seattle', user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', itemListLoaded: false, loading: false, itemList: [] };  
 
 }
 
   render() {
+    console.log('matching: ' + this.state.matching)
+    console.log('location: ' + this.state.location)
+    console.log('user: ' + this.state.user)
+
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
     
-    firebase.database().ref('matches/' + this.props.location + '/').on('child_changed', snapshot => {
-      console.log('changed')
-      console.log(snapshot.val())
-    })
+    {this.renderMatching()}
+
+    if (this.state.matching) {
+      firebase.database().ref('matches/' + this.state.location + '/').on('child_changed', function(snapshot) {
+        // this.updateMatch()
+      })
+    }
 
     return (
     <View style={{flex:1}}>
@@ -76,7 +85,7 @@ class MainScene extends Component {
   }
 
   renderItemList() {
-    const { itemList, itemListLoaded, loading, user } = this.state
+    const { itemList, itemListLoaded, loading, user, matching } = this.state
 
     if (loading) {
       return <View><Spinner size="small" /></View>
@@ -91,7 +100,7 @@ class MainScene extends Component {
         });
         this.setState({ itemList: list, itemListLoaded: true, loading: false })
       })
-    }        
+    }  
     return (
       itemList.map(item =>
         <ItemDetail onPress={this.onDeletePress.bind(this, item)} item={item} key={item.Product} />
@@ -128,31 +137,46 @@ class MainScene extends Component {
   }
 
   onClearAll() {
-    const { user } = this.state
+    const { user, location } = this.state
     firebase.database().ref('users/' + user + '/itemList/').remove()
-    firebase.database().ref('matches/' + this.props.location + '/' + this.props.user + '/').remove()    
+    firebase.database().ref('matches/' + location + '/' + user + '/').remove()
     this.setState({ itemListLoaded: false, matchLoading: false})
   }
 
-  onAdd() {
-    this.props.navigator.push({
-      title: 'Search',
-      passProps: {
-        user: this.props.user,
-        type: 'forward',
-        location: this.props.location
+  renderMatching() {
+    if (!this.state.matching) {
+      firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').once('value', snapshot => {
+        if (snapshot.val() != null) {
+          this.setState({ matching: true })
+        }
+      })
+    }
+
+    if (this.state.matching) {
+      firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').once('value', snapshot => {
+        if (snapshot.val() == null) {
+          this.setState({ matching: false })
+        }
+      })
+      firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').remove()
+      for (var item of list) {
+        firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').push(item)
       }
-    })
+    }
   }
 
   onMatch() {
-    this.setState({ matchLoading: true })
+    // this.setState({ matchLoading: true })
 
-    firebase.database().ref('matches/' + this.props.location + '/' + this.props.user + '/').remove()
+    firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').remove()
     for (var item of this.state.itemList) {
-      firebase.database().ref('matches/' + this.props.location + '/' + 
-        this.props.user + '/').push(item)
+      firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').push(item)
     }
+    this.setState({ matching: true })
+  }
+
+  updateMatch() {
+    
   }
 
   onBack() {
@@ -178,6 +202,16 @@ class MainScene extends Component {
     })
   }
 
+  onAdd() {
+    this.props.navigator.push({
+      title: 'Search',
+      passProps: {
+        user: this.props.user,
+        type: 'forward',
+        location: this.props.location
+      }
+    })
+  }
 
 
 }
