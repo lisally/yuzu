@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal } from 'react-native';
+import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal, TouchableWithoutFeedback } from 'react-native';
 // import { Drawer } from 'native-base'
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail } from './common';
 import firebase from 'firebase'
@@ -62,26 +62,34 @@ class MainScene extends Component {
         </Text>
       </View> 
 
+      {this.renderMatchButton()}
+
       <Modal
         animationType={"slide"}
-        transparent={false}
+        transparent={true}
         visible={this.state.showMatches}
         onRequestClose={() => { this.setState({ showMatches: false })}}
         >
+        
+        <TouchableWithoutFeedback onPress={this.onHideMatches.bind(this)}>
+          <View style={{ height: 225 }}>
+          </View>
+        </TouchableWithoutFeedback>
 
-        <Text style={{ fontSize: 36, color: '#89bc4f'}}>
-          ˆ
-        </Text>
+        <View style={{ flex: 1, backgroundColor: '#F8F8F8', borderTopColor: '#ddd', borderTopWidth: 1 }}>
+          <ScrollView style={{ marginTop: 7 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#89bc4f', alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
+              Matches
+            </Text>
+          </ScrollView>
+
+          <Text style={{ fontSize: 50, color: '#89bc4f',  alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
+            ⌄
+          </Text>
+        </View>
       </Modal>
 
-      {this.renderMatchButton()}
-
-
-      {/*<View style={backStyle}>
-        <TextButton onPress={this.onBack.bind(this)}>
-          Back
-        </TextButton>
-      </View> */}
+      {/*{this.renderMatchButton()}*/}
 
     </View>
 
@@ -165,7 +173,7 @@ class MainScene extends Component {
               </Text>
             </View>  
             </TouchableOpacity>
-          <TouchableOpacity onPress={this.onViewMatches.bind(this)}>
+          <TouchableOpacity onPress={this.onShowMatches.bind(this)}>
             <View style={matchExistsStyle}>
               <Text style={{fontSize: 18, color: 'white'}}>
                 ({this.state.matchCount}) Matches
@@ -195,8 +203,12 @@ class MainScene extends Component {
     })
   }
 
-  onViewMatches() {
+  onShowMatches() {
     this.setState({ showMatches: true })
+  }
+
+  onHideMatches() {
+    this.setState({ showMatches: false })
   }
 
   onClearAll() {
