@@ -143,7 +143,7 @@ class MainScene extends Component {
   }
 
   renderItemList() {
-    const { itemList, itemListLoaded, loading, user, matching } = this.state
+    const { itemList, itemListLoaded, loading, user, matching, location } = this.state
 
     if (loading) {
       return <View><Spinner size="small" /></View>
@@ -153,6 +153,10 @@ class MainScene extends Component {
       this.setState({ loading: true })
       list = []
       firebase.database().ref('users/' + user + '/itemList').once('value', snapshot => {
+        if (snapshot.val() == null) {
+          firebase.database().ref('matches/' + location + '/' + user + '/').remove()
+          firebase.database().ref('users/' + user + '/matchingStatus/').set({ matching: false })
+        }
         snapshot.forEach(function(item) {
           list.push(item.val())
         });
@@ -229,7 +233,7 @@ class MainScene extends Component {
   }
 
   onDeletePress(deletedItem) {
-    const { user } = this.state
+    const { user, location } = this.state
     firebase.database().ref('users/' + user + '/itemList').once('value', snapshot => {
       snapshot.forEach(function(item) {
         if (item.val().Product === deletedItem.Product) {
@@ -263,7 +267,7 @@ class MainScene extends Component {
   }
 
   renderMatchingStatus() {
-    const { user, matching } = this.state
+    const { user, matching, itemList } = this.state
     var userMatchStatus = firebase.database().ref('users/' + user + '/matchingStatus/')
 
     userMatchStatus.once('value', snapshot => {
@@ -276,13 +280,6 @@ class MainScene extends Component {
       Object.keys(snapshot.val()).forEach(function(key) {
           matchStatus = snapshot.val()[key]
       })
-
-      if (matchStatus) {
-        firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').remove()
-        for (var item of this.state.itemList) {
-          firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').push(item)
-        }
-      }
 
       if (matchStatus != matching) {
         this.setState({ matching: matchStatus })
@@ -335,8 +332,6 @@ class MainScene extends Component {
       }
     })
   }
-
-
 }
 
 const styles = {
