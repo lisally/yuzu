@@ -18,7 +18,8 @@ class MainScene extends Component {
       matching: false,
       matchList: [],
       matchCount: 0,
-      showMatches: false
+      // showMatches: false
+      showMatches: true
      };
 
 }
@@ -78,13 +79,16 @@ class MainScene extends Component {
 
         <View style={{ flex: 1, backgroundColor: '#F8F8F8', borderTopColor: '#ddd', borderTopWidth: 1 }}>
           <ScrollView style={{ marginTop: 7 }}>
+            <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 30, color: '#89bc4f', marginLeft: 342, marginTop: -8, position: 'absolute' }}>
+              ↻
+            </Text>
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#89bc4f', alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
               Matches
             </Text>
           </ScrollView>
 
-          <Text style={{ fontSize: 50, color: '#89bc4f',  alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
-            ⌄
+          <Text style={{ transform: [{ rotate: '270deg'}], marginBottom: -15, fontSize: 50, color: '#89bc4f',  alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
+            ‹
           </Text>
         </View>
       </Modal>
