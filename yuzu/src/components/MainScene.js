@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image } from 'react-native';
+import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal } from 'react-native';
 // import { Drawer } from 'native-base'
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail } from './common';
 import firebase from 'firebase'
@@ -16,7 +16,9 @@ class MainScene extends Component {
       itemList: [],
       matchLoading: false,
       matching: false,
-      matchList: []
+      matchList: [],
+      matchCount: 0,
+      showMatches: false
      };
 
 }
@@ -59,6 +61,18 @@ class MainScene extends Component {
           ‹
         </Text>
       </View> 
+
+      <Modal
+        animationType={"slide"}
+        transparent={false}
+        visible={this.state.showMatches}
+        onRequestClose={() => { this.setState({ showMatches: false })}}
+        >
+
+        <Text style={{ fontSize: 36, color: '#89bc4f'}}>
+          ˆ
+        </Text>
+      </Modal>
 
       {this.renderMatchButton()}
 
@@ -108,20 +122,65 @@ class MainScene extends Component {
     )
   }
 
-  renderMatchButton() {
-    if (this.state.matchLoading) {
+  renderShowMatches() {
+    if (this.state.showMatches) {
       return (
-        <View style={{backgroundColor: '#f6c501', height: 47, justifyContent: 'center'}}>
-          <ActivityIndicator color='white' size="small" />
+        <View>
+          <Modal>
+            <Text>
+              HELLO
+            </Text>
+          </Modal>
         </View>
       )
     }
+  }
 
-    return (
-    <Button onPress={this.onMatch.bind(this)}>
-        Find Matches
-    </Button>
-    )
+  renderMatchButton() {
+    const { matchLoading, matching } = this.state
+    const { matchViewStyle, matchLoadingStyle, stopMatchingStyle, matchExistsStyle } = styles
+
+    if (matching && matchLoading) {
+      return (
+        <View style={matchViewStyle}>
+          <TouchableOpacity onPress={this.onStopMatching.bind(this)}>
+            <View style={stopMatchingStyle}>
+              <Text style={{fontSize: 18, color: 'white'}}>
+                Stop
+              </Text>
+            </View>  
+            </TouchableOpacity>
+          <View style={matchLoadingStyle}>
+            <ActivityIndicator color='white' size="small" />
+          </View>
+        </View>
+      )
+    } else if (matching && !matchLoading) {
+      return (
+        <View style={matchViewStyle}>
+          <TouchableOpacity onPress={this.onStopMatching.bind(this)}>
+            <View style={stopMatchingStyle}>
+              <Text style={{fontSize: 18, color: 'white'}}>
+                Stop
+              </Text>
+            </View>  
+            </TouchableOpacity>
+          <TouchableOpacity onPress={this.onViewMatches.bind(this)}>
+            <View style={matchExistsStyle}>
+              <Text style={{fontSize: 18, color: 'white'}}>
+                ({this.state.matchCount}) Matches
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      )
+    } else {
+      return (
+      <Button onPress={this.onMatch.bind(this)}>
+          Find Matches
+      </Button>
+      )
+    }
   }
 
   onDeletePress(deletedItem) {
@@ -136,11 +195,20 @@ class MainScene extends Component {
     })
   }
 
+  onViewMatches() {
+    this.setState({ showMatches: true })
+  }
+
   onClearAll() {
     const { user, location } = this.state
     firebase.database().ref('users/' + user + '/itemList/').remove()
     firebase.database().ref('matches/' + location + '/' + user + '/').remove()
-    this.setState({ itemListLoaded: false, matchLoading: false})
+    this.setState({ matchLoading: false, matching: false, itemListLoaded: false })
+  }
+
+  onStopMatching() {
+    firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').remove()
+    this.setState({ matching: false })
   }
 
   renderMatching() {
@@ -172,11 +240,21 @@ class MainScene extends Component {
     for (var item of this.state.itemList) {
       firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').push(item)
     }
+
+    // this.setState({ matching: true, matchLoading: true })
     this.setState({ matching: true })
+    
   }
 
   updateMatch() {
-    
+    // firebase.database().ref('matches/' + this.state.location + '/').once('value', snapshot => {
+    //   snapshot.forEach(function(item) {
+    //     if (item.val().Product === deletedItem.Product) {
+    //       firebase.database().ref('users/' + user + '/itemList/' + item.key).remove()
+    //     }
+    //   })
+    //   this.setState({ itemListLoaded: false })
+    // })
   }
 
   onBack() {
@@ -228,8 +306,6 @@ const styles = {
     backgroundColor: '#f6c501',
   },
   buttonContainerStyle: {
-    // paddingTop: 15,
-    // paddingBottom: 15,
     paddingLeft: 20,
     paddingRight: 20,
     margin: 10,
@@ -250,7 +326,32 @@ const styles = {
     height: 20,
     marginTop: -38,
     marginLeft: 14
+  },
+  matchViewStyle: {
+    flexDirection: 'row'
+  }, 
+  matchLoadingStyle: {
+    flex: 1, 
+    backgroundColor: '#f6c501',
+    height: 47, 
+    justifyContent: 'center',
+  }, 
+  stopMatchingStyle: {
+    width: 75, 
+    backgroundColor: '#89bc4f', 
+    height: 47, 
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  matchExistsStyle: {
+    flex: 1, 
+    backgroundColor: '#699438',
+    height: 47, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 300
   }
+
 }
 
 

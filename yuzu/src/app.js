@@ -53,9 +53,9 @@ class App extends Component {
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            //title: 'Main',
+            title: 'Main',
             //title: 'Location',
-            title: 'Search',
+            //title: 'Search',
             //title: 'SignUp',
             //title: 'SignIn',
             //title: 'Menu',
