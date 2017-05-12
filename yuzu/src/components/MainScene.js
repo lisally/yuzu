@@ -19,30 +19,38 @@ class MainScene extends Component {
       matchList: [],
       matchCount: 0,
       showMatches: false,
-      matchChanged: false
+      matchChanged: false,
+      matchListLoaded: false
      };
+
+     this.render = this.render.bind(this)
 
 }
 
   render() {
     console.log('matching: ' + this.state.matching)
-    // console.log('location: ' + this.state.location)
-    // console.log('user: ' + this.state.user)
-
+    console.log('matchCount ' + this.state.matchCount)
+    console.log('matchList ')
+    console.log(this.state.matchList)
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
     const { matchList, itemList, matchCount, user, location, matching } = this.state
     
     
     {this.renderMatchingStatus()}
 
+    // {this.renderMatchList.bind(this)}    
+
+    // {this.renderMatchListState()}
+
     if (matching) {
       firebase.database().ref('matches/' + location + '/').on('child_added', function(snapshot) {
         console.log('changed')
-        list = []
+
         firebase.database().ref('users/' + user + '/matchList').remove()
 
         firebase.database().ref('matches/' + location + '/').once('value', snapshot => {
           snapshot.forEach(function(item) {
+            var list = []
             var count = 0
 
             if (item.key != user) {
@@ -51,26 +59,22 @@ class MainScene extends Component {
 
                 itemList.forEach(function(product) {
                   if (product.Product == value.Product) {
-                    console.log('other: ' +value.Product)
-                    console.log('mines: ' + product.Product)
+                    list.push(value)
                     count += 1
-
                   }
                 })
               });
-              console.log('matched' + item.key)
-              // console.log(count)
             }
-            // console.log(count)
             if (count > 0) {
-              console.log(count)
-              var userKey = item.key
-              firebase.database().ref('users/' + user + '/matchList').set({ userKey : count })
+              firebase.database().ref('users/' + user + '/matchList/').remove()
+              firebase.database().ref('users/' + user + '/matchList/' + count).push({ matchedList: list, matchedUser: item.key, matchedCount: count })                                                                                       
             }
           })
         })
+        // this.renderMatchListState()       
+      // }.bind(this))
       })
-      
+
     }
 
     return (
@@ -119,6 +123,9 @@ class MainScene extends Component {
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#89bc4f', alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
               Matches
             </Text>
+
+            {/*{this.renderMatchList()}*/}
+
           </ScrollView>
 
           <Text style={{ transform: [{ rotate: '270deg'}], marginBottom: -15, fontSize: 50, color: '#89bc4f',  alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
@@ -232,6 +239,83 @@ class MainScene extends Component {
     }
   }
 
+  // renderMatchList() {
+  //   const { matchList, itemList, matchCount, user, location, matching } = this.state    
+
+  //   if (matching) {
+  //     firebase.database().ref('matches/' + location + '/').on('child_added', function(snapshot) {
+  //       console.log('changed')
+
+  //       firebase.database().ref('users/' + user + '/matchList').remove()
+
+  //       firebase.database().ref('matches/' + location + '/').once('value', snapshot => {
+  //         snapshot.forEach(function(item) {
+  //           var list = []
+  //           var count = 0
+
+  //           if (item.key != user) {
+  //             Object.keys(item.val()).forEach(function(key) {
+  //               value = item.val()[key];
+
+  //               itemList.forEach(function(product) {
+  //                 if (product.Product == value.Product) {
+  //                   list.push(value)
+  //                   count += 1
+  //                 }
+  //               })
+  //             });
+  //           }
+  //           if (count > 0) {
+  //             firebase.database().ref('users/' + user + '/matchList/').remove()
+  //             firebase.database().ref('users/' + user + '/matchList/' + count).push({ matchedList: list, matchedUser: item.key, matchedCount: count })                                                                                       
+  //           }
+  //         })
+  //       })
+  //     // this.setState({ matchListLoaded: false })
+        
+  //     })
+  //     // this.setState({ matchListLoaded: false })
+  //   }
+
+  //   // var matchRef = firebase.database().ref('users/' + user + '/matchList/');
+  //   // matchRef.orderByValue().on("value", snapshot => {
+  //   //   var list = []
+  //   //   var count = 0
+  //   //   Object.keys(snapshot.val()).forEach(function(key) {
+  //   //       Object.keys(snapshot.val()[key]).forEach(function(key2) {
+  //   //       list.push(snapshot.val()[key][key2])
+  //   //     })
+  //   //     count += 1
+  //   //   })
+
+  //   //   this.setState({ matchList: list, matchCount: count })
+  //   // })
+    
+  // }
+
+  // renderMatchListState() {
+  //   const { matchList, matchCount, user, matching, matchListLoaded } = this.state
+  //   console.log(matchListLoaded)
+  //   if (matching && !matchListLoaded) {
+  //     var matchRef = firebase.database().ref('users/' + user + '/matchList/');
+  //       matchRef.orderByValue().on("value", snapshot => {
+  //         if (snapshot != null) {
+  //           var stateMatchList = []
+  //           var stateMatchCount = 0
+  //           Object.keys(snapshot.val()).forEach(function(key) {
+  //               Object.keys(snapshot.val()[key]).forEach(function(key2) {
+  //               stateMatchList.push(snapshot.val()[key][key2])
+  //             })
+  //             stateMatchCount += 1
+  //           })
+  //           this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true })
+  //           }
+  //       })
+        
+  //     // this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true })
+  //   }
+  // }
+
   onDeletePress(deletedItem) {
     const { user, location } = this.state
     firebase.database().ref('users/' + user + '/itemList').once('value', snapshot => {
@@ -289,14 +373,15 @@ class MainScene extends Component {
 
   onMatch() {
     // this.setState({ matchLoading: true })
-    firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').remove()
-    for (var item of this.state.itemList) {
-      firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').push(item)
+    if (this.state.itemList.length > 0) {
+      firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').remove()
+        for (var item of this.state.itemList) {
+          firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').push(item)
+        }
+      firebase.database().ref('users/' + this.state.user + '/matchingStatus/').set({ matching: true })
+      this.renderMatchingStatus()    
+      // this.setState({ matching: true, matchLoading: true })    
     }
-
-    firebase.database().ref('users/' + this.state.user + '/matchingStatus/').set({ matching: true })
-    this.renderMatchingStatus()    
-    // this.setState({ matching: true, matchLoading: true })    
   }
 
   onBack() {
@@ -391,7 +476,6 @@ const styles = {
     alignItems: 'center',
     width: 300
   }
-
 }
 
 
