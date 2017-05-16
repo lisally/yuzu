@@ -45,7 +45,8 @@ const styles = {
     borderColor: '#ddd',
     position: 'relative',
     width: 320,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    paddingRight: 10
   },
   clearStyle: {
     marginTop: -14,

@@ -8,6 +8,8 @@ import MainScene from './components/MainScene'
 import SearchScene from './components/SearchScene'
 import SignUpScene from './components/SignUpScene'
 import MenuScene from './components/MenuScene'
+import MatchScene from './components/MatchScene'
+
 
 
 // Yuzu Colors
@@ -53,12 +55,13 @@ class App extends Component {
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            title: 'Main',
+            //title: 'Main',
             //title: 'Location',
             //title: 'Search',
             //title: 'SignUp',
             //title: 'SignIn',
             //title: 'Menu',
+            title: 'Match',
             passProps: {
               user: this.state.user,
               type: 'forward'
@@ -115,6 +118,14 @@ class App extends Component {
                 <SearchScene {...route.passProps} navigator={navigator} />
               </View>
             )
+          case 'Match':
+            route.passProps.user = this.state.user               
+            return (
+              <View style={{flex:1}}>
+                <Header />
+                <MatchScene {...route.passProps} navigator={navigator} />
+              </View>
+            )
           /*case 'SignIn':
             // return <SignInScene {...route.passProps} navigator={navigator} />
             return (
@@ -161,6 +172,11 @@ class App extends Component {
       return Navigator.SceneConfigs.PushFromRight
     } else if (route.passProps.type == 'menu') {
       return Navigator.SceneConfigs.SwipeFromLeft
+    } else if (route.passProps.type == 'match') {
+      return Navigator.SceneConfigs.FloatFromBottom
+      // return Navgiator.SceneConfigs.FloatFromBottomAndroid      
+    } else if (route.passProps.type == 'matchBack') {
+      return Navigator.SceneConfigs.VerticalDownSwipeJump      
     }
   }
 

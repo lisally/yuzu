@@ -22,33 +22,25 @@ class MainScene extends Component {
       matchChanged: false,
       matchListLoaded: false
      };
-
-     this.render = this.render.bind(this)
-
-}
+  }
 
   render() {
-    // console.log('matching: ' + this.state.matching)
-    // console.log('matchCount ' + this.state.matchCount)
-    // console.log('matchList ')
-    // console.log(this.state.matchList)
+    console.log('matching: ' + this.state.matching)
+    console.log('matchCount ' + this.state.matchCount)
+    console.log('matchList ')
+    console.log(this.state.matchList)
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
     const { matchList, itemList, matchCount, user, location, matching } = this.state
     
-    
     {this.renderMatchingStatus()}
-
-    // {this.onMatch()}
-
-    // {this.renderMatchList.bind(this)}    
-
-    // {this.renderMatchListState()}
 
     if (matching) {
       this.onMatch()
 
       firebase.database().ref('matches/' + location + '/').on('child_added', function(snapshot) {
         // console.log('changed')
+
+        // this.setState({ matchListLoaded: false })
 
         firebase.database().ref('users/' + user + '/matchList').remove()
 
@@ -75,11 +67,7 @@ class MainScene extends Component {
             }
           })
         })
-        this.setState({ matchListLoaded: false })
-        this.renderMatchListState()
-      }.bind(this))
-      // })
-
+      })
     }
 
     return (
@@ -108,11 +96,10 @@ class MainScene extends Component {
 
       {this.renderMatchButton()}
 
-      <Modal
+      {/*<Modal
         animationType={"slide"}
         transparent={true}
         visible={this.state.showMatches}
-        onRequestClose={() => { this.setState({ showMatches: false })}}
         >
         
         <TouchableWithoutFeedback onPress={this.onHideMatches.bind(this)}>
@@ -129,7 +116,6 @@ class MainScene extends Component {
               Matches
             </Text>
 
-            {/*{this.renderMatchList()}*/}
 
           </ScrollView>
 
@@ -137,7 +123,7 @@ class MainScene extends Component {
             ‹
           </Text>
         </View>
-      </Modal>
+      </Modal>*/}
 
     </View>
 
@@ -169,24 +155,12 @@ class MainScene extends Component {
           firebase.database().ref('matches/' + location + '/' + user + '/').remove()
           firebase.database().ref('users/' + user + '/matchingStatus/').set({ matching: false })
         }
-        // firebase.database().ref('matches/' + location + '/' + user + '/').remove()
         snapshot.forEach(function(item) {
-          // if (matching) {
-            // firebase.database().ref('matches/' + location + '/' + user + '/').push(item.val())
-          // }
           list.push(item.val())
         });
         this.setState({ itemList: list, itemListLoaded: true, loading: false })
       })
     } 
-
-    // if (matching) {
-      // this.onMatch()
-    //   firebase.database().ref('matches/' + location + '/' + user + '/').remove()
-    //   itemList.forEach(function (item) {
-    //     firebase.database().ref('matches/' + location + '/' + user + '/').push(item)
-    //   })
-    // }
 
     return (
       itemList.map(item =>
@@ -195,18 +169,40 @@ class MainScene extends Component {
     )
   }
 
-  renderShowMatches() {
-    if (this.state.showMatches) {
-      return (
-        <View>
-          <Modal>
-            <Text>
-              HELLO
-            </Text>
-          </Modal>
-        </View>
-      )
+  renderMatchList() {
+    const { matchList, matchCount, user, matching, matchListLoaded, matchLoading } = this.state
+
+    // if (matchLoading) {
+    //   return <View><Spinner size="small" /></View>
+    // }
+
+    console.log('matchList loaded: ' + matchListLoaded)
+
+    if (matching && !matchListLoaded) {
+      // this.setState({ matchLoading: true })
+
+      var matchRef = firebase.database().ref('users/' + user + '/matchList/');
+      matchRef.orderByValue().on("value", snapshot => {
+        if (snapshot.val() != null) {
+          var stateMatchList = []
+          var stateMatchCount = 0
+          Object.keys(snapshot.val()).forEach(function(key) {
+              Object.keys(snapshot.val()[key]).forEach(function(key2) {
+              stateMatchList.push(snapshot.val()[key][key2])
+              })
+            stateMatchCount += 1
+          })
+          this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true, matchLoading: false })
+        }
+      })
     }
+
+    // return (
+    //   matchList.map(item =>
+    //     <Text>{item}</Text>
+    //   )
+    // )
+
   }
 
   renderMatchButton() {
@@ -257,81 +253,25 @@ class MainScene extends Component {
   }
 
   // renderMatchList() {
-  //   const { matchList, itemList, matchCount, user, location, matching } = this.state    
-
-  //   if (matching) {
-  //     firebase.database().ref('matches/' + location + '/').on('child_added', function(snapshot) {
-  //       console.log('changed')
-
-  //       firebase.database().ref('users/' + user + '/matchList').remove()
-
-  //       firebase.database().ref('matches/' + location + '/').once('value', snapshot => {
-  //         snapshot.forEach(function(item) {
-  //           var list = []
-  //           var count = 0
-
-  //           if (item.key != user) {
-  //             Object.keys(item.val()).forEach(function(key) {
-  //               value = item.val()[key];
-
-  //               itemList.forEach(function(product) {
-  //                 if (product.Product == value.Product) {
-  //                   list.push(value)
-  //                   count += 1
-  //                 }
-  //               })
-  //             });
-  //           }
-  //           if (count > 0) {
-  //             firebase.database().ref('users/' + user + '/matchList/').remove()
-  //             firebase.database().ref('users/' + user + '/matchList/' + count).push({ matchedList: list, matchedUser: item.key, matchedCount: count })                                                                                       
-  //           }
+  //   const { matchList, matchCount, user, matching, matchListLoaded } = this.state
+  //   console.log('matchList loaded: ' + matchListLoaded)
+  //   if (matching && !matchListLoaded) {
+  //     var matchRef = firebase.database().ref('users/' + user + '/matchList/');
+  //     matchRef.orderByValue().on("value", snapshot => {
+  //       if (snapshot != null) {
+  //         var stateMatchList = []
+  //         var stateMatchCount = 0
+  //         Object.keys(snapshot.val()).forEach(function(key) {
+  //             Object.keys(snapshot.val()[key]).forEach(function(key2) {
+  //             stateMatchList.push(snapshot.val()[key][key2])
+  //             })
+  //           stateMatchCount += 1
   //         })
-  //       })
-  //     // this.setState({ matchListLoaded: false })
-        
+  //         this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true })
+  //       }
   //     })
-  //     // this.setState({ matchListLoaded: false })
   //   }
-
-  //   // var matchRef = firebase.database().ref('users/' + user + '/matchList/');
-  //   // matchRef.orderByValue().on("value", snapshot => {
-  //   //   var list = []
-  //   //   var count = 0
-  //   //   Object.keys(snapshot.val()).forEach(function(key) {
-  //   //       Object.keys(snapshot.val()[key]).forEach(function(key2) {
-  //   //       list.push(snapshot.val()[key][key2])
-  //   //     })
-  //   //     count += 1
-  //   //   })
-
-  //   //   this.setState({ matchList: list, matchCount: count })
-  //   // })
-    
   // }
-
-  renderMatchListState() {
-    const { matchList, matchCount, user, matching, matchListLoaded } = this.state
-    console.log(matchListLoaded)
-    if (matching && !matchListLoaded) {
-      var matchRef = firebase.database().ref('users/' + user + '/matchList/');
-        matchRef.orderByValue().on("value", snapshot => {
-          if (snapshot != null) {
-            var stateMatchList = []
-            var stateMatchCount = 0
-            Object.keys(snapshot.val()).forEach(function(key) {
-                Object.keys(snapshot.val()[key]).forEach(function(key2) {
-                stateMatchList.push(snapshot.val()[key][key2])
-              })
-              stateMatchCount += 1
-            })
-            this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true })
-            }
-        })
-        
-      // this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true })
-    }
-  }
 
   onDeletePress(deletedItem) {
     const { user, location } = this.state
@@ -346,12 +286,20 @@ class MainScene extends Component {
   }
 
   onShowMatches() {
-    this.setState({ showMatches: true })
+    // this.setState({ showMatches: true })
+    this.props.navigator.push({
+      title: 'Match',
+      passProps: {
+        user: this.props.user,
+        type: 'match',
+        location: this.props.location
+      }
+    })
   }
 
-  onHideMatches() {
-    this.setState({ showMatches: false })
-  }
+  // onHideMatches() {
+  //   this.setState({ showMatches: false })
+  // }
 
   onClearAll() {
     const { user, location } = this.state
