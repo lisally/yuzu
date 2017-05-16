@@ -28,21 +28,25 @@ class MainScene extends Component {
 }
 
   render() {
-    console.log('matching: ' + this.state.matching)
-    console.log('matchCount ' + this.state.matchCount)
-    console.log('matchList ')
-    console.log(this.state.matchList)
+    // console.log('matching: ' + this.state.matching)
+    // console.log('matchCount ' + this.state.matchCount)
+    // console.log('matchList ')
+    // console.log(this.state.matchList)
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
     const { matchList, itemList, matchCount, user, location, matching } = this.state
     
     
     {this.renderMatchingStatus()}
 
+    // {this.onMatch()}
+
     // {this.renderMatchList.bind(this)}    
 
     // {this.renderMatchListState()}
 
     if (matching) {
+      this.onMatch()
+
       firebase.database().ref('matches/' + location + '/').on('child_added', function(snapshot) {
         console.log('changed')
 
@@ -164,12 +168,24 @@ class MainScene extends Component {
           firebase.database().ref('matches/' + location + '/' + user + '/').remove()
           firebase.database().ref('users/' + user + '/matchingStatus/').set({ matching: false })
         }
+        // firebase.database().ref('matches/' + location + '/' + user + '/').remove()
         snapshot.forEach(function(item) {
+          // if (matching) {
+            // firebase.database().ref('matches/' + location + '/' + user + '/').push(item.val())
+          // }
           list.push(item.val())
         });
         this.setState({ itemList: list, itemListLoaded: true, loading: false })
       })
     } 
+
+    // if (matching) {
+      // this.onMatch()
+    //   firebase.database().ref('matches/' + location + '/' + user + '/').remove()
+    //   itemList.forEach(function (item) {
+    //     firebase.database().ref('matches/' + location + '/' + user + '/').push(item)
+    //   })
+    // }
 
     return (
       itemList.map(item =>
