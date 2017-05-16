@@ -55,7 +55,8 @@ class MenuScene extends Component {
   }
 
   onSignOutPress() {
-    firebase.database().ref('matches/' + this.props.location + '/' + this.props.user + '/').remove()    
+    firebase.database().ref('matches/' + this.props.location + '/' + this.props.user + '/').remove()
+    firebase.database().ref('users/' + this.props.user + '/matchingStatus/').set({ matching: false })
     firebase.auth().signOut()
     // firebase.database().ref('matches/' + this.props.location + '/' + this.props.user + '/').remove()    
 

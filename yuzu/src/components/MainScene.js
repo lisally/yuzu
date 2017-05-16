@@ -48,7 +48,7 @@ class MainScene extends Component {
       this.onMatch()
 
       firebase.database().ref('matches/' + location + '/').on('child_added', function(snapshot) {
-        console.log('changed')
+        // console.log('changed')
 
         firebase.database().ref('users/' + user + '/matchList').remove()
 
@@ -75,9 +75,10 @@ class MainScene extends Component {
             }
           })
         })
-        // this.renderMatchListState()       
-      // }.bind(this))
-      })
+        this.setState({ matchListLoaded: false })
+        this.renderMatchListState()
+      }.bind(this))
+      // })
 
     }
 
@@ -309,28 +310,28 @@ class MainScene extends Component {
     
   // }
 
-  // renderMatchListState() {
-  //   const { matchList, matchCount, user, matching, matchListLoaded } = this.state
-  //   console.log(matchListLoaded)
-  //   if (matching && !matchListLoaded) {
-  //     var matchRef = firebase.database().ref('users/' + user + '/matchList/');
-  //       matchRef.orderByValue().on("value", snapshot => {
-  //         if (snapshot != null) {
-  //           var stateMatchList = []
-  //           var stateMatchCount = 0
-  //           Object.keys(snapshot.val()).forEach(function(key) {
-  //               Object.keys(snapshot.val()[key]).forEach(function(key2) {
-  //               stateMatchList.push(snapshot.val()[key][key2])
-  //             })
-  //             stateMatchCount += 1
-  //           })
-  //           this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true })
-  //           }
-  //       })
+  renderMatchListState() {
+    const { matchList, matchCount, user, matching, matchListLoaded } = this.state
+    console.log(matchListLoaded)
+    if (matching && !matchListLoaded) {
+      var matchRef = firebase.database().ref('users/' + user + '/matchList/');
+        matchRef.orderByValue().on("value", snapshot => {
+          if (snapshot != null) {
+            var stateMatchList = []
+            var stateMatchCount = 0
+            Object.keys(snapshot.val()).forEach(function(key) {
+                Object.keys(snapshot.val()[key]).forEach(function(key2) {
+                stateMatchList.push(snapshot.val()[key][key2])
+              })
+              stateMatchCount += 1
+            })
+            this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true })
+            }
+        })
         
-  //     // this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true })
-  //   }
-  // }
+      // this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true })
+    }
+  }
 
   onDeletePress(deletedItem) {
     const { user, location } = this.state
