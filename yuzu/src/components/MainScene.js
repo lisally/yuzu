@@ -48,6 +48,9 @@ class MainScene extends Component {
           snapshot.forEach(function(item) {
             var list = []
             var count = 0
+            var username = ''
+            var fname = ''
+            var lname = ''
 
             if (item.key != user) {
               Object.keys(item.val()).forEach(function(key) {
@@ -62,8 +65,18 @@ class MainScene extends Component {
               });
             }
             if (count > 0) {
-              firebase.database().ref('users/' + user + '/matchList/').remove()
-              firebase.database().ref('users/' + user + '/matchList/' + count).push({ matchedList: list, matchedUser: item.key, matchedCount: count })                                                                                       
+              firebase.database().ref('users/' + item.key + '/profile/').once('value', snapshot => {
+                snapshot.forEach(function(item) {
+                  username = item.val().username
+                  fname = item.val().fname
+                  lname = item.val().lname                  
+                })
+                firebase.database().ref('users/' + user + '/matchList/').remove()
+                firebase.database().ref('users/' + user + '/matchList/' + count).push({ 
+                  matchList: list, user: item.key, 
+                  count: count, username: username, 
+                  fname: fname, lname: lname })                                                                                                       
+              })
             }
           })
         })
@@ -176,7 +189,7 @@ class MainScene extends Component {
     //   return <View><Spinner size="small" /></View>
     // }
 
-    console.log('matchList loaded: ' + matchListLoaded)
+    // console.log('matchList loaded: ' + matchListLoaded)
 
     if (matching && !matchListLoaded) {
       // this.setState({ matchLoading: true })

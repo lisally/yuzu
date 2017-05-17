@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Image, TouchableOpacity, ScrollView, ActivityIndicator, TouchableHighlight } from 'react-native';
-import { Spinner } from './common';
+import { Spinner, MatchDetail } from './common';
 import firebase from 'firebase'
 
 class MatchScene extends Component {
@@ -10,7 +10,8 @@ class MatchScene extends Component {
         user: this.props.user,
         location: this.props.location,
         loading: false,
-        matchLoaded: false
+        matchLoaded: false,
+        matchList: []
      };
 }
 
@@ -27,13 +28,13 @@ class MatchScene extends Component {
         <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 28, color: '#89bc4f', marginLeft: 342, marginTop: 5, position: 'absolute' }}>
           ↻
         </Text>
-        <Text style={{ fontSize: 24, color: '#89bc4f', alignSelf: 'center', paddingTop: 10 }}>
+        <Text style={{ fontSize: 24, color: '#89bc4f', alignSelf: 'center', paddingTop: 10, paddingBottom: 10 }}>
           Matches
         </Text>
       </View>
 
-      {/*<ScrollView style={{ backgroundColor: '#F8F8F8' }}>*/}
-      <ScrollView style={{  }}>
+      <ScrollView style={{ backgroundColor: '#F8F8F8', }}>
+      {/*<ScrollView style={{  }}>*/}
         {this.renderMatchList()}    
       </ScrollView>
 
@@ -46,7 +47,7 @@ class MatchScene extends Component {
   }
 
   renderMatchList() {
-    const { loading, user, location, matchLoaded } = this.state
+    const { loading, user, location, matchLoaded, matchList } = this.state
 
     if (loading) {
       return <View><Spinner size="large" /></View>
@@ -55,8 +56,27 @@ class MatchScene extends Component {
     if (!matchLoaded) {
       this.setState({ loading: true })
 
-
+      var matchRef = firebase.database().ref('users/' + user + '/matchList/');
+      matchRef.orderByValue().on("value", snapshot => {
+        if (snapshot.val() != null) {
+          var stateMatchList = []
+          var stateMatchCount = 0
+          Object.keys(snapshot.val()).forEach(function(key) {
+              Object.keys(snapshot.val()[key]).forEach(function(key2) {
+              stateMatchList.push(snapshot.val()[key][key2])
+              })
+            stateMatchCount += 1
+          })
+          this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
+        }
+      })
     }
+
+    return (
+      matchList.map(match =>
+        <MatchDetail match={match} key={match.user} />
+      )
+    )
   }
 
   onMenuPress() {
