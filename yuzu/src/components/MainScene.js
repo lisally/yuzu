@@ -18,13 +18,13 @@ class MainScene extends Component {
       matching: false,
       matchCount: 0,
       matches: {},
-      childAdded: false
+      // childAdded: false
 
      };
   }
 
   render() {
-    console.log(this.state.childAdded)
+    // console.log(this.state.childAdded)
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
     const { itemList, matchCount, user, location, matching, matchLoaded } = this.state
         
@@ -60,6 +60,7 @@ class MainScene extends Component {
               Object.keys(item.val()).forEach(function(key) {
                 value = item.val()[key];
 
+                console.log(itemList)
                 itemList.forEach(function(product) {
                   if (product.Product == value.Product) {
                     list.push(value)
@@ -113,11 +114,14 @@ class MainScene extends Component {
                   firebase.database().ref('users/' + user + '/matchList/' + key).set(matches[key]) 
                 }
                 
+                // this.setState({ matchCount: Object.keys(matches).length })
+
+
               })
             }
-          })
+          }.bind(this))
         })
-      })
+      }.bind(this))
     }
 
     return (
