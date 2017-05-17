@@ -38,9 +38,11 @@ class MatchScene extends Component {
         {this.renderMatchList()}    
       </ScrollView>
 
-      <Text style={{ transform: [{ rotate: '270deg'}], fontSize: 50, color: '#89bc4f',  alignSelf: 'center', margin: -7 }} onPress={this.onBack.bind(this)}>
-        ‹
-      </Text>
+      <TouchableOpacity onPress={this.onBack.bind(this)}>
+        <Text style={{ transform: [{ rotate: '270deg'}], fontSize: 50, color: '#89bc4f',  alignSelf: 'center', margin: -7 }}>
+          ‹
+        </Text>
+      </TouchableOpacity>
 
     </View>
    )
@@ -50,7 +52,7 @@ class MatchScene extends Component {
     const { loading, user, location, matchLoaded, matchList } = this.state
 
     if (loading) {
-      return <View><Spinner size="large" /></View>
+      return <View style={{backgroundColor: '#F8F8F8'}}><Spinner size="large" /></View>
     }
     
     if (!matchLoaded) {
@@ -58,6 +60,8 @@ class MatchScene extends Component {
 
       var matchRef = firebase.database().ref('users/' + user + '/matchList/');
       matchRef.orderByValue().on("value", snapshot => {
+        var stateMatchList = []
+        var stateMatchCount = 0
         if (snapshot.val() != null) {
           var stateMatchList = []
           var stateMatchCount = 0
@@ -67,8 +71,9 @@ class MatchScene extends Component {
               })
             stateMatchCount += 1
           })
-          this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
+          // this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
         }
+        this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
       })
     }
 

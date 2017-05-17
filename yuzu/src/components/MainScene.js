@@ -25,10 +25,11 @@ class MainScene extends Component {
   }
 
   render() {
-    console.log('matching: ' + this.state.matching)
-    console.log('matchCount ' + this.state.matchCount)
-    console.log('matchList ')
-    console.log(this.state.matchList)
+    // console.log('matching: ' + this.state.matching)
+    // console.log('matchCount ' + this.state.matchCount)
+    // console.log('matchList ')
+    // console.log(this.state.matchList)
+    // console.log(this.state.itemList)
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
     const { matchList, itemList, matchCount, user, location, matching } = this.state
     
@@ -38,19 +39,19 @@ class MainScene extends Component {
       this.onMatch()
 
       firebase.database().ref('matches/' + location + '/').on('child_added', function(snapshot) {
-        // console.log('changed')
-
-        // this.setState({ matchListLoaded: false })
+        // this.onMatch()
 
         firebase.database().ref('users/' + user + '/matchList').remove()
 
         firebase.database().ref('matches/' + location + '/').once('value', snapshot => {
+          var matches = {}          
           snapshot.forEach(function(item) {
             var list = []
             var count = 0
             var username = ''
             var fname = ''
             var lname = ''
+            // var matches = {}
 
             if (item.key != user) {
               Object.keys(item.val()).forEach(function(key) {
@@ -71,14 +72,69 @@ class MainScene extends Component {
                   fname = item.val().fname
                   lname = item.val().lname                  
                 })
-                firebase.database().ref('users/' + user + '/matchList/').remove()
-                firebase.database().ref('users/' + user + '/matchList/' + count).push({ 
-                  matchList: list, user: item.key, 
-                  count: count, username: username, 
-                  fname: fname, lname: lname })                                                                                                       
+
+                if (matches[count] == null) {
+                  matches[count] = []
+                }
+
+                // var temp = matches[count]
+
+                matches[count].push(
+                  {'matchList': list, 
+                  'user': item.key, 
+                  'count': count, 
+                  'username': username,
+                  'fname': fname,
+                  'lname': lname 
+                })
+
+                // console.log(count)
+                // console.log(matches[count])
+
+                // matches[count] = temp
+                // firebase.database().ref('users/' + user + '/matchList/').remove()
+                // firebase.database().ref('users/' + user + '/matchList/' + count).push({ 
+                //   matchList: list, user: item.key, 
+                //   count: count, username: username, 
+                //   fname: fname, lname: lname })
               })
             }
           })
+          
+          // console.log(matches)
+          firebase.database().ref('users/' + user + '/matchList/').remove()
+          // console.log('hello')
+          // console.log(matches['1'])
+          // console.log(matches[1])
+
+          // matches[3] = 'hello'
+          // console.log(matches[1])
+          // console.log(Object.keys(matches).length)
+
+          Object.keys(matches).forEach(function(key) {
+            console.log('hey')
+          })
+
+          console.log(matches)
+
+          
+
+          // for (var key in matches) {
+          //   if (matches.hasOwnProperty(key)) {
+          //     console.log('hey')
+          //     console.log(key)
+          //   }
+          //   console.log(key)
+          //   console.log('hi')
+          // }
+          
+          // for (var key in matches) {
+          //   // value = item.val()[key];
+          //   console.log('hi')
+          //   console.log(key)
+          //   // firebase.database().ref('users/' + user + '/matchList/' + key).push(matches[key])  
+          // }
+
         })
       })
     }
@@ -337,12 +393,12 @@ class MainScene extends Component {
 
       if (snapshot.val() == null) {
         userMatchStatus.set({ matching: false })
+      } else {
+        Object.keys(snapshot.val()).forEach(function(key) {
+            matchStatus = snapshot.val()[key]
+        })
       }
-      
-      Object.keys(snapshot.val()).forEach(function(key) {
-          matchStatus = snapshot.val()[key]
-      })
-
+    
       if (matchStatus != matching) {
         this.setState({ matching: matchStatus })
       }
@@ -350,8 +406,11 @@ class MainScene extends Component {
   }
 
   onMatch() {
+    // firebase.database().ref('users/' + this.state.user + '/matchList').remove()
     // this.setState({ matchLoading: true })
     if (this.state.itemList.length > 0) {
+      // firebase.database().ref('users/' + this.state.user + '/matchList').remove()
+      
       firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').remove()
         for (var item of this.state.itemList) {
           firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').push(item)
