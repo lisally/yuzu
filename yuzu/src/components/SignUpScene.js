@@ -147,12 +147,13 @@ class SignUpScene extends Component {
   }
 
   onSignUpSuccess(user) {  
-    firebase.database().ref('users/' + user.uid + '/profile').push()
+    firebase.database().ref('users/' + user.uid + '/profile/')
       .set({
-        'username': this.state.username,
-        'fname': this.state.fname,
-        'lname': this.state.lname,
-        'email': this.state.email
+        username: this.state.username,
+        fname: this.state.fname,
+        lname: this.state.lname,
+        email: this.state.email,
+        uid: user.uid
       })
 
     this.setState({

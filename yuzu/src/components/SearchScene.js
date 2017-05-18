@@ -102,28 +102,17 @@ class SearchScene extends Component {
     Keyboard.dismiss()
     this._input.clear()
 
-    var userItemList = firebase.database().ref('users/' + this.state.user + '/itemList')
-    var exists = false;
+    var userItemList = firebase.database().ref('users/' + this.state.user + '/itemList/' + item.Product).set(item)
 
-    userItemList.once('value', snapshot => {
-      snapshot.forEach(function(item2) {
-        if (item2.val().Product == item.Product) {
-          exists = true;
-        }
-      })
-      if (exists == false) {
-        userItemList.push(item)
-      }
-      this.setState({ searchResult: [] })
+    this.setState({ searchResult: [] })
       
-      this.props.navigator.push({
-        title: 'Main',
-        passProps: {
-          user: this.props.user,
-          type: 'backward',
-          location: this.props.location
-        }
-      })
+    this.props.navigator.push({
+      title: 'Main',
+      passProps: {
+        user: this.props.user,
+        type: 'backward',
+        location: this.props.location
+      }
     })
 
   }
