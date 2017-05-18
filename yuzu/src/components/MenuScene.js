@@ -7,8 +7,11 @@ import firebase from 'firebase'
 class MenuScene extends Component {
   constructor(props) {
     super(props)
-    this.state = { 
-        user: this.props.user
+    this.state = {
+        ref: firebase.database().ref(),
+        user: this.props.user, 
+        // location: this.props.location
+        location: 'Seattle'
      };
 }
 
@@ -55,8 +58,27 @@ class MenuScene extends Component {
   }
 
   onSignOutPress() {
-    // firebase.database().ref('matches/' + this.props.location + '/' + this.props.user + '/').remove()
-    firebase.database().ref('users/' + this.props.user + '/matchingStatus/').set({ matching: false })
+    const { ref, user, location } = this.state
+
+    ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+      if (snapshot.val() != null) {
+        snapshot.forEach(function(item) { 
+          ref.child('matches/' + location + '/' + item.val().Product).once('value', snapshot2 => {
+            if (snapshot2.val() != null) {
+              var users = snapshot2.val()
+
+              if (users.indexOf(user) != -1) {
+                users.splice(users.indexOf(user), 1)
+                ref.child('matches/' + location + '/' + item.val().Product + '/').set(users)
+              }
+            }
+          })
+        })
+      }
+
+    })
+    ref.child('users/' + user + '/matchingStatus/').set(false)
+
     firebase.auth().signOut()
 
     this.props.navigator.push({

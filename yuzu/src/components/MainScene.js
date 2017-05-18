@@ -179,9 +179,7 @@ class MainScene extends Component {
 
       ref.child('users/' + user + '/itemList/').once('value', snapshot => {
         if (snapshot.val() == null) {
-          // TODO
-          // firebase.database().ref('matches/' + location + '/' + user + '/').remove() 
-          ref.child('users/' + user + '/matchingStatus/').set(false)
+          this.onClearAll()
         }
         for (var item in snapshot.val()) {
           list.push(snapshot.val()[item])
@@ -309,7 +307,7 @@ class MainScene extends Component {
     }
     ref.child('users/' + user + '/matchingStatus/').set(false)
     // TODO
-    // this.renderMatchingStatus()
+    this.renderMatchingStatus()
   }
 
   onDeletePress(deletedItem) {
