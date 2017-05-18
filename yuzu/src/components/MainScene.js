@@ -19,120 +19,88 @@ class MainScene extends Component {
       matching: false,
       matchCount: 0,
       matches: {},
-      // childAdded: false
      };
   }
 
   render() {
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
-    const { itemList, matchCount, user, location, matching, matchLoaded } = this.state
+    const { ref, itemList, matchCount, user, location, matching, matchLoaded } = this.state
         
-    {this.renderMatchingStatus()}
-
-    // var item = 'item'
-
-    // // var update = {
-    // test = ['user1', 'user2', 'user3']
-    // // }
-
-    // firebase.database().ref('matches/Seattle/' + item).set(test)
-
-    // firebase.database().ref('matches/Seattle/' + item).once('value', snapshot => {
-    //   console.log(snapshot.key)
-    //   console.log(snapshot.val())
-    // })    
+    {this.renderMatchingStatus()}  
 
     if (matching) {
       this.onMatch()
 
-    //   // firebase.database().ref('users/' + user + '/itemList/').on('child_added', function(snapshot) {
-    //   //   snapshot.val().forEach(function(item) {
+
+      ref.child('matches/' + location + '/').on('child_changed', function(snapshot, prevChild) {
+        console.log('snapshot val')
+        // console.log(snapshot.val())
+        // console.log('prevChild')
+        // console.log(prevChild)
+        // this.setState({ childAdded: true })
+        // firebase.database().ref('matches/' + location + '/').once('value', snapshot => {
           
-    //   //   })
-    //   // })
+        //   var matches = {}   
 
+        //   snapshot.forEach(function(item) {
+        //     var list = []
+        //     var count = 0
+        //     var username = ''
+        //     var fname = ''
+        //     var lname = ''
 
-    //   firebase.database().ref('matches/' + location + '/').on('child_added', function(snapshot) {
-    //     // this.setState({ childAdded: true })
-    //     firebase.database().ref('users/' + user + '/matchList').remove()
+        //     if (item.key != user) {
+        //       Object.keys(item.val()).forEach(function(key) {
+        //         value = item.val()[key];
 
-    //     firebase.database().ref('matches/' + location + '/').once('value', snapshot => {
-          
-    //       var matches = {}   
+        //         console.log(itemList)
+        //         itemList.forEach(function(product) {
+        //           if (product.Product == value.Product) {
+        //             list.push(value)
+        //             count += 1
+        //           }
+        //         })
+        //       });
+        //     }
 
-    //       snapshot.forEach(function(item) {
-    //         var list = []
-    //         var count = 0
-    //         var username = ''
-    //         var fname = ''
-    //         var lname = ''
+        //     if (count > 0) {
+        //       firebase.database().ref('users/' + item.key + '/profile/').once('value', snapshot => {
+        //         snapshot.forEach(function(item) {
+        //           username = item.val().username
+        //           fname = item.val().fname
+        //           lname = item.val().lname                  
+        //         })          
 
-    //         if (item.key != user) {
-    //           Object.keys(item.val()).forEach(function(key) {
-    //             value = item.val()[key];
+        //         if (matches[count] == null) {
+        //           matches[count] = []
+        //         }
 
-    //             console.log(itemList)
-    //             itemList.forEach(function(product) {
-    //               if (product.Product == value.Product) {
-    //                 list.push(value)
-    //                 count += 1
-    //               }
-    //             })
-    //           });
-    //         }
+        //         var temp = matches[count]
 
-    //         if (count > 0) {
-    //           firebase.database().ref('users/' + item.key + '/profile/').once('value', snapshot => {
-    //             snapshot.forEach(function(item) {
-    //               username = item.val().username
-    //               fname = item.val().fname
-    //               lname = item.val().lname                  
-    //             })
+        //         matches[count].push(
+        //           {'matchList': list, 
+        //           'user': item.key, 
+        //           'count': count, 
+        //           'username': username,
+        //           'fname': fname,
+        //           'lname': lname 
+        //           }
+        //         )
 
-    //           // firebase.database().ref('users/' + user + '/matchList').remove()
-    //           // firebase.database().ref('users/' + user + '/matchList/' + count).once('value', snapshot => {
-    //           //   if (snapshot.val() == null) {
-    //               // firebase.database().ref('users/' + user + '/matchList/' + count).push({
-    //               //   'matchList': list, 
-    //               //   'user': item.key, 
-    //               //   'count': count, 
-    //               //   'username': username,
-    //               //   'fname': fname,
-    //               //   'lname': lname  
-    //               // })
-    //             // }
-    //           // })            
+        //         firebase.database().ref('users/' + user + '/matchList').remove()
 
-    //             if (matches[count] == null) {
-    //               matches[count] = []
-    //             }
-
-    //             var temp = matches[count]
-
-    //             matches[count].push(
-    //               {'matchList': list, 
-    //               'user': item.key, 
-    //               'count': count, 
-    //               'username': username,
-    //               'fname': fname,
-    //               'lname': lname 
-    //               }
-    //             )
-
-    //             firebase.database().ref('users/' + user + '/matchList').remove()
-
-    //             for (var key in matches) {
-    //               firebase.database().ref('users/' + user + '/matchList/' + key).set(matches[key]) 
-    //             }
+        //         for (var key in matches) {
+        //           firebase.database().ref('users/' + user + '/matchList/' + key).set(matches[key]) 
+        //         }
                 
-    //             // this.setState({ matchCount: Object.keys(matches).length })
 
 
-    //           })
-    //         }
-    //       })
-    //     })
-    //   })
+
+        //       })
+        //     }
+        //   })
+        // })
+      }.bind(this))
     }
 
     return (
@@ -293,8 +261,11 @@ class MainScene extends Component {
       ref.child('matches/' + location + '/' + deletedItem.Product + '/').once('value', snapshot => {
         if (snapshot.val() != null) {
           var users = snapshot.val()
-          users.splice(users.indexOf(user), 1)
-          ref.child('matches/' + location + '/' + deletedItem.Product + '/').set(users)
+          if (users.indexOf(user) != -1) {
+            users.splice(users.indexOf(user), 1)
+            console.log('deleted')
+            ref.child('matches/' + location + '/' + deletedItem.Product + '/').set(users)
+          }
         }
       })
     }
@@ -302,22 +273,24 @@ class MainScene extends Component {
   }
 
   onClearAll() {
-    const { ref, user, location, itemList } = this.state
+    const { ref, user, location, itemList, matching } = this.state
     
-    if (itemList.length > 0) {
-      itemList.forEach(function(item) {
-        ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
-          if (snapshot.val() != null) {
-            var users = snapshot.val()
-            if (users.indexOf(user) != -1) {
-              users.splice(users.indexOf(user), 1)
-              ref.child('matches/' + location + '/' + item.Product + '/').set(users)
+    if (matching) {
+      if (itemList.length > 0) {
+        itemList.forEach(function(item) {
+          ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
+            if (snapshot.val() != null) {
+              var users = snapshot.val()
+              if (users.indexOf(user) != -1) {
+                users.splice(users.indexOf(user), 1)
+                ref.child('matches/' + location + '/' + item.Product + '/').set(users)
+              }
             }
-          }
+          })
         })
-      })
+      }
+      ref.child('users/' + user + '/matchingStatus/').set(false)
     }
-    ref.child('users/' + user + '/matchingStatus/').set(false)
     ref.child('users/' + user + '/itemList/').remove()
     this.setState({ matchLoading: false, itemListLoaded: false, matching: false })
   }
@@ -341,6 +314,27 @@ class MainScene extends Component {
     })
   }
 
+  // updateMatches() {
+  //   const { ref, user, location } = this.state
+
+  //   ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+  //     snapshot.forEach(function(item) {
+  //       ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
+  //         if (snapshot.val() == null) {
+  //           ref.child('matches/' + location + '/' + item.Product + '/').set([user])
+  //         } else {
+  //           var users = snapshot.val()
+  //           if (users.indexOf(user) == -1) {
+  //             users.push(user)
+  //             ref.child('matches/' + location + '/' + item.Product + '/').set(users)
+  //           }
+  //         }
+  //       })
+  //     })
+  //   })
+
+  // }
+
   onMatch() {
     const { ref, user, location, itemList } = this.state
     if (itemList.length > 0) {
@@ -359,7 +353,6 @@ class MainScene extends Component {
       })
       
       ref.child('users/' + user + '/matchingStatus/').set(true)
-      // TODO
       this.renderMatchingStatus()
     }
   }
@@ -377,7 +370,6 @@ class MainScene extends Component {
       })
     }
     ref.child('users/' + user + '/matchingStatus/').set(false)
-    // TODO
     this.renderMatchingStatus()
   }
 
