@@ -344,19 +344,23 @@ class MainScene extends Component {
   onMatch() {
     const { ref, user, location, itemList } = this.state
     if (itemList.length > 0) {
-      for (var item of itemList) {
-        console.log(item.Product)
-
-        ref.child('matches/' + location + '/' + item.Product).once('value').then(function(snapshot) { 
+      itemList.forEach(function(item) {
+        ref.child('matches/' + location + '/' + item.Product).once('value', snapshot => {
           if (snapshot.val() == null) {
-            var users = [user]
-            ref.child('matches/' + location + '/' + item.Product + '/').update(users)
+            ref.child('matches/' + location + '/' + item.Product + '/').set([user])
+          } else {
+            var users = snapshot.val()
+            if (users.indexOf(user) == -1) {
+              users.push(user)
+              ref.child('matches/' + location + '/' + item.Product + '/').set(users)
+            }
           }
         })
 
-      }
+      })
       
       ref.child('users/' + user + '/matchingStatus/').set({ matching: true })
+      // TODO
       // this.renderMatchingStatus()      
     }
   }
