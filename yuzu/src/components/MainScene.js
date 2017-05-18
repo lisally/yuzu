@@ -29,8 +29,7 @@ class MainScene extends Component {
     {this.renderMatchingStatus()}  
 
     if (matching) {
-      this.onMatch()
-
+      this.updateMatches()
 
       ref.child('matches/' + location + '/').on('child_changed', function(snapshot, prevChild) {
         console.log('snapshot val')
@@ -314,26 +313,25 @@ class MainScene extends Component {
     })
   }
 
-  // updateMatches() {
-  //   const { ref, user, location } = this.state
+  updateMatches() {
+    const { ref, user, location } = this.state
 
-  //   ref.child('users/' + user + '/itemList/').once('value', snapshot => {
-  //     snapshot.forEach(function(item) {
-  //       ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
-  //         if (snapshot.val() == null) {
-  //           ref.child('matches/' + location + '/' + item.Product + '/').set([user])
-  //         } else {
-  //           var users = snapshot.val()
-  //           if (users.indexOf(user) == -1) {
-  //             users.push(user)
-  //             ref.child('matches/' + location + '/' + item.Product + '/').set(users)
-  //           }
-  //         }
-  //       })
-  //     })
-  //   })
-
-  // }
+    ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+      snapshot.forEach(function(item) {
+        ref.child('matches/' + location + '/' + item.val().Product + '/').once('value', snapshot => {
+          if (snapshot.val() == null) {
+            ref.child('matches/' + location + '/' + item.val().Product + '/').set([user])
+          } else {
+            var users = snapshot.val()
+            if (users.indexOf(user) == -1) {
+              users.push(user)
+              ref.child('matches/' + location + '/' + item.val().Product + '/').set(users)
+            }
+          }
+        })
+      })
+    })
+  }
 
   onMatch() {
     const { ref, user, location, itemList } = this.state
@@ -351,7 +349,6 @@ class MainScene extends Component {
           }
         })
       })
-      
       ref.child('users/' + user + '/matchingStatus/').set(true)
       this.renderMatchingStatus()
     }
