@@ -6,13 +6,12 @@ import firebase from 'firebase'
 class SearchScene extends Component {
   constructor(props) {
     super(props)
-    this.state = { location: this.props.location, user: this.props.user, searchResult: [], loading: false };
-    // this.state = { 
-    //   location: 'Seattle', 
-    //   user: 'GtzTKaVt3UNORfO9v04eRqFtjvf2', 
-    //   searchResult: [], 
-    //   loading: false
-    // };
+    this.state = { 
+      ref: firebase.database().ref(),
+      location: this.props.location, 
+      user: this.props.user, 
+      searchResult: [], 
+      loading: false };
   }
 
 
@@ -20,23 +19,21 @@ class SearchScene extends Component {
     const { containerStyle, inputStyle, cameraStyle, menuStyle, backStyle, backTextStyle } = styles;
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
-      <View style={{flex:1}}>
-        <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
-          <Image style={menuStyle} source={require('../images/menu.png')} />
-        </TouchableHighlight>
-        <CardSection>
-          <View style={containerStyle}>
-            <TextInput 
-              ref={(ref) => this._input = ref}
-              placeholder="Search"
-              autoCorrect={false}
-              style={inputStyle}
-              //value={this.state.search}
-              onChangeText={this.onSearch.bind(this)}
-            />
-            <Text style={cameraStyle}>
-              {/*Camera*/}
-            </Text>
+        <View style={{flex:1}}>
+          <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
+            <Image style={menuStyle} source={require('../images/menu.png')} />
+          </TouchableHighlight>
+
+          <CardSection>
+            <View style={containerStyle}>
+              <TextInput 
+                ref={(ref) => this._input = ref}
+                placeholder="Search"
+                autoCorrect={false}
+                style={inputStyle}
+                //value={this.state.search}
+                onChangeText={this.onSearch.bind(this)}
+              />
             </View>
           </CardSection>
 
@@ -44,28 +41,27 @@ class SearchScene extends Component {
             keyboardDismissMode='on-drag'
             keyboardShouldPersistTaps='always'
           >
-          {/*<View>*/}
           {this.renderResult()}
-          {/*</View>*/}
           </ScrollView>
 
-        <View style={backStyle}>
-          <Text style={backTextStyle} onPress={this.onBack.bind(this)}>
-            ‹
-          </Text>
-        </View>
-
+          <View style={backStyle}>
+            <Text style={backTextStyle} onPress={this.onBack.bind(this)}>
+              ‹
+            </Text>
+          </View>
+          
         </View>
       </TouchableWithoutFeedback>
     )
   }
 
   onSearch(search) {
+    const { ref } = this.state
     var result = []
     var count = 0
     if (search.length > 0) {
       this.setState({ loading: true })
-      firebase.database().ref('products').on('value', snapshot => {
+      ref.child('products').on('value', snapshot => {
         for (var item of snapshot.val()) {
           if (item.Product.toLowerCase().includes(search.toLowerCase())) {
             if (result.length < 20) {
@@ -99,10 +95,11 @@ class SearchScene extends Component {
   }
 
   onItemPress(item) {
+    const { ref } = this.state 
     Keyboard.dismiss()
     this._input.clear()
 
-    var userItemList = firebase.database().ref('users/' + this.state.user + '/itemList/' + item.Product).set(item)
+    ref.child('users/' + this.state.user + '/itemList/' + item.Product).set(item)
 
     this.setState({ searchResult: [] })
       

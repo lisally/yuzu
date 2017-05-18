@@ -6,7 +6,8 @@ import firebase from 'firebase'
 class MatchScene extends Component {
   constructor(props) {
     super(props)
-    this.state = { 
+    this.state = {
+        ref: firebase.database().ref,
         user: this.props.user,
         location: this.props.location,
         loading: false,
@@ -49,7 +50,7 @@ class MatchScene extends Component {
   }
 
   renderMatchList() {
-    const { loading, user, location, matchLoaded, matchList } = this.state
+    const { ref, user, location, loading, matchLoaded, matchList } = this.state
 
     if (loading) {
       return <View style={{backgroundColor: '#F8F8F8'}}><Spinner size="large" /></View>
@@ -58,7 +59,7 @@ class MatchScene extends Component {
     if (!matchLoaded) {
       this.setState({ loading: true })
 
-      var matchRef = firebase.database().ref('users/' + user + '/matchList/');
+      var matchRef = ref.child('users/' + user + '/matchList/');
       matchRef.orderByValue().on("value", snapshot => {
         var stateMatchList = []
         var stateMatchCount = 0

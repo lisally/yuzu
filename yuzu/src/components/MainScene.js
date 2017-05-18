@@ -7,7 +7,8 @@ import firebase from 'firebase'
 class MainScene extends Component {
   constructor(props) {
     super(props)
-    this.state = { 
+    this.state = {
+      ref: firebase.database().ref(),
       // location: this.props.location,
       location: 'Seattle',
       user: this.props.user, 
@@ -19,7 +20,6 @@ class MainScene extends Component {
       matchCount: 0,
       matches: {},
       // childAdded: false
-
      };
   }
 
@@ -167,25 +167,21 @@ class MainScene extends Component {
    )   
   }
 
-
-
   renderItemList() {
-    const { itemList, itemListLoaded, loading, user, matching, location } = this.state
-
+    const { ref, user, location, itemList, itemListLoaded, loading } = this.state
     if (loading) {
       return <View><Spinner size="small" /></View>
     }
 
     if (!itemListLoaded) {
       this.setState({ loading: true })
-
       list = []
 
-      firebase.database().ref('users/' + user + '/itemList/').once('value', snapshot => {
+      ref.child('users/' + user + '/itemList/').once('value', snapshot => {
         if (snapshot.val() == null) {
           // TODO
           // firebase.database().ref('matches/' + location + '/' + user + '/').remove() 
-          firebase.database().ref('users/' + user + '/matchingStatus/').set(false)
+          ref.child('users/' + user + '/matchingStatus/').set(false)
         }
         for (var item in snapshot.val()) {
           list.push(snapshot.val()[item])
@@ -284,29 +280,25 @@ class MainScene extends Component {
   }
 
   onClearAll() {
-    // const { user, location } = this.state
-    // firebase.database().ref('users/' + user + '/itemList/').remove()
+    const { ref, user, location } = this.state
+    ref.child('users/' + user + '/itemList/').remove()
+    // TODO
     // firebase.database().ref('matches/' + location + '/' + user + '/').remove()
-    // firebase.database().ref('users/' + user + '/matchingStatus/').set({ matching: false })
-    // this.setState({ matchLoading: false, itemListLoaded: false })
+    ref.child('users/' + user + '/matchingStatus/').set(false)
+    this.setState({ matchLoading: false, itemListLoaded: false })
   }
 
   onStopMatching() {
+    // TODO
     // firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').remove()
-    // firebase.database().ref('users/' + this.state.user + '/matchingStatus/').set({ matching: false })
-    // this.renderMatchingStatus()
+    firebase.database().ref('users/' + this.state.user + '/matchingStatus/').set(false)
+    this.renderMatchingStatus()
   }
 
   onDeletePress(deletedItem) {
-    // const { user, location } = this.state
-    // firebase.database().ref('users/' + user + '/itemList').once('value', snapshot => {
-    //   snapshot.forEach(function(item) {
-    //     if (item.val().Product === deletedItem.Product) {
-    //       firebase.database().ref('users/' + user + '/itemList/' + item.key).remove()
-    //     }
-    //   })
-    //   this.setState({ itemListLoaded: false })
-    // })
+    const { ref, user, location } = this.state
+    ref.child('users/' + user + '/itemList/' + deletedItem.Product).remove()
+    this.setState({ itemListLoaded: false })
   }
 
   onShowMatches() {
@@ -321,8 +313,8 @@ class MainScene extends Component {
   }
 
   renderMatchingStatus() {
-    const { user, matching } = this.state
-    var matchStatus = firebase.database().ref('users/' + user + '/matchingStatus/')
+    const { ref, user, matching } = this.state
+    var matchStatus = ref.child('users/' + user + '/matchingStatus/')
 
     matchStatus.once('value', snapshot => {
       var status = false
@@ -350,14 +342,23 @@ class MainScene extends Component {
   }
 
   onMatch() {
-    // if (this.state.itemList.length > 0) {
-    //   firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').remove()
-    //     for (var item of this.state.itemList) {
-    //       firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').push(item)
-    //     }
-    //   firebase.database().ref('users/' + this.state.user + '/matchingStatus/').set({ matching: true })
-    //   this.renderMatchingStatus()      
-    // }
+    const { ref, user, location, itemList } = this.state
+    if (itemList.length > 0) {
+      for (var item of itemList) {
+        console.log(item.Product)
+
+        ref.child('matches/' + location + '/' + item.Product).once('value').then(function(snapshot) { 
+          if (snapshot.val() == null) {
+            var users = [user]
+            ref.child('matches/' + location + '/' + item.Product + '/').update(users)
+          }
+        })
+
+      }
+      
+      ref.child('users/' + user + '/matchingStatus/').set({ matching: true })
+      // this.renderMatchingStatus()      
+    }
   }
 
   onBack() {
