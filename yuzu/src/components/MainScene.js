@@ -280,19 +280,36 @@ class MainScene extends Component {
   }
 
   onClearAll() {
-    const { ref, user, location } = this.state
-    ref.child('users/' + user + '/itemList/').remove()
-    // TODO
-    // firebase.database().ref('matches/' + location + '/' + user + '/').remove()
+    const { ref, user, location, itemList } = this.state
+    if (itemList.length > 0) {
+      itemList.forEach(function(item) {
+        ref.child('matches/' + location + '/' + item.Product).once('value', snapshot => {
+          var users = snapshot.val()
+          users.splice(users.indexOf(user), 1)
+          ref.child('matches/' + location + '/' + item.Product + '/').set(users)
+        })
+      })
+    }
     ref.child('users/' + user + '/matchingStatus/').set(false)
+    ref.child('users/' + user + '/itemList/').remove()
     this.setState({ matchLoading: false, itemListLoaded: false })
   }
 
   onStopMatching() {
+    const { ref, user, location, itemList } = this.state
+
+    if (itemList.length > 0) {
+      itemList.forEach(function(item) {
+        ref.child('matches/' + location + '/' + item.Product).once('value', snapshot => {
+          var users = snapshot.val()
+          users.splice(users.indexOf(user), 1)
+          ref.child('matches/' + location + '/' + item.Product + '/').set(users)
+        })
+      })
+    }
+    ref.child('users/' + user + '/matchingStatus/').set(false)
     // TODO
-    // firebase.database().ref('matches/' + this.state.location + '/' + this.state.user + '/').remove()
-    firebase.database().ref('users/' + this.state.user + '/matchingStatus/').set(false)
-    this.renderMatchingStatus()
+    // this.renderMatchingStatus()
   }
 
   onDeletePress(deletedItem) {
@@ -356,7 +373,6 @@ class MainScene extends Component {
             }
           }
         })
-
       })
       
       ref.child('users/' + user + '/matchingStatus/').set({ matching: true })
