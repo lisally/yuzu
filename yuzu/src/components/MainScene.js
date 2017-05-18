@@ -277,11 +277,27 @@ class MainScene extends Component {
     }
   }
 
+  renderClearAll() {
+    if (this.state.itemList.length > 1) {
+      return (
+        <TextButton onPress={this.onClearAll.bind(this)}>
+          Clear All
+        </TextButton>
+      )
+    }
+  }
+
+  onDeletePress(deletedItem) {
+    const { ref, user, location } = this.state
+    ref.child('users/' + user + '/itemList/' + deletedItem.Product).remove()
+    this.setState({ itemListLoaded: false })
+  }
+
   onClearAll() {
     const { ref, user, location, itemList } = this.state
     if (itemList.length > 0) {
       itemList.forEach(function(item) {
-        ref.child('matches/' + location + '/' + item.Product).once('value', snapshot => {
+        ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
           var users = snapshot.val()
           users.splice(users.indexOf(user), 1)
           ref.child('matches/' + location + '/' + item.Product + '/').set(users)
@@ -291,40 +307,6 @@ class MainScene extends Component {
     ref.child('users/' + user + '/matchingStatus/').set(false)
     ref.child('users/' + user + '/itemList/').remove()
     this.setState({ matchLoading: false, itemListLoaded: false })
-  }
-
-  onStopMatching() {
-    const { ref, user, location, itemList } = this.state
-
-    if (itemList.length > 0) {
-      itemList.forEach(function(item) {
-        ref.child('matches/' + location + '/' + item.Product).once('value', snapshot => {
-          var users = snapshot.val()
-          users.splice(users.indexOf(user), 1)
-          ref.child('matches/' + location + '/' + item.Product + '/').set(users)
-        })
-      })
-    }
-    ref.child('users/' + user + '/matchingStatus/').set(false)
-    // TODO
-    this.renderMatchingStatus()
-  }
-
-  onDeletePress(deletedItem) {
-    const { ref, user, location } = this.state
-    ref.child('users/' + user + '/itemList/' + deletedItem.Product).remove()
-    this.setState({ itemListLoaded: false })
-  }
-
-  onShowMatches() {
-    this.props.navigator.push({
-      title: 'Match',
-      passProps: {
-        user: this.props.user,
-        type: 'match',
-        location: this.props.location
-      }
-    })
   }
 
   renderMatchingStatus() {
@@ -339,28 +321,18 @@ class MainScene extends Component {
       } else {
         status = snapshot.val()
       }
-    
+
       if (status != matching) {
         this.setState({ matching: status })
       }
     })
   }
 
-  renderClearAll() {
-    if (this.state.itemList.length > 1) {
-      return (
-        <TextButton onPress={this.onClearAll.bind(this)}>
-          Clear All
-        </TextButton>
-      )
-    }
-  }
-
   onMatch() {
     const { ref, user, location, itemList } = this.state
     if (itemList.length > 0) {
       itemList.forEach(function(item) {
-        ref.child('matches/' + location + '/' + item.Product).once('value', snapshot => {
+        ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
           if (snapshot.val() == null) {
             ref.child('matches/' + location + '/' + item.Product + '/').set([user])
           } else {
@@ -373,10 +345,38 @@ class MainScene extends Component {
         })
       })
       
-      ref.child('users/' + user + '/matchingStatus/').set({ matching: true })
+      ref.child('users/' + user + '/matchingStatus/').set(true)
       // TODO
-      // this.renderMatchingStatus()      
+      this.renderMatchingStatus()
     }
+  }
+
+  onStopMatching() {
+    const { ref, user, location, itemList } = this.state
+
+    if (itemList.length > 0) {
+      itemList.forEach(function(item) {
+        ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
+          var users = snapshot.val()
+          users.splice(users.indexOf(user), 1)
+          ref.child('matches/' + location + '/' + item.Product + '/').set(users)
+        })
+      })
+    }
+    ref.child('users/' + user + '/matchingStatus/').set(false)
+    // TODO
+    this.renderMatchingStatus()
+  }
+
+  onShowMatches() {
+    this.props.navigator.push({
+      title: 'Match',
+      passProps: {
+        user: this.props.user,
+        type: 'match',
+        location: this.props.location
+      }
+    })
   }
 
   onBack() {

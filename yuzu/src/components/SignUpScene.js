@@ -14,7 +14,6 @@ class SignUpScene extends Component {
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
       <View>  
-        {/*<View>*/}
           <View style={styles.viewStyle}>
             <Image style={styles.imageStyle} source={require('../images/header.png')} />
           </View>
@@ -78,8 +77,6 @@ class SignUpScene extends Component {
           {this.renderSignUp()}
           {this.renderError()}
           {this.renderSignIn()}
-
-        {/*</View>*/}
       </View>
       </TouchableWithoutFeedback>
     );
@@ -170,9 +167,7 @@ class SignUpScene extends Component {
         type: 'forward'
       }
     })
-    
   }
-
 }
 
 const styles = {
@@ -194,7 +189,6 @@ const styles = {
     elevation: 2,
     position: 'relative',
     paddingRight: 5,
-    // flexDirection: 'row'
   },
   imageStyle: {
     width: 110,

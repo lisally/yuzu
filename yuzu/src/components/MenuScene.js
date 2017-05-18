@@ -10,8 +10,7 @@ class MenuScene extends Component {
     this.state = {
         ref: firebase.database().ref(),
         user: this.props.user, 
-        // location: this.props.location
-        location: 'Seattle'
+        location: this.props.location
      };
 }
 
@@ -61,13 +60,15 @@ class MenuScene extends Component {
     const { ref, user, location } = this.state
 
     ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+      
       if (snapshot.val() != null) {
-        snapshot.forEach(function(item) { 
+        snapshot.forEach(function(item) {
           ref.child('matches/' + location + '/' + item.val().Product).once('value', snapshot2 => {
             if (snapshot2.val() != null) {
               var users = snapshot2.val()
 
               if (users.indexOf(user) != -1) {
+                console.log('hi')
                 users.splice(users.indexOf(user), 1)
                 ref.child('matches/' + location + '/' + item.val().Product + '/').set(users)
               }
