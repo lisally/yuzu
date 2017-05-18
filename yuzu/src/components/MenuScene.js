@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text, View, Image, TouchableOpacity, ScrollView, ActivityIndicator, TouchableHighlight } from 'react-native';
-// import { Drawer } from 'native-base'
 import { MenuDetail } from './common';
 import firebase from 'firebase'
 
@@ -76,7 +75,6 @@ class MenuScene extends Component {
           })
         })
       }
-
     })
     ref.child('users/' + user + '/matchingStatus/').set(false)
 
