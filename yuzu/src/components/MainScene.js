@@ -135,11 +135,14 @@ class MainScene extends Component {
         visible={this.state.showMatches}
         onRequestClose={() => { this.setState({ showMatches: false })}}
         >
-        
-        <TouchableWithoutFeedback onPress={this.onHideMatches.bind(this)}>
+
+        {/*<TouchableWithoutFeedback onPress={this.onHideMatches.bind(this)}>*/}
           <View style={{ height: 69 }}>
+            <TouchableOpacity onPress={this.onHideMatchesMenu.bind(this)}>
+              <View style={{ height: 25, width: 25, position: 'absolute', marginTop: 30, marginLeft: 12 }} />
+            </TouchableOpacity>
           </View>
-        </TouchableWithoutFeedback>
+        {/*</TouchableWithoutFeedback>*/}
 
         <View style={{ flex: 1, backgroundColor: '#F8F8F8', borderTopColor: '#ddd', borderTopWidth: 1 }}>
           {/*<ScrollView style={{ marginTop: 7 }}>*/}
@@ -160,15 +163,22 @@ class MainScene extends Component {
             {this.renderMatchList()}
           </ScrollView>
 
-          <Text style={{ transform: [{ rotate: '270deg'}], marginBottom: -10, marginTop: -10, fontSize: 50, color: '#89bc4f',  alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
-            ‹
-          </Text>
+          <TouchableOpacity onPress={this.onHideMatches.bind(this)}>
+            <Text style={{ transform: [{ rotate: '270deg'}], marginBottom: -10, marginTop: -10, fontSize: 50, color: '#89bc4f',  alignSelf: 'center' }}>
+              ‹
+            </Text>
+          </TouchableOpacity>
         </View>
       </Modal>
 
     </View>
 
    )   
+  }
+
+  onHideMatchesMenu() {
+    this.setState({ showMatches: false })
+    this.onMenuPress()
   }
 
   onRefresh() {

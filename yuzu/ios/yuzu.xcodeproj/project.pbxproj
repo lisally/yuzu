@@ -1026,6 +1026,7 @@
 				DEVELOPMENT_TEAM = GQKG98MBVE;
 				INFOPLIST_FILE = yuzu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
