@@ -20,7 +20,8 @@ class MainScene extends Component {
       matchCount: 0,
       matches: {},
       
-      showMatches: false,
+      // showMatches: false,
+      showMatches: true,
       yuzuLoading: false,
       yuzuLoaded: false,
       yuzuList: []
