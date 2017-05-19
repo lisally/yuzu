@@ -19,6 +19,7 @@ class MainScene extends Component {
       matching: false,
       matchCount: 0,
       matches: {},
+      showMatches: false
      };
   }
 
@@ -38,7 +39,7 @@ class MainScene extends Component {
 
 
   render() {
-    console.log('rendered')
+    // console.log('rendered')
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
     const { ref, itemList, matchCount, user, location, matching, matchLoaded } = this.state
 
@@ -65,7 +66,7 @@ class MainScene extends Component {
       })
 
       ref.child('matches/' + location + '/').on('child_removed', function(snapshot, prevChild) {
-        console.log('child removed')
+        // console.log('child removed')
         ref.child('users/' + user + '/itemList/').once('value', snapshot => {
           snapshot.forEach(function(item) {
             ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
@@ -82,7 +83,7 @@ class MainScene extends Component {
 
 
       ref.child('matches/' + location + '/').on('child_added', function(snapshot, prevChild) {
-        console.log('child added')
+        // console.log('child added')
         ref.child('users/' + user + '/itemList/').once('value', snapshot => {
           snapshot.forEach(function(item) {
             ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
@@ -96,74 +97,6 @@ class MainScene extends Component {
           })
         })
       })
-
-        // console.log(snapshot.val())
-        // console.log('prevChild')
-        // console.log(prevChild)
-        // this.setState({ childAdded: true })
-        // firebase.database().ref('matches/' + location + '/').once('value', snapshot => {
-          
-        //   var matches = {}   
-
-        //   snapshot.forEach(function(item) {
-        //     var list = []
-        //     var count = 0
-        //     var username = ''
-        //     var fname = ''
-        //     var lname = ''
-
-        //     if (item.key != user) {
-        //       Object.keys(item.val()).forEach(function(key) {
-        //         value = item.val()[key];
-
-        //         console.log(itemList)
-        //         itemList.forEach(function(product) {
-        //           if (product.Product == value.Product) {
-        //             list.push(value)
-        //             count += 1
-        //           }
-        //         })
-        //       });
-        //     }
-
-        //     if (count > 0) {
-        //       firebase.database().ref('users/' + item.key + '/profile/').once('value', snapshot => {
-        //         snapshot.forEach(function(item) {
-        //           username = item.val().username
-        //           fname = item.val().fname
-        //           lname = item.val().lname                  
-        //         })          
-
-        //         if (matches[count] == null) {
-        //           matches[count] = []
-        //         }
-
-        //         var temp = matches[count]
-
-        //         matches[count].push(
-        //           {'matchList': list, 
-        //           'user': item.key, 
-        //           'count': count, 
-        //           'username': username,
-        //           'fname': fname,
-        //           'lname': lname 
-        //           }
-        //         )
-
-        //         firebase.database().ref('users/' + user + '/matchList').remove()
-
-        //         for (var key in matches) {
-        //           firebase.database().ref('users/' + user + '/matchList/' + key).set(matches[key]) 
-        //         }
-                
-
-
-
-        //       })
-        //     }
-        //   })
-        // })
-      // }.bind(this))
     }
 
     return (
@@ -191,6 +124,34 @@ class MainScene extends Component {
       </View> 
 
       {this.renderMatchButton()}
+
+      <Modal
+        animationType={"slide"}
+        transparent={true}
+        visible={this.state.showMatches}
+        onRequestClose={() => { this.setState({ showMatches: false })}}
+        >
+        
+        <TouchableWithoutFeedback onPress={this.onHideMatches.bind(this)}>
+          <View style={{ height: 225 }}>
+          </View>
+        </TouchableWithoutFeedback>
+
+        <View style={{ flex: 1, backgroundColor: '#F8F8F8', borderTopColor: '#ddd', borderTopWidth: 1 }}>
+          <ScrollView style={{ marginTop: 7 }}>
+            <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 30, color: '#89bc4f', marginLeft: 342, marginTop: -8, position: 'absolute' }}>
+              ↻
+            </Text>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#89bc4f', alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
+              Matches
+            </Text>
+          </ScrollView>
+
+          <Text style={{ transform: [{ rotate: '270deg'}], marginBottom: -15, fontSize: 50, color: '#89bc4f',  alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
+            ‹
+          </Text>
+        </View>
+      </Modal>
 
     </View>
 
@@ -224,42 +185,6 @@ class MainScene extends Component {
       )
     ) 
   }
-
-  // renderMatchList() {
-  //   const { matchCount, user, matching, matchListLoaded, matchLoading } = this.state
-
-  //   // if (matchLoading) {
-  //   //   return <View><Spinner size="small" /></View>
-  //   // }
-
-  //   // console.log('matchList loaded: ' + matchListLoaded)
-
-  //   if (matching && !matchListLoaded) {
-  //     // this.setState({ matchLoading: true })
-
-  //     var matchRef = firebase.database().ref('users/' + user + '/matchList/');
-  //     matchRef.orderByValue().on("value", snapshot => {
-  //       if (snapshot.val() != null) {
-  //         var stateMatchList = []
-  //         var stateMatchCount = 0
-  //         Object.keys(snapshot.val()).forEach(function(key) {
-  //             Object.keys(snapshot.val()[key]).forEach(function(key2) {
-  //             stateMatchList.push(snapshot.val()[key][key2])
-  //             })
-  //           stateMatchCount += 1
-  //         })
-  //         this.setState({ matchList: stateMatchList, matchCount: stateMatchCount, matchListLoaded: true, matchLoading: false })
-  //       }
-  //     })
-  //   }
-
-    // return (
-    //   matchList.map(item =>
-    //     <Text>{item}</Text>
-    //   )
-    // )
-
-  // }
 
   renderMatchButton() {
     const { matchLoading, matching } = this.state
@@ -434,15 +359,23 @@ class MainScene extends Component {
     this.setState({ matching: false })    
   }
 
+  // onShowMatches() {
+  //   this.props.navigator.push({
+  //     title: 'Match',
+  //     passProps: {
+  //       user: this.props.user,
+  //       type: 'match',
+  //       location: this.props.location
+  //     }
+  //   })
+  // }
+
   onShowMatches() {
-    this.props.navigator.push({
-      title: 'Match',
-      passProps: {
-        user: this.props.user,
-        type: 'match',
-        location: this.props.location
-      }
-    })
+    this.setState({ showMatches: true })
+  }
+
+  onHideMatches() {
+    this.setState({ showMatches: false })
   }
 
   onBack() {

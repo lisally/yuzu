@@ -12,12 +12,65 @@ class MatchScene extends Component {
         location: this.props.location,
         loading: false,
         matchLoaded: false,
-        matchList: []
+        yuzuList: []
      };
 }
 
   render() {
+    const { ref, user, location, } = this.state
     const { menuStyle } = styles
+
+    ref.child('matches/' + location + '/').on('child_changed', function(snapshot, prevChild) {
+      console.log('child changed')
+      ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+        snapshot.forEach(function(item) {
+          ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
+            if (snapshot2.val() != null) {
+              ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
+                item: item.val(),
+                users: snapshot2.val()
+              })
+            }
+          })
+        })
+      })
+    })
+
+    ref.child('matches/' + location + '/').on('child_removed', function(snapshot, prevChild) {
+      // console.log('child removed')
+      ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+        snapshot.forEach(function(item) {
+          ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
+            if (snapshot2.val() != null) {
+              ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
+                item: item.val(),
+                users: snapshot2.val()
+              })
+            }
+          })
+        })
+      })  
+    })
+
+    ref.child('matches/' + location + '/').on('child_added', function(snapshot, prevChild) {
+      // console.log('child added')
+      ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+        snapshot.forEach(function(item) {
+          ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
+            if (snapshot2.val() != null) {
+              ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
+                item: item.val(),
+                users: snapshot2.val()
+              })
+            }
+          })
+        })
+      })
+    })
+
+
+
+
     return (
     <View style={{flex:1}}>
       <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
@@ -25,10 +78,12 @@ class MatchScene extends Component {
       </TouchableHighlight>
 
       {/*<View style={{ backgroundColor: '#F8F8F8' }}>*/}
-      <View style={{ }}>        
-        <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 28, color: '#89bc4f', marginLeft: 342, marginTop: 5, position: 'absolute' }}>
-          ↻
-        </Text>
+      <View style={{ }}>
+        <TouchableOpacity onPress={this.onRefresh.bind(this)}>    
+          <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 28, color: '#89bc4f', marginLeft: 342, marginTop: 5, position: 'absolute' }}>
+            ↻
+          </Text>
+        </TouchableOpacity>
         <Text style={{ fontSize: 24, color: '#89bc4f', alignSelf: 'center', paddingTop: 10, paddingBottom: 10 }}>
           Matches
         </Text>
@@ -49,8 +104,14 @@ class MatchScene extends Component {
    )
   }
 
+  onRefresh() {
+    this.setState({ matchLoaded: false })
+  }
+
   renderMatchList() {
-    const { ref, user, location, loading, matchLoaded, matchList } = this.state
+    const { ref, user, location, loading, matchLoaded, yuzuList } = this.state
+
+    console.log('rendering')
 
     if (loading) {
       return <View style={{backgroundColor: '#F8F8F8'}}><Spinner size="large" /></View>
@@ -64,8 +125,6 @@ class MatchScene extends Component {
 
       ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
         snapshot.forEach(function(match) {
-          // console.log(match.val().item)
-          // console.log(match.val().users)
           match.val().users.forEach(function(yuzu) {
             if (matchesList[yuzu] == null) {
               matchesList[yuzu] = []
@@ -76,10 +135,6 @@ class MatchScene extends Component {
         })
 
         Object.keys(matchesList).forEach(function(key) {
-        // for (var key in matchesList) {
-          // console.log(matchesList[user].length) //count
-          // console.log(matchesList[user]) // list
-          // console.log(user) // userid
 
           ref.child('users/' + key + '/profile/').once('value', snapshot => { 
             matches.push({
@@ -93,36 +148,27 @@ class MatchScene extends Component {
             ref.child('users/' + user + '/userMatchList/').set(matches)
           })
         })
-      })
+      })    
+    
 
+      var tempList = []
 
-
-      // matchRef.orderByValue().on("value", snapshot => {
-      //   var stateMatchList = []
-      //   var stateMatchCount = 0
-      //   if (snapshot.val() != null) {
-      //     var stateMatchList = []
-      //     var stateMatchCount = 0
-      //     Object.keys(snapshot.val()).forEach(function(key) {
-      //         Object.keys(snapshot.val()[key]).forEach(function(key2) {
-      //         stateMatchList.push(snapshot.val()[key][key2])
-      //         })
-      //       stateMatchCount += 1
-      //     })
-      //   }
-      //   this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
-      // })
-      
-      // this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
-      this.setState({ matchLoaded: true, loading: false })      
+      ref.child('users/' + user + '/userMatchList/').once('value', snapshot => {
+        snapshot.forEach(function(yuzu) {
+          if (yuzu.val().uid != user) {
+            tempList.push(yuzu.val())
+          }
+        })
+        ref.child('users/' + user + '/userMatchList/').set(tempList)
+        this.setState({ yuzuList: tempList, matchLoaded: true, loading: false })  
+      })  
     }
 
-    // console.log(matchList)
-    // return (
-    //   matchList.map(match =>
-    //     <MatchDetail match={match} key={match.uid} />
-    //   )
-    // )
+    return (
+      yuzuList.map(match =>
+        <MatchDetail match={match} key={match.uid} />
+      )
+    )
   }
 
   onMenuPress() {
