@@ -22,17 +22,72 @@ class MainScene extends Component {
      };
   }
 
+  componentDidMount() {
+    const { ref, user, matching } = this.state
+    var matchStatus = ref.child('users/' + user + '/matchingStatus/')
+
+    matchStatus.once('value', snapshot => {
+      if (snapshot.val() == null) {
+        matchStatus.set(false)
+        this.setState({ matching: false })
+      } else {
+        this.setState({ matching: snapshot.val() })
+      }
+    })
+  }
+
+
   render() {
+    console.log('rendered')
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
     const { ref, itemList, matchCount, user, location, matching, matchLoaded } = this.state
-        
-    {this.renderMatchingStatus()}  
 
     if (matching) {
       this.updateMatches()
 
+      // child changed listens to changes for existing item's removal/added
+      // child added listens to new items added with no existing user
+
       ref.child('matches/' + location + '/').on('child_changed', function(snapshot, prevChild) {
-        console.log('snapshot val')
+        console.log('child changed')
+        ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+          snapshot.forEach(function(item) {
+            ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
+              if (snapshot2.val() != null) {
+                ref.child('users/' + user + '/matchList/' + snapshot2.key).set(snapshot2.val())
+              }
+            })
+          })
+        })
+      })
+
+      ref.child('matches/' + location + '/').on('child_removed', function(snapshot, prevChild) {
+        console.log('child removed')
+        ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+          snapshot.forEach(function(item) {
+            ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
+              if (snapshot2.val() != null) {
+                ref.child('users/' + user + '/matchList/' + snapshot2.key).set(snapshot2.val())
+              }
+            })
+          })
+        })  
+      })
+
+
+      ref.child('matches/' + location + '/').on('child_added', function(snapshot, prevChild) {
+        console.log('child added')
+        ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+          snapshot.forEach(function(item) {
+            ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
+              if (snapshot2.val() != null) {
+                ref.child('users/' + user + '/matchList/' + snapshot2.key).set(snapshot2.val())
+              }
+            })
+          })
+        })
+      })
+
         // console.log(snapshot.val())
         // console.log('prevChild')
         // console.log(prevChild)
@@ -99,7 +154,7 @@ class MainScene extends Component {
         //     }
         //   })
         // })
-      }.bind(this))
+      // }.bind(this))
     }
 
     return (
@@ -134,7 +189,7 @@ class MainScene extends Component {
   }
 
   renderItemList() {
-    const { ref, user, location, itemList, itemListLoaded, loading } = this.state
+    const { ref, user, location, itemList, itemListLoaded, loading, matching } = this.state
     if (loading) {
       return <View><Spinner size="small" /></View>
     }
@@ -144,7 +199,9 @@ class MainScene extends Component {
       list = []
       ref.child('users/' + user + '/itemList/').once('value', snapshot => {
         if (snapshot.val() == null) {
-          ref.child('users/' + user + '/matchingStatus/').set(false)  
+          ref.child('users/' + user + '/matchList/').remove()
+          ref.child('users/' + user + '/matchingStatus/').set(false)
+          this.setState({ matching: false }) 
         }
         for (var item in snapshot.val()) {
           list.push(snapshot.val()[item])
@@ -262,11 +319,15 @@ class MainScene extends Component {
           var users = snapshot.val()
           if (users.indexOf(user) != -1) {
             users.splice(users.indexOf(user), 1)
-            console.log('deleted')
-            ref.child('matches/' + location + '/' + deletedItem.Product + '/').set(users)
+            if (users.length == 0) {
+              ref.child('matches/' + location + '/' + deletedItem.Product + '/').remove()
+            } else {
+              ref.child('matches/' + location + '/' + deletedItem.Product + '/').set(users)              
+            }
           }
         }
       })
+      ref.child('users/' + user + '/matchList/' + deletedItem.Product).remove()   
     }
     this.setState({ itemListLoaded: false })
   }
@@ -282,35 +343,22 @@ class MainScene extends Component {
               var users = snapshot.val()
               if (users.indexOf(user) != -1) {
                 users.splice(users.indexOf(user), 1)
-                ref.child('matches/' + location + '/' + item.Product + '/').set(users)
+                if (users.length == 0) {
+                  ref.child('matches/' + location + '/' + item.Product + '/').remove()
+                } else {
+                  ref.child('matches/' + location + '/' + item.Product + '/').set(users)              
+                }
               }
             }
           })
         })
       }
+      ref.child('users/' + user + '/matchList/').remove()      
       ref.child('users/' + user + '/matchingStatus/').set(false)
     }
+    
     ref.child('users/' + user + '/itemList/').remove()
     this.setState({ matchLoading: false, itemListLoaded: false, matching: false })
-  }
-
-  renderMatchingStatus() {
-    const { ref, user, matching } = this.state
-    var matchStatus = ref.child('users/' + user + '/matchingStatus/')
-
-    matchStatus.once('value', snapshot => {
-      var status = false
-
-      if (snapshot.val() == null) {
-        matchStatus.set(false)
-      } else {
-        status = snapshot.val()
-      }
-
-      if (status != matching) {
-        this.setState({ matching: status })
-      }
-    })
   }
 
   updateMatches() {
@@ -350,7 +398,7 @@ class MainScene extends Component {
         })
       })
       ref.child('users/' + user + '/matchingStatus/').set(true)
-      this.renderMatchingStatus()
+      this.setState({ matching: true })
     }
   }
 
@@ -361,13 +409,20 @@ class MainScene extends Component {
       itemList.forEach(function(item) {
         ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
           var users = snapshot.val()
-          users.splice(users.indexOf(user), 1)
-          ref.child('matches/' + location + '/' + item.Product + '/').set(users)
+          if (users.indexOf(user) != -1) {
+            users.splice(users.indexOf(user), 1)
+            if (users.length == 0) {
+              ref.child('matches/' + location + '/' + item.Product + '/').remove()
+            } else {
+              ref.child('matches/' + location + '/' + item.Product + '/').set(users)              
+            }
+          }
         })
       })
     }
+    ref.child('users/' + user + '/matchList/').remove()    
     ref.child('users/' + user + '/matchingStatus/').set(false)
-    this.renderMatchingStatus()
+    this.setState({ matching: false })    
   }
 
   onShowMatches() {
