@@ -20,8 +20,8 @@ class MainScene extends Component {
       matchCount: 0,
       matches: {},
       
-      // showMatches: false,
-      showMatches: true,
+      showMatches: false,
+      // showMatches: true,
       yuzuLoading: false,
       yuzuLoaded: false,
       yuzuList: []
@@ -137,25 +137,22 @@ class MainScene extends Component {
         onRequestClose={() => { this.setState({ showMatches: false })}}
         >
 
-        {/*<TouchableWithoutFeedback onPress={this.onHideMatches.bind(this)}>*/}
-          <View style={{ height: 69 }}>
-            <TouchableOpacity onPress={this.onHideMatchesMenu.bind(this)}>
-              <View style={{ height: 25, width: 25, position: 'absolute', marginTop: 30, marginLeft: 12 }} />
-            </TouchableOpacity>
-          </View>
-        {/*</TouchableWithoutFeedback>*/}
+       <View style={{ height: 69 }}>
+          <TouchableOpacity onPress={this.onHideMatchesMenu.bind(this)}>
+            <View style={{ height: 25, width: 25, position: 'absolute', marginTop: 30, marginLeft: 12 }} />
+          </TouchableOpacity>
+        </View>
 
         <View style={{ flex: 1, backgroundColor: '#F8F8F8', borderTopColor: '#ddd', borderTopWidth: 1 }}>
-          {/*<ScrollView style={{ marginTop: 7 }}>*/}
-          <View style={{ paddingTop: 7, marginBottom: 10 }}>
+          <View style={{ paddingTop: 7, backgroundColor: '#89bc4f', height: 40 }}>
 
             <TouchableOpacity onPress={this.onRefresh.bind(this)} >
-              <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 30, color: '#89bc4f', marginLeft: 342, position: 'absolute', marginTop: -7 }}>
+              <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 30, color: 'white', marginLeft: 340, position: 'absolute', marginTop: -7 }}>
                 ↻
               </Text>
             </TouchableOpacity>
 
-            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#89bc4f', alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
+            <Text style={{ fontSize: 20, color: 'white', alignSelf: 'center' }}>
               Matches
             </Text>
           </View>
@@ -192,7 +189,11 @@ class MainScene extends Component {
     const { ref, user, location, yuzuLoading, yuzuLoaded, yuzuList } = this.state
 
     if (yuzuLoading) {
-      return <View style={{backgroundColor: '#F8F8F8'}}><Spinner size="large" /></View>
+      return (
+        <View style={{backgroundColor: '#F8F8F8', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', paddingTop: 200 }}>
+          <ActivityIndicator size='large' />
+        </View>
+      )
     }
     
     if (!yuzuLoaded) {
@@ -230,14 +231,16 @@ class MainScene extends Component {
     
 
       var tempList = []
+      var tempCount = 0 
 
       ref.child('users/' + user + '/userMatchList/').once('value', snapshot => {
         snapshot.forEach(function(yuzu) {
           if (yuzu.val().uid != user) {
             tempList.push(yuzu.val())
+            tempCount += 1
           }
         })
-        this.setState({ yuzuList: tempList, yuzuLoaded: true, yuzuLoading: false })  
+        this.setState({ yuzuList: tempList, yuzuLoaded: true, yuzuLoading: false, matchCount: tempCount })
       })  
     }
 
@@ -278,7 +281,7 @@ class MainScene extends Component {
   }
 
   renderMatchButton() {
-    const { matchLoading, matching } = this.state
+    const { matchLoading, matching, matchCount } = this.state
     const { matchViewStyle, matchLoadingStyle, stopMatchingStyle, matchExistsStyle } = styles
 
     if (matching && matchLoading) {
@@ -296,7 +299,7 @@ class MainScene extends Component {
           </View>
         </View>
       )
-    } else if (matching && !matchLoading) {
+    } else if (matching && !matchLoading && matchCount > 1) {
       return (
         <View style={matchViewStyle}>
           <TouchableOpacity onPress={this.onStopMatching.bind(this)}>
@@ -309,7 +312,26 @@ class MainScene extends Component {
           <TouchableOpacity onPress={this.onShowMatches.bind(this)}>
             <View style={matchExistsStyle}>
               <Text style={{fontSize: 18, color: 'white'}}>
-                ({this.state.matchCount}) Matches
+                ({matchCount}) Matches
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      )
+    } else if (matching && !matchLoading && matchCount == 1) {
+      return (
+        <View style={matchViewStyle}>
+          <TouchableOpacity onPress={this.onStopMatching.bind(this)}>
+            <View style={stopMatchingStyle}>
+              <Text style={{fontSize: 18, color: 'white'}}>
+                Stop
+              </Text>
+            </View>  
+            </TouchableOpacity>
+          <TouchableOpacity onPress={this.onShowMatches.bind(this)}>
+            <View style={matchExistsStyle}>
+              <Text style={{fontSize: 18, color: 'white'}}>
+                ({matchCount}) Match
               </Text>
             </View>
           </TouchableOpacity>
@@ -404,6 +426,9 @@ class MainScene extends Component {
         })
       })
     })
+
+
+
   }
 
   onMatch() {

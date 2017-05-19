@@ -10,7 +10,7 @@ const MatchDetail = ({ match, onPress }) => {
         <View style={containerStyle}>
           <Text style={usernameStyle}>{username}</Text>
           <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#404040', position: 'absolute', alignSelf: 'flex-end', marginTop: 12, paddingRight: 18 }}>
-            ({count}) Matches
+            ({count}) Items
           </Text>
           
           {list.map(item =>
@@ -43,15 +43,12 @@ const MatchDetail = ({ match, onPress }) => {
 
 const styles = {
   containerStyle: {
-    // borderBottomWidth: 0.5,
-    // borderTopWidth: 0.5,
     padding: 10,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    // borderColor: '#ddd',
     position: 'relative',
-    width: 355,
+    width: 340,
     alignSelf: 'center',
   },
   usernameStyle: {
@@ -67,7 +64,7 @@ const styles = {
   },
   productStyle: {
     fontSize: 12,
-    color: '#89bc4f',
+    color: '#404040',
     fontWeight: 'bold',
   },
   messageStyle: {
@@ -75,7 +72,7 @@ const styles = {
     backgroundColor: '#f6c501',
     height: 40,
     justifyContent: 'center',
-    width: 355,
+    width: 340,
     alignSelf: 'center',
     marginBottom: 10,
     marginTop: -5
