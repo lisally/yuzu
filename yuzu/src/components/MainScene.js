@@ -137,7 +137,7 @@ class MainScene extends Component {
         >
         
         <TouchableWithoutFeedback onPress={this.onHideMatches.bind(this)}>
-          <View style={{ height: 225 }}>
+          <View style={{ height: 69 }}>
           </View>
         </TouchableWithoutFeedback>
 
