@@ -198,7 +198,6 @@ class MainScene extends Component {
     
     if (!yuzuLoaded) {
       this.setState({ yuzuLoading: true })
-
       var matchesList = {}
       var matches = []
 
@@ -212,9 +211,7 @@ class MainScene extends Component {
           })
 
         })
-
         Object.keys(matchesList).forEach(function(key) {
-
           ref.child('users/' + key + '/profile/').once('value', snapshot => { 
             matches.push({
               uid: key,
@@ -229,7 +226,6 @@ class MainScene extends Component {
         })
       })    
     
-
       var tempList = []
       var tempCount = 0 
 
@@ -239,7 +235,13 @@ class MainScene extends Component {
             tempList.push(yuzu.val())
             tempCount += 1
           }
+          
         })
+
+        tempList.sort(function (a, b) {
+          return b.count - a.count;
+        });
+
         this.setState({ yuzuList: tempList, yuzuLoaded: true, yuzuLoading: false, matchCount: tempCount })
       })  
     }
