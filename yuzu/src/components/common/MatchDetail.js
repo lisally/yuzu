@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 
 const MatchDetail = ({ match, onPress }) => {
     const { list, username, count } = match
-    const { containerStyle, usernameStyle, itemStyle, messageStyle } = styles 
+    const { containerStyle, usernameStyle, itemStyle, productStyle, messageStyle } = styles 
 
     return (
       <View>
@@ -12,7 +12,7 @@ const MatchDetail = ({ match, onPress }) => {
         
           {list.map(item =>
             <View style={{paddingLeft: 5, paddingRight: 5, paddingBottom: 2}}>
-            <Text style={itemStyle}>Item: {item.Product}</Text>
+            <Text style={productStyle}>{item.Product}</Text>
             <Text style={itemStyle}>Price: {item.Price}</Text>            
             <Text style={itemStyle}>Quantity: {item.Quantity} × {item.Size} {item.Measure}</Text>            
             {/*<Text style={itemStyle}>{item.Quantity}</Text>*/}
@@ -21,13 +21,13 @@ const MatchDetail = ({ match, onPress }) => {
 
            {/*<TouchableOpacity onPress={onPress}>*/}
         </View>
-        <View style={messageStyle}>
-          <TouchableOpacity>             
+        <TouchableOpacity>  
+          <View style={messageStyle}>        
             <Text style={{ color: 'white', fontSize: 20 }}>
               Message
             </Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
     )
 }
@@ -44,7 +44,6 @@ const styles = {
     position: 'relative',
     width: 355,
     alignSelf: 'center',
-    marginTop: 10
   },
   usernameStyle: {
     fontSize: 16,
@@ -57,6 +56,11 @@ const styles = {
     fontSize: 12,
     color: '#404040'
   },
+  productStyle: {
+    fontSize: 12,
+    color: '#89bc4f',
+    fontWeight: 'bold'
+  },
   messageStyle: {
     alignItems: 'center',
     backgroundColor: '#f6c501',
@@ -64,6 +68,7 @@ const styles = {
     justifyContent: 'center',
     width: 355,
     alignSelf: 'center',
+    marginBottom: 10
   }
 
 }

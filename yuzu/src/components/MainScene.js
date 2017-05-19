@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal, TouchableWithoutFeedback } from 'react-native';
 // import { Drawer } from 'native-base'
-import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail } from './common';
+import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail, MatchDetail } from './common';
 import firebase from 'firebase'
 
 class MainScene extends Component {
@@ -19,7 +19,11 @@ class MainScene extends Component {
       matching: false,
       matchCount: 0,
       matches: {},
-      showMatches: false
+      
+      showMatches: false,
+      yuzuLoading: false,
+      yuzuLoaded: false,
+      yuzuList: []
      };
   }
 
@@ -41,7 +45,7 @@ class MainScene extends Component {
   render() {
     // console.log('rendered')
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle } = styles;
-    const { ref, itemList, matchCount, user, location, matching, matchLoaded } = this.state
+    const { ref, itemList, matchCount, user, location, matching, } = this.state
 
     if (matching) {
       this.updateMatches()
@@ -138,16 +142,25 @@ class MainScene extends Component {
         </TouchableWithoutFeedback>
 
         <View style={{ flex: 1, backgroundColor: '#F8F8F8', borderTopColor: '#ddd', borderTopWidth: 1 }}>
-          <ScrollView style={{ marginTop: 7 }}>
-            <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 30, color: '#89bc4f', marginLeft: 342, marginTop: -8, position: 'absolute' }}>
-              ↻
-            </Text>
+          {/*<ScrollView style={{ marginTop: 7 }}>*/}
+          <View style={{ paddingTop: 7, marginBottom: 10 }}>
+
+            <TouchableOpacity onPress={this.onRefresh.bind(this)} >
+              <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 30, color: '#89bc4f', marginLeft: 342, position: 'absolute', marginTop: -7 }}>
+                ↻
+              </Text>
+            </TouchableOpacity>
+
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#89bc4f', alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
               Matches
             </Text>
+          </View>
+
+          <ScrollView>
+            {this.renderMatchList()}
           </ScrollView>
 
-          <Text style={{ transform: [{ rotate: '270deg'}], marginBottom: -15, fontSize: 50, color: '#89bc4f',  alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
+          <Text style={{ transform: [{ rotate: '270deg'}], marginBottom: -10, marginTop: -10, fontSize: 50, color: '#89bc4f',  alignSelf: 'center' }} onPress={this.onHideMatches.bind(this)}>
             ‹
           </Text>
         </View>
@@ -156,6 +169,73 @@ class MainScene extends Component {
     </View>
 
    )   
+  }
+
+  onRefresh() {
+    this.setState({ yuzuLoaded: false })
+    this.renderMatchList()
+    this.forceUpdate()
+  }
+
+  renderMatchList() {
+    const { ref, user, location, yuzuLoading, yuzuLoaded, yuzuList } = this.state
+
+    if (yuzuLoading) {
+      return <View style={{backgroundColor: '#F8F8F8'}}><Spinner size="large" /></View>
+    }
+    
+    if (!yuzuLoaded) {
+      this.setState({ yuzuLoading: true })
+
+      var matchesList = {}
+      var matches = []
+
+      ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
+        snapshot.forEach(function(match) {
+          match.val().users.forEach(function(yuzu) {
+            if (matchesList[yuzu] == null) {
+              matchesList[yuzu] = []
+            }
+            matchesList[yuzu].push(match.val().item)
+          })
+
+        })
+
+        Object.keys(matchesList).forEach(function(key) {
+
+          ref.child('users/' + key + '/profile/').once('value', snapshot => { 
+            matches.push({
+              uid: key,
+              username: snapshot.val().username,
+              fname: snapshot.val().fname,
+              lname: snapshot.val().lname,
+              count: matchesList[key].length,
+              list: matchesList[key]
+            })
+            ref.child('users/' + user + '/userMatchList/').set(matches)
+          })
+        })
+      })    
+    
+
+      var tempList = []
+
+      ref.child('users/' + user + '/userMatchList/').once('value', snapshot => {
+        snapshot.forEach(function(yuzu) {
+          if (yuzu.val().uid != user) {
+            tempList.push(yuzu.val())
+          }
+        })
+        this.setState({ yuzuList: tempList, yuzuLoaded: true, yuzuLoading: false })  
+      })  
+    }
+
+    return (
+      yuzuList.map(match =>
+        <MatchDetail match={match} key={match.uid} />
+      )
+    )
+    
   }
 
   renderItemList() {
@@ -371,11 +451,13 @@ class MainScene extends Component {
   // }
 
   onShowMatches() {
-    this.setState({ showMatches: true })
+    // this.renderMatchList()
+    this.setState({ showMatches: true, yuzuLoaded: false })
   }
 
   onHideMatches() {
-    this.setState({ showMatches: false })
+    // this.renderMatchList()    
+    this.setState({ showMatches: false, yuzuLoaded: false })
   }
 
   onBack() {
