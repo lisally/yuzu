@@ -54,7 +54,10 @@ class MainScene extends Component {
           snapshot.forEach(function(item) {
             ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
               if (snapshot2.val() != null) {
-                ref.child('users/' + user + '/matchList/' + snapshot2.key).set(snapshot2.val())
+                ref.child('users/' + user + '/matchList/' + snapshot2.key).set({
+                  item: item.val(),
+                  users: snapshot2.val()
+                })
               }
             })
           })
@@ -67,7 +70,10 @@ class MainScene extends Component {
           snapshot.forEach(function(item) {
             ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
               if (snapshot2.val() != null) {
-                ref.child('users/' + user + '/matchList/' + snapshot2.key).set(snapshot2.val())
+                ref.child('users/' + user + '/matchList/' + snapshot2.key).set({
+                  item: item.val(),
+                  users: snapshot2.val()
+                })
               }
             })
           })
@@ -81,7 +87,10 @@ class MainScene extends Component {
           snapshot.forEach(function(item) {
             ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
               if (snapshot2.val() != null) {
-                ref.child('users/' + user + '/matchList/' + snapshot2.key).set(snapshot2.val())
+                ref.child('users/' + user + '/matchList/' + snapshot2.key).set({
+                  item: item.val(),
+                  users: snapshot2.val()
+                })
               }
             })
           })

@@ -7,7 +7,7 @@ class MatchScene extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        ref: firebase.database().ref,
+        ref: firebase.database().ref(),
         user: this.props.user,
         location: this.props.location,
         loading: false,
@@ -59,30 +59,70 @@ class MatchScene extends Component {
     if (!matchLoaded) {
       this.setState({ loading: true })
 
-      var matchRef = ref.child('users/' + user + '/matchList/');
-      matchRef.orderByValue().on("value", snapshot => {
-        var stateMatchList = []
-        var stateMatchCount = 0
-        if (snapshot.val() != null) {
-          var stateMatchList = []
-          var stateMatchCount = 0
-          Object.keys(snapshot.val()).forEach(function(key) {
-              Object.keys(snapshot.val()[key]).forEach(function(key2) {
-              stateMatchList.push(snapshot.val()[key][key2])
-              })
-            stateMatchCount += 1
+      var matchesList = {}
+      var matches = []
+
+      ref.child('users/' + user + '/matchList/').once('value', snapshot => {
+        snapshot.forEach(function(match) {
+          // console.log(match.val().item)
+          // console.log(match.val().users)
+          match.val().users.forEach(function(user) {
+            if (matchesList[user] == null) {
+              matchesList[user] = []
+            }
+            matchesList[user].push(match.val().item)
           })
-          // this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
+
+        })
+
+        for (var user in matchesList) {
+          // console.log(matchesList[user].length) //count
+          // console.log(matchesList[user]) // list
+          // console.log(user) // userid
+          ref.child('users/' + user + '/profile/').once('value', snapshot => { 
+            matches.push({
+              uid: user,
+              username: snapshot.val().username,
+              fname: snapshot.val().fname,
+              lname: snapshot.val().lname,
+              count: matchesList[user].length,
+              list: matchesList[user]
+            })
+          })
         }
-        this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
+
+        console.log(matches)
+        
       })
+
+
+
+      // matchRef.orderByValue().on("value", snapshot => {
+      //   var stateMatchList = []
+      //   var stateMatchCount = 0
+      //   if (snapshot.val() != null) {
+      //     var stateMatchList = []
+      //     var stateMatchCount = 0
+      //     Object.keys(snapshot.val()).forEach(function(key) {
+      //         Object.keys(snapshot.val()[key]).forEach(function(key2) {
+      //         stateMatchList.push(snapshot.val()[key][key2])
+      //         })
+      //       stateMatchCount += 1
+      //     })
+      //   }
+      //   this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
+      // })
+      
+      // this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
+      this.setState({ matchLoaded: true, loading: false })      
+
     }
 
-    return (
-      matchList.map(match =>
-        <MatchDetail match={match} key={match.user} />
-      )
-    )
+    // return (
+    //   matchList.map(match =>
+    //     <MatchDetail match={match} key={match.user} />
+    //   )
+    // )
   }
 
   onMenuPress() {

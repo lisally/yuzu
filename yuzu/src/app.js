@@ -55,13 +55,13 @@ class App extends Component {
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            title: 'Main',
+            //title: 'Main',
             //title: 'Location',
             //title: 'Search',
             //title: 'SignUp',
             //title: 'SignIn',
             //title: 'Menu',
-            //title: 'Match',
+            title: 'Match',
             passProps: {
               user: this.state.user,
               type: 'forward'
@@ -71,17 +71,6 @@ class App extends Component {
       </View>
     );
   }
-
-  // onMenuPress(navigator) {
-  //   navigator.push({
-  //     title: 'Menu',
-  //     passProps: {
-  //       user: this.props.user,
-  //       location: this.props.location,
-  //       type: 'menu'
-  //     }
-  //   })
-  // }
 
   renderScene(route, navigator) {
     switch(this.state.loggedIn) {
