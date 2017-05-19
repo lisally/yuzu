@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 
 const MatchDetail = ({ match, onPress }) => {
-    const { matchList, username, count } = match
+    const { list, username, count } = match
     const { containerStyle, usernameStyle, itemStyle, messageStyle } = styles 
 
     return (
@@ -10,7 +10,7 @@ const MatchDetail = ({ match, onPress }) => {
         <View style={containerStyle}>
           <Text style={usernameStyle}>{username} ({count})</Text>
         
-          {matchList.map(item =>
+          {list.map(item =>
             <View style={{paddingLeft: 5, paddingRight: 5, paddingBottom: 2}}>
             <Text style={itemStyle}>Item: {item.Product}</Text>
             <Text style={itemStyle}>Price: {item.Price}</Text>            

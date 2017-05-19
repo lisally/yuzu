@@ -62,37 +62,37 @@ class MatchScene extends Component {
       var matchesList = {}
       var matches = []
 
-      ref.child('users/' + user + '/matchList/').once('value', snapshot => {
+      ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
         snapshot.forEach(function(match) {
           // console.log(match.val().item)
           // console.log(match.val().users)
-          match.val().users.forEach(function(user) {
-            if (matchesList[user] == null) {
-              matchesList[user] = []
+          match.val().users.forEach(function(yuzu) {
+            if (matchesList[yuzu] == null) {
+              matchesList[yuzu] = []
             }
-            matchesList[user].push(match.val().item)
+            matchesList[yuzu].push(match.val().item)
           })
 
         })
 
-        for (var user in matchesList) {
+        Object.keys(matchesList).forEach(function(key) {
+        // for (var key in matchesList) {
           // console.log(matchesList[user].length) //count
           // console.log(matchesList[user]) // list
           // console.log(user) // userid
-          ref.child('users/' + user + '/profile/').once('value', snapshot => { 
+
+          ref.child('users/' + key + '/profile/').once('value', snapshot => { 
             matches.push({
-              uid: user,
+              uid: key,
               username: snapshot.val().username,
               fname: snapshot.val().fname,
               lname: snapshot.val().lname,
-              count: matchesList[user].length,
-              list: matchesList[user]
+              count: matchesList[key].length,
+              list: matchesList[key]
             })
+            ref.child('users/' + user + '/userMatchList/').set(matches)
           })
-        }
-
-        console.log(matches)
-        
+        })
       })
 
 
@@ -115,12 +115,12 @@ class MatchScene extends Component {
       
       // this.setState({ matchList: stateMatchList, matchLoaded: true, loading: false })
       this.setState({ matchLoaded: true, loading: false })      
-
     }
 
+    // console.log(matchList)
     // return (
     //   matchList.map(match =>
-    //     <MatchDetail match={match} key={match.user} />
+    //     <MatchDetail match={match} key={match.uid} />
     //   )
     // )
   }

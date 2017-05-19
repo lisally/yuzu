@@ -54,7 +54,7 @@ class MainScene extends Component {
           snapshot.forEach(function(item) {
             ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
               if (snapshot2.val() != null) {
-                ref.child('users/' + user + '/matchList/' + snapshot2.key).set({
+                ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
                   item: item.val(),
                   users: snapshot2.val()
                 })
@@ -70,7 +70,7 @@ class MainScene extends Component {
           snapshot.forEach(function(item) {
             ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
               if (snapshot2.val() != null) {
-                ref.child('users/' + user + '/matchList/' + snapshot2.key).set({
+                ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
                   item: item.val(),
                   users: snapshot2.val()
                 })
@@ -87,7 +87,7 @@ class MainScene extends Component {
           snapshot.forEach(function(item) {
             ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
               if (snapshot2.val() != null) {
-                ref.child('users/' + user + '/matchList/' + snapshot2.key).set({
+                ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
                   item: item.val(),
                   users: snapshot2.val()
                 })
@@ -208,7 +208,7 @@ class MainScene extends Component {
       list = []
       ref.child('users/' + user + '/itemList/').once('value', snapshot => {
         if (snapshot.val() == null) {
-          ref.child('users/' + user + '/matchList/').remove()
+          ref.child('users/' + user + '/itemMatchList/').remove()
           ref.child('users/' + user + '/matchingStatus/').set(false)
           this.setState({ matching: false }) 
         }
@@ -336,7 +336,7 @@ class MainScene extends Component {
           }
         }
       })
-      ref.child('users/' + user + '/matchList/' + deletedItem.Product).remove()   
+      ref.child('users/' + user + '/itemMatchList/' + deletedItem.Product).remove()   
     }
     this.setState({ itemListLoaded: false })
   }
@@ -362,7 +362,7 @@ class MainScene extends Component {
           })
         })
       }
-      ref.child('users/' + user + '/matchList/').remove()      
+      ref.child('users/' + user + '/itemMatchList/').remove()      
       ref.child('users/' + user + '/matchingStatus/').set(false)
     }
     
@@ -429,7 +429,7 @@ class MainScene extends Component {
         })
       })
     }
-    ref.child('users/' + user + '/matchList/').remove()    
+    ref.child('users/' + user + '/itemMatchList/').remove()    
     ref.child('users/' + user + '/matchingStatus/').set(false)
     this.setState({ matching: false })    
   }
