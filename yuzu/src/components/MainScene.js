@@ -26,12 +26,13 @@ class MainScene extends Component {
       yuzuLoaded: false,
       yuzuList: []
      };
+
+    //  this.matchesRef = firebase.database().ref()
   }
 
   componentDidMount() {
     const { ref, user, matching } = this.state
     var matchStatus = ref.child('users/' + user + '/matchingStatus/')
-
     matchStatus.once('value', snapshot => {
       if (snapshot.val() == null) {
         matchStatus.set(false)
@@ -40,16 +41,156 @@ class MainScene extends Component {
         this.setState({ matching: snapshot.val() })
       }
     })
+    // this.listenForMatches(this.matchesRef)    
   }
 
-  // componentDidUpdate() {
-  //   if (this.state.matching) {
-  //     console.log('updated')
-  //     // this.setState({ yuzuLoaded: false })
-  //     this.renderMatchList()
-  //   }
-  // }
 
+  // listenForMatches(ref) {
+  //   const { itemList, matchCount, user, location, matching, } = this.state
+
+  //   if (matching) {
+  //     this.updateMatches()
+
+  //     ref.child('matches/' + location + '/').on('value', (snapshot) => {
+  //       // console.log('child changed')
+  //       ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+  //         snapshot.forEach(function(item) {
+  //           ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
+  //             if (snapshot2.val() != null) {
+  //               ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
+  //                 item: item.val(),
+  //                 users: snapshot2.val()
+  //               })
+  //             }
+  //           })
+  //         })
+  //       })
+  //       var matchesList = {}
+  //       var matches = []
+
+  //       ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
+  //         snapshot.forEach(function(match) {
+  //           match.val().users.forEach(function(yuzu) {
+  //             if (matchesList[yuzu] == null) {
+  //               matchesList[yuzu] = []
+  //             }
+  //             matchesList[yuzu].push(match.val().item)
+  //           })
+
+  //         })
+  //         Object.keys(matchesList).forEach(function(key) {
+  //           ref.child('users/' + key + '/profile/').once('value', snapshot => { 
+  //             matches.push({
+  //               uid: key,
+  //               username: snapshot.val().username,
+  //               fname: snapshot.val().fname,
+  //               lname: snapshot.val().lname,
+  //               count: matchesList[key].length,
+  //               list: matchesList[key]
+  //             })
+  //             ref.child('users/' + user + '/userMatchList/').set(matches)
+  //           })
+  //         })
+  //       })
+  //       this.setState({ yuzuLoaded: false })
+  //     })
+
+      // ref.child('matches/' + location + '/').on('child_removed', function(snapshot, prevChild) {
+      //   // console.log('child removed')
+
+      // var matchesList = {}
+      // var matches = []
+
+      //   ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+      //     snapshot.forEach(function(item) { // item in itemlist
+      //       ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => { // matches
+      //         if (snapshot2.val() != null) {
+      //           ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
+      //             item: item.val(),
+      //             users: snapshot2.val()
+      //           })
+      //         }
+      //       })
+      //     })
+      //   }) 
+
+      //   var matchesList = {}
+      //   var matches = []
+
+      //   ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
+      //     snapshot.forEach(function(match) {
+      //       match.val().users.forEach(function(yuzu) {
+      //         if (matchesList[yuzu] == null) {
+      //           matchesList[yuzu] = []
+      //         }
+      //         matchesList[yuzu].push(match.val().item)
+      //       })
+
+      //     })
+      //     Object.keys(matchesList).forEach(function(key) {
+      //       ref.child('users/' + key + '/profile/').once('value', snapshot => { 
+      //         matches.push({
+      //           uid: key,
+      //           username: snapshot.val().username,
+      //           fname: snapshot.val().fname,
+      //           lname: snapshot.val().lname,
+      //           count: matchesList[key].length,
+      //           list: matchesList[key]
+      //         })
+      //         ref.child('users/' + user + '/userMatchList/').set(matches)
+      //       })
+      //     })
+      //   })    
+      //   this.setState({ yuzuLoaded: false })        
+      // })
+
+
+      // ref.child('matches/' + location + '/').on('child_added', function(snapshot, prevChild) {
+      //   // console.log('child added')
+      //   ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+      //     snapshot.forEach(function(item) {
+      //       ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
+      //         if (snapshot2.val() != null) {
+      //           ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
+      //             item: item.val(),
+      //             users: snapshot2.val()
+      //           })
+      //         }
+      //       })
+      //     })
+      //   })
+
+      //   var matchesList = {}
+      //   var matches = []
+
+      //   ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
+      //     snapshot.forEach(function(match) {
+      //       match.val().users.forEach(function(yuzu) {
+      //         if (matchesList[yuzu] == null) {
+      //           matchesList[yuzu] = []
+      //         }
+      //         matchesList[yuzu].push(match.val().item)
+      //       })
+
+      //     })
+      //     Object.keys(matchesList).forEach(function(key) {
+      //       ref.child('users/' + key + '/profile/').once('value', snapshot => { 
+      //         matches.push({
+      //           uid: key,
+      //           username: snapshot.val().username,
+      //           fname: snapshot.val().fname,
+      //           lname: snapshot.val().lname,
+      //           count: matchesList[key].length,
+      //           list: matchesList[key]
+      //         })
+      //         ref.child('users/' + user + '/userMatchList/').set(matches)
+      //       })
+      //     })
+      //   })
+      //   this.setState({ yuzuLoaded: false })          
+      // })
+    // }
+  // }
 
   render() {
     // console.log('rendered')
@@ -196,7 +337,6 @@ class MainScene extends Component {
           })
         })    
       })
-      
     }
 
     return (
