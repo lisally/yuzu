@@ -42,6 +42,14 @@ class MainScene extends Component {
     })
   }
 
+  // componentDidUpdate() {
+  //   if (this.state.matching) {
+  //     console.log('updated')
+  //     // this.setState({ yuzuLoaded: false })
+  //     this.renderMatchList()
+  //   }
+  // }
+
 
   render() {
     // console.log('rendered')
@@ -51,11 +59,8 @@ class MainScene extends Component {
     if (matching) {
       this.updateMatches()
 
-      // child changed listens to changes for existing item's removal/added
-      // child added listens to new items added with no existing user
-
       ref.child('matches/' + location + '/').on('child_changed', function(snapshot, prevChild) {
-        console.log('child changed')
+        // console.log('child changed')
         ref.child('users/' + user + '/itemList/').once('value', snapshot => {
           snapshot.forEach(function(item) {
             ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
@@ -68,13 +73,44 @@ class MainScene extends Component {
             })
           })
         })
+        var matchesList = {}
+        var matches = []
+
+        ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
+          snapshot.forEach(function(match) {
+            match.val().users.forEach(function(yuzu) {
+              if (matchesList[yuzu] == null) {
+                matchesList[yuzu] = []
+              }
+              matchesList[yuzu].push(match.val().item)
+            })
+
+          })
+          Object.keys(matchesList).forEach(function(key) {
+            ref.child('users/' + key + '/profile/').once('value', snapshot => { 
+              matches.push({
+                uid: key,
+                username: snapshot.val().username,
+                fname: snapshot.val().fname,
+                lname: snapshot.val().lname,
+                count: matchesList[key].length,
+                list: matchesList[key]
+              })
+              ref.child('users/' + user + '/userMatchList/').set(matches)
+            })
+          })
+        })    
       })
 
       ref.child('matches/' + location + '/').on('child_removed', function(snapshot, prevChild) {
         // console.log('child removed')
+
+      var matchesList = {}
+      var matches = []
+
         ref.child('users/' + user + '/itemList/').once('value', snapshot => {
-          snapshot.forEach(function(item) {
-            ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
+          snapshot.forEach(function(item) { // item in itemlist
+            ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => { // matches
               if (snapshot2.val() != null) {
                 ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
                   item: item.val(),
@@ -83,7 +119,37 @@ class MainScene extends Component {
               }
             })
           })
-        })  
+        }) 
+
+        var matchesList = {}
+        var matches = []
+
+        ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
+          snapshot.forEach(function(match) {
+            match.val().users.forEach(function(yuzu) {
+              if (matchesList[yuzu] == null) {
+                matchesList[yuzu] = []
+              }
+              matchesList[yuzu].push(match.val().item)
+            })
+
+          })
+          Object.keys(matchesList).forEach(function(key) {
+            ref.child('users/' + key + '/profile/').once('value', snapshot => { 
+              matches.push({
+                uid: key,
+                username: snapshot.val().username,
+                fname: snapshot.val().fname,
+                lname: snapshot.val().lname,
+                count: matchesList[key].length,
+                list: matchesList[key]
+              })
+              ref.child('users/' + user + '/userMatchList/').set(matches)
+            })
+          })
+        })    
+
+
       })
 
 
@@ -101,7 +167,36 @@ class MainScene extends Component {
             })
           })
         })
+
+        var matchesList = {}
+        var matches = []
+
+        ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
+          snapshot.forEach(function(match) {
+            match.val().users.forEach(function(yuzu) {
+              if (matchesList[yuzu] == null) {
+                matchesList[yuzu] = []
+              }
+              matchesList[yuzu].push(match.val().item)
+            })
+
+          })
+          Object.keys(matchesList).forEach(function(key) {
+            ref.child('users/' + key + '/profile/').once('value', snapshot => { 
+              matches.push({
+                uid: key,
+                username: snapshot.val().username,
+                fname: snapshot.val().fname,
+                lname: snapshot.val().lname,
+                count: matchesList[key].length,
+                list: matchesList[key]
+              })
+              ref.child('users/' + user + '/userMatchList/').set(matches)
+            })
+          })
+        })    
       })
+      
     }
 
     return (
@@ -198,33 +293,33 @@ class MainScene extends Component {
     
     if (!yuzuLoaded) {
       this.setState({ yuzuLoading: true })
-      var matchesList = {}
-      var matches = []
+      // var matchesList = {}
+      // var matches = []
 
-      ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
-        snapshot.forEach(function(match) {
-          match.val().users.forEach(function(yuzu) {
-            if (matchesList[yuzu] == null) {
-              matchesList[yuzu] = []
-            }
-            matchesList[yuzu].push(match.val().item)
-          })
+      // ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
+      //   snapshot.forEach(function(match) {
+      //     match.val().users.forEach(function(yuzu) {
+      //       if (matchesList[yuzu] == null) {
+      //         matchesList[yuzu] = []
+      //       }
+      //       matchesList[yuzu].push(match.val().item)
+      //     })
 
-        })
-        Object.keys(matchesList).forEach(function(key) {
-          ref.child('users/' + key + '/profile/').once('value', snapshot => { 
-            matches.push({
-              uid: key,
-              username: snapshot.val().username,
-              fname: snapshot.val().fname,
-              lname: snapshot.val().lname,
-              count: matchesList[key].length,
-              list: matchesList[key]
-            })
-            ref.child('users/' + user + '/userMatchList/').set(matches)
-          })
-        })
-      })    
+      //   })
+      //   Object.keys(matchesList).forEach(function(key) {
+      //     ref.child('users/' + key + '/profile/').once('value', snapshot => { 
+      //       matches.push({
+      //         uid: key,
+      //         username: snapshot.val().username,
+      //         fname: snapshot.val().fname,
+      //         lname: snapshot.val().lname,
+      //         count: matchesList[key].length,
+      //         list: matchesList[key]
+      //       })
+      //       ref.child('users/' + user + '/userMatchList/').set(matches)
+      //     })
+      //   })
+      // })    
     
       var tempList = []
       var tempCount = 0 
@@ -251,7 +346,6 @@ class MainScene extends Component {
         <MatchDetail match={match} key={match.uid} />
       )
     )
-    
   }
 
   renderItemList() {
@@ -428,9 +522,6 @@ class MainScene extends Component {
         })
       })
     })
-
-
-
   }
 
   onMatch() {
@@ -489,12 +580,10 @@ class MainScene extends Component {
   // }
 
   onShowMatches() {
-    // this.renderMatchList()
     this.setState({ showMatches: true, yuzuLoaded: false })
   }
 
-  onHideMatches() {
-    // this.renderMatchList()    
+  onHideMatches() {  
     this.setState({ showMatches: false, yuzuLoaded: false })
   }
 
