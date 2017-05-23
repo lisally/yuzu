@@ -22,6 +22,12 @@ class MessageScene extends Component {
      };
   }
 
+  // TO DO:
+  //  styling
+  //  adding profile to user's messageList when matched-user msgs user
+  //  show shared items in chat
+  //  message notifications?
+
   componentDidMount() {
     const { user } = this.state
     this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
@@ -54,14 +60,15 @@ class MessageScene extends Component {
           <Image style={menuStyle} source={require('../images/menu.png')} />
         </TouchableHighlight>
 
+        {/*
         <TouchableHighlight onPress={this.onMessagePress.bind(this)}>
           <Image style={messageStyle} source={require('../images/message.png')} />
         </TouchableHighlight>
-        
+        */}
+
         {/*
         <Text style={usernameStyle}>
           *this.state.match.username
-          mochacakes
         </Text>
         <View style={{ alignSelf: 'center', borderColor: '#ddd', borderBottomWidth: 1, paddingTop: 5, width: 300 }} />
         */}
@@ -182,6 +189,9 @@ class MessageScene extends Component {
   }
 
   onBack() {
+    Keyboard.dismiss()
+    this.setState({ showKeyboard: false })
+
     this.props.navigator.push({
       title: this.props.back,
       passProps: {
@@ -193,6 +203,9 @@ class MessageScene extends Component {
   }
 
   onMenuPress() {
+    Keyboard.dismiss()
+    this.setState({ showKeyboard: false })
+
     this.props.navigator.push({
       title: 'Menu',
       passProps: {
@@ -205,6 +218,8 @@ class MessageScene extends Component {
   }
 
   onYuzuPress() {
+    Keyboard.dismiss()
+    this.setState({ showKeyboard: false })
     this.props.navigator.push({
       title: 'Main',
       passProps: {
@@ -215,16 +230,16 @@ class MessageScene extends Component {
     })
   }
 
-  onMessagePress() {
-    this.props.navigator.push({
-      title: 'MessageList',
-      passProps: {
-        user: this.props.user,
-        type: 'backward',
-        location: this.props.location
-      }
-    })
-  }
+  // onMessagePress() {
+  //   this.props.navigator.push({
+  //     title: 'MessageList',
+  //     passProps: {
+  //       user: this.props.user,
+  //       type: 'backward',
+  //       location: this.props.location
+  //     }
+  //   })
+  // }
 
 }
 

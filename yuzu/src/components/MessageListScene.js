@@ -17,10 +17,9 @@ class MessageListScene extends Component {
 
      };
   }
-
-  // componentDidMount() {
-
-  // }
+  
+  // TO DO:
+  //  add more info to list items (last message time, last message?)
 
   render() {
     const { menuStyle, messageStyle, backStyle, backTextStyle } = styles
@@ -35,10 +34,12 @@ class MessageListScene extends Component {
           <Image style={menuStyle} source={require('../images/menu.png')} />
         </TouchableHighlight>
 
+        {/*
         <TouchableHighlight>
           <Image style={messageStyle} source={require('../images/message.png')} />
         </TouchableHighlight>
-      
+        */}
+
         <ScrollView>
           {this.renderMessageList()}
         </ScrollView>
@@ -74,11 +75,13 @@ class MessageListScene extends Component {
       })
     } 
 
+    
     return (
       messageList.map(match =>
         <MessageListDetail onPress={this.onMessagePress.bind(this, match)} user={match} key={match.uid} />
       )
     ) 
+    
   }
 
   onBack() {

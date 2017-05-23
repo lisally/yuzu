@@ -27,6 +27,14 @@ class MainScene extends Component {
      };
   }
 
+
+  // TO DO:
+  //  re-write match rendering with listeners in componentDidMount()
+  //  increase/decrease match count
+  //  match count notification?
+  //  remove user from matches when changing locations
+  
+
   componentDidMount() {
     const { ref, user, matching } = this.state
     var matchStatus = ref.child('users/' + user + '/matchingStatus/')

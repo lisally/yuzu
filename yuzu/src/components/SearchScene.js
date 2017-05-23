@@ -27,7 +27,7 @@ class SearchScene extends Component {
           <CardSection>
             <View style={containerStyle}>
               <TextInput 
-                ref={'messageInput'}
+                ref={(ref) => this._input = ref}
                 placeholder="Search"
                 autoCorrect={false}
                 style={inputStyle}
