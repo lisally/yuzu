@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, Keyboard, TouchableHighlight, ScrollView, ActivityIndicator, Image, TouchableWithoutFeedback, TextInput } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail, MatchDetail } from './common';
+import { Button, Card, CardSection, Input, Spinner, MessageSenderDetail, MessageMatchDetail } from './common';
 import firebase from 'firebase'
 
 class MessageScene extends Component {
@@ -11,8 +11,8 @@ class MessageScene extends Component {
       // location: this.props.location,
       location: 'Seattle',
       user: this.props.user,
-      match: this.props.match,
-      // match: 'Jl7CIpVsG3h4RcZEhGzIS2eryFA2',
+      // match: this.props.match,
+      match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
       message: '',
       showKeyboard: false,
       dateFormat: require('dateformat'),
@@ -165,9 +165,18 @@ class MessageScene extends Component {
       })
     }
 
+    // var result = (
+    //   messageList.forEach(function(msg) {
+    //     if (msg.sender)
+    //   })
+
+    // )
+
+
+
     return (
       messageList.map(message =>
-        <Text>{message.sender}: {message.text}</Text>
+        <MessageSenderDetail message={message} />
       )
     )
 
