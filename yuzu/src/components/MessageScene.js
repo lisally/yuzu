@@ -11,15 +11,33 @@ class MessageScene extends Component {
       // location: this.props.location,
       location: 'Seattle',
       user: this.props.user,
-      match: this.props.match,
-      message: "",
-      pushKeyboard: false,
+      // match: this.props.match,
+      match: 'Jl7CIpVsG3h4RcZEhGzIS2eryFA2',
+      message: '',
+      showKeyboard: false,
+      dateFormat: require('dateformat'),
+      messagesLoaded: false,
+      loading: false
      };
   }
 
-  // componentDidMount() {
+  componentDidMount() {
+    const { user } = this.state
+    this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
 
-  // }
+    this.messageRef.on('child_added', (snapshot) => {
+      console.log('child_added')
+      this.setState({ messagesLoaded: false })
+      
+    })
+
+    this.messageRef.on('child_changed', (snapshot) => {
+      console.log('child_changed')
+      this.setState({ messagesLoaded: false })
+      
+    })
+
+  }
 
   render() {
     const { menuStyle, messageStyle, bottomContainerStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
@@ -48,6 +66,7 @@ class MessageScene extends Component {
         */}
 
         <ScrollView>
+          {this.renderMessages()}
         </ScrollView>
 
 
@@ -57,6 +76,7 @@ class MessageScene extends Component {
           </Text>
 
           <TextInput
+            ref={'messageInput'}
             placeholder="Aa"
             style={inputStyle}
             value={this.state.message}
@@ -83,20 +103,65 @@ class MessageScene extends Component {
   }
 
   onSendMessage() {
+    const { ref, user, match, message, date, dateFormat } = this.state
+    Keyboard.dismiss()
+    this.setState({ showKeyboard: false, message: '' })
+    this.refs['messageInput'].setNativeProps({text: ''});
+
+    if (message.length > 0) {
+      var dateString = dateFormat(+new Date, "mmmm dS, h:MM TT")
+
+      var messageObj = {
+        sender: user,
+        text: message,
+        time: dateString
+      }
+
+      ref.child('users/' + match + '/messageList/' + user + '/messages/').once('value', snapshot => {
+        if (snapshot.val() == null) {
+          ref.child('users/' + match + '/messageList/' + user + '/messages/').set([messageObj])
+          ref.child('users/' + user + '/messageList/' + match + '/messages/').set([messageObj])        
+          
+        } else {
+          var messages = snapshot.val()
+          messages.push(messageObj)
+          ref.child('users/' + user + '/messageList/' + match + '/messages/').set(messages)          
+          ref.child('users/' + match + '/messageList/' + user + '/messages/').set(messages)
+        }
+      })
+    }
+  }
+
+  renderMessages() {
+    const { ref, user, location, loading, messagesLoaded } = this.state
+
+    if (loading) {
+      return (
+          <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', paddingTop: 200 }}>
+            <ActivityIndicator size='large' />
+          </View>
+        )
+    }
+
+    if (!messagesLoaded) {
+      this.setState({ loading: true })
+    }
+
+    
 
   }
 
   showKeyboard() {
-    this.setState({ pushKeyboard: true })
+    this.setState({ showKeyboard: true })
   }
 
   hideKeyboard() {
-    this.setState({ pushKeyboard: false })    
+    this.setState({ showKeyboard: false })    
   }
 
   renderShowKeyboard() {
-    if (this.state.pushKeyboard) {
-      return <View style={{ height: 300 }} />
+    if (this.state.showKeyboard) {
+      return <View style={{ height: 258 }} />
     }
   }
 
@@ -150,11 +215,15 @@ class MessageScene extends Component {
 const styles = {
   bottomContainerStyle: {
     flexDirection: 'row',
+    backgroundColor: '#F8F8F8',
+    paddingTop: 10,
+    paddingBottom: 10
   },
   backTextStyle: {
     color: '#89bc4f',
     fontSize: 40,
-    marginLeft: 10
+    marginLeft: 10,
+    marginTop: -8
   },
   inputStyle: {
     width: 300,
@@ -167,6 +236,7 @@ const styles = {
     paddingLeft: 10,
     marginLeft: 10,
     color: '#404040',
+    backgroundColor: 'white'
   },
   menuStyle: {
     width: 22,
