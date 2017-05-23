@@ -17,7 +17,8 @@ class MessageScene extends Component {
       showKeyboard: false,
       dateFormat: require('dateformat'),
       messagesLoaded: false,
-      loading: false
+      loading: false, 
+      messageList: []
      };
   }
 
@@ -133,7 +134,7 @@ class MessageScene extends Component {
   }
 
   renderMessages() {
-    const { ref, user, location, loading, messagesLoaded } = this.state
+    const { ref, user, match, loading, messagesLoaded, messageList } = this.state
 
     if (loading) {
       return (
@@ -145,9 +146,21 @@ class MessageScene extends Component {
 
     if (!messagesLoaded) {
       this.setState({ loading: true })
+      list = []
+
+      ref.child('users/' + user + '/messageList/' + match + '/messages/').once('value', snapshot => {
+        if (snapshot.val() != null) {
+          this.setState({ messageList: snapshot.val(), loading: false, messagesLoaded: true })
+        }
+      })
     }
 
-    
+    return (
+      messageList.map(message =>
+        <Text>{message.sender}: {message.text}</Text>
+      )
+    )
+
 
   }
 
