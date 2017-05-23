@@ -19,12 +19,20 @@ class MessageScene extends Component {
   // }
 
   render() {
-    const { menuStyle, backStyle, backTextStyle } = styles
+    const { menuStyle, messageStyle, backStyle, backTextStyle } = styles
 
     return (
       <View style={{flex:1}}>
+        <TouchableHighlight onPress={this.onYuzuPress.bind(this)}>
+          <View style={{ height: 35, width: 105, position: 'absolute', marginTop: -45, marginLeft: 130 }} />
+        </TouchableHighlight>
+
         <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
           <Image style={menuStyle} source={require('../images/menu.png')} />
+        </TouchableHighlight>
+
+        <TouchableHighlight onPress={this.onMessagePress.bind(this)}>
+          <Image style={messageStyle} source={require('../images/message.png')} />
         </TouchableHighlight>
       
         <ScrollView>
@@ -68,6 +76,28 @@ class MessageScene extends Component {
     })
   }
 
+  onYuzuPress() {
+    this.props.navigator.push({
+      title: 'Main',
+      passProps: {
+        user: this.props.user,
+        location: this.props.location,
+        type: 'backward'
+      }
+    })
+  }
+
+  onMessagePress() {
+    this.props.navigator.push({
+      title: 'MessageList',
+      passProps: {
+        user: this.props.user,
+        type: 'backward',
+        location: this.props.location
+      }
+    })
+  }
+
 }
 
 const styles = {
@@ -83,7 +113,13 @@ const styles = {
     height: 20,
     marginTop: -38,
     marginLeft: 14
-  }
+  },
+  messageStyle: {
+    width: 28,
+    height: 28,
+    marginTop: -42,
+    marginLeft: 335  
+  },
 }
 
 

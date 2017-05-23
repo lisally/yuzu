@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal, TouchableWithoutFeedback } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail, MatchDetail } from './common';
+import { Button, Card, CardSection, Input, Spinner, TextButton, MessageListDetail } from './common';
 import firebase from 'firebase'
 
 class MessageListScene extends Component {
@@ -23,12 +23,20 @@ class MessageListScene extends Component {
   // }
 
   render() {
-    const { menuStyle, backStyle, backTextStyle } = styles
+    const { menuStyle, messageStyle, backStyle, backTextStyle } = styles
 
     return (
       <View style={{flex:1}}>
+        <TouchableHighlight onPress={this.onYuzuPress.bind(this)}>
+          <View style={{ height: 35, width: 105, position: 'absolute', marginTop: -45, marginLeft: 130 }} />
+        </TouchableHighlight>
+
         <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
           <Image style={menuStyle} source={require('../images/menu.png')} />
+        </TouchableHighlight>
+
+        <TouchableHighlight>
+          <Image style={messageStyle} source={require('../images/message.png')} />
         </TouchableHighlight>
       
         <ScrollView>
@@ -67,9 +75,8 @@ class MessageListScene extends Component {
     } 
 
     return (
-      messageList.map(user =>
-        // <ItemDetail onPress={this.onDeletePress.bind(this, item)} item={item} key={item.Product} />
-        <Text>{ user.username }</Text>
+      messageList.map(match =>
+        <MessageListDetail onPress={this.onMessagePress.bind(this, match)} user={match} key={match.uid} />
       )
     ) 
   }
@@ -85,6 +92,19 @@ class MessageListScene extends Component {
     })
   }
 
+  onMessagePress(match) {
+    this.props.navigator.push({
+      title: 'Message',
+      passProps: {
+        user: this.props.user,
+        type: 'forward',
+        location: this.props.location,
+        match: match.uid,
+        back: 'MessageList'
+      }
+    })
+  }
+
   onMenuPress() {
     this.props.navigator.push({
       title: 'Menu',
@@ -93,6 +113,17 @@ class MessageListScene extends Component {
         location: this.props.location,
         screen: 'MessageList',
         type: 'menu'
+      }
+    })
+  }
+
+  onYuzuPress() {
+    this.props.navigator.push({
+      title: 'Main',
+      passProps: {
+        user: this.props.user,
+        location: this.props.location,
+        type: 'backward'
       }
     })
   }
@@ -112,7 +143,13 @@ const styles = {
     height: 20,
     marginTop: -38,
     marginLeft: 14
-  }
+  },
+  messageStyle: {
+    width: 28,
+    height: 28,
+    marginTop: -42,
+    marginLeft: 335  
+  },
 }
 
 
