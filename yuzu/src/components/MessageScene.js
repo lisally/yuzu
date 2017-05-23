@@ -11,8 +11,8 @@ class MessageScene extends Component {
       // location: this.props.location,
       location: 'Seattle',
       user: this.props.user,
-      // match: this.props.match,
-      match: 'Jl7CIpVsG3h4RcZEhGzIS2eryFA2',
+      match: this.props.match,
+      // match: 'Jl7CIpVsG3h4RcZEhGzIS2eryFA2',
       message: '',
       showKeyboard: false,
       dateFormat: require('dateformat'),
@@ -151,7 +151,10 @@ class MessageScene extends Component {
       ref.child('users/' + user + '/messageList/' + match + '/messages/').once('value', snapshot => {
         if (snapshot.val() != null) {
           this.setState({ messageList: snapshot.val(), loading: false, messagesLoaded: true })
+        } else {
+          this.setState({ loading: false, messagesLoaded: true })
         }
+        
       })
     }
 
