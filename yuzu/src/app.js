@@ -9,6 +9,7 @@ import SearchScene from './components/SearchScene'
 import SignUpScene from './components/SignUpScene'
 import MenuScene from './components/MenuScene'
 // import MatchScene from './components/MatchScene'
+import MessageListScene from './components/MessageListScene'
 import MessageScene from './components/MessageScene'
 
 
@@ -56,13 +57,13 @@ class App extends Component {
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            title: 'Main',
+            //title: 'Main',
             //title: 'Location',
             //title: 'Search',
             //title: 'SignUp',
             //title: 'SignIn',
             //title: 'Menu',
-            //title: 'Match',
+            title: 'MessageList',
             passProps: {
               user: this.state.user,
               type: 'forward'
@@ -106,6 +107,15 @@ class App extends Component {
               <View style={{flex:1}}>
                 <Header />
                 <SearchScene {...route.passProps} navigator={navigator} />
+              </View>
+            )
+          case 'MessageList':
+            route.passProps.user = this.state.user            
+            // return <MessageScene {...route.passProps} navigator={navigator} />
+            return (
+              <View style={{flex:1}}>
+                <Header />
+                <MessageListScene {...route.passProps} navigator={navigator} />
               </View>
             )
           case 'Message':

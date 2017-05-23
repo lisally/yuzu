@@ -270,6 +270,31 @@ class MainScene extends Component {
     this.forceUpdate()
   }
 
+  onMessageMatch(match) {
+    const { ref, user, location } = this.state
+
+    this.setState({ showMatches: false })    
+
+    ref.child('users/' + user + '/messageList/' + match.uid + '/profile/').set({
+      fname: match.fname,
+      lname: match.lname,
+      username: match.username,
+      uid: match.uid
+    })
+    
+    this.props.navigator.push({
+      title: 'Message',
+      passProps: {
+        user: this.props.user,
+        type: 'forward',
+        location: this.props.location,
+        match: match.uid,
+        back: 'Main'
+      }
+    })
+
+  }
+
   renderMatchList() {
     const { ref, user, location, yuzuLoading, yuzuLoaded, yuzuList } = this.state
 
@@ -293,7 +318,6 @@ class MainScene extends Component {
             tempList.push(yuzu.val())
             tempCount += 1
           }
-          
         })
 
         tempList.sort(function (a, b) {
@@ -306,7 +330,7 @@ class MainScene extends Component {
 
     return (
       yuzuList.map(match =>
-        <MatchDetail match={match} key={match.uid} />
+        <MatchDetail match={match} key={match.uid} onPress={this.onMessageMatch.bind(this, match)} />
       )
     )
   }
@@ -531,17 +555,6 @@ class MainScene extends Component {
     this.setState({ matching: false })    
   }
 
-  // onShowMatches() {
-  //   this.props.navigator.push({
-  //     title: 'Match',
-  //     passProps: {
-  //       user: this.props.user,
-  //       type: 'match',
-  //       location: this.props.location
-  //     }
-  //   })
-  // }
-
   onShowMatches() {
     this.setState({ showMatches: true, yuzuLoaded: false })
   }
@@ -575,7 +588,7 @@ class MainScene extends Component {
 
   onMessagePress() {
     this.props.navigator.push({
-      title: 'Message',
+      title: 'MessageList',
       passProps: {
         user: this.props.user,
         type: 'forward',

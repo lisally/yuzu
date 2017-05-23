@@ -28,9 +28,8 @@ const MatchDetail = ({ match, onPress }) => {
             </View>
           )}
 
-           {/*<TouchableOpacity onPress={onPress}>*/}
         </View>
-        <TouchableOpacity>  
+        <TouchableOpacity onPress={onPress}>  
           <View style={messageStyle}>        
             <Text style={{ color: 'white', fontSize: 20 }}>
               Message

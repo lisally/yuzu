@@ -3,14 +3,18 @@ import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityI
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail, MatchDetail } from './common';
 import firebase from 'firebase'
 
-class MessageScene extends Component {
+class MessageListScene extends Component {
   constructor(props) {
     super(props)
     this.state = {
       ref: firebase.database().ref(),
       // location: this.props.location,
       location: 'Seattle',
-      user: this.props.user, 
+      user: this.props.user,
+      loading: false,
+      messageListLoaded: false,
+      messageList: []
+
      };
   }
 
@@ -28,6 +32,7 @@ class MessageScene extends Component {
         </TouchableHighlight>
       
         <ScrollView>
+          {this.renderMessageList()}
         </ScrollView>
 
 
@@ -36,23 +41,47 @@ class MessageScene extends Component {
             ‹
           </Text>
         </View> 
-
-
       </View>
-
-
     )
   }
 
+  renderMessageList() {
+    const { ref, user, location, loading, messageListLoaded, messageList } = this.state
+
+    if (loading) {
+      return <View><Spinner size="small" /></View>
+    }
+
+    if (!messageListLoaded) {
+      this.setState({ loading: true })
+      list = []
+
+      ref.child('users/' + user + '/messageList/').once('value', snapshot => {
+        if (snapshot.val() != null) {
+          snapshot.forEach(function(match) {
+            list.push(match.val().profile)
+          })
+        }
+        this.setState({ messageList: list, messageListLoaded: true, loading: false  })
+      })
+    } 
+
+    return (
+      messageList.map(user =>
+        // <ItemDetail onPress={this.onDeletePress.bind(this, item)} item={item} key={item.Product} />
+        <Text>{ user.username }</Text>
+      )
+    ) 
+  }
 
   onBack() {
     this.props.navigator.push({
-      title: this.props.back,
+      title: 'Main',
       passProps: {
         user: this.props.user,
         type: 'backward',
         location: this.props.location
-      },
+      }
     })
   }
 
@@ -62,7 +91,7 @@ class MessageScene extends Component {
       passProps: {
         user: this.props.user,
         location: this.props.location,
-        screen: 'Message',
+        screen: 'MessageList',
         type: 'menu'
       }
     })
@@ -89,4 +118,4 @@ const styles = {
 
 
 
-export default MessageScene
+export default MessageListScene
