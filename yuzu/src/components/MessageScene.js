@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, TouchableWithoutFeedback, TextInput } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail, MatchDetail } from './common';
 import firebase from 'firebase'
 
@@ -10,7 +10,9 @@ class MessageScene extends Component {
       ref: firebase.database().ref(),
       // location: this.props.location,
       location: 'Seattle',
-      user: this.props.user, 
+      user: this.props.user,
+      match: this.props.match,
+      message: "",
      };
   }
 
@@ -19,7 +21,9 @@ class MessageScene extends Component {
   // }
 
   render() {
-    const { menuStyle, messageStyle, backStyle, backTextStyle } = styles
+    const { menuStyle, messageStyle, bottomContainerStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
+
+    console.log(this.props)
 
     return (
       <View style={{flex:1}}>
@@ -35,14 +39,37 @@ class MessageScene extends Component {
           <Image style={messageStyle} source={require('../images/message.png')} />
         </TouchableHighlight>
       
+        <Text style={usernameStyle}>
+          {/*this.state.match.username*/}
+          mochacakes
+        </Text>
+        <View style={{ alignSelf: 'center', borderColor: '#ddd', borderBottomWidth: 1, paddingTop: 5, width: 300 }} />
+
+
         <ScrollView>
         </ScrollView>
 
 
-        <View style={backStyle}>
+        <View style={bottomContainerStyle}>
           <Text style={backTextStyle} onPress={this.onBack.bind(this)}>
             ‹
           </Text>
+
+          <TextInput
+            placeholder="Aa"
+            style={inputStyle}
+            value={this.state.message}
+            onChangeText={message => this.setState({ message })}
+          />
+
+          <TouchableOpacity onPress={this.onSendMessage.bind(this)}>
+            <View style={buttonStyle}>
+            <Text style={buttonTextStyle}>
+            ‹
+            </Text>
+            </View>
+          </TouchableOpacity>
+
         </View> 
 
 
@@ -52,6 +79,9 @@ class MessageScene extends Component {
     )
   }
 
+  onSendMessage() {
+
+  }
 
   onBack() {
     this.props.navigator.push({
@@ -101,12 +131,25 @@ class MessageScene extends Component {
 }
 
 const styles = {
-  backStyle: {
-    marginLeft: 10
+  bottomContainerStyle: {
+    flexDirection: 'row',
   },
   backTextStyle: {
     color: '#89bc4f',
-    fontSize: 40
+    fontSize: 40,
+    marginLeft: 10
+  },
+  inputStyle: {
+    width: 300,
+    justifyContent: 'flex-start',
+    borderColor: '#ddd',
+    borderWidth: 1,   
+    borderRadius: 10,
+    height: 40,
+    paddingRight: 10,
+    paddingLeft: 10,
+    marginLeft: 10,
+    color: '#404040',
   },
   menuStyle: {
     width: 22,
@@ -120,6 +163,27 @@ const styles = {
     marginTop: -42,
     marginLeft: 335  
   },
+  usernameStyle: {
+    paddingTop: 5, 
+    alignSelf: 'center', 
+    fontSize: 20, 
+    color: '#404040', 
+    borderColor: '#ddd', 
+    borderBottomWidth: 1,
+  },
+  buttonStyle: {
+    height: 40,
+    backgroundColor: '#89bc4f',
+    width: 35,
+    marginLeft: -10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonTextStyle: {
+    color: 'white',
+    fontSize: 28,
+    transform: [{ rotate: '90deg'}]
+  }
 }
 
 

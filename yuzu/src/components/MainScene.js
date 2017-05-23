@@ -182,6 +182,9 @@ class MainScene extends Component {
               ref.child('users/' + user + '/userMatchList/').set(matches)
             })
           })
+
+          // firebase.database().ref('locations').once('value')
+          //   .then(snapshot => this.setState({ locationData: snapshot.val(), loading: false }))
         })    
       })
     }
