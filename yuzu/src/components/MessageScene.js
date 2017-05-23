@@ -23,8 +23,6 @@ class MessageScene extends Component {
   render() {
     const { menuStyle, messageStyle, bottomContainerStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
 
-    console.log(this.props)
-
     return (
       <View style={{flex:1}}>
         <TouchableHighlight onPress={this.onYuzuPress.bind(this)}>
@@ -38,13 +36,14 @@ class MessageScene extends Component {
         <TouchableHighlight onPress={this.onMessagePress.bind(this)}>
           <Image style={messageStyle} source={require('../images/message.png')} />
         </TouchableHighlight>
-      
+        
+        {/*
         <Text style={usernameStyle}>
-          {/*this.state.match.username*/}
+          *this.state.match.username
           mochacakes
         </Text>
         <View style={{ alignSelf: 'center', borderColor: '#ddd', borderBottomWidth: 1, paddingTop: 5, width: 300 }} />
-
+        */}
 
         <ScrollView>
         </ScrollView>
@@ -62,7 +61,7 @@ class MessageScene extends Component {
             onChangeText={message => this.setState({ message })}
           />
 
-          <TouchableOpacity onPress={this.onSendMessage.bind(this)}>
+          <TouchableOpacity activeOpacity={0.8} onPress={this.onSendMessage.bind(this)}>
             <View style={buttonStyle}>
             <Text style={buttonTextStyle}>
             ‹
