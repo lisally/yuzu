@@ -23,17 +23,17 @@ const styles = {
     paddingRight: 15,
     paddingTop: 10,
     paddingBottom: 10,
-    marginLeft: 150,    
+    marginLeft: 150, 
+    marginRight: 10,
+    marginBottom: 5,
     borderRadius: 30,
     borderColor: 'white',
     backgroundColor: '#89bc4f',
-    flex: 1,
-    justifyContent: 'flex-end',
-    marginBottom: 5,
-
+    alignSelf: 'flex-end',
+    alignItems: 'center'
   },
   messageStyle: {
-    fontSize: 18,
+    fontSize: 16,
     color: 'white'
   }
 }

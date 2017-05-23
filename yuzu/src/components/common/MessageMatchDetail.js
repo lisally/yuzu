@@ -3,34 +3,34 @@ import { View, Text, TouchableOpacity } from 'react-native'
 
 const MessageMatchDetail = ({ message }) => {
     const { text, sender, time } = message
-    // const { containerStyle, usernameStyle, itemStyle, productStyle, messageStyle } = styles 
+    const { containerStyle, messageStyle } = styles 
 
 
     return (
-      <TouchableOpacity onPress={onPress}>
-        <View style={containerStyle}>
-          <Text style={usernameStyle}>{username}</Text>
-        </View>
-      </TouchableOpacity>
+      <View style={containerStyle}>
+        <Text style={messageStyle}>{text}</Text>
+      </View>
     )
 }
 
 const styles = {
   containerStyle: {
-    paddingTop: 15,
-    paddingBottom: 15,    
-    backgroundColor: '#fff',
-    flexDirection: 'column',
-    position: 'relative',
-    alignSelf: 'stretch',
-    borderColor: '#ddd',
-    borderBottomWidth: 1
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginRight: 150, 
+    marginLeft: 10,
+    marginBottom: 5,
+    borderRadius: 30,
+    borderColor: 'white',
+    backgroundColor: '#f2f2f2',
+    alignSelf: 'flex-start',
+    alignItems: 'center'
   },
-  usernameStyle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#404040',
-    paddingLeft: 10
+  messageStyle: {
+    fontSize: 16,
+    color: '#404040'
   }
 }
 

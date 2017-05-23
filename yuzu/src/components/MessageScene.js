@@ -50,8 +50,8 @@ class MessageScene extends Component {
     const { menuStyle, messageStyle, bottomContainerStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
 
     return (
-      <TouchableWithoutFeedback onPress={this.hideKeyboard.bind(this)} >
       <View style={{flex:1}}>
+        
         <TouchableHighlight onPress={this.onYuzuPress.bind(this)}>
           <View style={{ height: 35, width: 105, position: 'absolute', marginTop: -45, marginLeft: 130 }} />
         </TouchableHighlight>
@@ -72,10 +72,13 @@ class MessageScene extends Component {
         </Text>
         <View style={{ alignSelf: 'center', borderColor: '#ddd', borderBottomWidth: 1, paddingTop: 5, width: 300 }} />
         */}
-
-        <ScrollView>
+        <TouchableWithoutFeedback onPress={this.hideKeyboard.bind(this)} >
+        <ScrollView> 
+          <View style={{ marginTop: 5 }}>
           {this.renderMessages()}
+          </View>
         </ScrollView>
+        </TouchableWithoutFeedback>
 
 
         <View style={bottomContainerStyle}>
@@ -102,11 +105,10 @@ class MessageScene extends Component {
           </TouchableOpacity>
 
         </View> 
+        {this.renderShowKeyboard()}     
 
-        {this.renderShowKeyboard()}
-        
       </View>
-      </TouchableWithoutFeedback>
+      // </TouchableWithoutFeedback>
     )
   }
 
@@ -174,12 +176,17 @@ class MessageScene extends Component {
 
 
 
+    // return (
+    //   messageList.map(message =>
+    //     <MessageSenderDetail message={message} />
+    //   )
+    // )
+
     return (
       messageList.map(message =>
-        <MessageSenderDetail message={message} />
+        <MessageMatchDetail message={message} />
       )
     )
-
 
   }
 
