@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, TouchableWithoutFeedback, TextInput } from 'react-native';
+import { Text, View, TouchableOpacity, Keyboard, TouchableHighlight, ScrollView, ActivityIndicator, Image, TouchableWithoutFeedback, TextInput } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail, MatchDetail } from './common';
 import firebase from 'firebase'
 
@@ -13,6 +13,7 @@ class MessageScene extends Component {
       user: this.props.user,
       match: this.props.match,
       message: "",
+      pushKeyboard: false,
      };
   }
 
@@ -24,6 +25,7 @@ class MessageScene extends Component {
     const { menuStyle, messageStyle, bottomContainerStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
 
     return (
+      <TouchableWithoutFeedback onPress={this.hideKeyboard.bind(this)} >
       <View style={{flex:1}}>
         <TouchableHighlight onPress={this.onYuzuPress.bind(this)}>
           <View style={{ height: 35, width: 105, position: 'absolute', marginTop: -45, marginLeft: 130 }} />
@@ -59,6 +61,8 @@ class MessageScene extends Component {
             style={inputStyle}
             value={this.state.message}
             onChangeText={message => this.setState({ message })}
+            onFocus={this.showKeyboard.bind(this)}
+            onEndEditing={this.hideKeyboard.bind(this)}
           />
 
           <TouchableOpacity activeOpacity={0.8} onPress={this.onSendMessage.bind(this)}>
@@ -71,15 +75,29 @@ class MessageScene extends Component {
 
         </View> 
 
-
+        {this.renderShowKeyboard()}
+        
       </View>
-
-
+      </TouchableWithoutFeedback>
     )
   }
 
   onSendMessage() {
 
+  }
+
+  showKeyboard() {
+    this.setState({ pushKeyboard: true })
+  }
+
+  hideKeyboard() {
+    this.setState({ pushKeyboard: false })    
+  }
+
+  renderShowKeyboard() {
+    if (this.state.pushKeyboard) {
+      return <View style={{ height: 300 }} />
+    }
   }
 
   onBack() {
