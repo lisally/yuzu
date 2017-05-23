@@ -73,7 +73,12 @@ class MessageScene extends Component {
         <View style={{ alignSelf: 'center', borderColor: '#ddd', borderBottomWidth: 1, paddingTop: 5, width: 300 }} />
         */}
         <TouchableWithoutFeedback onPress={this.hideKeyboard.bind(this)} >
-        <ScrollView> 
+        <ScrollView 
+          ref={ref => this.scrollView = ref}
+          onContentSizeChange={(contentWidth, contentHeight)=>{
+              this.scrollView.scrollToEnd({animated: false});
+          }}
+        >
           <View style={{ marginTop: 5 }}>
           {this.renderMessages()}
           </View>
@@ -177,6 +182,9 @@ class MessageScene extends Component {
       }
     })
     
+    
+    // this.scrollView.scrollToEnd({ animated: false })
+
     return result
 
   }
