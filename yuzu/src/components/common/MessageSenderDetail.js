@@ -23,7 +23,7 @@ const styles = {
     paddingRight: 15,
     paddingTop: 10,
     paddingBottom: 10,
-    marginLeft: 150, 
+    marginLeft: 130, 
     marginRight: 10,
     marginBottom: 5,
     borderRadius: 30,

@@ -19,7 +19,7 @@ const styles = {
     paddingRight: 15,
     paddingTop: 10,
     paddingBottom: 10,
-    marginRight: 150, 
+    marginRight: 130, 
     marginLeft: 10,
     marginBottom: 5,
     borderRadius: 30,

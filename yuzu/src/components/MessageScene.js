@@ -167,26 +167,17 @@ class MessageScene extends Component {
       })
     }
 
-    // var result = (
-    //   messageList.forEach(function(msg) {
-    //     if (msg.sender)
-    //   })
+    var result = []
 
-    // )
-
-
-
-    // return (
-    //   messageList.map(message =>
-    //     <MessageSenderDetail message={message} />
-    //   )
-    // )
-
-    return (
-      messageList.map(message =>
-        <MessageMatchDetail message={message} />
-      )
-    )
+    messageList.forEach(function(msg) {
+      if (msg.sender == user) {
+        result.push(<MessageSenderDetail message={msg} />)
+      } else {
+        result.push(<MessageMatchDetail message={msg} />)        
+      }
+    })
+    
+    return result
 
   }
 
