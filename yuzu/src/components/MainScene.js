@@ -59,6 +59,12 @@ class MainScene extends Component {
       // this.setState({ notification: snapshot.val() })
     })
 
+    this.unseenMessageRef.on('child_added', (snapshot) => {
+      console.log(snapshot.val())
+      // this.setState({ notification: snapshot.val() })
+    })
+
+
 
     // this.unseenMessageRef = firebase.database().ref('users/' + user + '/messageList/')
     

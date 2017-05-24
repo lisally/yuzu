@@ -142,7 +142,7 @@ class MessageScene extends Component {
 
       ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {
         if (snapshot.val() == null) {
-          ref.child('users/' + match.uid + '/unseenMessageList/').set([messageObj])     
+          ref.child('users/' + match.uid + '/unseenMessageList/').set([match.uid])     
         } else {
           var messageNotifications = snapshot.val()
           if (messageNotifications.indexOf(match.uid) == -1) {
