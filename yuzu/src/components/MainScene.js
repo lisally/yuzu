@@ -22,7 +22,8 @@ class MainScene extends Component {
       yuzuLoading: false,
       yuzuLoaded: false,
       yuzuList: [],
-      notification: false
+      notification: false, 
+      notificationLoaded: false
      };
   }
 
@@ -55,18 +56,14 @@ class MainScene extends Component {
 
     this.unseenMessageRef = firebase.database().ref('users/' + user + '/unseenMessageList/')
     this.unseenMessageRef.on('child_changed', (snapshot) => {
-      console.log('child_changed')
+      this.setState({ notificationLoaded: false })
     })
-
     this.unseenMessageRef.on('child_added', (snapshot) => {
-      console.log('child_added')
+      this.setState({ notificationLoaded: false })
     })
-
     this.unseenMessageRef.on('child_added', (snapshot) => {
-      console.log('child_removed')
+      this.setState({ notificationLoaded: false })
     })
-
-
 
     // this.unseenMessageRef = firebase.database().ref('users/' + user + '/messageList/')
     
@@ -176,8 +173,19 @@ class MainScene extends Component {
   }
 
   renderNotifications() {
-    const { notification } = this.state
+    const { ref, user, notification, notificationLoaded } = this.state
     const { messageStyle } = styles
+
+    if (!notificationLoaded) {
+      ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
+        if (snapshot.val() == null) {
+          this.setState({ notification: false, notificationLoaded: true })
+        } else {
+          this.setState({ notification: true, notificationLoaded: true })
+        }
+      })
+
+    }
 
     if (notification) {
       return (

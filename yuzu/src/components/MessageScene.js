@@ -50,7 +50,7 @@ class MessageScene extends Component {
             // if (messageNotifications.length == 0) {
             //   ref.child('matches/' + location + '/' + deletedItem.Product + '/').remove()
             // } else {
-              ref.child('users/' + match.uid + '/unseenMessageList/').set(messageNotifications)              
+              ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
             // }
           }
         }
