@@ -81,8 +81,14 @@ class MessageScene extends Component {
         <ScrollView 
           ref={ref => this.scrollView = ref}
           onContentSizeChange={(contentWidth, contentHeight)=>{
+            if (contentHeight > 540) {
               this.scrollView.scrollToEnd({animated: false});
+            }
           }}
+          // onContentSizeChange={(contentWidth, contentHeight)=>{
+          //   console.log(contentHeight)
+          //   this.scrollView.scrollTo({y: contentHeight animated: true});
+          // }}
         >
           <View style={{ marginTop: 7 }}>
           {this.renderMessages()}
@@ -270,7 +276,6 @@ const styles = {
     borderBottomWidth: 1,
     borderColor: '#ddd',
     position: 'relative',
-    paddingRight: 5,
     flexDirection: 'row'
   },
   bottomContainerStyle: {
