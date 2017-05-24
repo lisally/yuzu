@@ -43,17 +43,17 @@ class MainScene extends Component {
       }
     })
 
-    var messageStatus = ref.child('users/' + user + '/unseenMessagesStatus/')
-    messageStatus.once('value', snapshot => {
-      if (snapshot.val() == null) {
-        messageStatus.set(false)
-        this.setState({ notification: false })
-      } else {
-        this.setState({ notification: snapshot.val() })
-      }
-    })
+    // var messageStatus = ref.child('users/' + user + '/unseenMessagesStatus/')
+    // messageStatus.once('value', snapshot => {
+    //   if (snapshot.val() == null) {
+    //     messageStatus.set(false)
+    //     this.setState({ notification: false })
+    //   } else {
+    //     this.setState({ notification: snapshot.val() })
+    //   }
+    // })
 
-    this.unseenMessageRef = firebase.database().ref('users/' + user + '/unseenMessagesStatus/')
+    this.unseenMessageRef = firebase.database().ref('users/' + user + '/unseenMessageList/')
     this.unseenMessageRef.on('child_changed', (snapshot) => {
       console.log(snapshot.val())
       // this.setState({ notification: snapshot.val() })

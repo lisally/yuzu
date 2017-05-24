@@ -24,6 +24,8 @@ class MenuScene extends Component {
         <Image style={styles.imageStyle} source={require('../images/header.png')} />
       </View>
 
+       {this.renderShowLocation()} 
+
       <MenuDetail onPress={this.onProfilePress.bind(this)}>
         Profile
       </MenuDetail>
@@ -35,8 +37,6 @@ class MenuScene extends Component {
       <MenuDetail onPress={this.onTermsPress.bind(this)}>
         Terms and Conditions
       </MenuDetail>
-
-      {this.renderShowLocation()} 
 
       <MenuDetail onPress={this.onSignOutPress.bind(this)}>
         Sign Out

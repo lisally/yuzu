@@ -139,14 +139,23 @@ class MessageScene extends Component {
         text: message,
         time: dateString
       }
-      
-      ref.child('users/' + match.uid + '/unseenMessagesStatus/').set(true)
+
+      ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {
+        if (snapshot.val() == null) {
+          ref.child('users/' + match.uid + '/unseenMessageList/').set([messageObj])     
+        } else {
+          var messageNotifications = snapshot.val()
+          if (messageNotifications.indexOf(match.uid) == -1) {
+            messageNotifications.push(match.uid)       
+            ref.child('users/' + match.uid + '/unseenMessageList/').set(messageNotifications)
+          }
+        }
+      })
 
       ref.child('users/' + match.uid + '/messageList/' + user + '/messages/').once('value', snapshot => {
         if (snapshot.val() == null) {
           ref.child('users/' + match.uid + '/messageList/' + user + '/messages/').set([messageObj])
           ref.child('users/' + user + '/messageList/' + match.uid + '/messages/').set([messageObj])        
-          
         } else {
           var messages = snapshot.val()
           messages.push(messageObj)
