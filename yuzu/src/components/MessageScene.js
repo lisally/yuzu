@@ -11,14 +11,14 @@ class MessageScene extends Component {
       // location: this.props.location,
       location: 'Seattle',
       user: this.props.user,
-      match: this.props.match.uid,
-      matchUsername: this.props.match.username,
+      match: this.props.match,
       message: '',
       showKeyboard: false,
       dateFormat: require('dateformat'),
       messagesLoaded: false,
       loading: false, 
       messageList: [],
+      userProfile: {}
       // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
       // matchUsername: 'saladsalsa'
 
@@ -31,7 +31,17 @@ class MessageScene extends Component {
   //  message notifications?
 
   componentDidMount() {
-    const { user } = this.state
+    const { ref, user } = this.state
+
+    ref.child('/users/' + user + '/profile/').once('value', snapshot => {
+      this.setState({ userProfile: {
+        fname: snapshot.val().fname,
+        lname: snapshot.val().lname,
+        username: snapshot.val().username,
+        uid: user
+      }})
+    })
+
     this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
 
     this.messageRef.on('child_added', (snapshot) => {
@@ -41,7 +51,6 @@ class MessageScene extends Component {
 
     this.messageRef.on('child_changed', (snapshot) => {
       this.setState({ messagesLoaded: false })
-      
     })
 
   }
@@ -64,7 +73,7 @@ class MessageScene extends Component {
 
         <View style={viewStyle}>
           <Text style={usernameStyle}>
-            {this.state.matchUsername}
+            {this.state.match.username}
           </Text>
         </View>
 
@@ -117,7 +126,7 @@ class MessageScene extends Component {
   }
 
   onSendMessage() {
-    const { ref, user, match, message, date, dateFormat } = this.state
+    const { ref, user, match, message, date, dateFormat, userProfile } = this.state
     Keyboard.dismiss()
     this.setState({ showKeyboard: false, message: '' })
     this.refs['messageInput'].setNativeProps({text: ''});
@@ -131,16 +140,28 @@ class MessageScene extends Component {
         time: dateString
       }
 
-      ref.child('users/' + match + '/messageList/' + user + '/messages/').once('value', snapshot => {
+      ref.child('users/' + match.uid + '/messageList/' + user + '/messages/').once('value', snapshot => {
         if (snapshot.val() == null) {
-          ref.child('users/' + match + '/messageList/' + user + '/messages/').set([messageObj])
-          ref.child('users/' + user + '/messageList/' + match + '/messages/').set([messageObj])        
+          ref.child('users/' + match.uid + '/messageList/' + user + '/messages/').set([messageObj])
+          ref.child('users/' + user + '/messageList/' + match.uid + '/messages/').set([messageObj])        
           
         } else {
           var messages = snapshot.val()
           messages.push(messageObj)
-          ref.child('users/' + user + '/messageList/' + match + '/messages/').set(messages)          
-          ref.child('users/' + match + '/messageList/' + user + '/messages/').set(messages)
+          ref.child('users/' + user + '/messageList/' + match.uid + '/messages/').set(messages)          
+          ref.child('users/' + match.uid + '/messageList/' + user + '/messages/').set(messages)
+        }
+      })
+
+      ref.child('users/' + user + '/messageList/' + match.uid + '/profile/').once('value', snapshot => {
+        if (snapshot.val() == null) {
+          ref.child('users/' + user + '/messageList/' + match.uid + '/profile/').set({
+            fname: match.fname,
+            lname: match.lname,
+            username: match.username,
+            uid: match.uid
+          })
+          ref.child('users/' + match.uid + '/messageList/' + user + '/profile/').set(userProfile)
         }
       })
     }
@@ -161,7 +182,7 @@ class MessageScene extends Component {
       this.setState({ loading: true })
       list = []
 
-      ref.child('users/' + user + '/messageList/' + match + '/messages/').once('value', snapshot => {
+      ref.child('users/' + user + '/messageList/' + match.uid + '/messages/').once('value', snapshot => {
         if (snapshot.val() != null) {
           this.setState({ messageList: snapshot.val(), loading: false, messagesLoaded: true })
         } else {

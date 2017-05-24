@@ -64,10 +64,7 @@ class MainScene extends Component {
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle, messageStyle } = styles;
     const { ref, itemList, matchCount, user, location, matching, } = this.state
 
-    console.log(matching)
-
-    if (matching) {
-      // this.updateMatches()
+    if (matching) {3
       this.renderMatches()
     }
 
@@ -207,14 +204,27 @@ class MainScene extends Component {
   onMessageMatch(match) {
     const { ref, user, location } = this.state
 
-    this.setState({ showMatches: false })    
+    this.setState({ showMatches: false })
 
-    ref.child('users/' + user + '/messageList/' + match.uid + '/profile/').set({
-      fname: match.fname,
-      lname: match.lname,
-      username: match.username,
-      uid: match.uid
-    })
+    // ref.child('users/' + user + '/messageList/matches/').once('value', snapshot => {
+    //   if (snapshot.val() == null) {
+    //     ref.child('users/' + user + '/messageList/matches/').set([match.uid])
+    //   } else {
+    //     var users = snapshot.val()
+    //     if (users.indexOf(match.uid) == -1) {
+    //       users.push(match.uid)
+    //       ref.child('users/' + user + '/messageList/matches/').set(users)
+    //     }
+    //   }
+
+    // })
+
+    // ref.child('users/' + user + '/messageList/' + match.uid + '/profile/').set({
+    //   fname: match.fname,
+    //   lname: match.lname,
+    //   username: match.username,
+    //   uid: match.uid
+    // })
     
     this.props.navigator.push({
       title: 'Message',

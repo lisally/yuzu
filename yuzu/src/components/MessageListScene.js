@@ -92,6 +92,22 @@ class MessageListScene extends Component {
         }
         this.setState({ messageList: list, messageListLoaded: true, loading: false  })
       })
+
+      // ref.child('users/' + user + '/messageList/').once('value', snapshot => {
+      //   if (snapshot.val() != null) {
+      //     snapshot.forEach(function(match) {
+      //       ref.child('users/' + match.key + '/profile/').once('value', snapshot2 => {
+      //         list.push({
+      //           uid: match.key,
+      //           fname: snapshot2.val().fname,
+      //           lname: snapshot2.val().lname,
+      //           username: snapshot2.val().username
+      //         })
+              
+      //       })
+      //     })
+      //   }
+      // })
     } 
 
     
