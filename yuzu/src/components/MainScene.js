@@ -21,7 +21,8 @@ class MainScene extends Component {
       showMatches: false,
       yuzuLoading: false,
       yuzuLoaded: false,
-      yuzuList: []
+      yuzuList: [],
+      notification: false
      };
   }
 
@@ -29,7 +30,6 @@ class MainScene extends Component {
   // TO DO:
   //  match count notification?
   //  remove user from matches when changing locations
-  
 
   componentDidMount() {
     const { ref, user, location, matching, matchLoading } = this.state
@@ -43,17 +43,41 @@ class MainScene extends Component {
       }
     })
 
-    this.matchRef = firebase.database().ref('matches/' + location + '/')
-
-    this.matchRef.on('child_added', (snapshot) => {
-      this.setState({ matchLoading: true })
-      
+    var messageStatus = ref.child('users/' + user + '/unseenMessagesStatus/')
+    messageStatus.once('value', snapshot => {
+      if (snapshot.val() == null) {
+        messageStatus.set(false)
+        this.setState({ notification: false })
+      } else {
+        this.setState({ notification: snapshot.val() })
+      }
     })
 
+    this.unseenMessageRef = firebase.database().ref('users/' + user + '/unseenMessagesStatus/')
+    this.unseenMessageRef.on('child_changed', (snapshot) => {
+      console.log(snapshot.val())
+      // this.setState({ notification: snapshot.val() })
+    })
+
+
+    // this.unseenMessageRef = firebase.database().ref('users/' + user + '/messageList/')
+    
+    // this.unseenMessageRef.on('child_added', (snapshot) => {
+    //   console.log('hi')
+    //   this.setState({ notification: true })
+    // })
+    // this.unseenMessageRef.on('child_changed', (snapshot) => {
+    //   console.log('hey')
+    //   this.setState({ notification: true })
+    // })
+
+    this.matchRef = firebase.database().ref('matches/' + location + '/')
+    this.matchRef.on('child_added', (snapshot) => {
+      this.setState({ matchLoading: true }) 
+    })
     this.matchRef.on('child_changed', (snapshot) => {
       this.setState({ matchLoading: true })
     })
-
     this.matchRef.on('child_removed', (snapshot) => {
       this.setState({ matchLoading: true })
     })
@@ -73,9 +97,14 @@ class MainScene extends Component {
       <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
         <Image style={menuStyle} source={require('../images/menu.png')} />
       </TouchableHighlight>
+
+      {this.renderNotifications()}
+
+      {/*
       <TouchableHighlight onPress={this.onMessagePress.bind(this)}>
         <Image style={messageStyle} source={require('../images/message.png')} />
       </TouchableHighlight>
+      */}
       <View style={buttonContainerStyle}>
       <TouchableOpacity onPress={this.onAdd.bind(this)} style={buttonStyle}>
         <Text style={buttonTextStyle}>
@@ -136,6 +165,26 @@ class MainScene extends Component {
     </View>
 
    )   
+  }
+
+  renderNotifications() {
+    const { notification } = this.state
+    const { messageStyle } = styles
+
+    if (notification) {
+      return (
+      <TouchableHighlight onPress={this.onMessagePress.bind(this)}>
+        <Image style={messageStyle} source={require('../images/message_notification.png')} />
+      </TouchableHighlight>
+      )
+    } else {
+      return (
+      <TouchableHighlight onPress={this.onMessagePress.bind(this)}>
+        <Image style={messageStyle} source={require('../images/message.png')} />
+      </TouchableHighlight>
+      )
+    }
+
   }
 
   renderMatches() {
