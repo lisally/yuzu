@@ -21,11 +21,6 @@ class MessageListScene extends Component {
   // TO DO:
   //  add more info to list items (last message time, last message?)
 
-  componentDidMount() {
-    // const { ref, user } = this.state
-    // ref.child('users/' + user + '/unseenMessagesStatus/').set(false)
-  }
-
   render() {
     const { viewStyle, messageStyle, backStyle, backTextStyle } = styles
 

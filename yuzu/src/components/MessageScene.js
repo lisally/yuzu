@@ -31,7 +31,7 @@ class MessageScene extends Component {
   //  message notifications?
 
   componentDidMount() {
-    const { ref, user } = this.state
+    const { ref, user, match } = this.state
 
     ref.child('/users/' + user + '/profile/').once('value', snapshot => {
       this.setState({ userProfile: {
@@ -42,13 +42,25 @@ class MessageScene extends Component {
       }})
     })
 
-    this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
-
-    this.messageRef.on('child_added', (snapshot) => {
-      this.setState({ messagesLoaded: false })
-      
+    ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
+      if (snapshot.val() != null) {
+          var messageNotifications = snapshot.val()
+          if (messageNotifications.indexOf(match.uid) != -1) {
+            messageNotifications.splice(messageNotifications .indexOf(match.uid), 1)
+            // if (messageNotifications.length == 0) {
+            //   ref.child('matches/' + location + '/' + deletedItem.Product + '/').remove()
+            // } else {
+              ref.child('users/' + match.uid + '/unseenMessageList/').set(messageNotifications)              
+            // }
+          }
+        }
     })
 
+
+    this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
+    this.messageRef.on('child_added', (snapshot) => {
+      this.setState({ messagesLoaded: false })
+    })
     this.messageRef.on('child_changed', (snapshot) => {
       this.setState({ messagesLoaded: false })
     })
@@ -142,11 +154,11 @@ class MessageScene extends Component {
 
       ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {
         if (snapshot.val() == null) {
-          ref.child('users/' + match.uid + '/unseenMessageList/').set([match.uid])     
+          ref.child('users/' + match.uid + '/unseenMessageList/').set([user])     
         } else {
           var messageNotifications = snapshot.val()
-          if (messageNotifications.indexOf(match.uid) == -1) {
-            messageNotifications.push(match.uid)       
+          if (messageNotifications.indexOf(user) == -1) {
+            messageNotifications.push(user)       
             ref.child('users/' + match.uid + '/unseenMessageList/').set(messageNotifications)
           }
         }
