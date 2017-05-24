@@ -8,10 +8,26 @@ class SearchScene extends Component {
     super(props)
     this.state = { 
       ref: firebase.database().ref(),
-      location: this.props.location, 
+      // location: this.props.location,
+      location: 'Seattle',
       user: this.props.user, 
       searchResult: [], 
-      loading: false };
+      loading: false,
+      matching: false
+    }
+  }
+
+  componentDidMount() {
+    const { ref, user } = this.state
+    var matchStatus = ref.child('users/' + user + '/matchingStatus/')
+    matchStatus.once('value', snapshot => {
+      if (snapshot.val() == null) {
+        matchStatus.set(false)
+        this.setState({ matching: false })
+      } else {
+        this.setState({ matching: snapshot.val() })
+      }
+    })
   }
 
 
@@ -97,11 +113,25 @@ class SearchScene extends Component {
   }
 
   onItemPress(item) {
-    const { ref } = this.state 
+    const { ref, user, location, matching } = this.state 
     Keyboard.dismiss()
     this._input.clear()
 
-    ref.child('users/' + this.state.user + '/itemList/' + item.Product).set(item)
+    ref.child('users/' + user + '/itemList/' + item.Product).set(item)
+
+    if (matching) {
+      ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
+        if (snapshot.val() == null) {
+          ref.child('matches/' + location + '/' + item.Product + '/').set([user])
+        } else {
+          var users = snapshot.val()
+          if (users.indexOf(user) == -1) {
+            users.push(user)
+            ref.child('matches/' + location + '/' + item.Product + '/').set(users)
+          }
+        }
+      })
+    }
 
     this.setState({ searchResult: [] })
       

@@ -27,8 +27,6 @@ class MainScene extends Component {
 
 
   // TO DO:
-  //  re-write match rendering with listeners in componentDidMount()
-  //  increase/decrease match count
   //  match count notification?
   //  remove user from matches when changing locations
   
@@ -69,7 +67,7 @@ class MainScene extends Component {
     console.log(matching)
 
     if (matching) {
-      this.updateMatches()
+      // this.updateMatches()
       this.renderMatches()
     }
 
@@ -234,7 +232,6 @@ class MainScene extends Component {
 
   renderMatchList() {
     const { ref, user, location, yuzuLoading, yuzuLoaded, yuzuList } = this.state
-
 
     if (yuzuLoading) {
       return (
@@ -430,23 +427,40 @@ class MainScene extends Component {
   }
 
   updateMatches() {
-    const { ref, user, location } = this.state
+    const { ref, user, location, itemList } = this.state
 
-    ref.child('users/' + user + '/itemList/').once('value', snapshot => {
-      snapshot.forEach(function(item) {
-        ref.child('matches/' + location + '/' + item.val().Product + '/').once('value', snapshot => {
+    // ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+    //   snapshot.forEach(function(item) {
+    //     ref.child('matches/' + location + '/' + item.val().Product + '/').once('value', snapshot => {
+    //       if (snapshot.val() == null) {
+    //         ref.child('matches/' + location + '/' + item.val().Product + '/').set([user])
+    //       } else {
+    //         var users = snapshot.val()
+    //         if (users.indexOf(user) == -1) {
+    //           users.push(user)
+    //           ref.child('matches/' + location + '/' + item.val().Product + '/').set(users)
+    //         }
+    //       }
+    //     })
+    //   })
+    // })
+
+    if (itemList.length > 0) {
+      itemList.forEach(function(item) {
+        ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
           if (snapshot.val() == null) {
-            ref.child('matches/' + location + '/' + item.val().Product + '/').set([user])
+            ref.child('matches/' + location + '/' + item.Product + '/').set([user])
           } else {
             var users = snapshot.val()
             if (users.indexOf(user) == -1) {
               users.push(user)
-              ref.child('matches/' + location + '/' + item.val().Product + '/').set(users)
+              ref.child('matches/' + location + '/' + item.Product + '/').set(users)
             }
           }
         })
       })
-    })
+      ref.child('users/' + user + '/matchingStatus/').set(true)
+    }
   }
 
   onMatch() {
