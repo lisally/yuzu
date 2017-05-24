@@ -63,8 +63,8 @@ class App extends Component {
             //title: 'SignUp',
             //title: 'SignIn',
             //title: 'Menu',
-            //title: 'MessageList',
-            title: 'Message',
+            title: 'MessageList',
+            //title: 'Message',
             passProps: {
               user: this.state.user,
               type: 'forward'

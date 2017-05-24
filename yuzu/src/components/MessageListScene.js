@@ -22,10 +22,11 @@ class MessageListScene extends Component {
   //  add more info to list items (last message time, last message?)
 
   render() {
-    const { menuStyle, messageStyle, backStyle, backTextStyle } = styles
+    const { messageStyle, backStyle, backTextStyle } = styles
 
     return (
       <View style={{flex:1}}>
+        {/*
         <TouchableHighlight onPress={this.onYuzuPress.bind(this)}>
           <View style={{ height: 35, width: 105, position: 'absolute', marginTop: -45, marginLeft: 130 }} />
         </TouchableHighlight>
@@ -33,6 +34,13 @@ class MessageListScene extends Component {
         <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
           <Image style={menuStyle} source={require('../images/menu.png')} />
         </TouchableHighlight>
+        */}
+
+        <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
+          <Text style={backTextStyle}>
+            ‹
+          </Text>
+        </TouchableOpacity>
 
         {/*
         <TouchableHighlight>
@@ -102,7 +110,7 @@ class MessageListScene extends Component {
         user: this.props.user,
         type: 'forward',
         location: this.props.location,
-        match: match.uid,
+        match: match,
         back: 'MessageList'
       }
     })
@@ -120,32 +128,28 @@ class MessageListScene extends Component {
     })
   }
 
-  onYuzuPress() {
-    this.props.navigator.push({
-      title: 'Main',
-      passProps: {
-        user: this.props.user,
-        location: this.props.location,
-        type: 'backward'
-      }
-    })
-  }
+  // onYuzuPress() {
+  //   this.props.navigator.push({
+  //     title: 'Main',
+  //     passProps: {
+  //       user: this.props.user,
+  //       location: this.props.location,
+  //       type: 'backward'
+  //     }
+  //   })
+  // }
 
 }
 
 const styles = {
   backStyle: {
-    marginLeft: 10
+    position: 'absolute',
+    marginLeft: 10,
+    marginTop: -58
   },
   backTextStyle: {
     color: '#89bc4f',
-    fontSize: 40
-  },
-  menuStyle: {
-    width: 22,
-    height: 20,
-    marginTop: -38,
-    marginLeft: 14
+    fontSize: 45
   },
   messageStyle: {
     width: 28,

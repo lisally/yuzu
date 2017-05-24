@@ -218,11 +218,13 @@ class MainScene extends Component {
         {this.renderClearAll()}
       </ScrollView>
 
+      {/*
       <View style={backStyle}>
         <Text style={backTextStyle} onPress={this.onBack.bind(this)}>
           ‹
         </Text>
       </View> 
+      */}
 
       {this.renderMatchButton()}
 
@@ -236,6 +238,9 @@ class MainScene extends Component {
        <View style={{ height: 69 }}>
           <TouchableOpacity onPress={this.onHideMatchesMenu.bind(this)}>
             <View style={{ height: 25, width: 25, position: 'absolute', marginTop: 30, marginLeft: 12 }} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.onHideMatchesMessage.bind(this)}>
+            <View style={{ height: 28, width: 28, position: 'absolute', marginTop: 28, marginLeft: 335 }} />
           </TouchableOpacity>
         </View>
 
@@ -275,6 +280,11 @@ class MainScene extends Component {
     this.onMenuPress()
   }
 
+  onHideMatchesMessage() {
+    this.setState({ showMatches: false })
+    this.onMessagePress()
+  }
+
   onRefresh() {
     this.setState({ yuzuLoaded: false })
     this.renderMatchList()
@@ -299,7 +309,8 @@ class MainScene extends Component {
         user: this.props.user,
         type: 'forward',
         location: this.props.location,
-        match: match.uid,
+        match: match,
+        matchUsername: match.username,
         back: 'Main'
       }
     })
@@ -574,16 +585,16 @@ class MainScene extends Component {
     this.setState({ showMatches: false, yuzuLoaded: false })
   }
 
-  onBack() {
-    this.props.navigator.push({
-      title: 'Location',
-      passProps: {
-        user: this.props.user,
-        type: 'backward',
-        location: null
-      }
-    })
-  }
+  // onBack() {
+  //   this.props.navigator.push({
+  //     title: 'Location',
+  //     passProps: {
+  //       user: this.props.user,
+  //       type: 'backward',
+  //       location: null
+  //     }
+  //   })
+  // }
 
   onMenuPress() {
     this.props.navigator.push({

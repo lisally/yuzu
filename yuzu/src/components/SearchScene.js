@@ -16,13 +16,21 @@ class SearchScene extends Component {
 
 
   render() {
-    const { containerStyle, inputStyle, cameraStyle, menuStyle, backStyle, backTextStyle } = styles;
+    const { containerStyle, inputStyle, backStyle, backTextStyle } = styles;
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
         <View style={{flex:1}}>
+          {/*
           <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
             <Image style={menuStyle} source={require('../images/menu.png')} />
           </TouchableHighlight>
+          */}
+
+          <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
+            <Text style={backTextStyle}>
+              ‹
+            </Text>
+          </TouchableOpacity>
 
           <CardSection>
             <View style={containerStyle}>
@@ -43,12 +51,6 @@ class SearchScene extends Component {
           >
           {this.renderResult()}
           </ScrollView>
-
-          <View style={backStyle}>
-            <Text style={backTextStyle} onPress={this.onBack.bind(this)}>
-              ‹
-            </Text>
-          </View>
           
         </View>
       </TouchableWithoutFeedback>
@@ -125,17 +127,17 @@ class SearchScene extends Component {
     })
   }
 
-  onMenuPress() {
-    this.props.navigator.push({
-      title: 'Menu',
-      passProps: {
-        user: this.props.user,
-        location: this.props.location,
-        screen: 'Search',
-        type: 'menu'
-      }
-    })
-  }
+  // onMenuPress() {
+  //   this.props.navigator.push({
+  //     title: 'Menu',
+  //     passProps: {
+  //       user: this.props.user,
+  //       location: this.props.location,
+  //       screen: 'Search',
+  //       type: 'menu'
+  //     }
+  //   })
+  // }
 }
 
 const styles = {
@@ -153,22 +155,14 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center'
   },
-  cameraStyle: {
-    fontSize: 18,
-    color: '#000',
-  },
-  menuStyle: {
-    width: 22,
-    height: 20,
-    marginTop: -38,
-    marginLeft: 14
-  },
   backStyle: {
-    marginLeft: 10
+    position: 'absolute',
+    marginLeft: 10,
+    marginTop: -58
   },
   backTextStyle: {
     color: '#89bc4f',
-    fontSize: 40
+    fontSize: 45
   },
 }
 

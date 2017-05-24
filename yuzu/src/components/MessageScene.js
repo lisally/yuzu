@@ -11,8 +11,9 @@ class MessageScene extends Component {
       // location: this.props.location,
       location: 'Seattle',
       user: this.props.user,
-      // match: this.props.match,
-      match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
+      match: this.props.match.uid,
+      // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
+      matchUsername: this.props.match.username,
       message: '',
       showKeyboard: false,
       dateFormat: require('dateformat'),
@@ -33,13 +34,11 @@ class MessageScene extends Component {
     this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
 
     this.messageRef.on('child_added', (snapshot) => {
-      console.log('child_added')
       this.setState({ messagesLoaded: false })
       
     })
 
     this.messageRef.on('child_changed', (snapshot) => {
-      console.log('child_changed')
       this.setState({ messagesLoaded: false })
       
     })
@@ -47,7 +46,7 @@ class MessageScene extends Component {
   }
 
   render() {
-    const { menuStyle, messageStyle, bottomContainerStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
+    const { messageStyle, bottomContainerStyle, backStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
 
     return (
       <View style={{flex:1}}>
@@ -56,9 +55,17 @@ class MessageScene extends Component {
           <View style={{ height: 35, width: 105, position: 'absolute', marginTop: -45, marginLeft: 130 }} />
         </TouchableHighlight>
 
+        {/*
         <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
           <Image style={menuStyle} source={require('../images/menu.png')} />
         </TouchableHighlight>
+        */}
+
+        <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
+          <Text style={backTextStyle}>
+            ‹
+          </Text>
+        </TouchableOpacity>
 
         {/*
         <TouchableHighlight onPress={this.onMessagePress.bind(this)}>
@@ -66,12 +73,12 @@ class MessageScene extends Component {
         </TouchableHighlight>
         */}
 
-        {/*
+        {/* 
         <Text style={usernameStyle}>
-          *this.state.match.username
+          {this.state.matchUsername}
         </Text>
-        <View style={{ alignSelf: 'center', borderColor: '#ddd', borderBottomWidth: 1, paddingTop: 5, width: 300 }} />
-        */}
+        <View style={{ alignSelf: 'stretch', borderColor: '#ddd', borderBottomWidth: 0.5, paddingTop: 5, }} /> */}
+    
         <TouchableWithoutFeedback onPress={this.hideKeyboard.bind(this)} >
         <ScrollView 
           ref={ref => this.scrollView = ref}
@@ -79,7 +86,7 @@ class MessageScene extends Component {
               this.scrollView.scrollToEnd({animated: false});
           }}
         >
-          <View style={{ marginTop: 5 }}>
+          <View style={{ marginTop: 7 }}>
           {this.renderMessages()}
           </View>
         </ScrollView>
@@ -87,10 +94,6 @@ class MessageScene extends Component {
 
 
         <View style={bottomContainerStyle}>
-          <Text style={backTextStyle} onPress={this.onBack.bind(this)}>
-            ‹
-          </Text>
-
           <TextInput
             ref={'messageInput'}
             placeholder="Aa"
@@ -152,7 +155,7 @@ class MessageScene extends Component {
 
     if (loading) {
       return (
-          <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', paddingTop: 200 }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', paddingBottom: 250 }}>
             <ActivityIndicator size='large' />
           </View>
         )
@@ -217,20 +220,21 @@ class MessageScene extends Component {
     })
   }
 
-  onMenuPress() {
-    Keyboard.dismiss()
-    this.setState({ showKeyboard: false })
+  // onMenuPress() {
+  //   Keyboard.dismiss()
+  //   this.setState({ showKeyboard: false })
 
-    this.props.navigator.push({
-      title: 'Menu',
-      passProps: {
-        user: this.props.user,
-        location: this.props.location,
-        screen: 'Message',
-        type: 'menu'
-      }
-    })
-  }
+  //   this.props.navigator.push({
+  //     title: 'Menu',
+  //     passProps: {
+  //       user: this.props.user,
+  //       location: this.props.location,
+  //       screen: 'Message',
+  //       type: 'menu',
+  //       showLocation: 
+  //     }
+  //   })
+  // }
 
   onYuzuPress() {
     Keyboard.dismiss()
@@ -262,17 +266,23 @@ const styles = {
   bottomContainerStyle: {
     flexDirection: 'row',
     backgroundColor: '#F8F8F8',
-    paddingTop: 10,
-    paddingBottom: 10
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 8,
+    paddingRight: 8,
+    marginTop: 2.5,
+  },
+  backStyle: {
+    position: 'absolute',
+    marginLeft: 10,
+    marginTop: -58
   },
   backTextStyle: {
     color: '#89bc4f',
-    fontSize: 40,
-    marginLeft: 10,
-    marginTop: -8
+    fontSize: 45
   },
   inputStyle: {
-    width: 300,
+    width: 330,
     justifyContent: 'flex-start',
     borderColor: '#ddd',
     borderWidth: 1,   
@@ -280,15 +290,8 @@ const styles = {
     height: 40,
     paddingRight: 10,
     paddingLeft: 10,
-    marginLeft: 10,
     color: '#404040',
     backgroundColor: 'white'
-  },
-  menuStyle: {
-    width: 22,
-    height: 20,
-    marginTop: -38,
-    marginLeft: 14
   },
   messageStyle: {
     width: 28,
@@ -299,10 +302,8 @@ const styles = {
   usernameStyle: {
     paddingTop: 5, 
     alignSelf: 'center', 
-    fontSize: 20, 
-    color: '#404040', 
-    borderColor: '#ddd', 
-    borderBottomWidth: 1,
+    fontSize: 18, 
+    color: '#404040',
   },
   buttonStyle: {
     height: 40,
