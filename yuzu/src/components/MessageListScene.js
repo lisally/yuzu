@@ -22,7 +22,7 @@ class MessageListScene extends Component {
   //  add more info to list items (last message time, last message?)
 
   render() {
-    const { messageStyle, backStyle, backTextStyle } = styles
+    const { viewStyle, messageStyle, backStyle, backTextStyle } = styles
 
     return (
       <View style={{flex:1}}>
@@ -34,7 +34,7 @@ class MessageListScene extends Component {
         <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
           <Image style={menuStyle} source={require('../images/menu.png')} />
         </TouchableHighlight>
-        */}
+
 
         <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
           <Text style={backTextStyle}>
@@ -42,11 +42,22 @@ class MessageListScene extends Component {
           </Text>
         </TouchableOpacity>
 
-        {/*
         <TouchableHighlight>
           <Image style={messageStyle} source={require('../images/message.png')} />
         </TouchableHighlight>
         */}
+
+        <View style={viewStyle}>
+          <Text style={messageStyle}>
+            Messages
+          </Text>
+        </View>
+
+          <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
+            <Text style={backTextStyle}>
+              ‹
+            </Text>
+          </TouchableOpacity>
 
         <ScrollView>
           {this.renderMessageList()}
@@ -142,20 +153,33 @@ class MessageListScene extends Component {
 }
 
 const styles = {
+  viewStyle: {
+    backgroundColor: '#F8F8F8',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 70,
+    paddingTop: 20,
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+    position: 'relative',
+    flexDirection: 'row'
+  },
   backStyle: {
     position: 'absolute',
     marginLeft: 10,
-    marginTop: -58
+    marginTop: 12
   },
   backTextStyle: {
     color: '#89bc4f',
     fontSize: 45
   },
-  messageStyle: {
-    width: 28,
-    height: 28,
-    marginTop: -42,
-    marginLeft: 335  
+  messageStyle: { 
+    fontSize: 18, 
+    color: '#404040',
+    paddingTop: 10,
+    fontWeight: 'bold',
+    marginBottom: 10
   },
 }
 

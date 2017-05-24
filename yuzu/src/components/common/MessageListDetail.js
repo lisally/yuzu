@@ -26,8 +26,8 @@ const styles = {
     borderBottomWidth: 1
   },
   usernameStyle: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 18,
+    // fontWeight: 'bold',
     color: '#404040',
     paddingLeft: 10
   }

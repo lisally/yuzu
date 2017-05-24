@@ -115,7 +115,6 @@ class App extends Component {
             // return <MessageScene {...route.passProps} navigator={navigator} />
             return (
               <View style={{flex:1}}>
-                <Header />
                 <MessageListScene {...route.passProps} navigator={navigator} />
               </View>
             )

@@ -26,7 +26,6 @@ class MessageScene extends Component {
   }
 
   // TO DO:
-  //  styling
   //  adding profile to user's messageList when matched-user msgs user
   //  show shared items in chat
   //  message notifications?
@@ -48,7 +47,7 @@ class MessageScene extends Component {
   }
 
   render() {
-    const { viewStyle, messageStyle, bottomContainerStyle, backStyle, backTextStyle, inputStyle, usernameStyle, usernameContainerStyle, buttonStyle, buttonTextStyle } = styles
+    const { viewStyle, messageStyle, bottomContainerStyle, backStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
 
     return (
       <View style={{flex:1}}>
@@ -64,11 +63,9 @@ class MessageScene extends Component {
         */}
 
         <View style={viewStyle}>
-          <View style={usernameContainerStyle}> 
-            <Text style={usernameStyle}>
-              {this.state.matchUsername}
-            </Text>
-          </View>
+          <Text style={usernameStyle}>
+            {this.state.matchUsername}
+          </Text>
         </View>
 
           <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
@@ -85,10 +82,6 @@ class MessageScene extends Component {
               this.scrollView.scrollToEnd({animated: false});
             }
           }}
-          // onContentSizeChange={(contentWidth, contentHeight)=>{
-          //   console.log(contentHeight)
-          //   this.scrollView.scrollTo({y: contentHeight animated: true});
-          // }}
         >
           <View style={{ marginTop: 7 }}>
           {this.renderMessages()}
@@ -120,7 +113,6 @@ class MessageScene extends Component {
         {this.renderShowKeyboard()}     
 
       </View>
-      // </TouchableWithoutFeedback>
     )
   }
 
@@ -188,12 +180,7 @@ class MessageScene extends Component {
         result.push(<MessageMatchDetail message={msg} />)        
       }
     })
-    
-    
-    // this.scrollView.scrollToEnd({ animated: false })
-
     return result
-
   }
 
   showKeyboard() {
@@ -320,8 +307,6 @@ const styles = {
     paddingTop: 10,
     fontWeight: 'bold',
     marginBottom: 10
-  },
-  usernameContainerStyle: {   
   },
   buttonStyle: {
     height: 40,

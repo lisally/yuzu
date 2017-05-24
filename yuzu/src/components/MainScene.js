@@ -17,10 +17,8 @@ class MainScene extends Component {
       matchLoading: false,
       matching: false,
       matchCount: 0,
-      matches: {},
-      
+      matches: {},  
       showMatches: false,
-      // showMatches: true,
       yuzuLoading: false,
       yuzuLoaded: false,
       yuzuList: []
@@ -36,7 +34,7 @@ class MainScene extends Component {
   
 
   componentDidMount() {
-    const { ref, user, matching } = this.state
+    const { ref, user, location, matching, matchLoading } = this.state
     var matchStatus = ref.child('users/' + user + '/matchingStatus/')
     matchStatus.once('value', snapshot => {
       if (snapshot.val() == null) {
@@ -46,155 +44,33 @@ class MainScene extends Component {
         this.setState({ matching: snapshot.val() })
       }
     })
+
+    this.matchRef = firebase.database().ref('matches/' + location + '/')
+
+    this.matchRef.on('child_added', (snapshot) => {
+      this.setState({ matchLoading: true })
+      
+    })
+
+    this.matchRef.on('child_changed', (snapshot) => {
+      this.setState({ matchLoading: true })
+    })
+
+    this.matchRef.on('child_removed', (snapshot) => {
+      this.setState({ matchLoading: true })
+    })
+
   }
 
   render() {
     const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle, messageStyle } = styles;
     const { ref, itemList, matchCount, user, location, matching, } = this.state
 
+    console.log(matching)
+
     if (matching) {
       this.updateMatches()
-
-      ref.child('matches/' + location + '/').on('child_changed', (snapshot) => {
-
-        ref.child('users/' + user + '/itemList/').once('value', snapshot => {
-          snapshot.forEach(function(item) {
-            ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
-              if (snapshot2.val() != null) {
-                ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
-                  item: item.val(),
-                  users: snapshot2.val()
-                })
-              }
-            })
-          })
-        })
-        var matchesList = {}
-        var matches = []
-
-        ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
-          snapshot.forEach(function(match) {
-            match.val().users.forEach(function(yuzu) {
-              if (matchesList[yuzu] == null) {
-                matchesList[yuzu] = []
-              }
-              matchesList[yuzu].push(match.val().item)
-            })
-
-          })
-          Object.keys(matchesList).forEach(function(key) {
-            ref.child('users/' + key + '/profile/').once('value', snapshot => { 
-              matches.push({
-                uid: key,
-                username: snapshot.val().username,
-                fname: snapshot.val().fname,
-                lname: snapshot.val().lname,
-                count: matchesList[key].length,
-                list: matchesList[key]
-              })
-              ref.child('users/' + user + '/userMatchList/').set(matches)
-            })
-          })
-        })    
-      })
-
-      ref.child('matches/' + location + '/').on('child_removed', (snapshot) => {
-        // console.log('child removed')
-
-      var matchesList = {}
-      var matches = []
-
-        ref.child('users/' + user + '/itemList/').once('value', snapshot => {
-          snapshot.forEach(function(item) { 
-            ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
-              if (snapshot2.val() != null) {
-                ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
-                  item: item.val(),
-                  users: snapshot2.val()
-                })
-              }
-            })
-          })
-        }) 
-
-        var matchesList = {}
-        var matches = []
-
-        ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
-          snapshot.forEach(function(match) {
-            match.val().users.forEach(function(yuzu) {
-              if (matchesList[yuzu] == null) {
-                matchesList[yuzu] = []
-              }
-              matchesList[yuzu].push(match.val().item)
-            })
-
-          })
-          Object.keys(matchesList).forEach(function(key) {
-            ref.child('users/' + key + '/profile/').once('value', snapshot => { 
-              matches.push({
-                uid: key,
-                username: snapshot.val().username,
-                fname: snapshot.val().fname,
-                lname: snapshot.val().lname,
-                count: matchesList[key].length,
-                list: matchesList[key]
-              })
-              ref.child('users/' + user + '/userMatchList/').set(matches)
-            })
-          })
-        })    
-
-
-      })
-
-
-      ref.child('matches/' + location + '/').on('child_added', (snapshot) => {
-        // console.log('child added')
-        ref.child('users/' + user + '/itemList/').once('value', snapshot => {
-          snapshot.forEach(function(item) {
-            ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
-              if (snapshot2.val() != null) {
-                ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
-                  item: item.val(),
-                  users: snapshot2.val()
-                })
-              }
-            })
-          })
-        })
-
-        var matchesList = {}
-        var matches = []
-
-        ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
-          snapshot.forEach(function(match) {
-            match.val().users.forEach(function(yuzu) {
-              if (matchesList[yuzu] == null) {
-                matchesList[yuzu] = []
-              }
-              matchesList[yuzu].push(match.val().item)
-            })
-
-          })
-          Object.keys(matchesList).forEach(function(key) {
-            ref.child('users/' + key + '/profile/').once('value', snapshot => { 
-              matches.push({
-                uid: key,
-                username: snapshot.val().username,
-                fname: snapshot.val().fname,
-                lname: snapshot.val().lname,
-                count: matchesList[key].length,
-                list: matchesList[key]
-              })
-              ref.child('users/' + user + '/userMatchList/').set(matches)
-            })
-          })
-
-          // firebase.database().ref('locations').once('value')
-          //   .then(snapshot => this.setState({ locationData: snapshot.val(), loading: false }))
-        })    
-      })
+      this.renderMatches()
     }
 
     return (
@@ -217,14 +93,6 @@ class MainScene extends Component {
         {this.renderItemList()}
         {this.renderClearAll()}
       </ScrollView>
-
-      {/*
-      <View style={backStyle}>
-        <Text style={backTextStyle} onPress={this.onBack.bind(this)}>
-          ‹
-        </Text>
-      </View> 
-      */}
 
       {this.renderMatchButton()}
 
@@ -275,6 +143,53 @@ class MainScene extends Component {
    )   
   }
 
+  renderMatches() {
+    const { ref, user, location, matchCount, matchLoading } = this.state
+
+    if (matchLoading) {
+      ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+        snapshot.forEach(function(item) {
+          ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
+            if (snapshot2.val() != null) {
+              ref.child('users/' + user + '/itemMatchList/' + snapshot2.key).set({
+                item: item.val(),
+                users: snapshot2.val()
+              })
+            }
+          })
+        })
+      })
+
+      var matchesList = {}
+      var matches = []
+
+      ref.child('users/' + user + '/itemMatchList/').once('value', snapshot => {
+        snapshot.forEach(function(match) {
+          match.val().users.forEach(function(yuzu) {
+            if (matchesList[yuzu] == null) {
+              matchesList[yuzu] = []
+            }
+            matchesList[yuzu].push(match.val().item)
+          })
+        })
+        Object.keys(matchesList).forEach(function(key) {
+          ref.child('users/' + key + '/profile/').once('value', snapshot => { 
+            matches.push({
+              uid: key,
+              username: snapshot.val().username,
+              fname: snapshot.val().fname,
+              lname: snapshot.val().lname,
+              count: matchesList[key].length,
+              list: matchesList[key]
+            })
+            ref.child('users/' + user + '/userMatchList/').set(matches)
+          })
+        })
+        this.setState({ matchLoading: false, matchCount: Object.keys(matchesList).length - 1 })
+      })
+    }
+  }
+
   onHideMatchesMenu() {
     this.setState({ showMatches: false })
     this.onMenuPress()
@@ -319,6 +234,7 @@ class MainScene extends Component {
 
   renderMatchList() {
     const { ref, user, location, yuzuLoading, yuzuLoaded, yuzuList } = this.state
+
 
     if (yuzuLoading) {
       return (
@@ -404,7 +320,7 @@ class MainScene extends Component {
           </View>
         </View>
       )
-    } else if (matching && !matchLoading && matchCount > 1) {
+    } else if (matching && !matchLoading && (matchCount > 1 || matchCount <= 0 )) {
       return (
         <View style={matchViewStyle}>
           <TouchableOpacity onPress={this.onStopMatching.bind(this)}>
@@ -550,7 +466,8 @@ class MainScene extends Component {
         })
       })
       ref.child('users/' + user + '/matchingStatus/').set(true)
-      this.setState({ matching: true })
+      // this.setState({ matching: true, matchLoading: true })
+      this.setState({ matching: true, })      
     }
   }
 
@@ -574,7 +491,7 @@ class MainScene extends Component {
     }
     ref.child('users/' + user + '/itemMatchList/').remove()    
     ref.child('users/' + user + '/matchingStatus/').set(false)
-    this.setState({ matching: false })    
+    this.setState({ matching: false, matchLoading: false })    
   }
 
   onShowMatches() {
@@ -584,17 +501,6 @@ class MainScene extends Component {
   onHideMatches() {  
     this.setState({ showMatches: false, yuzuLoaded: false })
   }
-
-  // onBack() {
-  //   this.props.navigator.push({
-  //     title: 'Location',
-  //     passProps: {
-  //       user: this.props.user,
-  //       type: 'backward',
-  //       location: null
-  //     }
-  //   })
-  // }
 
   onMenuPress() {
     this.props.navigator.push({
