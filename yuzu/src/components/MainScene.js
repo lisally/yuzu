@@ -603,7 +603,8 @@ class MainScene extends Component {
         user: this.props.user,
         location: this.props.location,
         screen: 'Main',
-        type: 'menu'
+        type: 'menu',
+        showLocation: true,
       }
     })
   }
@@ -660,7 +661,7 @@ const styles = {
   },
   menuStyle: {
     width: 22,
-    height: 20,
+    height: 22,
     marginTop: -38,
     marginLeft: 14
   },

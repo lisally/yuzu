@@ -98,7 +98,8 @@ class LocationScene extends Component {
         user: this.props.user,
         location: this.state.location,
         screen: 'Location',
-        type: 'menu'
+        type: 'menu',
+        showLocation: false
       }
     })
   }
@@ -107,7 +108,7 @@ class LocationScene extends Component {
 const styles = {
   menuStyle: {
     width: 22,
-    height: 20,
+    height: 22,
     marginTop: -38,
     marginLeft: 14
   }

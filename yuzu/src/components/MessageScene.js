@@ -12,14 +12,16 @@ class MessageScene extends Component {
       location: 'Seattle',
       user: this.props.user,
       match: this.props.match.uid,
-      // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
       matchUsername: this.props.match.username,
       message: '',
       showKeyboard: false,
       dateFormat: require('dateformat'),
       messagesLoaded: false,
       loading: false, 
-      messageList: []
+      messageList: [],
+      // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
+      // matchUsername: 'saladsalsa'
+
      };
   }
 
@@ -46,38 +48,34 @@ class MessageScene extends Component {
   }
 
   render() {
-    const { messageStyle, bottomContainerStyle, backStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
+    const { viewStyle, messageStyle, bottomContainerStyle, backStyle, backTextStyle, inputStyle, usernameStyle, usernameContainerStyle, buttonStyle, buttonTextStyle } = styles
 
     return (
       <View style={{flex:1}}>
         
-        <TouchableHighlight onPress={this.onYuzuPress.bind(this)}>
-          <View style={{ height: 35, width: 105, position: 'absolute', marginTop: -45, marginLeft: 130 }} />
-        </TouchableHighlight>
-
         {/*
+        // <TouchableHighlight onPress={this.onYuzuPress.bind(this)}>
+        //   <View style={{ height: 35, width: 105, position: 'absolute', marginTop: -45, marginLeft: 130 }} />
+        // </TouchableHighlight>
+        
         <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
           <Image style={menuStyle} source={require('../images/menu.png')} />
         </TouchableHighlight>
         */}
 
-        <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
-          <Text style={backTextStyle}>
-            ‹
-          </Text>
-        </TouchableOpacity>
+        <View style={viewStyle}>
+          <View style={usernameContainerStyle}> 
+            <Text style={usernameStyle}>
+              {this.state.matchUsername}
+            </Text>
+          </View>
+        </View>
 
-        {/*
-        <TouchableHighlight onPress={this.onMessagePress.bind(this)}>
-          <Image style={messageStyle} source={require('../images/message.png')} />
-        </TouchableHighlight>
-        */}
-
-        {/* 
-        <Text style={usernameStyle}>
-          {this.state.matchUsername}
-        </Text>
-        <View style={{ alignSelf: 'stretch', borderColor: '#ddd', borderBottomWidth: 0.5, paddingTop: 5, }} /> */}
+          <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
+            <Text style={backTextStyle}>
+              ‹
+            </Text>
+          </TouchableOpacity>
     
         <TouchableWithoutFeedback onPress={this.hideKeyboard.bind(this)} >
         <ScrollView 
@@ -231,7 +229,6 @@ class MessageScene extends Component {
   //       location: this.props.location,
   //       screen: 'Message',
   //       type: 'menu',
-  //       showLocation: 
   //     }
   //   })
   // }
@@ -263,6 +260,19 @@ class MessageScene extends Component {
 }
 
 const styles = {
+  viewStyle: {
+    backgroundColor: '#F8F8F8',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 70,
+    paddingTop: 20,
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+    position: 'relative',
+    paddingRight: 5,
+    flexDirection: 'row'
+  },
   bottomContainerStyle: {
     flexDirection: 'row',
     backgroundColor: '#F8F8F8',
@@ -275,7 +285,7 @@ const styles = {
   backStyle: {
     position: 'absolute',
     marginLeft: 10,
-    marginTop: -58
+    marginTop: 12
   },
   backTextStyle: {
     color: '#89bc4f',
@@ -297,13 +307,16 @@ const styles = {
     width: 28,
     height: 28,
     marginTop: -42,
-    marginLeft: 335  
+    marginLeft: 335,
   },
-  usernameStyle: {
-    paddingTop: 5, 
-    alignSelf: 'center', 
+  usernameStyle: { 
     fontSize: 18, 
     color: '#404040',
+    paddingTop: 10,
+    fontWeight: 'bold',
+    marginBottom: 10
+  },
+  usernameContainerStyle: {   
   },
   buttonStyle: {
     height: 40,
@@ -314,9 +327,10 @@ const styles = {
     justifyContent: 'center',
   },
   buttonTextStyle: {
+    paddingBottom: 4,
     color: 'white',
     fontSize: 28,
-    transform: [{ rotate: '90deg'}]
+    transform: [{ rotate: '180deg'}]
   }
 }
 

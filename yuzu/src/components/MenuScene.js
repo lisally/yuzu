@@ -9,7 +9,8 @@ class MenuScene extends Component {
     this.state = {
         ref: firebase.database().ref(),
         user: this.props.user, 
-        location: this.props.location
+        location: this.props.location,
+        showLocation: this.props.showLocation
      };
 }
 
@@ -35,12 +36,24 @@ class MenuScene extends Component {
         Terms and Conditions
       </MenuDetail>
 
+      {this.renderShowLocation()} 
+
       <MenuDetail onPress={this.onSignOutPress.bind(this)}>
         Sign Out
       </MenuDetail> 
 
     </View>
    )
+  }
+
+  renderShowLocation() {
+    if (this.state.showLocation) {
+      return (
+      <MenuDetail onPress={this.onChangeLocationtPress.bind(this)}>
+        Change Location
+      </MenuDetail> 
+      )
+    }
   }
 
   onProfilePress() {
@@ -53,6 +66,17 @@ class MenuScene extends Component {
 
   onTermsPress() {
 
+  }
+
+  onChangeLocationtPress() {
+    this.props.navigator.push({
+      title: 'Location',
+      passProps: {
+        user: this.props.user,
+        type: 'forward',
+        location: null
+      }
+    })
   }
 
   onSignOutPress() {
@@ -123,7 +147,7 @@ const styles = {
   },
   menuStyle: {
     width: 22,
-    height: 20,
+    height: 22,
     marginLeft: -115
   }
 };
