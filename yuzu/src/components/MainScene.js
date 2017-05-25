@@ -30,7 +30,6 @@ class MainScene extends Component {
 
 
   // TO DO:
-  //  match count notification?
   //  remove user from matches when changing locations
 
   componentDidMount() {
@@ -45,16 +44,6 @@ class MainScene extends Component {
       }
     })
 
-    // var messageStatus = ref.child('users/' + user + '/unseenMessagesStatus/')
-    // messageStatus.once('value', snapshot => {
-    //   if (snapshot.val() == null) {
-    //     messageStatus.set(false)
-    //     this.setState({ notification: false })
-    //   } else {
-    //     this.setState({ notification: snapshot.val() })
-    //   }
-    // })
-
     this.unseenMessageRef = firebase.database().ref('users/' + user + '/unseenMessageList/')
     this.unseenMessageRef.on('child_changed', (snapshot) => {
       this.setState({ notificationLoaded: false })
@@ -65,17 +54,6 @@ class MainScene extends Component {
     this.unseenMessageRef.on('child_added', (snapshot) => {
       this.setState({ notificationLoaded: false })
     })
-
-    // this.unseenMessageRef = firebase.database().ref('users/' + user + '/messageList/')
-    
-    // this.unseenMessageRef.on('child_added', (snapshot) => {
-    //   console.log('hi')
-    //   this.setState({ notification: true })
-    // })
-    // this.unseenMessageRef.on('child_changed', (snapshot) => {
-    //   console.log('hey')
-    //   this.setState({ notification: true })
-    // })
 
     this.matchRef = firebase.database().ref('matches/' + location + '/')
     this.matchRef.on('child_added', (snapshot) => {
@@ -106,11 +84,6 @@ class MainScene extends Component {
 
       {this.renderNotifications()}
 
-      {/*
-      <TouchableHighlight onPress={this.onMessagePress.bind(this)}>
-        <Image style={messageStyle} source={require('../images/message.png')} />
-      </TouchableHighlight>
-      */}
       <View style={buttonContainerStyle}>
       <TouchableOpacity onPress={this.onAdd.bind(this)} style={buttonStyle}>
         <Text style={buttonTextStyle}>
@@ -272,30 +245,8 @@ class MainScene extends Component {
 
   onMessageMatch(match) {
     const { ref, user, location } = this.state
-
     this.setState({ showMatches: false })
-    ref.child('users/' + user + '/messaging/').set(true)
-
-
-    // ref.child('users/' + user + '/messageList/matches/').once('value', snapshot => {
-    //   if (snapshot.val() == null) {
-    //     ref.child('users/' + user + '/messageList/matches/').set([match.uid])
-    //   } else {
-    //     var users = snapshot.val()
-    //     if (users.indexOf(match.uid) == -1) {
-    //       users.push(match.uid)
-    //       ref.child('users/' + user + '/messageList/matches/').set(users)
-    //     }
-    //   }
-
-    // })
-
-    // ref.child('users/' + user + '/messageList/' + match.uid + '/profile/').set({
-    //   fname: match.fname,
-    //   lname: match.lname,
-    //   username: match.username,
-    //   uid: match.uid
-    // })
+    ref.child('users/' + user + '/messageList/' + match.uid + '/messaging/').set(true)
     
     this.props.navigator.push({
       title: 'Message',
@@ -509,23 +460,6 @@ class MainScene extends Component {
 
   updateMatches() {
     const { ref, user, location, itemList } = this.state
-
-    // ref.child('users/' + user + '/itemList/').once('value', snapshot => {
-    //   snapshot.forEach(function(item) {
-    //     ref.child('matches/' + location + '/' + item.val().Product + '/').once('value', snapshot => {
-    //       if (snapshot.val() == null) {
-    //         ref.child('matches/' + location + '/' + item.val().Product + '/').set([user])
-    //       } else {
-    //         var users = snapshot.val()
-    //         if (users.indexOf(user) == -1) {
-    //           users.push(user)
-    //           ref.child('matches/' + location + '/' + item.val().Product + '/').set(users)
-    //         }
-    //       }
-    //     })
-    //   })
-    // })
-
     if (itemList.length > 0) {
       itemList.forEach(function(item) {
         ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
@@ -561,8 +495,7 @@ class MainScene extends Component {
         })
       })
       ref.child('users/' + user + '/matchingStatus/').set(true)
-      // this.setState({ matching: true, matchLoading: true })
-      this.setState({ matching: true, })      
+      this.setState({ matching: true, matchLoading: true, showMatches: true })      
     }
   }
 

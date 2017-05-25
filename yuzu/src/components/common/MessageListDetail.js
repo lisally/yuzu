@@ -27,7 +27,6 @@ const styles = {
   },
   usernameStyle: {
     fontSize: 18,
-    // fontWeight: 'bold',
     color: '#404040',
     paddingLeft: 10
   }

@@ -26,26 +26,6 @@ class MessageListScene extends Component {
 
     return (
       <View style={{flex:1}}>
-        {/*
-        <TouchableHighlight onPress={this.onYuzuPress.bind(this)}>
-          <View style={{ height: 35, width: 105, position: 'absolute', marginTop: -45, marginLeft: 130 }} />
-        </TouchableHighlight>
-
-        <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
-          <Image style={menuStyle} source={require('../images/menu.png')} />
-        </TouchableHighlight>
-
-
-        <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
-          <Text style={backTextStyle}>
-            ‹
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableHighlight>
-          <Image style={messageStyle} source={require('../images/message.png')} />
-        </TouchableHighlight>
-        */}
 
         <View style={viewStyle}>
           <Text style={messageStyle}>
@@ -92,25 +72,8 @@ class MessageListScene extends Component {
         }
         this.setState({ messageList: list, messageListLoaded: true, loading: false  })
       })
-
-      // ref.child('users/' + user + '/messageList/').once('value', snapshot => {
-      //   if (snapshot.val() != null) {
-      //     snapshot.forEach(function(match) {
-      //       ref.child('users/' + match.key + '/profile/').once('value', snapshot2 => {
-      //         list.push({
-      //           uid: match.key,
-      //           fname: snapshot2.val().fname,
-      //           lname: snapshot2.val().lname,
-      //           username: snapshot2.val().username
-      //         })
-              
-      //       })
-      //     })
-      //   }
-      // })
     } 
 
-    
     return (
       messageList.map(match =>
         <MessageListDetail onPress={this.onMessagePress.bind(this, match)} user={match} key={match.uid} />
@@ -131,7 +94,8 @@ class MessageListScene extends Component {
   }
 
   onMessagePress(match) {
-    this.state.ref.child('users/' + this.state.user + '/messaging/').set(true)
+    const { ref, user } = this.state
+    ref.child('users/' + user + '/messageList/' + match.uid + '/messaging/').set(true)
     this.props.navigator.push({
       title: 'Message',
       passProps: {
@@ -155,17 +119,6 @@ class MessageListScene extends Component {
       }
     })
   }
-
-  // onYuzuPress() {
-  //   this.props.navigator.push({
-  //     title: 'Main',
-  //     passProps: {
-  //       user: this.props.user,
-  //       location: this.props.location,
-  //       type: 'backward'
-  //     }
-  //   })
-  // }
 
 }
 

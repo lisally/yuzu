@@ -19,7 +19,6 @@ class MessageScene extends Component {
       loading: false, 
       messageList: [],
       userProfile: {},
-      // removeNotifications: false
       // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
       // matchUsername: 'saladsalsa'
 
@@ -27,13 +26,11 @@ class MessageScene extends Component {
   }
 
   // TO DO:
-  //  adding profile to user's messageList when matched-user msgs user
   //  show shared items in chat
   //  message notifications?
 
   componentDidMount() {
     const { ref, user, match } = this.state
-
     ref.child('/users/' + user + '/profile/').once('value', snapshot => {
       this.setState({ userProfile: {
         fname: snapshot.val().fname,
@@ -43,22 +40,6 @@ class MessageScene extends Component {
       }})
     })
 
-    // ref.child('users/' + user + '/messaging/').once('value', snapshot => {
-    //   if (snapshot.val() != null) {
-    //     this.setState({ removeNotifications: snapshot.val() })
-    //   }
-    // })
-
-    // ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
-    //   if (snapshot.val() != null) {
-    //       var messageNotifications = snapshot.val()
-    //       if (messageNotifications.indexOf(match.uid) != -1) {
-    //         messageNotifications.splice(messageNotifications .indexOf(match.uid), 1)
-    //           ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
-    //       }
-    //     }
-    // })
-
     this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
     this.messageRef.on('child_added', (snapshot) => {
       this.setState({ messagesLoaded: false })
@@ -66,7 +47,6 @@ class MessageScene extends Component {
     this.messageRef.on('child_changed', (snapshot) => {
       this.setState({ messagesLoaded: false })
     })
-
   }
 
   render() {
@@ -74,16 +54,7 @@ class MessageScene extends Component {
 
     return (
       <View style={{flex:1}}>
-        
-        {/*
-        // <TouchableHighlight onPress={this.onYuzuPress.bind(this)}>
-        //   <View style={{ height: 35, width: 105, position: 'absolute', marginTop: -45, marginLeft: 130 }} />
-        // </TouchableHighlight>
-        
-        <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
-          <Image style={menuStyle} source={require('../images/menu.png')} />
-        </TouchableHighlight>
-        */}
+
 
         <View style={viewStyle}>
           <Text style={usernameStyle}>
@@ -136,19 +107,6 @@ class MessageScene extends Component {
 
       </View>
     )
-  }
-
-  renderNotifications() {
-    // const { ref, user, match, } = this.state
-    // ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
-    //   if (snapshot.val() != null) {
-    //       var messageNotifications = snapshot.val()
-    //       if (messageNotifications.indexOf(match.uid) != -1) {
-    //         messageNotifications.splice(messageNotifications .indexOf(match.uid), 1)
-    //           ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
-    //       }
-    //     }
-    // })
   }
 
   onSendMessage() {
@@ -228,9 +186,7 @@ class MessageScene extends Component {
         }
       })
 
-      // if (removeNotifications) {
-
-      ref.child('users/' + user + '/messaging/').once('value', snapshot => {
+      ref.child('users/' + user + '/messageList/' + match.uid + '/messaging/').once('value', snapshot => {
         if (snapshot.val() != null) {
           if (snapshot.val() == true) {
             ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
@@ -245,26 +201,6 @@ class MessageScene extends Component {
           }
         }
       })
-        // ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
-        //   if (snapshot.val() != null) {
-        //     var messageNotifications = snapshot.val()
-        //     if (messageNotifications.indexOf(match.uid) != -1) {
-        //       messageNotifications.splice(messageNotifications.indexOf(match.uid), 1)
-        //         ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
-        //     }
-        //   }
-        // })
-      // }
-
-      // ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {
-      //   if (snapshot.val() != null) {
-      //     var messageNotifications = snapshot.val()
-      //     if (messageNotifications.indexOf(user) != -1) {
-      //       messageNotifications.splice(messageNotifications.indexOf(user), 1)
-      //         ref.child('users/' + match.uid + '/unseenMessageList/').set(messageNotifications)              
-      //     }
-      //   }
-      // })
     }
 
     var result = []
@@ -294,8 +230,9 @@ class MessageScene extends Component {
   }
 
   onBack() {
+    const { ref, user, match } = this.state
     Keyboard.dismiss()
-    this.state.ref.child('users/' + this.state.user + '/messaging/').set(false)
+    ref.child('users/' + user + '/messageList/' + match.uid + '/messaging/').set(false)
     this.setState({ showKeyboard: false })
 
     this.props.navigator.push({
@@ -307,21 +244,6 @@ class MessageScene extends Component {
       },
     })
   }
-
-  // onMenuPress() {
-  //   Keyboard.dismiss()
-  //   this.setState({ showKeyboard: false })
-
-  //   this.props.navigator.push({
-  //     title: 'Menu',
-  //     passProps: {
-  //       user: this.props.user,
-  //       location: this.props.location,
-  //       screen: 'Message',
-  //       type: 'menu',
-  //     }
-  //   })
-  // }
 
   onYuzuPress() {
     Keyboard.dismiss()
@@ -335,17 +257,6 @@ class MessageScene extends Component {
       }
     })
   }
-
-  // onMessagePress() {
-  //   this.props.navigator.push({
-  //     title: 'MessageList',
-  //     passProps: {
-  //       user: this.props.user,
-  //       type: 'backward',
-  //       location: this.props.location
-  //     }
-  //   })
-  // }
 
 }
 
