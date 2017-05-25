@@ -661,9 +661,9 @@ const styles = {
     marginLeft: 14
   },
   messageStyle: {
-    width: 28,
-    height: 28,
-    marginTop: -42,
+    width: 32,
+    height: 32,
+    marginTop: -45,
     marginLeft: 335  
   },
   matchViewStyle: {
