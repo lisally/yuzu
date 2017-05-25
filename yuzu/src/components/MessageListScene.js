@@ -67,11 +67,37 @@ class MessageListScene extends Component {
       ref.child('users/' + user + '/messageList/').once('value', snapshot => {
         if (snapshot.val() != null) {
           snapshot.forEach(function(match) {
-            list.push(match.val().profile)
+            var matchObj = match.val().profile
+            ref.child('users/' + user + '/messageList/' + matchObj.uid + '/messages/').once('value', snapshot2 => {
+              if (snapshot2.val() != null) {
+                matchObj['text'] = snapshot2.val()[snapshot2.val().length - 1].text
+                matchObj['time'] = snapshot2.val()[snapshot2.val().length - 1].time
+                if (matchObj['text'].length > 50) {
+                  matchObj['text'] = matchObj['text'].substring(0, 50) + '...'
+                }          
+              }
+              ref.child('users/' + user + '/messageList/' + matchObj.uid + '/profile/').set(matchObj)
+            })
+          })
+          ref.child('users/' + user + '/messageList/').once('value', snapshot => {
+            if (snapshot.val() != null) {
+              snapshot.forEach(function(match) {
+                list.push(match.val().profile)
+              })
+            }
+            this.setState({ messageList: list, messageListLoaded: true, loading: false  })
           })
         }
-        this.setState({ messageList: list, messageListLoaded: true, loading: false  })
       })
+
+      // ref.child('users/' + user + '/messageList/').once('value', snapshot => {
+      //   if (snapshot.val() != null) {
+      //     snapshot.forEach(function(match) {
+      //       list.push(match.val().profile)
+      //     })
+      //   }
+      //   this.setState({ messageList: list, messageListLoaded: true, loading: false  })
+      // })
     } 
 
     return (
