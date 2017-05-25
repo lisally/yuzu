@@ -42,19 +42,15 @@ class MessageScene extends Component {
       }})
     })
 
-    ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
-      if (snapshot.val() != null) {
-          var messageNotifications = snapshot.val()
-          if (messageNotifications.indexOf(match.uid) != -1) {
-            messageNotifications.splice(messageNotifications .indexOf(match.uid), 1)
-            // if (messageNotifications.length == 0) {
-            //   ref.child('matches/' + location + '/' + deletedItem.Product + '/').remove()
-            // } else {
-              ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
-            // }
-          }
-        }
-    })
+    // ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
+    //   if (snapshot.val() != null) {
+    //       var messageNotifications = snapshot.val()
+    //       if (messageNotifications.indexOf(match.uid) != -1) {
+    //         messageNotifications.splice(messageNotifications .indexOf(match.uid), 1)
+    //           ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
+    //       }
+    //     }
+    // })
 
 
     this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
@@ -211,7 +207,16 @@ class MessageScene extends Component {
         } else {
           this.setState({ loading: false, messagesLoaded: true })
         }
-        
+      })
+
+      ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
+        if (snapshot.val() != null) {
+          var messageNotifications = snapshot.val()
+          if (messageNotifications.indexOf(match.uid) != -1) {
+            messageNotifications.splice(messageNotifications .indexOf(match.uid), 1)
+              ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
+          }
+        }
       })
     }
 
