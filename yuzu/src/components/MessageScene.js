@@ -19,7 +19,7 @@ class MessageScene extends Component {
       loading: false, 
       messageList: [],
       userProfile: {},
-      removeNotifications: false
+      // removeNotifications: false
       // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
       // matchUsername: 'saladsalsa'
 
@@ -43,11 +43,11 @@ class MessageScene extends Component {
       }})
     })
 
-    ref.child('users/' + user + '/messaging/').once('value', snapshot => {
-      if (snapshot.val() != null) {
-        this.setState({ removeNotifications: snapshot.val() })
-      }
-    })
+    // ref.child('users/' + user + '/messaging/').once('value', snapshot => {
+    //   if (snapshot.val() != null) {
+    //     this.setState({ removeNotifications: snapshot.val() })
+    //   }
+    // })
 
     // ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
     //   if (snapshot.val() != null) {
@@ -228,17 +228,33 @@ class MessageScene extends Component {
         }
       })
 
-    if (removeNotifications) {
-      ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
+      // if (removeNotifications) {
+
+      ref.child('users/' + user + '/messaging/').once('value', snapshot => {
         if (snapshot.val() != null) {
-          var messageNotifications = snapshot.val()
-          if (messageNotifications.indexOf(match.uid) != -1) {
-            messageNotifications.splice(messageNotifications.indexOf(match.uid), 1)
-              ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
+          if (snapshot.val() == true) {
+            ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
+              if (snapshot.val() != null) {
+                var messageNotifications = snapshot.val()
+                if (messageNotifications.indexOf(match.uid) != -1) {
+                  messageNotifications.splice(messageNotifications.indexOf(match.uid), 1)
+                    ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
+                }
+              }
+            })
           }
         }
       })
-    }
+        // ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
+        //   if (snapshot.val() != null) {
+        //     var messageNotifications = snapshot.val()
+        //     if (messageNotifications.indexOf(match.uid) != -1) {
+        //       messageNotifications.splice(messageNotifications.indexOf(match.uid), 1)
+        //         ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
+        //     }
+        //   }
+        // })
+      // }
 
       // ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {
       //   if (snapshot.val() != null) {
