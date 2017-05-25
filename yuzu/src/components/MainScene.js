@@ -23,7 +23,8 @@ class MainScene extends Component {
       yuzuLoaded: false,
       yuzuList: [],
       notification: false, 
-      notificationLoaded: false
+      notificationLoaded: false,
+      notificationCount: 0
      };
   }
 
@@ -173,15 +174,15 @@ class MainScene extends Component {
   }
 
   renderNotifications() {
-    const { ref, user, notification, notificationLoaded } = this.state
-    const { messageStyle } = styles
+    const { ref, user, notification, notificationLoaded, notificationCount } = this.state
+    const { messageStyle, notificationStyle } = styles
 
     if (!notificationLoaded) {
       ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
         if (snapshot.val() == null) {
           this.setState({ notification: false, notificationLoaded: true })
         } else {
-          this.setState({ notification: true, notificationLoaded: true })
+          this.setState({ notification: true, notificationCount: snapshot.val().length, notificationLoaded: true })
         }
       })
 
@@ -190,7 +191,10 @@ class MainScene extends Component {
     if (notification) {
       return (
       <TouchableHighlight onPress={this.onMessagePress.bind(this)}>
+        <View>
         <Image style={messageStyle} source={require('../images/message_notification.png')} />
+        <Text style={notificationStyle}>{notificationCount}</Text>
+        </View>
       </TouchableHighlight>
       )
     } else {
@@ -665,6 +669,14 @@ const styles = {
     height: 32,
     marginTop: -45,
     marginLeft: 335  
+  },
+  notificationStyle: {
+    marginTop: -30,
+    marginLeft: 355,
+    color: 'white',
+    fontSize: 11,
+    fontWeight: 'bold'
+
   },
   matchViewStyle: {
     flexDirection: 'row'
