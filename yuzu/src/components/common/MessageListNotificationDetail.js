@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 
-const MessageListDetail = ({ user, onPress }) => {
+const MessageListNotificationDetail = ({ user, onPress }) => {
     const { username, time, text } = user
     const { containerStyle, usernameStyle, timeStyle, textStyle } = styles 
 
@@ -28,19 +28,23 @@ const styles = {
     fontSize: 18,
     color: '#404040',
     paddingLeft: 10,
+    fontWeight: 'bold'
   },
   timeStyle: {
-    color: '#999999',
+    color: '#404040',
     fontSize: 16,
     alignSelf: 'flex-end',
     marginTop: -20,
-    paddingRight: 10
+    paddingRight: 10,
+    fontWeight: 'bold'
   },
   textStyle: {
     paddingLeft: 10,
     paddingTop: 5,
-    color: '#999999'
+    color: '#404040',
+    fontWeight: 'bold'
+    
   }
 }
 
-export { MessageListDetail }
+export { MessageListNotificationDetail }

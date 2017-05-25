@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal, TouchableWithoutFeedback } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner, TextButton, MessageListDetail } from './common';
+import { Button, Card, CardSection, Input, Spinner, TextButton, MessageListDetail, MessageListNotificationDetail } from './common';
 import firebase from 'firebase'
 
 class MessageListScene extends Component {
@@ -76,7 +76,20 @@ class MessageListScene extends Component {
                   matchObj['text'] = matchObj['text'].substring(0, 50) + '...'
                 }          
               }
-              ref.child('users/' + user + '/messageList/' + matchObj.uid + '/profile/').set(matchObj)
+              ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => { 
+                if (snapshot.val() != null) {
+                  snapshot.forEach(function(unseen) {
+                    if (unseen.val() == matchObj.uid) {
+                      matchObj['unseen'] = true
+                    } else {
+                      matchObj['unseen'] = false
+                    }
+                  })
+                }
+                ref.child('users/' + user + '/messageList/' + matchObj.uid + '/profile/').set(matchObj)
+              })
+
+              // ref.child('users/' + user + '/messageList/' + matchObj.uid + '/profile/').set(matchObj)
             })
           })
           ref.child('users/' + user + '/messageList/').once('value', snapshot => {
@@ -89,22 +102,49 @@ class MessageListScene extends Component {
           })
         }
       })
-
-      // ref.child('users/' + user + '/messageList/').once('value', snapshot => {
-      //   if (snapshot.val() != null) {
-      //     snapshot.forEach(function(match) {
-      //       list.push(match.val().profile)
-      //     })
-      //   }
-      //   this.setState({ messageList: list, messageListLoaded: true, loading: false  })
-      // })
     } 
 
-    return (
-      messageList.map(match =>
-        <MessageListDetail onPress={this.onMessagePress.bind(this, match)} user={match} key={match.uid} />
-      )
-    ) 
+    result = []
+
+    // messageList.forEach(function(match) {
+    //   ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
+    //     if (snapshot.val() != null) {
+    //       snapshot.forEach(function(unseen) {
+    //         // console.log(unseen.val())
+    //         if (unseen.val() == match.uid) {
+    //           result.push(
+    //             <MessageListNotificationDetail onPress={this.onMessagePress.bind(this,match)} user={match} key={match.uid} />
+    //           )
+    //         } else {
+    //           result.push(
+    //             <MessageListDetail onPress={this.onMessagePress.bind(this.match)} user={match} key={match.uid} />
+    //           )
+    //         }
+    //       })
+    //     }
+    //     return result
+    //   })
+    // })
+
+    for (var i in messageList) {
+      var match = messageList[i]
+      if (match.unseen == true) {
+        result.push(
+          <MessageListNotificationDetail onPress={this.onMessagePress.bind(this,match)} user={match} key={match.uid} />
+        )
+      } else {
+        result.push(
+          <MessageListDetail onPress={this.onMessagePress.bind(this,match)} user={match} key={match.uid} />
+        )
+      }
+    }
+
+    return result
+    // return (
+    //   messageList.map(match =>
+    //     <MessageListDetail onPress={this.onMessagePress.bind(this, match)} user={match} key={match.uid} />
+    //   )
+    // ) 
     
   }
 
