@@ -141,6 +141,7 @@ class MessageScene extends Component {
 
     if (message.length > 0) {
       var dateString = dateFormat(+new Date, "mmmm dS, h:MM TT")
+      dateString = dateString.split(',')[1].trim()
 
       var messageObj = {
         sender: user,
@@ -213,11 +214,21 @@ class MessageScene extends Component {
         if (snapshot.val() != null) {
           var messageNotifications = snapshot.val()
           if (messageNotifications.indexOf(match.uid) != -1) {
-            messageNotifications.splice(messageNotifications .indexOf(match.uid), 1)
+            messageNotifications.splice(messageNotifications.indexOf(match.uid), 1)
               ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
           }
         }
       })
+
+      // ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {
+      //   if (snapshot.val() != null) {
+      //     var messageNotifications = snapshot.val()
+      //     if (messageNotifications.indexOf(user) != -1) {
+      //       messageNotifications.splice(messageNotifications.indexOf(user), 1)
+      //         ref.child('users/' + match.uid + '/unseenMessageList/').set(messageNotifications)              
+      //     }
+      //   }
+      // })
     }
 
     var result = []
