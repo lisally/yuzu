@@ -18,7 +18,8 @@ class MessageScene extends Component {
       messagesLoaded: false,
       loading: false, 
       messageList: [],
-      userProfile: {}
+      userProfile: {},
+      removeNotifications: false
       // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
       // matchUsername: 'saladsalsa'
 
@@ -42,6 +43,12 @@ class MessageScene extends Component {
       }})
     })
 
+    ref.child('users/' + user + '/messaging/').once('value', snapshot => {
+      if (snapshot.val() != null) {
+        this.setState({ removeNotifications: snapshot.val() })
+      }
+    })
+
     // ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
     //   if (snapshot.val() != null) {
     //       var messageNotifications = snapshot.val()
@@ -51,7 +58,6 @@ class MessageScene extends Component {
     //       }
     //     }
     // })
-
 
     this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
     this.messageRef.on('child_added', (snapshot) => {
@@ -106,7 +112,6 @@ class MessageScene extends Component {
         </ScrollView>
         </TouchableWithoutFeedback>
 
-
         <View style={bottomContainerStyle}>
           <TextInput
             ref={'messageInput'}
@@ -131,6 +136,19 @@ class MessageScene extends Component {
 
       </View>
     )
+  }
+
+  renderNotifications() {
+    // const { ref, user, match, } = this.state
+    // ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
+    //   if (snapshot.val() != null) {
+    //       var messageNotifications = snapshot.val()
+    //       if (messageNotifications.indexOf(match.uid) != -1) {
+    //         messageNotifications.splice(messageNotifications .indexOf(match.uid), 1)
+    //           ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
+    //       }
+    //     }
+    // })
   }
 
   onSendMessage() {
@@ -188,7 +206,7 @@ class MessageScene extends Component {
   }
 
   renderMessages() {
-    const { ref, user, match, loading, messagesLoaded, messageList } = this.state
+    const { ref, user, match, loading, messagesLoaded, messageList, removeNotifications } = this.state
 
     if (loading) {
       return (
@@ -210,6 +228,7 @@ class MessageScene extends Component {
         }
       })
 
+    if (removeNotifications) {
       ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
         if (snapshot.val() != null) {
           var messageNotifications = snapshot.val()
@@ -219,6 +238,7 @@ class MessageScene extends Component {
           }
         }
       })
+    }
 
       // ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {
       //   if (snapshot.val() != null) {
@@ -259,6 +279,7 @@ class MessageScene extends Component {
 
   onBack() {
     Keyboard.dismiss()
+    this.state.ref.child('users/' + this.state.user + '/messaging/').set(false)
     this.setState({ showKeyboard: false })
 
     this.props.navigator.push({

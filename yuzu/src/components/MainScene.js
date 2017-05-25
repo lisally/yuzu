@@ -274,6 +274,8 @@ class MainScene extends Component {
     const { ref, user, location } = this.state
 
     this.setState({ showMatches: false })
+    ref.child('users/' + user + '/messaging/').set(true)
+
 
     // ref.child('users/' + user + '/messageList/matches/').once('value', snapshot => {
     //   if (snapshot.val() == null) {

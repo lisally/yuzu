@@ -131,6 +131,7 @@ class MessageListScene extends Component {
   }
 
   onMessagePress(match) {
+    this.state.ref.child('users/' + this.state.user + '/messaging/').set(true)
     this.props.navigator.push({
       title: 'Message',
       passProps: {
