@@ -91,18 +91,20 @@ class MessageListScene extends Component {
                     matchObj['text'] = matchObj['text'].substring(0, 50) + '...'
                   }          
                 }
-                ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => { 
-                  if (snapshot.val() != null) {
-                    snapshot.forEach(function(unseen) {
-                      if (unseen.val() == matchObj.uid) {
-                        matchObj['unseen'] = true
-                      } else {
-                        matchObj['unseen'] = false
-                      }
-                    })
-                  }
-                  ref.child('users/' + user + '/messageProfileList/' + matchObj.uid + '/profile/').set(matchObj)
-                })
+                // ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => { 
+                //   if (snapshot.val() != null) {
+                //     snapshot.forEach(function(unseen) {
+                //       if (unseen.val() == matchObj.uid) {
+                //         console.log(unseen.val())
+                //         matchObj['unseen'] = true
+                //       } else {
+                //         matchObj['unseen'] = false
+                //       }
+                //     })
+                //   }
+                //   console.log(matchObj)
+                ref.child('users/' + user + '/messageProfileList/' + matchObj.uid + '/profile/').set(matchObj)
+                // })
               })
             }
           })
@@ -132,7 +134,7 @@ class MessageListScene extends Component {
 
     for (var i in messageList) {
       var match = messageList[i]
-      if (match.unseen == true) {
+      if (match.unseen) {
         result.push(
           <MessageListNotificationDetail onPress={this.onMessagePress.bind(this,match)} user={match} key={match.uid} />
         )
