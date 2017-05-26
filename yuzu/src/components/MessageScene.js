@@ -116,13 +116,15 @@ class MessageScene extends Component {
     this.refs['messageInput'].setNativeProps({text: ''});
 
     if (message.length > 0) {
-      var dateString = dateFormat(+new Date, "mmmm dS, h:MM TT")
+      var dateMili = +new Date
+      var dateString = dateFormat(dateMili, "mmmm dS, h:MM TT")
       dateString = dateString.split(',')[1].trim()
 
       var messageObj = {
         sender: user,
         text: message,
-        time: dateString
+        time: dateString,
+        timeMili: dateMili
       }
 
       ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {

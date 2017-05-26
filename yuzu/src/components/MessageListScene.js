@@ -21,30 +21,30 @@ class MessageListScene extends Component {
   // TO DO:
   //  add more info to list items (last message time, last message?)
 
-  // componentDidMount() {
-  //   const { user } = this.state
+  componentDidMount() {
+    const { user } = this.state
 
-  //   this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
+    this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
 
-  //   this.messageRef.once('value', snapshot => {
-  //     snapshot.forEach(function(match) {
-  //       firebase.database().ref('users/' + user + '/messageList/' + match.key + '/messages/').on('child_added', (snapshot) => {
-  //         this.setState({ messageListLoaded: false })
-  //       })
-  //       firebase.database().ref('users/' + user + '/messageList/' + match.key + '/messages/').on('child_changed', (snapshot) => {
-  //         this.setState({ messageListLoaded: false })
-  //       })
-  //       // console.log(match.key)
-  //     })
-  //   })
+    // this.messageRef.once('value', snapshot => {
+    //   snapshot.forEach(function(match) {
+    //     firebase.database().ref('users/' + user + '/messageList/' + match.key + '/messages/').on('child_added', (snapshot) => {
+    //       this.setState({ messageListLoaded: false })
+    //     })
+    //     firebase.database().ref('users/' + user + '/messageList/' + match.key + '/messages/').on('child_changed', (snapshot) => {
+    //       this.setState({ messageListLoaded: false })
+    //     })
+    //     // console.log(match.key)
+    //   })
+    // })
 
-  //   // this.messageRef.on('child_added', (snapshot) => {
-  //   //   this.setState({ messageListLoaded: false })
-  //   // })
-  //   // this.messageRef.on('child_changed', (snapshot) => {
-  //   //   this.setState({ messageListLoaded: false })
-  //   // })
-  // }
+    this.messageRef.on('child_added', (snapshot) => {
+      this.setState({ messageListLoaded: false })
+    })
+    this.messageRef.on('child_changed', (snapshot) => {
+      this.setState({ messageListLoaded: false })
+    })
+  }
 
   render() {
     const { viewStyle, messageStyle, backStyle, backTextStyle } = styles
@@ -112,7 +112,7 @@ class MessageListScene extends Component {
                       }
                     })
                   }
-                  ref.child('users/' + user + '/messageProfiltList/' + matchObj.uid + '/profile/').set(matchObj)
+                  ref.child('users/' + user + '/messageProfileList/' + matchObj.uid + '/profile/').set(matchObj)
                 })
               })
             }
@@ -125,6 +125,11 @@ class MessageListScene extends Component {
                 }
               })
             }
+
+            list.sort(function(a,b){
+              return new Date(b.timeMili) - new Date(a.timeMili);
+            });
+
             this.setState({ messageList: list, messageListLoaded: true, loading: false  })
           })
         } else {
