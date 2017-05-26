@@ -117,14 +117,15 @@ class MessageScene extends Component {
 
     if (message.length > 0) {
       var dateMili = +new Date
-      var dateString = dateFormat(dateMili, "mmmm dS, h:MM TT")
-      dateString = dateString.split(',')[1].trim()
+      var dateString = dateFormat(dateMili, "mmmm dS h:MM TT")
+      var timeString = dateFormat(dateMili, "mmmm dS, h:MM TT")
+      timeString = timeString.split(',')[1].trim()
 
       var messageObj = {
         sender: user,
         text: message,
-        time: dateString,
-        timeMili: dateMili
+        time: timeString,
+        timeMili: timeMili
       }
 
       ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {
