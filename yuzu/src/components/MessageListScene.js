@@ -128,7 +128,7 @@ class MessageListScene extends Component {
 
             console.log(list)
             list.sort(function(a,b){
-              return new Date(b.dateString) - new Date(a.dateString);
+              return new Date(a.date) - new Date(b.date);
             });
             console.log(list)
 
