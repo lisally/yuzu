@@ -157,7 +157,7 @@ class MessageScene extends Component {
             username: match.username,
             uid: match.uid
           })
-          ref.child('users/' + match.uid + '/messageProfileList/' + user + '/').set(userProfile)
+          ref.child('users/' + match.uid + '/messageProfileList/' + user + '/profile/').set(userProfile)
         }
       })
     }
