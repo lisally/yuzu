@@ -246,7 +246,7 @@ class MainScene extends Component {
   onMessageMatch(match) {
     const { ref, user, location } = this.state
     this.setState({ showMatches: false })
-    ref.child('users/' + user + '/messageList/' + match.uid + '/messaging/').set(true)
+    ref.child('users/' + user + '/messageProfileList/' + match.uid + '/messaging/').set(true)
     
     this.props.navigator.push({
       title: 'Message',

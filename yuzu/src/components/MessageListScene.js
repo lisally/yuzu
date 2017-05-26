@@ -21,6 +21,31 @@ class MessageListScene extends Component {
   // TO DO:
   //  add more info to list items (last message time, last message?)
 
+  // componentDidMount() {
+  //   const { user } = this.state
+
+  //   this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
+
+  //   this.messageRef.once('value', snapshot => {
+  //     snapshot.forEach(function(match) {
+  //       firebase.database().ref('users/' + user + '/messageList/' + match.key + '/messages/').on('child_added', (snapshot) => {
+  //         this.setState({ messageListLoaded: false })
+  //       })
+  //       firebase.database().ref('users/' + user + '/messageList/' + match.key + '/messages/').on('child_changed', (snapshot) => {
+  //         this.setState({ messageListLoaded: false })
+  //       })
+  //       // console.log(match.key)
+  //     })
+  //   })
+
+  //   // this.messageRef.on('child_added', (snapshot) => {
+  //   //   this.setState({ messageListLoaded: false })
+  //   // })
+  //   // this.messageRef.on('child_changed', (snapshot) => {
+  //   //   this.setState({ messageListLoaded: false })
+  //   // })
+  // }
+
   render() {
     const { viewStyle, messageStyle, backStyle, backTextStyle } = styles
 
@@ -64,7 +89,7 @@ class MessageListScene extends Component {
       this.setState({ loading: true })
       list = []
 
-      ref.child('users/' + user + '/messageList/').once('value', snapshot => {
+      ref.child('users/' + user + '/messageProfileList/').once('value', snapshot => {
         if (snapshot.val() != null) {
           snapshot.forEach(function(match) {
             var matchObj = match.val().profile
@@ -86,13 +111,11 @@ class MessageListScene extends Component {
                     }
                   })
                 }
-                ref.child('users/' + user + '/messageList/' + matchObj.uid + '/profile/').set(matchObj)
+                ref.child('users/' + user + '/messageProfiltList/' + matchObj.uid + '/profile/').set(matchObj)
               })
-
-              // ref.child('users/' + user + '/messageList/' + matchObj.uid + '/profile/').set(matchObj)
             })
           })
-          ref.child('users/' + user + '/messageList/').once('value', snapshot => {
+          ref.child('users/' + user + '/messageProfileList/').once('value', snapshot => {
             if (snapshot.val() != null) {
               snapshot.forEach(function(match) {
                 list.push(match.val().profile)
@@ -100,31 +123,13 @@ class MessageListScene extends Component {
             }
             this.setState({ messageList: list, messageListLoaded: true, loading: false  })
           })
+        } else {
+          this.setState({ messageListLoaded: true, loading: false  })
         }
       })
     } 
 
     result = []
-
-    // messageList.forEach(function(match) {
-    //   ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
-    //     if (snapshot.val() != null) {
-    //       snapshot.forEach(function(unseen) {
-    //         // console.log(unseen.val())
-    //         if (unseen.val() == match.uid) {
-    //           result.push(
-    //             <MessageListNotificationDetail onPress={this.onMessagePress.bind(this,match)} user={match} key={match.uid} />
-    //           )
-    //         } else {
-    //           result.push(
-    //             <MessageListDetail onPress={this.onMessagePress.bind(this.match)} user={match} key={match.uid} />
-    //           )
-    //         }
-    //       })
-    //     }
-    //     return result
-    //   })
-    // })
 
     for (var i in messageList) {
       var match = messageList[i]
@@ -140,11 +145,6 @@ class MessageListScene extends Component {
     }
 
     return result
-    // return (
-    //   messageList.map(match =>
-    //     <MessageListDetail onPress={this.onMessagePress.bind(this, match)} user={match} key={match.uid} />
-    //   )
-    // ) 
     
   }
 
@@ -161,7 +161,7 @@ class MessageListScene extends Component {
 
   onMessagePress(match) {
     const { ref, user } = this.state
-    ref.child('users/' + user + '/messageList/' + match.uid + '/messaging/').set(true)
+    ref.child('users/' + user + '/messageProfileList/' + match.uid + '/messaging/').set(true)
     this.props.navigator.push({
       title: 'Message',
       passProps: {

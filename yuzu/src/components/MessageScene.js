@@ -149,15 +149,15 @@ class MessageScene extends Component {
         }
       })
 
-      ref.child('users/' + user + '/messageList/' + match.uid + '/profile/').once('value', snapshot => {
+      ref.child('users/' + user + '/messageProfileList/' + match.uid + '/profile/').once('value', snapshot => {
         if (snapshot.val() == null) {
-          ref.child('users/' + user + '/messageList/' + match.uid + '/profile/').set({
+          ref.child('users/' + user + '/messageProfileList/' + match.uid + '/profile/').set({
             fname: match.fname,
             lname: match.lname,
             username: match.username,
             uid: match.uid
           })
-          ref.child('users/' + match.uid + '/messageList/' + user + '/profile/').set(userProfile)
+          ref.child('users/' + match.uid + '/messageProfileList/' + user + '/').set(userProfile)
         }
       })
     }
@@ -186,7 +186,7 @@ class MessageScene extends Component {
         }
       })
 
-      ref.child('users/' + user + '/messageList/' + match.uid + '/messaging/').once('value', snapshot => {
+      ref.child('users/' + user + '/messageProfileList/' + match.uid + '/messaging/').once('value', snapshot => {
         if (snapshot.val() != null) {
           if (snapshot.val() == true) {
             ref.child('users/' + user + '/unseenMessageList/').once('value', snapshot => {
@@ -197,6 +197,12 @@ class MessageScene extends Component {
                     ref.child('users/' + user + '/unseenMessageList/').set(messageNotifications)              
                 }
               }
+            })
+
+            ref.child('users/' + user + '/messageProfileList/' + match.uid + '/profile/').once('value', snapshot => {
+              var profileObj = snapshot.val()
+              profileObj['unseen'] = false
+              ref.child('users/' + user + '/messageProfileList/' + match.uid + '/profile/').set(profileObj)
             })
           }
         }
@@ -232,7 +238,7 @@ class MessageScene extends Component {
   onBack() {
     const { ref, user, match } = this.state
     Keyboard.dismiss()
-    ref.child('users/' + user + '/messageList/' + match.uid + '/messaging/').set(false)
+    ref.child('users/' + user + '/messageProfileList/' + match.uid + '/messaging/').set(false)
     this.setState({ showKeyboard: false })
 
     this.props.navigator.push({
