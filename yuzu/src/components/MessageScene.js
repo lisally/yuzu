@@ -125,7 +125,7 @@ class MessageScene extends Component {
         sender: user,
         text: message,
         time: timeString,
-        timeMili: timeMili
+        date: dateString
       }
 
       ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {
