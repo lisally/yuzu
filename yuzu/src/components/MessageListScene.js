@@ -127,7 +127,7 @@ class MessageListScene extends Component {
             }
 
             list.sort(function(a,b){
-              return new Date(b.timeMili) - new Date(a.timeMili);
+              return new Date(b.dateMili) - new Date(a.dateMili);
             });
 
             this.setState({ messageList: list, messageListLoaded: true, loading: false  })

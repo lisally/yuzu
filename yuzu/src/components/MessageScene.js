@@ -116,7 +116,7 @@ class MessageScene extends Component {
     this.refs['messageInput'].setNativeProps({text: ''});
 
     if (message.length > 0) {
-      var dateMili = +new Date
+      var dateMili = formatDate(+new Date)
       var dateString = dateFormat(dateMili, "mmmm dS, h:MM TT")
       dateString = dateString.split(',')[1].trim()
 
