@@ -98,6 +98,7 @@ class MessageListScene extends Component {
                 if (snapshot2.val() != null) {
                   matchObj['text'] = snapshot2.val()[snapshot2.val().length - 1].text
                   matchObj['time'] = snapshot2.val()[snapshot2.val().length - 1].time
+                  matchObj['date'] = snapshot2.val()[snapshot2.val().length - 1].date                  
                   if (matchObj['text'].length > 50) {
                     matchObj['text'] = matchObj['text'].substring(0, 50) + '...'
                   }          
@@ -126,11 +127,9 @@ class MessageListScene extends Component {
               })
             }
 
-            console.log(list)
             list.sort(function(a,b){
-              return new Date(a.date) - new Date(b.date);
+              return new Date(b.date) - new Date(a.date);
             });
-            console.log(list)
 
 
             this.setState({ messageList: list, messageListLoaded: true, loading: false  })

@@ -117,7 +117,7 @@ class MessageScene extends Component {
 
     if (message.length > 0) {
       var dateMili = +new Date
-      var dateString = dateFormat(dateMili, "mmmm dS yyyy h:MM:ss TT")
+      var dateString = dateFormat(dateMili, "mmmm d yyyy h:MM:ss TT")
       var timeString = dateFormat(dateMili, "mmmm dS, h:MM TT")
       timeString = timeString.split(',')[1].trim()
 
@@ -158,7 +158,7 @@ class MessageScene extends Component {
             fname: match.fname,
             lname: match.lname,
             username: match.username,
-            uid: match.uid
+            uid: match.uid,
           })
           ref.child('users/' + match.uid + '/messageProfileList/' + user + '/profile/').set(userProfile)
         }
