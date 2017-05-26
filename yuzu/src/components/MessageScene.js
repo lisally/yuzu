@@ -248,9 +248,10 @@ class MessageScene extends Component {
   }
 
   hideKeyboard() {
+    console.log(this.state.height)
     if (this.state.height > 540) {
-      this.scrollView.scrollToEnd({animated: false});
-    } else if (this.state.height < 540) {
+      this.scrollView.scrollTo({y: this.state.height - 538, animated: false});
+    } else {
       this.scrollView.scrollTo({y: 0, animated: false});
     }
     this.setState({ showKeyboard: false })    
