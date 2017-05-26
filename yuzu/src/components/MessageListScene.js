@@ -26,18 +26,6 @@ class MessageListScene extends Component {
 
     this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
 
-    // this.messageRef.once('value', snapshot => {
-    //   snapshot.forEach(function(match) {
-    //     firebase.database().ref('users/' + user + '/messageList/' + match.key + '/messages/').on('child_added', (snapshot) => {
-    //       this.setState({ messageListLoaded: false })
-    //     })
-    //     firebase.database().ref('users/' + user + '/messageList/' + match.key + '/messages/').on('child_changed', (snapshot) => {
-    //       this.setState({ messageListLoaded: false })
-    //     })
-    //     // console.log(match.key)
-    //   })
-    // })
-
     this.messageRef.on('child_added', (snapshot) => {
       this.setState({ messageListLoaded: false })
     })
