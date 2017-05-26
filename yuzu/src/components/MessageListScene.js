@@ -69,12 +69,12 @@ class MessageListScene extends Component {
   renderMessageList() {
     const { ref, user, location, loading, messageListLoaded, messageList } = this.state
 
-    if (loading) {
-      return <View><Spinner size="small" /></View>
-    }
+    // if (loading) {
+    //   return <View><Spinner size="small" /></View>
+    // }
 
     if (!messageListLoaded) {
-      this.setState({ loading: true })
+      // this.setState({ loading: true })
       list = []
 
       ref.child('users/' + user + '/messageProfileList/').once('value', snapshot => {
@@ -84,7 +84,11 @@ class MessageListScene extends Component {
               var matchObj = match.val().profile
               ref.child('users/' + user + '/messageList/' + matchObj.uid + '/messages/').once('value', snapshot2 => {
                 if (snapshot2.val() != null) {
-                  matchObj['text'] = snapshot2.val()[snapshot2.val().length - 1].text
+                  if (snapshot2.val()[snapshot2.val().length - 1].sender == user) {
+                    matchObj['text'] = "You: " + snapshot2.val()[snapshot2.val().length - 1].text
+                  } else {
+                    matchObj['text'] = snapshot2.val()[snapshot2.val().length - 1].text
+                  }
                   matchObj['time'] = snapshot2.val()[snapshot2.val().length - 1].time
                   matchObj['date'] = snapshot2.val()[snapshot2.val().length - 1].date                  
                   if (matchObj['text'].length > 50) {
