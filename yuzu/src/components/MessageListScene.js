@@ -134,7 +134,7 @@ class MessageListScene extends Component {
 
     for (var i in messageList) {
       var match = messageList[i]
-      if (match.unseen) {
+      if (!match.seen) {
         result.push(
           <MessageListNotificationDetail onPress={this.onMessagePress.bind(this,match)} user={match} key={match.uid} />
         )

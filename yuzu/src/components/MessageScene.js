@@ -159,9 +159,16 @@ class MessageScene extends Component {
             lname: match.lname,
             username: match.username,
             uid: match.uid,
-            seen: false
           })
           ref.child('users/' + match.uid + '/messageProfileList/' + user + '/profile/').set(userProfile)
+        }
+      })
+
+      ref.child('users/' + match.uid + '/messageProfileList/' + user + '/profile/').once('value', snapshot => {
+        if (snapshot.val() != null) {
+          var profileObj = snapshot.val()
+          profileObj['seen'] = false
+          ref.child('users/' + match.uid + '/messageProfileList/' + user + '/profile/').set(profileObj)
         }
       })
     }
