@@ -19,6 +19,7 @@ class MessageScene extends Component {
       loading: false, 
       messageList: [],
       userProfile: {},
+      height: 0
       // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
       // matchUsername: 'saladsalsa'
 
@@ -55,7 +56,6 @@ class MessageScene extends Component {
     return (
       <View style={{flex:1}}>
 
-
         <View style={viewStyle}>
           <Text style={usernameStyle}>
             {this.state.match.username}
@@ -68,20 +68,25 @@ class MessageScene extends Component {
             </Text>
           </TouchableOpacity>
     
-        <TouchableWithoutFeedback onPress={this.hideKeyboard.bind(this)} >
-        <ScrollView 
+        {/*<TouchableWithoutFeedback onPress={this.hideKeyboard.bind(this)} >*/}
+        <ScrollView
+          keyboardDismissMode='none'
+          keyboardShouldPersistTaps='never'
           ref={ref => this.scrollView = ref}
           onContentSizeChange={(contentWidth, contentHeight)=>{
             if (contentHeight > 540) {
               this.scrollView.scrollToEnd({animated: false});
             }
+            this.setState({height: contentHeight})
           }}
         >
           <View style={{ marginTop: 7 }}>
           {this.renderMessages()}
           </View>
+
+          
         </ScrollView>
-        </TouchableWithoutFeedback>
+        {/*</TouchableWithoutFeedback>*/}
 
         <View style={bottomContainerStyle}>
           <TextInput
@@ -236,10 +241,18 @@ class MessageScene extends Component {
   }
 
   showKeyboard() {
+    if (this.state.height > 260) {
+      this.scrollView.scrollTo({y: this.state.height - 280, animated: false});
+    }
     this.setState({ showKeyboard: true })
   }
 
   hideKeyboard() {
+    if (this.state.height > 540) {
+      this.scrollView.scrollToEnd({animated: false});
+    } else if (this.state.height < 540) {
+      this.scrollView.scrollTo({y: 0, animated: false});
+    }
     this.setState({ showKeyboard: false })    
   }
 
