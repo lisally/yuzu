@@ -27,9 +27,11 @@ class MessageListScene extends Component {
     this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
 
     this.messageRef.on('child_added', (snapshot) => {
+      console.log('added')
       this.setState({ messageListLoaded: false })
     })
     this.messageRef.on('child_changed', (snapshot) => {
+      console.log('changed')
       this.setState({ messageListLoaded: false })
     })
   }
@@ -125,13 +127,13 @@ class MessageListScene extends Component {
 
     for (var i in messageList) {
       var match = messageList[i]
-      if (!match.seen) {
+      if (match.seen) {
         result.push(
-          <MessageListNotificationDetail onPress={this.onMessagePress.bind(this,match)} user={match} key={match.uid} />
+          <MessageListDetail onPress={this.onMessagePress.bind(this,match)} user={match} key={match.uid} />
         )
       } else {
         result.push(
-          <MessageListDetail onPress={this.onMessagePress.bind(this,match)} user={match} key={match.uid} />
+          <MessageListNotificationDetail onPress={this.onMessagePress.bind(this,match)} user={match} key={match.uid} />
         )
       }
     }

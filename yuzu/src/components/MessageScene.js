@@ -133,6 +133,7 @@ class MessageScene extends Component {
         date: dateString
       }
 
+      // adding user to match's unseenMessageList
       ref.child('users/' + match.uid + '/unseenMessageList/').once('value', snapshot => {
         if (snapshot.val() == null) {
           ref.child('users/' + match.uid + '/unseenMessageList/').set([user])     
@@ -145,6 +146,7 @@ class MessageScene extends Component {
         }
       })
 
+      // adding message to user & match's message list
       ref.child('users/' + match.uid + '/messageList/' + user + '/messages/').once('value', snapshot => {
         if (snapshot.val() == null) {
           ref.child('users/' + match.uid + '/messageList/' + user + '/messages/').set([messageObj])
@@ -157,6 +159,7 @@ class MessageScene extends Component {
         }
       })
 
+      // add match's profile to user's messageProfileList
       ref.child('users/' + user + '/messageProfileList/' + match.uid + '/profile/').once('value', snapshot => {
         if (snapshot.val() == null) {
           ref.child('users/' + user + '/messageProfileList/' + match.uid + '/profile/').set({
@@ -174,6 +177,7 @@ class MessageScene extends Component {
         if (snapshot.val() != null) {
           var profileObj = snapshot.val()
           profileObj['seen'] = false
+          console.log(profileObj)
           ref.child('users/' + match.uid + '/messageProfileList/' + user + '/profile/').set(profileObj)
         }
       })
@@ -248,7 +252,6 @@ class MessageScene extends Component {
   }
 
   hideKeyboard() {
-    console.log(this.state.height)
     if (this.state.height > 540) {
       this.scrollView.scrollTo({y: this.state.height - 538, animated: false});
     } else {
