@@ -67,7 +67,7 @@ class MainScene extends Component {
   }
 
   render() {
-    const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle, messageStyle, locationStyle, locationImageStyle, locationContainerStyle } = styles;
+    const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle, messageStyle, locationStyle, locationImageStyle, locationContainerStyle, refreshStyle } = styles;
     const { ref, itemList, matchCount, user, location, matching, } = this.state
 
     if (matching) {3
@@ -123,15 +123,13 @@ class MainScene extends Component {
         <View style={{ flex: 1, backgroundColor: '#F8F8F8', borderTopColor: '#ddd', borderTopWidth: 1 }}>
           <View style={{ paddingTop: 7, backgroundColor: '#89bc4f', height: 40 }}>
 
-            <TouchableOpacity onPress={this.onRefresh.bind(this)} >
-              <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 30, color: 'white', marginLeft: 340, position: 'absolute', marginTop: -7 }}>
-                ↻
-              </Text>
-            </TouchableOpacity>
-
-            <Text style={{ fontSize: 20, color: 'white', alignSelf: 'center' }}>
+            <Text style={{ fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '500' }}>
               Matches
             </Text>
+            
+            <TouchableOpacity style={refreshStyle} onPress={this.onRefresh.bind(this)} >
+              <Image style={{height: 30, width: 30}} source={require('../images/refresh.png')} />
+            </TouchableOpacity>
           </View>
 
           <ScrollView>
@@ -652,7 +650,6 @@ const styles = {
     alignSelf: 'center',
     flexDirection: 'row',
     marginTop: -30,
-    // marginLeft: 135,
   },
   locationImageStyle: {
     height: 12,
@@ -666,6 +663,10 @@ const styles = {
     color: '#404040', 
     paddingTop: 10,
     fontWeight: 'bold'
+  },
+  refreshStyle: {
+    marginTop: -26.5,
+    marginLeft: 335
   }
 }
 
