@@ -32,10 +32,17 @@ class SearchScene extends Component {
 
 
   render() {
-    const { containerStyle, inputStyle, backStyle, backTextStyle } = styles;
+    const { containerStyle, inputStyle, backStyle, backTextStyle, viewStyle, addItemsStyle } = styles;
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
         <View style={{flex:1}}>
+          <View style={viewStyle}>
+            <Text style={addItemsStyle}>
+              Add Items
+            </Text>
+          </View>
+
+
           <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
             <Text style={backTextStyle}>
               ‹
@@ -153,6 +160,25 @@ class SearchScene extends Component {
 }
 
 const styles = {
+    viewStyle: {
+    backgroundColor: '#F8F8F8',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 70,
+    paddingTop: 20,
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+    position: 'relative',
+    flexDirection: 'row'
+  },
+   addItemsStyle: { 
+    fontSize: 18, 
+    color: '#404040',
+    paddingTop: 10,
+    fontWeight: 'bold',
+    marginBottom: 10
+  },
   inputStyle: {
     color: '#404040',
     paddingRight: 5,
@@ -170,7 +196,7 @@ const styles = {
   backStyle: {
     position: 'absolute',
     marginLeft: 10,
-    marginTop: -58
+    marginTop: 12
   },
   backTextStyle: {
     color: '#89bc4f',

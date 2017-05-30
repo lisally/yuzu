@@ -104,7 +104,6 @@ class App extends Component {
             // return <SearchScene {...route.passProps} navigator={navigator} />
             return (
               <View style={{flex:1}}>
-                <Header />
                 <SearchScene {...route.passProps} navigator={navigator} />
               </View>
             )
