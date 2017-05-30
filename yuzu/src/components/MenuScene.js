@@ -69,6 +69,25 @@ class MenuScene extends Component {
   }
 
   onChangeLocationtPress() {
+    const { ref, user, location} = this.state
+    ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+      if (snapshot.val() != null) {
+        snapshot.forEach(function(item) {
+          ref.child('matches/' + location + '/' + item.val().Product).once('value', snapshot2 => {
+            if (snapshot2.val() != null) {
+              var users = snapshot2.val()
+              if (users.indexOf(user) != -1) {
+                users.splice(users.indexOf(user), 1)
+                ref.child('matches/' + location + '/' + item.val().Product + '/').set(users)
+              }
+            }
+          })
+        })
+        ref.child('users/' + user + '/matchingStatus/').set(false)
+        ref.child('users/' + user + '/itemMatchList/').remove()
+        ref.child('users/' + user + '/userMatchList/').remove()
+      }
+    })
     this.props.navigator.push({
       title: 'Location',
       passProps: {
