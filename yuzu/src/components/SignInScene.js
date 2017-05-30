@@ -84,10 +84,28 @@ class SignInScene extends Component {
   onSignInPress() {
     const { email, password } = this.state;
     Keyboard.dismiss()
-    this.setState({ error: '', loading: true });
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(this.onSignInSuccess.bind(this))
-      .catch(this.onSignInFail.bind(this));
+
+    if (email.length > 0 && password.length > 0) {
+      this.setState({ error: '', loading: true });
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(this.onSignInSuccess.bind(this))
+        .catch(error => {
+          switch(error.code) {
+            case 'auth/invalid-email':
+              this.setState({ error: "Invalid email address", loading: false })
+              return
+            case 'auth/user-not-found':
+              this.setState({ error: "Email address not found", loading: false })
+              return              
+            case 'auth/wrong-password':
+              this.setState({ error: "Incorrect password", loading: false })
+              return              
+            case 'auth/user-disabled':
+              this.setState({ error: "Account disabled", loading: false })
+              return              
+          }
+        })
+    }
   }
 
   onSignUpPress() {
@@ -98,10 +116,6 @@ class SignInScene extends Component {
         type: 'forward'
       }
     })
-  }
-
-  onSignInFail() {
-    this.setState({ error: "                    Sign in failed. \nPlease check your email and password.", loading: false });
   }
 
   onSignInSuccess(user) {

@@ -134,7 +134,17 @@ class SignUpScene extends Component {
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(this.onSignUpSuccess.bind(this)) 
         .catch((error) => {
-          this.setState({ error: error.message, loading: false })
+          switch(error.code) {
+            case 'auth/email-already-in-use':
+              this.setState({ error: "Email address already in use", loading: false })
+              return
+            case 'auth/invalid-email':
+              this.setState({ error: "Invalid email address", loading: false })
+              return                       
+            case 'auth/weak-password':
+              this.setState({ error: error.message, loading: false })
+              return              
+          }
         })
     } else {
       this.onSignUpFail()
