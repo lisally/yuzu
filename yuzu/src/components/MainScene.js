@@ -662,7 +662,7 @@ const styles = {
     fontSize: 12, 
     color: '#404040', 
     paddingTop: 10,
-    fontWeight: 'bold'
+    fontWeight: '500'
   },
   refreshStyle: {
     marginTop: -26.5,

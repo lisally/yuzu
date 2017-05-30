@@ -42,7 +42,7 @@ const styles = {
   },
   imageStyle: {
     width: 88,
-    height: 26.5,
+    height: 27.5,
     marginLeft: 10,
     marginTop: -10,
     marginBottom: 5
