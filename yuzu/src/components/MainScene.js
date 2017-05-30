@@ -399,9 +399,11 @@ class MainScene extends Component {
   renderClearAll() {
     if (this.state.itemList.length > 1) {
       return (
+        <View style={{ borderTopColor: '#ddd', borderTopWidth: 0.5, alignSelf: 'center', width: 350}}>
         <TextButton onPress={this.onClearAll.bind(this)}>
           Clear All
         </TextButton>
+        </View>
       )
     }
   }
@@ -578,8 +580,8 @@ const styles = {
     backgroundColor: '#f6c501',
   },
   buttonContainerStyle: {
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 2.5,
+    paddingRight: 2.5,
     margin: 10,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',

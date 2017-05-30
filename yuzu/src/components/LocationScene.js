@@ -31,18 +31,7 @@ class LocationScene extends Component {
           <ScrollView>
             {this.renderLocation()}
           </ScrollView>
-
-          {/*<TextButton onPress={() => firebase.auth().signOut()
-            .then(() => {this.props.navigator.push({
-              title: 'SignIn',
-              passProps: {
-                user: null,
-                type: 'backward'
-              }
-            })
-          })}>
-            Sign Out
-          </TextButton>*/}
+          
         </View>
       </TouchableWithoutFeedback>
     );

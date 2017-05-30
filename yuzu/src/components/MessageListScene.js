@@ -17,9 +17,6 @@ class MessageListScene extends Component {
 
      };
   }
-  
-  // TO DO:
-  //  add more info to list items (last message time, last message?)
 
   componentDidMount() {
     const { user } = this.state
@@ -27,11 +24,9 @@ class MessageListScene extends Component {
     this.messageRef = firebase.database().ref('users/' + user + '/messageList/')
 
     this.messageRef.on('child_added', (snapshot) => {
-      console.log('added')
       this.setState({ messageListLoaded: false })
     })
     this.messageRef.on('child_changed', (snapshot) => {
-      console.log('changed')
       this.setState({ messageListLoaded: false })
     })
   }

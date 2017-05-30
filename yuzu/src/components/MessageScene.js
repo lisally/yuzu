@@ -28,7 +28,6 @@ class MessageScene extends Component {
 
   // TO DO:
   //  show shared items in chat
-  //  message notifications?
 
   componentDidMount() {
     const { ref, user, match } = this.state
@@ -52,6 +51,7 @@ class MessageScene extends Component {
   }
 
   render() {
+    console.log(this.state.match)
     const { viewStyle, messageStyle, bottomContainerStyle, backStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
 
     return (
@@ -180,7 +180,6 @@ class MessageScene extends Component {
         } else {
           var profileObj = snapshot.val()
           profileObj['seen'] = false
-          console.log(profileObj)
           ref.child('users/' + match.uid + '/messageProfileList/' + user + '/profile/').set(profileObj)
         }
       })

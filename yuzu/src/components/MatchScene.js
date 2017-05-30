@@ -37,7 +37,6 @@ class MatchScene extends Component {
     })
 
     ref.child('matches/' + location + '/').on('child_removed', function(snapshot, prevChild) {
-      // console.log('child removed')
       ref.child('users/' + user + '/itemList/').once('value', snapshot => {
         snapshot.forEach(function(item) {
           ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
@@ -53,7 +52,6 @@ class MatchScene extends Component {
     })
 
     ref.child('matches/' + location + '/').on('child_added', function(snapshot, prevChild) {
-      // console.log('child added')
       ref.child('users/' + user + '/itemList/').once('value', snapshot => {
         snapshot.forEach(function(item) {
           ref.child('matches/' + location + '/' + item.key).once('value', snapshot2 => {
@@ -77,7 +75,6 @@ class MatchScene extends Component {
         <Image style={menuStyle} source={require('../images/menu.png')} />
       </TouchableHighlight>
 
-      {/*<View style={{ backgroundColor: '#F8F8F8' }}>*/}
       <View style={{ }}>
         <TouchableOpacity onPress={this.onRefresh.bind(this)}>    
           <Text style={{ transform: [{ rotate: '90deg'}], fontSize: 28, color: '#89bc4f', marginLeft: 342, marginTop: 5, position: 'absolute' }}>
@@ -90,7 +87,6 @@ class MatchScene extends Component {
       </View>
 
       <ScrollView style={{ backgroundColor: '#F8F8F8', }}>
-      {/*<ScrollView style={{  }}>*/}
         {this.renderMatchList()}    
       </ScrollView>
 

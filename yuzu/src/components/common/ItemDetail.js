@@ -9,9 +9,9 @@ const ItemDetail = ({ item, onPress }) => {
       <View>
         <View style={containerStyle}>
           <Text style={productStyle}>{Product}</Text>
-          <Text style={priceStyle}>Price: ${Price} </Text>
           <Text style={textStyle}>Quantity: {Quantity} × {Size} {Measure}</Text>
           <Text style={textStyle}>Category: {Category}</Text>
+          <Text style={priceStyle}>${Price} </Text>          
         </View>
         <View style={clearStyle} >
            <TouchableOpacity onPress={onPress}>
@@ -26,31 +26,35 @@ const ItemDetail = ({ item, onPress }) => {
 
 const styles = {
   productStyle: {
-    fontSize: 14,
+    fontSize: 14.5,
     fontWeight: 'bold',
     // color: '#89bc4f',
-    color: '#404040'
+    color: '#404040',
+    marginRight: 110
   },
   priceStyle: {
-    color: '#404040'
-    
+    color: '#404040',
+    alignSelf: 'flex-end',
+    position: 'relative',
+    fontSize: 18,
+    marginTop: -20
   },
   containerStyle: {
-    borderBottomWidth: 0.5,
     borderTopWidth: 0.5,
-    padding: 5,
+    paddingLeft: 5,
+    paddingTop: 10,
+    paddingBottom: 10,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     flexDirection: 'column',
     borderColor: '#ddd',
     position: 'relative',
-    width: 320,
+    width: 350,
     alignSelf: 'center',
-    paddingRight: 10
   },
   clearStyle: {
-    marginTop: -14,
-    marginLeft: 330,
+    marginTop: -10,
+    marginLeft: 345,
     position: 'absolute'
   },
   clearTextStyle: {
@@ -61,7 +65,7 @@ const styles = {
     paddingBottom: 10
   },
   textStyle: {
-    color: '#404040'
+    color: '#404040',
   }
 }
 

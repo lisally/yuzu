@@ -8,7 +8,7 @@ const SearchDetail = ({ item, onPress }) => {
     return (
         <TouchableOpacity style={containerStyle} onPress={onPress}>
             <Text style={{color: '#404040'}}>{Product}</Text>
-            <Text style={{color: '#404040'}}>${Price} - ({Quantity}) {Size} {Measure}</Text>
+            <Text style={{color: '#404040'}}>${Price} - {Quantity} × {Size} {Measure}</Text>
         </TouchableOpacity>
     )
 }

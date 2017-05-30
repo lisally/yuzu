@@ -36,12 +36,6 @@ class SearchScene extends Component {
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
         <View style={{flex:1}}>
-          {/*
-          <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
-            <Image style={menuStyle} source={require('../images/menu.png')} />
-          </TouchableHighlight>
-          */}
-
           <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
             <Text style={backTextStyle}>
               ‹
@@ -156,18 +150,6 @@ class SearchScene extends Component {
       }
     })
   }
-
-  // onMenuPress() {
-  //   this.props.navigator.push({
-  //     title: 'Menu',
-  //     passProps: {
-  //       user: this.props.user,
-  //       location: this.props.location,
-  //       screen: 'Search',
-  //       type: 'menu'
-  //     }
-  //   })
-  // }
 }
 
 const styles = {

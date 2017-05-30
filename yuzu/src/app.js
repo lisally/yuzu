@@ -50,17 +50,15 @@ class App extends Component {
   render() {
     return (
       <View style={{flex:1}}>
-      {/*<View>*/}
-        {/*<Header onPress={this.onMenuPress.bind(this)}/>*/}
         <Navigator
           ref={(ref) => this._navigator = ref}
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            //title: 'Main',
+            title: 'Main',
             //title: 'Location',
             //title: 'Search',
-            title: 'SignUp',
+            //title: 'SignUp',
             //title: 'SignIn',
             //title: 'Menu',
             //title: 'MessageList',
