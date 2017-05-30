@@ -41,8 +41,11 @@ const styles = {
     flexDirection: 'row'
   },
   imageStyle: {
-    width: 110,
-    height: 34
+    width: 88,
+    height: 26.5,
+    marginLeft: 10,
+    marginTop: -10,
+    marginBottom: 5
   },
   menuStyle: {
     width: 18,

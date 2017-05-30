@@ -69,7 +69,7 @@ class MainScene extends Component {
   }
 
   render() {
-    const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle, messageStyle } = styles;
+    const { buttonStyle, buttonTextStyle, buttonContainerStyle, backStyle, backTextStyle, menuStyle, messageStyle, locationStyle, locationImageStyle, locationContainerStyle } = styles;
     const { ref, itemList, matchCount, user, location, matching, } = this.state
 
     if (matching) {3
@@ -83,6 +83,13 @@ class MainScene extends Component {
       </TouchableHighlight>
 
       {this.renderNotifications()}
+
+      <View style={locationContainerStyle}>
+        <Image style={locationImageStyle} source={require('../images/location.png')} />
+        <Text style={locationStyle}>
+          Costco, {this.state.location}
+        </Text>
+      </View>
 
       <View style={buttonContainerStyle}>
       <TouchableOpacity onPress={this.onAdd.bind(this)} style={buttonStyle}>
@@ -405,6 +412,10 @@ class MainScene extends Component {
         </TextButton>
         </View>
       )
+    } else if (this.state.itemList.length == 1) {
+      return (
+        <View style={{ borderTopColor: '#ddd', borderTopWidth: 0.5, alignSelf: 'center', width: 350}} />
+      )
     }
   }
 
@@ -578,6 +589,7 @@ const styles = {
     flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#f6c501',
+    marginTop: 5
   },
   buttonContainerStyle: {
     paddingLeft: 2.5,
@@ -586,7 +598,7 @@ const styles = {
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     flexDirection: 'row',
-    position: 'relative'
+    position: 'relative',
   },
   backStyle: {
     marginLeft: 10
@@ -639,6 +651,25 @@ const styles = {
     alignItems: 'center',
     width: 300
   },
+  locationContainerStyle: {
+    alignSelf: 'center',
+    flexDirection: 'row',
+    marginTop: -30,
+    // marginLeft: 135,
+  },
+  locationImageStyle: {
+    height: 12,
+    width: 12,
+    alignSelf: 'center',
+    marginTop: 8,
+    marginRight: 2
+  },
+  locationStyle: { 
+    fontSize: 12, 
+    color: '#404040', 
+    paddingTop: 10,
+    fontWeight: 'bold'
+  }
 }
 
 
