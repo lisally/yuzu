@@ -24,13 +24,10 @@ class MainScene extends Component {
       yuzuList: [],
       notification: false, 
       notificationLoaded: false,
-      notificationCount: 0
+      notificationCount: 0,
      };
   }
 
-
-  // TO DO:
-  //  remove user from matches when changing locations
 
   componentDidMount() {
     const { ref, user, location, matching, matchLoading } = this.state
@@ -43,6 +40,7 @@ class MainScene extends Component {
         this.setState({ matching: snapshot.val() })
       }
     })
+
 
     this.unseenMessageRef = firebase.database().ref('users/' + user + '/unseenMessageList/')
     this.unseenMessageRef.on('child_changed', (snapshot) => {
@@ -189,7 +187,6 @@ class MainScene extends Component {
 
   renderMatches() {
     const { ref, user, location, matchCount, matchLoading } = this.state
-
     if (matchLoading) {
       ref.child('users/' + user + '/itemList/').once('value', snapshot => {
         snapshot.forEach(function(item) {

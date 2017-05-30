@@ -12,7 +12,7 @@ class MenuScene extends Component {
         location: this.props.location,
         showLocation: this.props.showLocation
      };
-}
+  }
 
   render() {
     return (
@@ -26,7 +26,7 @@ class MenuScene extends Component {
 
        {this.renderShowLocation()} 
 
-      <MenuDetail onPress={this.onProfilePress.bind(this)}>
+      {/*<MenuDetail onPress={this.onProfilePress.bind(this)}>
         Profile
       </MenuDetail>
 
@@ -36,7 +36,7 @@ class MenuScene extends Component {
 
       <MenuDetail onPress={this.onTermsPress.bind(this)}>
         Terms and Conditions
-      </MenuDetail>
+      </MenuDetail>*/}
 
       <MenuDetail onPress={this.onSignOutPress.bind(this)}>
         Sign Out
@@ -80,30 +80,26 @@ class MenuScene extends Component {
   }
 
   onSignOutPress() {
-    const { ref, user, location } = this.state
-
+    const { ref, user, location} = this.state
     ref.child('users/' + user + '/itemList/').once('value', snapshot => {
-      
       if (snapshot.val() != null) {
         snapshot.forEach(function(item) {
           ref.child('matches/' + location + '/' + item.val().Product).once('value', snapshot2 => {
             if (snapshot2.val() != null) {
               var users = snapshot2.val()
-
               if (users.indexOf(user) != -1) {
-                console.log('hi')
                 users.splice(users.indexOf(user), 1)
                 ref.child('matches/' + location + '/' + item.val().Product + '/').set(users)
               }
             }
           })
         })
+        ref.child('users/' + user + '/matchingStatus/').set(false)
+        ref.child('users/' + user + '/itemMatchList/').remove()
+        ref.child('users/' + user + '/userMatchList/').remove()                        
+        firebase.auth().signOut()      
       }
-    })
-    ref.child('users/' + user + '/matchingStatus/').set(false)
-
-    firebase.auth().signOut()
-
+    })    
     this.props.navigator.push({
       title: 'SignIn',
       passProps: {
