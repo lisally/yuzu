@@ -117,8 +117,8 @@ class MessageScene extends Component {
 
   onSendMessage() {
     const { ref, user, match, message, date, dateFormat, userProfile } = this.state
-    Keyboard.dismiss()
-    this.setState({ showKeyboard: false, message: '' })
+    // Keyboard.dismiss()
+    this.setState({ message: '' })
     this.refs['messageInput'].setNativeProps({text: ''});
 
     if (message.length > 0) {

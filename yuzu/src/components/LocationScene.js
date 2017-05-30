@@ -20,7 +20,7 @@ class LocationScene extends Component {
           <CardSection>
             <Input
               label="Zipcode"
-              placeholder="12345"
+              placeholder="98105"
               value={this.state.zipcode}
               onChangeText={zipcode => this.setState({ zipcode })}
             />

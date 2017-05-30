@@ -495,7 +495,7 @@ class MainScene extends Component {
         })
       })
       ref.child('users/' + user + '/matchingStatus/').set(true)
-      this.setState({ matching: true, matchLoading: true, showMatches: true })      
+      this.setState({ matching: true, matchLoading: true })      
     }
   }
 

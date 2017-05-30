@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 
 const MessageListDetail = ({ user, onPress }) => {
     const { username, time, text } = user
-    const { containerStyle, usernameStyle, timeStyle, textStyle } = styles 
+    const { containerStyle, usernameStyle, timeStyle, textStyle, arrowStyle } = styles 
 
     return (
       <TouchableOpacity onPress={onPress}>
@@ -40,7 +40,7 @@ const styles = {
     paddingLeft: 10,
     paddingTop: 5,
     color: '#999999'
-  }
+  },
 }
 
 export { MessageListDetail }

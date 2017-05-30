@@ -60,10 +60,10 @@ class App extends Component {
             //title: 'Main',
             //title: 'Location',
             //title: 'Search',
-            //title: 'SignUp',
+            title: 'SignUp',
             //title: 'SignIn',
             //title: 'Menu',
-            title: 'MessageList',
+            //title: 'MessageList',
             //title: 'Message',
             passProps: {
               user: this.state.user,

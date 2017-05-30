@@ -6,7 +6,7 @@ import { Button, Card, CardSection, Input, Spinner, TextButton } from './common'
 class SignUpScene extends Component {
   constructor(props) {
     super(props)
-    this.state = { fname: '', lname: '', username: '', email: '', password: '', password2: '', error: '', loading: false,};
+    this.state = { ref: firebase.database().ref(), fname: '', lname: '', username: '', email: '', password: '', password2: '', error: '', loading: false,};
     
   }
 
@@ -126,14 +126,16 @@ class SignUpScene extends Component {
 
   onSignUpPress() {
     Keyboard.dismiss()
+
     if (this.state.password == this.state.password2) {
       const { email, password } = this.state;
       this.setState({ error: '', loading: true, password2: '' });
 
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(this.onSignUpSuccess.bind(this)) 
-        .catch(this.onSignUpFail.bind(this))
-
+        .catch((error) => {
+          this.setState({ error: error.message, loading: false })
+        })
     } else {
       this.onSignUpFail()
     }
