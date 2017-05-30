@@ -160,7 +160,7 @@ class SearchScene extends Component {
 }
 
 const styles = {
-    viewStyle: {
+  viewStyle: {
     backgroundColor: '#F8F8F8',
     justifyContent: 'center',
     alignItems: 'center',

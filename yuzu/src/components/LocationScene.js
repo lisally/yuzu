@@ -13,6 +13,11 @@ class LocationScene extends Component {
     return (
       <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
         <View style={{flex:1}}>
+           <View style={styles.viewStyle}>
+            <Text style={styles.locationStyle}>
+              Select Location
+            </Text>
+          </View>
           <TouchableHighlight onPress={this.onMenuPress.bind(this)}>
             <Image style={styles.menuStyle} source={require('../images/menu.png')} />
           </TouchableHighlight>
@@ -95,6 +100,25 @@ class LocationScene extends Component {
 }
 
 const styles = {
+  viewStyle: {
+    backgroundColor: '#F8F8F8',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 70,
+    paddingTop: 20,
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+    position: 'relative',
+    flexDirection: 'row'
+  },
+   locationStyle: { 
+    fontSize: 18, 
+    color: '#404040',
+    paddingTop: 10,
+    fontWeight: 'bold',
+    marginBottom: 10
+  },
   menuStyle: {
     width: 22,
     height: 22,
