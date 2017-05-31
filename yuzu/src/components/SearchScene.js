@@ -8,8 +8,8 @@ class SearchScene extends Component {
     super(props)
     this.state = { 
       ref: firebase.database().ref(),
-      // location: this.props.location,
-      location: 'Seattle',
+      location: this.props.location,
+      // location: 'Seattle',
       user: this.props.user, 
       searchResult: [], 
       loading: false,

@@ -8,8 +8,8 @@ class MainScene extends Component {
     super(props)
     this.state = {
       ref: firebase.database().ref(),
-      // location: this.props.location,
-      location: 'Seattle',
+      location: this.props.location,
+      // location: 'Seattle',
       user: this.props.user, 
       itemListLoaded: false, 
       loading: false, 
@@ -521,16 +521,18 @@ class MainScene extends Component {
     if (itemList.length > 0) {
       itemList.forEach(function(item) {
         ref.child('matches/' + location + '/' + item.Product + '/').once('value', snapshot => {
-          var users = snapshot.val()
-          if (users.indexOf(user) != -1) {
-            users.splice(users.indexOf(user), 1)
-            if (users.length == 0) {
-              ref.child('matches/' + location + '/' + item.Product + '/').remove()
-            } else {
-              ref.child('matches/' + location + '/' + item.Product + '/').set(users)              
+          if (snapshot.val() != null) {
+            var users = snapshot.val()
+            if (users.indexOf(user) != -1) {
+              users.splice(users.indexOf(user), 1)
+              if (users.length == 0) {
+                ref.child('matches/' + location + '/' + item.Product + '/').remove()
+              } else {
+                ref.child('matches/' + location + '/' + item.Product + '/').set(users)              
+              }
             }
           }
-        })
+        })        
       })
     }
     ref.child('users/' + user + '/itemMatchList/').remove()    
