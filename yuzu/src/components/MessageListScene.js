@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal, TouchableWithoutFeedback, Vibration } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, TextButton, MessageListDetail, MessageListNotificationDetail } from './common';
 import firebase from 'firebase'
 

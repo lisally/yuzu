@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, TouchableOpacity, TouchableHighlight, ScrollView, ActivityIndicator, Image, Modal, TouchableWithoutFeedback, Vibration } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, LocationDetail, TextButton, ItemDetail, MatchDetail } from './common';
 import firebase from 'firebase'
 
@@ -44,12 +44,16 @@ class MainScene extends Component {
 
     this.unseenMessageRef = firebase.database().ref('users/' + user + '/unseenMessageList/')
     this.unseenMessageRef.on('child_changed', (snapshot) => {
+      // remove if buggy
+      Vibration.vibrate()
       this.setState({ notificationLoaded: false })
     })
     this.unseenMessageRef.on('child_added', (snapshot) => {
+      // remove if buggy      
+      Vibration.vibrate()
       this.setState({ notificationLoaded: false })
     })
-    this.unseenMessageRef.on('child_added', (snapshot) => {
+    this.unseenMessageRef.on('child_removed', (snapshot) => { 
       this.setState({ notificationLoaded: false })
     })
 
@@ -224,6 +228,10 @@ class MainScene extends Component {
             ref.child('users/' + user + '/userMatchList/').set(matches)
           })
         })
+        if (matchCount != Object.keys(matchesList).length - 1) {
+          // remove if buggy          
+          Vibration.vibrate()
+        }
         this.setState({ matchLoading: false, matchCount: Object.keys(matchesList).length - 1 })
       })
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, Keyboard, TouchableHighlight, ScrollView, ActivityIndicator, Image, TouchableWithoutFeedback, TextInput, Modal } from 'react-native';
+import { Text, View, TouchableOpacity, Keyboard, TouchableHighlight, ScrollView, ActivityIndicator, Image, TouchableWithoutFeedback, TextInput, Modal, Vibration } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, MessageSenderDetail, MessageMatchDetail } from './common';
 import firebase from 'firebase'
 
@@ -27,9 +27,6 @@ class MessageScene extends Component {
      };
   }
 
-  // TO DO:
-  //  show shared items in chat
-
   componentDidMount() {
     const { ref, user, match } = this.state
     ref.child('/users/' + user + '/profile/').once('value', snapshot => {
@@ -46,7 +43,7 @@ class MessageScene extends Component {
     this.messageRef.on('child_added', (snapshot) => {
       this.setState({ messagesLoaded: false })
     })
-    this.messageRef.on('child_changed', (snapshot) => {
+    this.messageRef.on('child_changed', (snapshot) => {    
       this.setState({ messagesLoaded: false })
     })
   }
@@ -74,6 +71,7 @@ class MessageScene extends Component {
         </TouchableOpacity>
     
  {/*############################################################*/}
+ {/* 
         <Modal
           animationType={"none"}
           transparent={true}
@@ -100,9 +98,8 @@ class MessageScene extends Component {
 
         </Modal>
 
-
+*/}
  {/*############################################################*/}
-
 
         <ScrollView
           keyboardDismissMode='none'
