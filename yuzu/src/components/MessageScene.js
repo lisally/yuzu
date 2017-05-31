@@ -20,7 +20,7 @@ class MessageScene extends Component {
       messageList: [],
       userProfile: {},
       height: 0,
-      showList: true,
+      showList: false,
       // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
       // matchUsername: 'saladsalsa'
 
@@ -81,15 +81,22 @@ class MessageScene extends Component {
           visible={this.state.showList}
           onRequestClost={() => this.setState({ showList: false })}
         >
-        <View style={{ height: 217, backgroundColor: 'black', position: 'absolute', marginTop: 225, width: 32, opacity: 0.5 }}/>
-        <View style={{ height: 217, backgroundColor: 'black', position: 'absolute', marginTop: 225, width: 32, alignSelf: 'flex-end', opacity: 0.5 }}/>
-        <View style={{ height: 225, backgroundColor: 'black', opacity: 0.5 }}/>
+
+        <TouchableOpacity activeOpacity={0.3} style={{ height: 217, backgroundColor: 'black', position: 'absolute', marginTop: 225, width: 32, opacity: 0.3 }} onPress={this.onHideList.bind(this)} />
+
+        <TouchableOpacity activeOpacity={0.3} style={{ height: 217, backgroundColor: 'black', position: 'absolute', marginTop: 225, width: 32, alignSelf: 'flex-end', opacity: 0.3 }} onPress={this.onHideList.bind(this)} />
+
+        <TouchableOpacity activeOpacity={0.3} style={{ height: 225, backgroundColor: 'black', opacity: 0.3 }} onPress={this.onHideList.bind(this)} />
+          
           <View style={{ flex: 1 }}>
             <ScrollView style={listContainerStyle}>
+              <Text>Items Matched</Text>
 
+              <Text>Items Not Matched</Text>
             </ScrollView>
           </View>
-        <View style={{ height: 225, backgroundColor: 'black', opacity: 0.5 }}/>      
+
+        <TouchableOpacity activeOpacity={0.3} style={{ height: 225, backgroundColor: 'black', opacity: 0.3 }} onPress={this.onHideList.bind(this)} />      
 
         </Modal>
 
@@ -114,7 +121,6 @@ class MessageScene extends Component {
 
           
         </ScrollView>
-
         <View style={bottomContainerStyle}>
           <TextInput
             ref={'messageInput'}
