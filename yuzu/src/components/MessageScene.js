@@ -49,7 +49,7 @@ class MessageScene extends Component {
   }
 
   render() {
-    const { viewStyle, messageStyle, bottomContainerStyle, backStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle, listStyle, listContainerStyle } = styles
+    const { viewStyle, messageStyle, bottomContainerStyle, backStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle, listStyle, listContainerStyle } = styles    
 
     return (
       <View style={{flex:1}}>
@@ -66,12 +66,13 @@ class MessageScene extends Component {
           </Text>
         </TouchableOpacity>
 
+        {/*
         <TouchableOpacity style={listStyle} onPress={this.onShowList.bind(this)}>
           <Image style={{ height: 30, width: 25}}source={require('../images/list.png')} />
         </TouchableOpacity>
-    
+        */}
  {/*############################################################*/}
- {/* 
+  {/*
         <Modal
           animationType={"none"}
           transparent={true}
@@ -88,9 +89,7 @@ class MessageScene extends Component {
           
           <View style={{ flex: 1 }}>
             <ScrollView style={listContainerStyle}>
-              <Text>Items Matched</Text>
-
-              <Text>Items Not Matched</Text>
+              {this.renderItemList()}
             </ScrollView>
           </View>
 
@@ -98,9 +97,8 @@ class MessageScene extends Component {
 
         </Modal>
 
-*/}
+        */}
  {/*############################################################*/}
-
         <ScrollView
           keyboardDismissMode='none'
           keyboardShouldPersistTaps='never'
@@ -143,6 +141,27 @@ class MessageScene extends Component {
       </View>
     )
   }
+
+  // renderItemList() {
+  //   const { ref, user, location, match } = this.state
+    
+  //   var matchedList = []
+  //   var itemList = []
+  //   var result = []
+
+  //   ref.child('users/' + user + '/itemList/').once('value', snapshot => {
+  //     snapshot.forEach(function(item) {
+  //       ref.child('users/' + match.uid+ '/itemList/' + item.key).once('value', snapshot2 => {
+  //         if (snapshot2.val() != null) {
+  //           matchedList.push(item.key)
+  //         } else {
+  //           itemList.push(item.key)
+  //         }
+  //       })
+  //     })
+  //   })
+    
+  // }
 
   onShowList() {
     this.setState({ showList: true })
