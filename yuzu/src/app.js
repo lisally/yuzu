@@ -8,7 +8,6 @@ import MainScene from './components/MainScene'
 import SearchScene from './components/SearchScene'
 import SignUpScene from './components/SignUpScene'
 import MenuScene from './components/MenuScene'
-// import MatchScene from './components/MatchScene'
 import MessageListScene from './components/MessageListScene'
 import MessageScene from './components/MessageScene'
 
@@ -55,13 +54,13 @@ class App extends Component {
           configureScene={this.configureScene.bind(this)}
           renderScene={this.renderScene.bind(this)}
           initialRoute={{
-            title: 'Main',
+            //title: 'Main',
             //title: 'Location',
             //title: 'Search',
             //title: 'SignUp',
             //title: 'SignIn',
             //title: 'Menu',
-            //title: 'MessageList',
+            title: 'MessageList',
             //title: 'Message',
             passProps: {
               user: this.state.user,
@@ -83,7 +82,6 @@ class App extends Component {
             return <MenuScene {...route.passProps} navigator={navigator} />   
           case 'Location':
             route.passProps.user = this.state.user
-            // return <LocationScene {...route.passProps} navigator={navigator} />
             return (
               <View style={{flex:1}}>
                 <LocationScene {...route.passProps} navigator={navigator} />
@@ -91,7 +89,6 @@ class App extends Component {
             )
           case 'Main':
             route.passProps.user = this.state.user               
-            // return <MainScene {...route.passProps} navigator={navigator} />
             return (
               <View style={{flex:1}}>
                 <Header />
@@ -100,7 +97,6 @@ class App extends Component {
             )
           case 'Search':
             route.passProps.user = this.state.user            
-            // return <SearchScene {...route.passProps} navigator={navigator} />
             return (
               <View style={{flex:1}}>
                 <SearchScene {...route.passProps} navigator={navigator} />
@@ -108,7 +104,6 @@ class App extends Component {
             )
           case 'MessageList':
             route.passProps.user = this.state.user            
-            // return <MessageScene {...route.passProps} navigator={navigator} />
             return (
               <View style={{flex:1}}>
                 <MessageListScene {...route.passProps} navigator={navigator} />
@@ -116,36 +111,11 @@ class App extends Component {
             )
           case 'Message':
             route.passProps.user = this.state.user            
-            // return <MessageScene {...route.passProps} navigator={navigator} />
             return (
               <View style={{flex:1}}>
                 <MessageScene {...route.passProps} navigator={navigator} />
               </View>
             )
-          // case 'Match':
-          //   route.passProps.user = this.state.user               
-          //   return (
-          //     <View style={{flex:1}}>
-          //       <Header />
-          //       <MatchScene {...route.passProps} navigator={navigator} />
-          //     </View>
-          //   )
-          /*case 'SignIn':
-            // return <SignInScene {...route.passProps} navigator={navigator} />
-            return (
-              <View style={{flex:1}}>
-                <Header onPress={this.onMenuPress.bind(this)}/>
-                <SignInScene {...route.passProps} navigator={navigator} />
-              </View>
-            )
-          case 'SignUp':                 
-            // return <SignUpScene {...route.passProps} navigator={navigator} />
-            return (
-              <View style={{flex:1}}>
-                <Header onPress={this.onMenuPress.bind(this)}/>
-                <SignUpScene {...route.passProps} navigator={navigator} />
-              </View>
-            )*/
           default:
             return <Spinner size="large"/>;
         }

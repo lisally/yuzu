@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, Keyboard, TouchableHighlight, ScrollView, ActivityIndicator, Image, TouchableWithoutFeedback, TextInput } from 'react-native';
+import { Text, View, TouchableOpacity, Keyboard, TouchableHighlight, ScrollView, ActivityIndicator, Image, TouchableWithoutFeedback, TextInput, Modal } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner, MessageSenderDetail, MessageMatchDetail } from './common';
 import firebase from 'firebase'
 
@@ -19,7 +19,8 @@ class MessageScene extends Component {
       loading: false, 
       messageList: [],
       userProfile: {},
-      height: 0
+      height: 0,
+      showList: true,
       // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
       // matchUsername: 'saladsalsa'
 
@@ -51,8 +52,7 @@ class MessageScene extends Component {
   }
 
   render() {
-    console.log(this.state.match)
-    const { viewStyle, messageStyle, bottomContainerStyle, backStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle } = styles
+    const { viewStyle, messageStyle, bottomContainerStyle, backStyle, backTextStyle, inputStyle, usernameStyle, buttonStyle, buttonTextStyle, listStyle, listContainerStyle } = styles
 
     return (
       <View style={{flex:1}}>
@@ -63,13 +63,40 @@ class MessageScene extends Component {
           </Text>
         </View>
 
-          <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
-            <Text style={backTextStyle}>
-              ‹
-            </Text>
-          </TouchableOpacity>
+        <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
+          <Text style={backTextStyle}>
+            ‹
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={listStyle} onPress={this.onShowList.bind(this)}>
+          <Image style={{ height: 30, width: 25}}source={require('../images/list.png')} />
+        </TouchableOpacity>
     
-        {/*<TouchableWithoutFeedback onPress={this.hideKeyboard.bind(this)} >*/}
+ {/*############################################################*/}
+        <Modal
+          animationType={"none"}
+          transparent={true}
+          // transparent={false}
+          visible={this.state.showList}
+          onRequestClost={() => this.setState({ showList: false })}
+        >
+        <View style={{ height: 217, backgroundColor: 'black', position: 'absolute', marginTop: 225, width: 32, opacity: 0.5 }}/>
+        <View style={{ height: 217, backgroundColor: 'black', position: 'absolute', marginTop: 225, width: 32, alignSelf: 'flex-end', opacity: 0.5 }}/>
+        <View style={{ height: 225, backgroundColor: 'black', opacity: 0.5 }}/>
+          <View style={{ flex: 1 }}>
+            <ScrollView style={listContainerStyle}>
+
+            </ScrollView>
+          </View>
+        <View style={{ height: 225, backgroundColor: 'black', opacity: 0.5 }}/>      
+
+        </Modal>
+
+
+ {/*############################################################*/}
+
+
         <ScrollView
           keyboardDismissMode='none'
           keyboardShouldPersistTaps='never'
@@ -87,7 +114,6 @@ class MessageScene extends Component {
 
           
         </ScrollView>
-        {/*</TouchableWithoutFeedback>*/}
 
         <View style={bottomContainerStyle}>
           <TextInput
@@ -113,6 +139,14 @@ class MessageScene extends Component {
 
       </View>
     )
+  }
+
+  onShowList() {
+    this.setState({ showList: true })
+  }
+
+  onHideList() {
+    this.setState({ showList: false })
   }
 
   onSendMessage() {
@@ -368,6 +402,18 @@ const styles = {
     color: 'white',
     fontSize: 28,
     transform: [{ rotate: '180deg'}]
+  },
+  listStyle: {
+    position: 'absolute',
+    marginTop: 28,
+    marginLeft: 338,
+  },
+  listContainerStyle: {
+    backgroundColor: '#FFFFFF',
+    // backgroundColor: 'black',
+    marginLeft: 25,
+    marginRight: 25,
+    borderRadius: 10
   }
 }
 

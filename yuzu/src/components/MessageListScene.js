@@ -42,23 +42,17 @@ class MessageListScene extends Component {
             Messages
           </Text>
         </View>
-
-          <TouchableOpacity style={backStyle} onPress={this.onBack.bind(this)}>
-            <Text style={backTextStyle}>
-              ‹
-            </Text>
-          </TouchableOpacity>
-
-        <ScrollView>
-          {this.renderMessageList()}
-        </ScrollView>
-
-
+        
         <View style={backStyle}>
           <Text style={backTextStyle} onPress={this.onBack.bind(this)}>
             ‹
           </Text>
         </View> 
+
+        <ScrollView>
+          {this.renderMessageList()}
+        </ScrollView>
+
       </View>
     )
   }
