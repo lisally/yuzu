@@ -22,9 +22,7 @@ Our team conducted user-research on 52 survey participants.
 ## Clickable Prototype
 [<img src="./documentation/images/prototype.png">](https://marvelapp.com/g8a8b56/screen/27573694)
 
-## Mobile Application
-
-## Features
+## Mobile Application (Beta)
 
 ### Add
 <kbd>
@@ -33,7 +31,7 @@ Our team conducted user-research on 52 survey participants.
 
 ### Match
 <kbd>
-![match](https://media.giphy.com/media/Mo1ov1yeMeWKA/giphy.gif)
+![match](https://media.giphy.com/media/tnYtSnflBmHBu/giphy.gif)
 </kbd>
 
 ### Message
@@ -64,7 +62,7 @@ We decided to use Firebase, a mobile and web application development platform bu
 
 
 
-## Contact Us
+## The Team
 Yuzu: [Email](yuzu.me@outlook.com) | [Website](http://yu-zu.me/)
 
 Derry Cheng : [Email](derryc09@uw.edu) | [LinkedIn](https://www.linkedin.com/in/derrycheng/)
