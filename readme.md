@@ -36,19 +36,13 @@ The Yuzu team conducted user-research on 52 survey participants.
 ## Mobile Application (Beta)
 
 ### Add
-<kbd>
 ![add](./documentation/images/add.gif)
-</kbd>
 
 ### Match
-<kbd>
 ![match](./documentation/images/match.gif)
-</kbd>
 
 ### Message
-<kbd>
 ![message](./documentation/images/message.gif)
-</kbd>
 
 <a name="decisions"></a>
 ## Summary of the Major Technology Decisions
