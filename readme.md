@@ -87,7 +87,7 @@ Mobile Developer | lisally@uw.edu | [LinkedIn](https://www.linkedin.com/in/lisal
 ### Jessica (Hyerin) Ro 
 UI Designer | jessro95@uw.edu | [LinkedIn](https://www.linkedin.com/in/jessicahyerinro/)
 
-###Stacy (Yunpei) Zeng 
+### Stacy (Yunpei) Zeng 
 UX Designer | stacyz@uw.edu | [LinkedIn](https://www.linkedin.com/in/yunpeizeng/)
 
 Yuzu: [Email](yuzu.me@outlook.com) | [Website](http://yu-zu.me/) | [Capstone Website](https://ischool.uw.edu/capstone/projects/2017/yuzu)
