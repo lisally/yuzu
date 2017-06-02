@@ -27,14 +27,25 @@ Our team conducted user-research on 52 survey participants.
 ## Features
 
 ### Add
+<kbd>
+![add](https://media.giphy.com/media/11h3L8lUQUNeo/giphy.gif)
+</kbd>
 
 ### Match
+<kbd>
+![match](https://media.giphy.com/media/Mo1ov1yeMeWKA/giphy.gif)
+</kbd>
 
 ### Message
+<kbd>
+![message](https://media.giphy.com/media/AQ5DxKKMScBwI/giphy.gif)
+</kbd>
 
 ## Summary of the Major Technology Decisions
 Programming Framework: React-Native
+
 Database: Firebase
+
 Authentication: Firebase
 
 ## Technology Stack and Rationale
