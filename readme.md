@@ -26,7 +26,7 @@ Our team conducted user-research on 52 survey participants.
 
 ### Add
 <kbd>
-![add](./documentation/images/add.gif)
+![add](https://media.giphy.com/media/tnYtSnflBmHBu/200w_d.gif)
 </kbd>
 
 ### Match
