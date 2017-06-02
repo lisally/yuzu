@@ -29,12 +29,12 @@ class App extends Component {
   componentWillMount() {
     console.disableYellowBox = true;
     firebase.initializeApp({
-        apiKey: "AIzaSyA2KHwa9wuVMqojjgq9vKWVRDzTitzTND0",
-        authDomain: "yuzu-f1238.firebaseapp.com",
-        databaseURL: "https://yuzu-f1238.firebaseio.com",
-        projectId: "yuzu-f1238",
-        storageBucket: "yuzu-f1238.appspot.com",
-        messagingSenderId: "293647243508"
+      apiKey: "AIzaSyCvtsgKNrudXHeGX2Rb-iq9OHUJwORwGo4",
+      authDomain: "yuzume-acb17.firebaseapp.com",
+      databaseURL: "https://yuzume-acb17.firebaseio.com",
+      projectId: "yuzume-acb17",
+      storageBucket: "yuzume-acb17.appspot.com",
+      messagingSenderId: "1037747366460"
     });
 
     firebase.auth().onAuthStateChanged((user) => {

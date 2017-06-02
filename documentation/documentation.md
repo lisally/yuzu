@@ -28,6 +28,7 @@ Create a Free Account: [Here](https://firebase.google.com/)
 ### 8. Create a New Firebase Project
 
 
+
 ### 9. Download the Yuzu Data
 Download Yuzu's Product and Location Data: [Here](https://github.com/lisally/yuzu/tree/master/documentation/yuzu_data.json)
 

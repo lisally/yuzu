@@ -1,0 +1,4708 @@
+{
+  "locations" : [ {
+    "city" : "Kirkland",
+    "name" : "Kirkland",
+    "phone" : "(425) 827-1693",
+    "state" : "WA",
+    "street" : "8629 120th Ave Ne",
+    "zipcode" : "98033-5865"
+  }, {
+    "city" : "Seattle",
+    "name" : "Seattle",
+    "phone" : "(206) 622-3136",
+    "state" : "WA",
+    "street" : "4401 4th Ave S",
+    "zipcode" : "98134-2389"
+  }, {
+    "city" : "Shoreline",
+    "name" : "Aurora Village",
+    "phone" : "(206) 546-0480",
+    "state" : "WA",
+    "street" : "1175 N 205th St",
+    "zipcode" : "98133-3206"
+  }, {
+    "city" : "Redmond",
+    "name" : "Redmond",
+    "phone" : "(425) 406-5382",
+    "state" : "WA",
+    "street" : "7725 188th Ave NE",
+    "zipcode" : "98052-6088"
+  }, {
+    "city" : "Woodinville",
+    "name" : "Woodinville",
+    "phone" : "(425) 806-7700",
+    "state" : "WA",
+    "street" : "24008 Snohomish Woodinville Rd",
+    "zipcode" : "98072-9743"
+  }, {
+    "city" : "East Wenatchee",
+    "name" : "Wenatchee",
+    "phone" : "(509) 886-0593",
+    "state" : "WA",
+    "street" : "375 Highline Dr",
+    "zipcode" : "98802-5344"
+  }, {
+    "city" : "Union Gap",
+    "name" : "Union Gap",
+    "phone" : "(509) 454-5242",
+    "state" : "WA",
+    "street" : "2310 Longfibre Rd",
+    "zipcode" : "98903-1513"
+  }, {
+    "city" : "Issaquah",
+    "name" : "Issaquah",
+    "phone" : "(425) 313-0965",
+    "state" : "WA",
+    "street" : "1891 10th Ave NW",
+    "zipcode" : "98027-5384"
+  }, {
+    "city" : "Covington",
+    "name" : "Covington",
+    "phone" : "(253) 796-1004",
+    "state" : "WA",
+    "street" : "27520 Covington Way Se",
+    "zipcode" : "98042-9100"
+  }, {
+    "city" : "Tukwila",
+    "name" : "Tukwila",
+    "phone" : "(206) 575-9191",
+    "state" : "WA",
+    "street" : "400 Costco Dr Ste 150",
+    "zipcode" : "98188-4808"
+  } ],
+  "products" : [ {
+    "Category" : "Baby",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Baby food, Happy Tot Organic Banana & Blueberry & Oats",
+    "Quantity" : 12,
+    "Size" : 4
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 24.99,
+    "Product" : "Baby wipes, Huggies Natural Care Plus",
+    "Quantity" : 1160,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 19.99,
+    "Product" : "Baby wipes, Kirkland Signature",
+    "Quantity" : 900,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "oz",
+    "Price" : 9.39,
+    "Product" : "Diaper rash cream, Desitin Rapid Relief",
+    "Quantity" : 2,
+    "Size" : 6
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 37.49,
+    "Product" : "Diapers, size 1, Huggies Little Snugglers",
+    "Quantity" : 192,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 29.99,
+    "Product" : "Diapers, size 1, Kirkland Signature Supreme",
+    "Quantity" : 192,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 37.49,
+    "Product" : "Diapers, size 2, Huggies Little Snugglers",
+    "Quantity" : 174,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 29.99,
+    "Product" : "Diapers, size 2, Kirkland Signature Supreme",
+    "Quantity" : 174,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 42.99,
+    "Product" : "Diapers, size 3, Huggies Little Movers Plus",
+    "Quantity" : 198,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 38.99,
+    "Product" : "Diapers, size 3, Kirkland Signature Supreme",
+    "Quantity" : 198,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 42.99,
+    "Product" : "Diapers, size 4, Huggies Little Movers Plus",
+    "Quantity" : 180,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 38.99,
+    "Product" : "Diapers, size 4, Kirkland Signature Supreme",
+    "Quantity" : 180,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 42.99,
+    "Product" : "Diapers, size 5, Huggies Little Movers Plus",
+    "Quantity" : 150,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 38.99,
+    "Product" : "Diapers, size 5, Kirkland Signature Supreme",
+    "Quantity" : 150,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 42.99,
+    "Product" : "Diapers, size 6, Huggies Little Movers Plus",
+    "Quantity" : 120,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 38.99,
+    "Product" : "Diapers, size 6, Kirkland Signature Supreme",
+    "Quantity" : 120,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "oz",
+    "Price" : 49.99,
+    "Product" : "Formula, Enfamil",
+    "Quantity" : 2,
+    "Size" : 27
+  }, {
+    "Category" : "Baby",
+    "Measure" : "oz",
+    "Price" : 36.99,
+    "Product" : "Formula, Pediasure Vanilla",
+    "Quantity" : 24,
+    "Size" : 8
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "Pull-Ups Training Pants 2T-3T (boys)",
+    "Quantity" : 124,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "Pull-Ups Training Pants 2T-3T (girls)",
+    "Quantity" : 124,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "Pull-Ups Training Pants 3T-4T (boys)",
+    "Quantity" : 116,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "Pull-Ups Training Pants 3T-4T (girls)",
+    "Quantity" : 116,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "Pull-Ups Training Pants 4T-5T (boys)",
+    "Quantity" : 102,
+    "Size" : 1
+  }, {
+    "Category" : "Baby",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "Pull-Ups Training Pants 4T-5T (girls)",
+    "Quantity" : 102,
+    "Size" : 1
+  }, {
+    "Category" : "Bakery",
+    "Measure" : "ct",
+    "Price" : 5.49,
+    "Product" : "Bagels",
+    "Quantity" : 2,
+    "Size" : 6
+  }, {
+    "Category" : "Bakery",
+    "Measure" : "ct",
+    "Price" : 4.49,
+    "Product" : "Dinner Rolls",
+    "Quantity" : 36,
+    "Size" : 1
+  }, {
+    "Category" : "Bakery",
+    "Measure" : "ct",
+    "Price" : 7.99,
+    "Product" : "Muffins",
+    "Quantity" : 2,
+    "Size" : 6
+  }, {
+    "Category" : "Bakery",
+    "Measure" : "ct",
+    "Price" : 5.99,
+    "Product" : "Pretzel Slider Buns",
+    "Quantity" : 16,
+    "Size" : 1
+  }, {
+    "Category" : "Baking",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Agave Nectar, Wholesome! organic",
+    "Quantity" : 2,
+    "Size" : 36
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 13.99,
+    "Product" : "Aloe vera drink, Alo variety",
+    "Quantity" : 12,
+    "Size" : 16.9
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 19.99,
+    "Product" : "Bai5 Antioxidant Infusions variety",
+    "Quantity" : 15,
+    "Size" : 18
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Coconut water, Kirkland Signature",
+    "Quantity" : 12,
+    "Size" : 11.1
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 13.99,
+    "Product" : "Coconut water, Vita Coco",
+    "Quantity" : 12,
+    "Size" : 11.1
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 10.99,
+    "Product" : "Coke products, 12 oz cans",
+    "Quantity" : 35,
+    "Size" : 12
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "ct",
+    "Price" : 7.79,
+    "Product" : "Crystal Light on the Go",
+    "Quantity" : 44,
+    "Size" : 0.11
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 35.99,
+    "Product" : "Energy drink, 5 Hour Energy",
+    "Quantity" : 24,
+    "Size" : 1.93
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 34.99,
+    "Product" : "Energy drink, Kirkland Signature energy shot",
+    "Quantity" : 48,
+    "Size" : 2
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 38.99,
+    "Product" : "Energy drink, Kirkland Signature extra strength energy shot",
+    "Quantity" : 48,
+    "Size" : 2
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 32.99,
+    "Product" : "Energy drink, Monster",
+    "Quantity" : 24,
+    "Size" : 16
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 35.99,
+    "Product" : "Energy drink, Red Bull",
+    "Quantity" : 24,
+    "Size" : 8.4
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 15.99,
+    "Product" : "Gatorade Fierce variety pack",
+    "Quantity" : 35,
+    "Size" : 16.9
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 15.99,
+    "Product" : "Gatorade Frost variety pack",
+    "Quantity" : 35,
+    "Size" : 16.9
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 15.99,
+    "Product" : "Gatorade G2 variety pack",
+    "Quantity" : 35,
+    "Size" : 16.9
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 12.99,
+    "Product" : "Gatorade variety Allstars",
+    "Quantity" : 28,
+    "Size" : 12
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 15.99,
+    "Product" : "Gatorade variety pack",
+    "Quantity" : 35,
+    "Size" : 16.9
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 15.99,
+    "Product" : "Glaceau Vitamin Water Variety",
+    "Quantity" : 20,
+    "Size" : 20
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Honest Kids Organic, variety",
+    "Quantity" : 40,
+    "Size" : 6
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 14.79,
+    "Product" : "Izze",
+    "Quantity" : 24,
+    "Size" : 8.4
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Juice, Capri-Sun 100% Juice Variety",
+    "Quantity" : 40,
+    "Size" : 6
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 7.89,
+    "Product" : "Juice, Capri-Sun 10% Juice Variety",
+    "Quantity" : 40,
+    "Size" : 6
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 13.59,
+    "Product" : "Juice, Kern's Nectar Variety Pack",
+    "Quantity" : 30,
+    "Size" : 11.5
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 5.79,
+    "Product" : "Juice, Kirkland Signature Cranberry",
+    "Quantity" : 2,
+    "Size" : 96
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 5.99,
+    "Product" : "Juice, Kirkland Signature Cranberry-Raspberry",
+    "Quantity" : 2,
+    "Size" : 96
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 7.89,
+    "Product" : "Juice, Kirkland Signature Fresh Pressed Apple",
+    "Quantity" : 2,
+    "Size" : 128
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 6.69,
+    "Product" : "Juice, Kirkland Signature Newman's Grape Juice",
+    "Quantity" : 2,
+    "Size" : 96
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 12.79,
+    "Product" : "Juice, Kirkland Signature variety, 100% juice, organic",
+    "Quantity" : 40,
+    "Size" : 6.75
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 8.49,
+    "Product" : "Juice, Martinelli's Sparkling Cider",
+    "Quantity" : 4,
+    "Size" : 25.4
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 7.49,
+    "Product" : "Juice, Tree Top Apple Juice",
+    "Quantity" : 2,
+    "Size" : 128
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 13.39,
+    "Product" : "Juice, Tropicana Orange",
+    "Quantity" : 24,
+    "Size" : 10
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 13.99,
+    "Product" : "Juice, V-8 100% Vegetable Juice",
+    "Quantity" : 28,
+    "Size" : 11.5
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Kirkland Signature Sparkling Flavored Water Variety",
+    "Quantity" : 24,
+    "Size" : 17
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Kirkland Signature Vitarain Zero Variety",
+    "Quantity" : 24,
+    "Size" : 20
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Non-Dairy Milk, Blue Diamond Vanilla Almond Breeze",
+    "Quantity" : 6,
+    "Size" : 32
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 8.49,
+    "Product" : "Non-Dairy Milk, Kirkland Signature Organic Almond unsweetened",
+    "Quantity" : 6,
+    "Size" : 32
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 13.99,
+    "Product" : "Non-Dairy Milk, Kirkland Signature Organic Soy",
+    "Quantity" : 12,
+    "Size" : 32
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Pepsi products, 12 oz cans",
+    "Quantity" : 36,
+    "Size" : 12
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Propel Zero Fitness Water Variety",
+    "Quantity" : 24,
+    "Size" : 16.9
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 17.59,
+    "Product" : "Snapple Diet Tea Variety",
+    "Quantity" : 24,
+    "Size" : 20
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 17.59,
+    "Product" : "Starbucks Frappuccino",
+    "Quantity" : 15,
+    "Size" : 9.5
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 10.39,
+    "Product" : "Sunny Delight Big D Sports Cap",
+    "Quantity" : 24,
+    "Size" : 11.3
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Talking Rain Sparkling variety",
+    "Quantity" : 30,
+    "Size" : 16.9
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 10.99,
+    "Product" : "Talking Rain Sparkling Ice Variety Pack",
+    "Quantity" : 18,
+    "Size" : 17
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 4.99,
+    "Product" : "Water, Arrowhead Spring",
+    "Quantity" : 40,
+    "Size" : 16.9
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 4.89,
+    "Product" : "Water, Arrowhead Spring Sport Top",
+    "Quantity" : 24,
+    "Size" : 23.7
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "l",
+    "Price" : 14.99,
+    "Product" : "Water, Glaceau Smartwater",
+    "Quantity" : 15,
+    "Size" : 1
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "l",
+    "Price" : 3.99,
+    "Product" : "Water, Kirkland Signature Drinking Water",
+    "Quantity" : 21,
+    "Size" : 1
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 2.99,
+    "Product" : "Water, Kirkland Signature Premium",
+    "Quantity" : 40,
+    "Size" : 16.9
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Water, Kirkland Signature Premium",
+    "Quantity" : 80,
+    "Size" : 8
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "l",
+    "Price" : 16.99,
+    "Product" : "Water, Perrier Sparkling Mineral",
+    "Quantity" : 24,
+    "Size" : 0.5
+  }, {
+    "Category" : "Beverages",
+    "Measure" : "oz",
+    "Price" : 16.99,
+    "Product" : "Water, San Pellegrino Sparkling Mineral",
+    "Quantity" : 15,
+    "Size" : 25.3
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Butter, I Can't Believe it's not Butter",
+    "Quantity" : 2,
+    "Size" : 45
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "lbs",
+    "Price" : 9.99,
+    "Product" : "Butter, Kirkland Signature Butter Quarters",
+    "Quantity" : 4,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "lbs",
+    "Price" : 7.99,
+    "Product" : "Butter, Kirkland Signature Organic Butter Quarters",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "lbs",
+    "Price" : 9.89,
+    "Product" : "Butter, Kirkland Signature Salted Butter Solids",
+    "Quantity" : 4,
+    "Size" : 1.5
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 10.99,
+    "Product" : "Cheese, Babybel, mini bel kaukauna (reg. or light)",
+    "Quantity" : 32,
+    "Size" : 0.75
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "lbs",
+    "Price" : 7.79,
+    "Product" : "Cheese, Belgioioso, Sliced Mozzarella logs",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Cheese, Boursin",
+    "Quantity" : 3,
+    "Size" : 5.2
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "lbs",
+    "Price" : 8.39,
+    "Product" : "Cheese, Darigold Sharp Cheddar",
+    "Quantity" : 2,
+    "Size" : 1.5
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 10.49,
+    "Product" : "Cheese, Frigo String Cheese",
+    "Quantity" : 60,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 6.79,
+    "Product" : "Cheese, Kirkland Signature, Goat",
+    "Quantity" : 2,
+    "Size" : 10.5
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "lbs",
+    "Price" : 13.69,
+    "Product" : "Cheese, Kirkland Signature, Cheddar Jack, shredded",
+    "Quantity" : 2,
+    "Size" : 2.5
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "lbs",
+    "Price" : 15.99,
+    "Product" : "Cheese, Kirkland Signature, Medium Cheddar, shredded",
+    "Quantity" : 2,
+    "Size" : 2.5
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "lbs",
+    "Price" : 13.69,
+    "Product" : "Cheese, Kirkland Signature, Mild Cheddar, shredded",
+    "Quantity" : 2,
+    "Size" : 2.5
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "lbs",
+    "Price" : 8.59,
+    "Product" : "Cheese, Kirkland Signature, Mexican Blend, shredded",
+    "Quantity" : 2,
+    "Size" : 1.5
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 7.99,
+    "Product" : "Cheese, Laughing Cow",
+    "Quantity" : 4,
+    "Size" : 6
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Cheese, Sargento Balanced Breaks",
+    "Quantity" : 12,
+    "Size" : 1.5
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Cream Cheese, Philadelphia, single serving",
+    "Quantity" : 50,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 7.99,
+    "Product" : "Creamer, Coffee-Mate French Vanilla",
+    "Quantity" : 2,
+    "Size" : 56
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 7.99,
+    "Product" : "Eggs, Kirkland Signature 100% Egg Whites",
+    "Quantity" : 6,
+    "Size" : 16
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "ct",
+    "Price" : 6.39,
+    "Product" : "Eggs, Wilcox, organic large",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "ct",
+    "Price" : 3.49,
+    "Product" : "Eggs, Wilcox, Extra Large",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "ct",
+    "Price" : 6.49,
+    "Product" : "Eggs, Wilcox, Large",
+    "Quantity" : 60,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "ct",
+    "Price" : 4.49,
+    "Product" : "Eggs, Wilcox, Large brown omega 3",
+    "Quantity" : 18,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "ct",
+    "Price" : 9.59,
+    "Product" : "Eggs, Wilcox, organic, hard boiled and peeled",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 9.59,
+    "Product" : "Milk, Darigold, 1%, chocolate milk",
+    "Quantity" : 18,
+    "Size" : 8
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "gallons",
+    "Price" : 4.39,
+    "Product" : "Milk, Kirkland Signature, 1% low-fat",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Milk, Kirkland Signature, 2%, lactose free",
+    "Quantity" : 3,
+    "Size" : 64
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 11.59,
+    "Product" : "Milk, Kirkland Signature, 2%, organic",
+    "Quantity" : 3,
+    "Size" : 64
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "gallons",
+    "Price" : 4.79,
+    "Product" : "Milk, Kirkland Signature, 2% reduced-fat",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "gallons",
+    "Price" : 5.29,
+    "Product" : "Milk, Kirkland Signature, whole",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 7.59,
+    "Product" : "Milk, Silk Almond Milk Original",
+    "Quantity" : 3,
+    "Size" : 64
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Whipped Cream, Land o Lakes",
+    "Quantity" : 3,
+    "Size" : 14
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 14.99,
+    "Product" : "Yogurt, Chobani Greek, variety",
+    "Quantity" : 20,
+    "Size" : 5.3
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Yogurt, Dannon Activia Probiotic",
+    "Quantity" : 24,
+    "Size" : 4
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 12.99,
+    "Product" : "Yogurt, Dannon Light and Fit Greek",
+    "Quantity" : 18,
+    "Size" : 5.3
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 5.99,
+    "Product" : "Yogurt, Kirkland Signature Greek Non-fat",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 7.89,
+    "Product" : "Yogurt, Yoplait Go-Gurt",
+    "Quantity" : 32,
+    "Size" : 2.25
+  }, {
+    "Category" : "Dairy",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Yogurt, Yoplait Variety Pack, Light",
+    "Quantity" : 24,
+    "Size" : 6
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Bagel Bites, Ore-Ida",
+    "Quantity" : 72,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "lbs",
+    "Price" : 15.99,
+    "Product" : "Beef, ground, Kirkland Signature 91% lean",
+    "Quantity" : 5,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Breakfast turkey sandwich, Jimmy Dean",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 11.69,
+    "Product" : "Burritos, Don Miguel Chicken and Cheese",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 14.99,
+    "Product" : "Burritos, El Monterey Variety",
+    "Quantity" : 30,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 13.49,
+    "Product" : "Cheeseburgers, Pierre Signatures",
+    "Quantity" : 8,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "lbs",
+    "Price" : 10.99,
+    "Product" : "Chicken Bakes, Kirkland Signature",
+    "Quantity" : 6,
+    "Size" : 8
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 13.69,
+    "Product" : "Chicken Cordon Bleu, Pierre",
+    "Quantity" : 6,
+    "Size" : 6.5
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "lbs",
+    "Price" : 14.99,
+    "Product" : "Chicken, Patties, Don Lee Farms grilled",
+    "Quantity" : 12,
+    "Size" : 3.5
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Corn Dogs, Foster Farms Chicken",
+    "Quantity" : 28,
+    "Size" : 4
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 13.99,
+    "Product" : "Creamy chicken and rice, Milton's",
+    "Quantity" : 2,
+    "Size" : 38
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 7.59,
+    "Product" : "Egg rolls, Minh, pork",
+    "Quantity" : 20,
+    "Size" : 3
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 11.99,
+    "Product" : "Fruit, Rader Farms Fresh Start Smoothie blend, organic",
+    "Quantity" : 6,
+    "Size" : 8
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 12.49,
+    "Product" : "Ice cream, Haagen Dazs vanilla almond bars",
+    "Quantity" : 15,
+    "Size" : 3
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 11.89,
+    "Product" : "Ice cream, Healthy Choice Fudge Bars",
+    "Quantity" : 18,
+    "Size" : 3
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "gallon",
+    "Price" : 11.99,
+    "Product" : "Ice cream, Kirkland Signature, Vanilla",
+    "Quantity" : 2,
+    "Size" : 0.5
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "lbs",
+    "Price" : 11.99,
+    "Product" : "Lasagna, Kirkland Signature beef",
+    "Quantity" : 2,
+    "Size" : 3
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "lbs",
+    "Price" : 12.69,
+    "Product" : "Lasagna, Kirkland Signature sausage and beef",
+    "Quantity" : 2,
+    "Size" : 3
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 11.49,
+    "Product" : "Orange Juice, Sunshine",
+    "Quantity" : 6,
+    "Size" : 16
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 11.99,
+    "Product" : "Philly cheese steak, Raybern",
+    "Quantity" : 6,
+    "Size" : 5.6
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 10.99,
+    "Product" : "Pita melt, Sandwich Brothers",
+    "Quantity" : 15,
+    "Size" : 2.5
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Pizza, Kirkland Signature cheese",
+    "Quantity" : 4,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 11.49,
+    "Product" : "Pizza, Kirkland Signature thin crust pepperoni",
+    "Quantity" : 4,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 15.99,
+    "Product" : "Pizza, Sabatasso's Gluten Free",
+    "Quantity" : 3,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Pizza, Sabatasso's Single Pizza Variety",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 13.49,
+    "Product" : "Pizza, Sonoma Gluten Free BBQ Chicken",
+    "Quantity" : 2,
+    "Size" : 19
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 11.59,
+    "Product" : "Pot Pie, Marie Callender's chicken",
+    "Quantity" : 8,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 11.69,
+    "Product" : "Quiche, Kellogg's Crustless",
+    "Quantity" : 8,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 13.99,
+    "Product" : "Sausage Patties, MorningStar",
+    "Quantity" : 32,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 11.59,
+    "Product" : "Tamales, Nuevo Grill Handmade Beef",
+    "Quantity" : 10,
+    "Size" : 5
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 11.99,
+    "Product" : "Taquitos, Delimex Beef",
+    "Quantity" : 50,
+    "Size" : 1.2
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 10.99,
+    "Product" : "Teriyaki Bowls, Oven Roasted Chicken",
+    "Quantity" : 6,
+    "Size" : 12.5
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 10.99,
+    "Product" : "Uncrustables, Smuckers peanut butter and grape",
+    "Quantity" : 18,
+    "Size" : 2.8
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Waffles, Kellogg's Eggo Homestyle",
+    "Quantity" : 72,
+    "Size" : 1
+  }, {
+    "Category" : "Frozen",
+    "Measure" : "oz",
+    "Price" : 11.49,
+    "Product" : "Yakisoba Stir Fry",
+    "Quantity" : 6,
+    "Size" : 9
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.79,
+    "Product" : "A-1 Steak Sauce",
+    "Quantity" : 4,
+    "Size" : 10
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 8.39,
+    "Product" : "Applesauce, Treetop, organic",
+    "Quantity" : 4,
+    "Size" : 47.25
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 5.59,
+    "Product" : "Barbecue Sauce, Sweet Baby Ray's",
+    "Quantity" : 2,
+    "Size" : 40
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 10.59,
+    "Product" : "Bars, Belvita Breakfast Biscuit",
+    "Quantity" : 25,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 17.99,
+    "Product" : "Bars, Caveman Dark Chocolate Variety",
+    "Quantity" : 20,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 19.89,
+    "Product" : "Bars, Clif Bar Organic Nut Filled",
+    "Quantity" : 18,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 17.49,
+    "Product" : "Bars, Clif Bar Organic Zbar variety",
+    "Quantity" : 36,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 19.89,
+    "Product" : "Bars, Clif Bar Variety Pack",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Bars, Fiber One Oats and Chocolate",
+    "Quantity" : 36,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 12.79,
+    "Product" : "Bars, Kashi Chocolate Almond Sea Salt",
+    "Quantity" : 35,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 16.99,
+    "Product" : "Bars, Kirkland Signature Nut Bars",
+    "Quantity" : 30,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 8.79,
+    "Product" : "Bars, Kirkland Signature Soft and Chewy Granola",
+    "Quantity" : 60,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 11.59,
+    "Product" : "Bars, Nature's Bakery Fig Bars",
+    "Quantity" : 36,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 12.79,
+    "Product" : "Bars, Nature Valley Chewy Trail Mix Bars",
+    "Quantity" : 48,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 12.79,
+    "Product" : "Bars, Nature Valley Oats 'N Honey Granola 2 Bar Pouches",
+    "Quantity" : 49,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 13.69,
+    "Product" : "Bars, Nature Valley Protein Chewy",
+    "Quantity" : 30,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 12.79,
+    "Product" : "Bars, Nature Valley Sweet & Salty",
+    "Quantity" : 48,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 18.49,
+    "Product" : "Bars, Nugo Nutrition Bars, variety",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 12.49,
+    "Product" : "Bars, Nutri-Grain Cereal Bar",
+    "Quantity" : 48,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 14.99,
+    "Product" : "Bars, Premier Protein protein bars, variety",
+    "Quantity" : 22,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 18.99,
+    "Product" : "Bars, Pure Protein",
+    "Quantity" : 21,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 8.89,
+    "Product" : "Bars, Quaker Chewy Granola Variety",
+    "Quantity" : 60,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 16.99,
+    "Product" : "Bars, Zone Perfect",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.59,
+    "Product" : "Bread, Dave's Killer Organic",
+    "Quantity" : 2,
+    "Size" : 27
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.59,
+    "Product" : "Bread, Dave's Killer Organic Powerseed Thin",
+    "Quantity" : 2,
+    "Size" : 24
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.59,
+    "Product" : "Bread, Dave's Killer Organic Sprouted",
+    "Quantity" : 2,
+    "Size" : 22
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.99,
+    "Product" : "Bread, Essential Baking Organic Sourdough",
+    "Quantity" : 3,
+    "Size" : 18.2
+  }, {
+    "Category" : "Grocry",
+    "Measure" : "ct",
+    "Price" : 3.59,
+    "Product" : "Bread, Franz Brioche Hamburger Buns",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 3.99,
+    "Product" : "Bread, Franz Giant White",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Bread, Franz Gluten Free Whole Grain White",
+    "Quantity" : 2,
+    "Size" : 20
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.49,
+    "Product" : "Bread, Franz, Great Seed Organic",
+    "Quantity" : 2,
+    "Size" : 26
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 3.89,
+    "Product" : "Bread, Hamburger Buns, sesame",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 3.29,
+    "Product" : "Bread, Hot Dog Buns",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 4.39,
+    "Product" : "Bread, Kirkland Signature Multigrain",
+    "Quantity" : 2,
+    "Size" : 28
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.59,
+    "Product" : "Bread, Kirkland Signature Raisin",
+    "Quantity" : 2,
+    "Size" : 24
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 3.49,
+    "Product" : "Bread, Kirkland Signature Sandwich Rolls",
+    "Quantity" : 18,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 3.99,
+    "Product" : "Bread, Kirkland Signature Split Top Wheat",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 3.99,
+    "Product" : "Bread, Milton's Multigrain Muffins",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 2.99,
+    "Product" : "Bread, Ol Time White Bread",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 5.79,
+    "Product" : "Bread, Oroweat 100% Whole Wheat",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 5.99,
+    "Product" : "Bread, Oroweat 100% Whole Wheat Sandwich Thins",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 5.79,
+    "Product" : "Bread, Oroweat All Natural Buttermilk",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 5.79,
+    "Product" : "Bread, Oroweat Oatnut",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 3.99,
+    "Product" : "Bread, Portland French Pub Bun",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 6.79,
+    "Product" : "Bread, Thomas English Muffins",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 12.59,
+    "Product" : "Breakfast Essentials, Carnation",
+    "Quantity" : 40,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 10.79,
+    "Product" : "Canned, Artichokes, whole in oil, Kirkland Signature",
+    "Quantity" : 2,
+    "Size" : 33
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 10.49,
+    "Product" : "Canned, Baked Beans, Bush's Original",
+    "Quantity" : 6,
+    "Size" : 28
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.79,
+    "Product" : "Canned, Black Beans, S&W organic",
+    "Quantity" : 8,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Canned, Chunk Chicken Breast, Kirkland Signature",
+    "Quantity" : 6,
+    "Size" : 12.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 17.99,
+    "Product" : "Canned, Clams, Seawatch chopped",
+    "Quantity" : 2,
+    "Size" : 51
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Canned, Corn, Kirkland Signature",
+    "Quantity" : 12,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Canned, Fruit Cocktail, S & W",
+    "Quantity" : 8,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.69,
+    "Product" : "Canned, Green Beans, Kirkland Signature",
+    "Quantity" : 12,
+    "Size" : 14.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.39,
+    "Product" : "Canned, Kidney Beans, S&W organic",
+    "Quantity" : 8,
+    "Size" : 15.25
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.59,
+    "Product" : "Canned, Mushrooms, Festival organic",
+    "Quantity" : 12,
+    "Size" : 4
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Canned, Pulled Pork, Harvest Creek",
+    "Quantity" : 4,
+    "Size" : 12
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 12.99,
+    "Product" : "Canned, Roast Beef, Kirkland Signature",
+    "Quantity" : 4,
+    "Size" : 12
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 12.99,
+    "Product" : "Canned, Salmon, Kirkland Signature, Wild Pink",
+    "Quantity" : 6,
+    "Size" : 6
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 10.89,
+    "Product" : "Canned, Salmon, Kirkland Signature, Wild Sockeye",
+    "Quantity" : 3,
+    "Size" : 6
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Canned, Sardines, in olive oil",
+    "Quantity" : 6,
+    "Size" : 4.375
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 19.99,
+    "Product" : "Canned, Spam, 25% less sodium",
+    "Quantity" : 8,
+    "Size" : 12
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.79,
+    "Product" : "Canned, Tomatoes, paste, Kirkland Signature organic",
+    "Quantity" : 12,
+    "Size" : 6
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.99,
+    "Product" : "Canned, Tomatoes, sauce, Kirkland Signature organic",
+    "Quantity" : 12,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.49,
+    "Product" : "Canned, Tomatoes, sliced and stewed, Kirkland Signature, organic",
+    "Quantity" : 8,
+    "Size" : 14.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 12.99,
+    "Product" : "Canned, Tuna, Chicken of the Sea solid white albacore in water",
+    "Quantity" : 8,
+    "Size" : 7
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 13.49,
+    "Product" : "Canned, Tuna, Kirkland Signature chunk light skip jack tuna in water",
+    "Quantity" : 12,
+    "Size" : 7
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 12.99,
+    "Product" : "Canned, Tuna, Kirkland Signature solid white albacore in water",
+    "Quantity" : 8,
+    "Size" : 7
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 14.99,
+    "Product" : "Canned, Tuna, Wild Planet Albacore Pole and Troll Caught",
+    "Quantity" : 6,
+    "Size" : 5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.99,
+    "Product" : "Canned, Vienna Sausage, Libby's",
+    "Quantity" : 18,
+    "Size" : 4.6
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "gal",
+    "Price" : 8.49,
+    "Product" : "Canola oil, Kirkland Signature",
+    "Quantity" : 2,
+    "Size" : 3
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 4.99,
+    "Product" : "Canola oil, Kirkland Signature cooking spray",
+    "Quantity" : 2,
+    "Size" : 17
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 12.99,
+    "Product" : "Cheese, Parmesan, Kraft grated",
+    "Quantity" : 2,
+    "Size" : 20
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "lbs",
+    "Price" : 9.99,
+    "Product" : "Cheese, Velveeta",
+    "Quantity" : 2,
+    "Size" : 2
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Chips, Frito Lay Variety",
+    "Quantity" : 54,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Chips, Frito Lay Variety",
+    "Quantity" : 30,
+    "Size" : 1.75
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Chips, SunChips variety",
+    "Quantity" : 30,
+    "Size" : 1.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 8.59,
+    "Product" : "Chocolate syrup, Hershey's Simply",
+    "Quantity" : 2,
+    "Size" : 48
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 2.99,
+    "Product" : "Coffee filters, Drip machine",
+    "Quantity" : 700,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 14.99,
+    "Product" : "Coffee, Instant, Starbucks Via Columbian",
+    "Quantity" : 26,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 33.99,
+    "Product" : "Coffee, K-Cups, Keurig Green Mountain Variety",
+    "Quantity" : 72,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 39.99,
+    "Product" : "Coffee, K-Cups, Kirkland Signature, Breakfast Blend",
+    "Quantity" : 120,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 39.99,
+    "Product" : "Coffee, K-Cups, Kirkland Signature, Pacific Bold",
+    "Quantity" : 120,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 42.99,
+    "Product" : "Coffee, K-Cups, Starbucks House Blend",
+    "Quantity" : 72,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 46.99,
+    "Product" : "Coffee, K-Cups, Tully's, Dark Roast",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 46.99,
+    "Product" : "Coffee, K-Cups, Tully's, Hawaiian Blend",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 29.99,
+    "Product" : "Coffee, Single serve, San Francisco Bay French Roast",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Cookies, Famous Amos Chocolate Chip Cookies",
+    "Quantity" : 42,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Cookies, Kellogg's Rice Krispie Treats",
+    "Quantity" : 54,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.89,
+    "Product" : "Crackers, 34 Degree Crispbread",
+    "Quantity" : 4,
+    "Size" : 4.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Crackers, Annie's Homegrown Bunny Snacks",
+    "Quantity" : 36,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 6.99,
+    "Product" : "Crackers, Bamboo Lane Crunchy Rice Rollers",
+    "Quantity" : 4,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.99,
+    "Product" : "Crackers, Crunch Master 4 Cheese Toasted Sesame Rice Crackers",
+    "Quantity" : 6,
+    "Size" : 3.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.49,
+    "Product" : "Crackers, Nabisco Wheat Thins",
+    "Quantity" : 2,
+    "Size" : 20
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Crackers, Pepperidge Farm Goldfish",
+    "Quantity" : 45,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 8.49,
+    "Product" : "Crackers, Ritz Handi-Snacks Crackers N Cheese",
+    "Quantity" : 30,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.69,
+    "Product" : "Crackers, RW Garcia 3 Seed Sweet Potato",
+    "Quantity" : 2,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "lbs",
+    "Price" : 8.99,
+    "Product" : "Dried fruit, Sun-maid Raisins, organic",
+    "Quantity" : 2,
+    "Size" : 2
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 11.99,
+    "Product" : "Evaporated Milk, Carnation",
+    "Quantity" : 12,
+    "Size" : 12
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 5.99,
+    "Product" : "Frank's Red Hot Sauce",
+    "Quantity" : 2,
+    "Size" : 25
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 12.59,
+    "Product" : "Fruit snacks, Fruit by the Foot",
+    "Quantity" : 48,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Fruit snacks, Kellogg's Despicable Me variety",
+    "Quantity" : 80,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 14.59,
+    "Product" : "Fruit snacks, Kirkland Signature organic",
+    "Quantity" : 72,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 10.59,
+    "Product" : "Fruit snacks, Stretch Island 100% natural fruit",
+    "Quantity" : 48,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Fruit snacks, Tree Top",
+    "Quantity" : 80,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 13.99,
+    "Product" : "Gum and Mints, Altoids",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 7.49,
+    "Product" : "Gum and Mints, Dentyne Ice",
+    "Quantity" : 12,
+    "Size" : 16
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Gum and Mints, Extra",
+    "Quantity" : 20,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Gum and Mints, Orbit Mint Variety",
+    "Quantity" : 18,
+    "Size" : 14
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 11.79,
+    "Product" : "Gum and Mints, Orbit Sweetmint",
+    "Quantity" : 20,
+    "Size" : 14
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 8.49,
+    "Product" : "Gum and Mints, Trident Original",
+    "Quantity" : 14,
+    "Size" : 18
+  }, {
+    "Category" : "Grocry",
+    "Measure" : "ct",
+    "Price" : 7.29,
+    "Product" : "Gum and Mints, Trident White Peppermint",
+    "Quantity" : 12,
+    "Size" : 16
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 9.49,
+    "Product" : "Gum and Mints, Wrigley's Eclipse Big E",
+    "Quantity" : 4,
+    "Size" : 60
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 9.49,
+    "Product" : "Gum and Mints, Wrigley's Extra Mint Variety",
+    "Quantity" : 18,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Gum and Mints, Wrigley's Mint Variety",
+    "Quantity" : 15,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.59,
+    "Product" : "Hash browns, Golden Grill Russet",
+    "Quantity" : 8,
+    "Size" : 4.2
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 14.99,
+    "Product" : "Honey, Kirkland Signature organic bears",
+    "Quantity" : 3,
+    "Size" : 24
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Jam, Columbia Empire Farms Marion Blackberry Fruit Spread",
+    "Quantity" : 2,
+    "Size" : 28
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 14.99,
+    "Product" : "Jerky, Oberto Beef",
+    "Quantity" : 2,
+    "Size" : 9
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 14.99,
+    "Product" : "Jerky, Oberto Teriyaki Turkey, all natural",
+    "Quantity" : 2,
+    "Size" : 9
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Ketchup, Heinz",
+    "Quantity" : 3,
+    "Size" : 44
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 5.49,
+    "Product" : "Lemon Juice, Realemon",
+    "Quantity" : 2,
+    "Size" : 48
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 13.39,
+    "Product" : "Mac and Cheese, Annies, Organic",
+    "Quantity" : 12,
+    "Size" : 6
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 14.69,
+    "Product" : "Mac and Cheese, Kraft",
+    "Quantity" : 18,
+    "Size" : 7.25
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 9.29,
+    "Product" : "Mac and Cheese, Kraft Easy Mac",
+    "Quantity" : 12,
+    "Size" : 2.05
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Madras Lentils, Tasty Bite",
+    "Quantity" : 6,
+    "Size" : 10
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.39,
+    "Product" : "Mandarin Oranges, Festival",
+    "Quantity" : 12,
+    "Size" : 11
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Maple Syrup, Log Cabin Original",
+    "Quantity" : 2,
+    "Size" : 64
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 10.39,
+    "Product" : "Mashed potatoes, Honest Earth creamy",
+    "Quantity" : 14,
+    "Size" : 6.4
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 16.49,
+    "Product" : "Mixed nuts, Kirkland Signature snacking nuts",
+    "Quantity" : 30,
+    "Size" : 1.6
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 4.89,
+    "Product" : "Mustard, French's",
+    "Quantity" : 2,
+    "Size" : 30
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Mustard, Grey Poupon",
+    "Quantity" : 2,
+    "Size" : 16
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Nutella and Go",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 11.99,
+    "Product" : "Nutella hazelnut spread",
+    "Quantity" : 2,
+    "Size" : 33.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 9.39,
+    "Product" : "Oatmeal, Nature's Path Organic Hot Variety Pack",
+    "Quantity" : 32,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 9.79,
+    "Product" : "Oatmeal, Quaker instant, variety pack",
+    "Quantity" : 52,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "liters",
+    "Price" : 18.99,
+    "Product" : "Olive oil, Bel'osio extra light tasting",
+    "Quantity" : 2,
+    "Size" : 2
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "liters",
+    "Price" : 13.79,
+    "Product" : "Olive oil, extra virgin, Terra Delyssa organic",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "liters",
+    "Price" : 27.99,
+    "Product" : "Olive oil, Kirkland Signature",
+    "Quantity" : 2,
+    "Size" : 3
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.79,
+    "Product" : "Olives, Black Pearl, extra-large pitted",
+    "Quantity" : 8,
+    "Size" : 6
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Olives, Kirkland Signature Spanish Queen",
+    "Quantity" : 2,
+    "Size" : 21
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Pasta Sauce, Bertolli Organic",
+    "Quantity" : 4,
+    "Size" : 24
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Pasta Sauce, Kirkland Signature Organic Marinara",
+    "Quantity" : 3,
+    "Size" : 32
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Pasta sauce, Prego Heartsmart",
+    "Quantity" : 2,
+    "Size" : 67
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "6.6 lbs total",
+    "Price" : 8.99,
+    "Product" : "Pasta, Garofalo Assorted, organic",
+    "Quantity" : 6,
+    "Size" : 1.1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "8.8 lbs total",
+    "Price" : 9.99,
+    "Product" : "Pasta, Garofalo Spaghetti, organic",
+    "Quantity" : 8,
+    "Size" : 1.1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Peaches, Kirkland Signature Sliced",
+    "Quantity" : 4,
+    "Size" : 24
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 8.39,
+    "Product" : "Peanut Butter, Adams Natural Crunchy",
+    "Quantity" : 1,
+    "Size" : 80
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Peanut Butter, Jif",
+    "Quantity" : 2,
+    "Size" : 48
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Peanut Butter, Kirkland Signature Creamy Organic",
+    "Quantity" : 2,
+    "Size" : 28
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.49,
+    "Product" : "Pears, S&W Halves Natural Style",
+    "Quantity" : 8,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.49,
+    "Product" : "Pepperoncini, Mezzetta",
+    "Quantity" : 2,
+    "Size" : 42
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 4.39,
+    "Product" : "Pickles, Nalley, Whole Baby Dill",
+    "Quantity" : 2,
+    "Size" : 33.8
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 8.49,
+    "Product" : "Pickles, Paisley Farm Sweet Pickled Beets",
+    "Quantity" : 2,
+    "Size" : 35.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Pickles, Princess Pickled Asparagus",
+    "Quantity" : 2,
+    "Size" : 33
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.99,
+    "Product" : "Pineapple, Dole Tropical Chunks",
+    "Quantity" : 6,
+    "Size" : 20
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 8.99,
+    "Product" : "Pizza crust, Boboli Party Pack",
+    "Quantity" : 8,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.69,
+    "Product" : "Popcorn, Kirkland Signature Movie Theater Butter",
+    "Quantity" : 44,
+    "Size" : 3.3
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "servings",
+    "Price" : 39.99,
+    "Product" : "Protein shakes, Cellucor C4 Pre Workout",
+    "Quantity" : 2,
+    "Size" : 30
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 19.99,
+    "Product" : "Protein shakes, Muscle Milk Light",
+    "Quantity" : 18,
+    "Size" : 11
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 24.99,
+    "Product" : "Protein shakes, Premier Nutrition",
+    "Quantity" : 18,
+    "Size" : 11
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 11.39,
+    "Product" : "Quinoa and Brown Rice, Seeds of Change organic",
+    "Quantity" : 6,
+    "Size" : 8.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.79,
+    "Product" : "Refried beans, Rosarita, no-fat",
+    "Quantity" : 8,
+    "Size" : 16
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 11.99,
+    "Product" : "Rice, Shira Kiku Cooked Sticky",
+    "Quantity" : 10,
+    "Size" : 7.05
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Salad Dressing, Hidden Valley Ranch Homestyle",
+    "Quantity" : 2,
+    "Size" : 40
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.49,
+    "Product" : "Salad Dressing, Olive Garden Italian",
+    "Quantity" : 2,
+    "Size" : 24
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 7.69,
+    "Product" : "Salsa, Kirkland Signature Organic",
+    "Quantity" : 2,
+    "Size" : 38
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 5.39,
+    "Product" : "Salsa, Pace Picante, medium",
+    "Quantity" : 2,
+    "Size" : 38
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 7.89,
+    "Product" : "Seaweed, Kirkland Signature Roasted",
+    "Quantity" : 10,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 10.99,
+    "Product" : "Single serve fruit, Gogo Squeeze Organic Applesauce",
+    "Quantity" : 20,
+    "Size" : 3.2
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Single serve fruit, Kirkland Signature Organic Applesauce Pouch",
+    "Quantity" : 24,
+    "Size" : 3.2
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 12.79,
+    "Product" : "Soup, Amy's Organic Lentil and Lentil Vegetable",
+    "Quantity" : 8,
+    "Size" : 14.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.89,
+    "Product" : "Soup, Campbell's Cream of Mushroom",
+    "Quantity" : 12,
+    "Size" : 10.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Soup, Cattle Drive Chili with Beans",
+    "Quantity" : 6,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.79,
+    "Product" : "Soup, Healthy Choice chicken noodle and rice",
+    "Quantity" : 10,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 11.99,
+    "Product" : "Soup, Kirkland Signature Chicken Stock, organic",
+    "Quantity" : 6,
+    "Size" : 32
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 12.79,
+    "Product" : "Soup, Nalley's mild chili with beans",
+    "Quantity" : 12,
+    "Size" : 15
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 6.39,
+    "Product" : "Soup, Nissin Cup of Noodles Chicken",
+    "Quantity" : 24,
+    "Size" : 2.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 8.29,
+    "Product" : "Soup, Nissin Top Ramen Beef & Chicken",
+    "Quantity" : 48,
+    "Size" : 3
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Soup, Progresso Chicken Noodle",
+    "Quantity" : 8,
+    "Size" : 19
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Soup, Progresso Clam Chowder",
+    "Quantity" : 8,
+    "Size" : 18.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 18.89,
+    "Product" : "Soup, Pacific Organic Chicken Bone Broth",
+    "Quantity" : 6,
+    "Size" : 32
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 11.99,
+    "Product" : "Soup, Pacific Organic Roasted Red Pepper and Tomato",
+    "Quantity" : 6,
+    "Size" : 32
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.59,
+    "Product" : "Soup, Swanson Chicken Broth 33% Less Sodium",
+    "Quantity" : 12,
+    "Size" : 14.5
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Tea bags, Kirkland Signature Japanese green tea",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 3.99,
+    "Product" : "Tortillas, Guerrero 6",
+    "Quantity" : 2,
+    "Size" : 50
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 4.99,
+    "Product" : "Tortillas, Mission 8",
+    "Quantity" : 40,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 5.79,
+    "Product" : "Tortillas, Mission 10",
+    "Quantity" : 2,
+    "Size" : 20
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "ct",
+    "Price" : 3.99,
+    "Product" : "Tortillas, Mission Whole Wheat",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "qts",
+    "Price" : 8.39,
+    "Product" : "Vegetable oil, Kirkland Signature",
+    "Quantity" : 2,
+    "Size" : 3
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "gallon",
+    "Price" : 4.29,
+    "Product" : "Vinegar, Four Monks Distilled",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.49,
+    "Product" : "Vinegar, Vermont Village Apple Cider, organic",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Grocery",
+    "Measure" : "oz",
+    "Price" : 6.89,
+    "Product" : "Worcestershire sauce, Lea & Perrins",
+    "Quantity" : 2,
+    "Size" : 20
+  }, {
+    "Category" : "Home",
+    "Measure" : "Ft",
+    "Price" : 15.99,
+    "Product" : "Aluminum Foil, Reynolds 12",
+    "Quantity" : 2,
+    "Size" : 250
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 15.79,
+    "Product" : "Bags, Glad Kitchen Bags, 13 gallon",
+    "Quantity" : 140,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 19.99,
+    "Product" : "Bags, Kirkland Signature Clear Trash Bags, 33 gallon",
+    "Quantity" : 200,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 15.89,
+    "Product" : "Bags, Kirkland Signature Drawstring Trash Bags, 33 gallon",
+    "Quantity" : 90,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 17.99,
+    "Product" : "Bags, Kirkland Signature Outdoor Trash, 50 gallon",
+    "Quantity" : 70,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 8.99,
+    "Product" : "Bags, Kirkland Signature Wastebasket Liner, 10 gallon",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 19.99,
+    "Product" : "Bags, Kirkland Signature Yard & Leaf bags, 45 gallon, Outdoor",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 13.64,
+    "Product" : "Bags, Ziploc Gallon Freezer Bags",
+    "Quantity" : 4,
+    "Size" : 38
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 12.39,
+    "Product" : "Bags, Ziploc Quart Freezer Bags",
+    "Quantity" : 4,
+    "Size" : 54
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Bags, Ziploc Sandwich Bags",
+    "Quantity" : 4,
+    "Size" : 125
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 11.49,
+    "Product" : "Bags, Ziploc Slider Variety",
+    "Quantity" : 140,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 13.59,
+    "Product" : "Bags, Ziploc Variety, Gal, Qt, Sandwich, Snack",
+    "Quantity" : 347,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Cleaners, Kirkland Signature Disinfecting Wipes",
+    "Quantity" : 4,
+    "Size" : 304
+  }, {
+    "Category" : "Home",
+    "Measure" : "oz",
+    "Price" : 15.99,
+    "Product" : "Cleaners, Lysol Disinfecting",
+    "Quantity" : 4,
+    "Size" : 19
+  }, {
+    "Category" : "Home",
+    "Measure" : "oz",
+    "Price" : 11.49,
+    "Product" : "Cleaners, Pledge",
+    "Quantity" : 3,
+    "Size" : 13.8
+  }, {
+    "Category" : "Home",
+    "Measure" : "oz",
+    "Price" : 11.89,
+    "Product" : "Cleaners, Scrubbing Bubbles",
+    "Quantity" : 2,
+    "Size" : 25
+  }, {
+    "Category" : "Home",
+    "Measure" : "oz",
+    "Price" : 7.39,
+    "Product" : "Cleaners, Sprayway Glass Cleaner",
+    "Quantity" : 4,
+    "Size" : 19
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 15.99,
+    "Product" : "Dish Detergent, Cascade Complete Action Pacs",
+    "Quantity" : 90,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 14.89,
+    "Product" : "Dish Detergent, Finish All-in-1 Plus",
+    "Quantity" : 115,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Dish Detergent, Kirkland Signature Dishwasher Pacs",
+    "Quantity" : 115,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Fabric Softener, Bounce Dryer Sheets",
+    "Quantity" : 320,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 7.99,
+    "Product" : "Fabric Softener, Kirkland Signature Sheets",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Stain Remover, Clorox Liquid Bleach",
+    "Quantity" : 3,
+    "Size" : 121
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 15.79,
+    "Product" : "Swiffer Dry Mop Cloth Refills",
+    "Quantity" : 80,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 14.79,
+    "Product" : "Swiffer Dusters",
+    "Quantity" : 24,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 15.79,
+    "Product" : "Swiffer Wet Refill Cloths",
+    "Quantity" : 60,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "ct",
+    "Price" : 6.59,
+    "Product" : "Toilet Bowl Cleaner, Lysol No Mess",
+    "Quantity" : 8,
+    "Size" : 1
+  }, {
+    "Category" : "Home",
+    "Measure" : "oz",
+    "Price" : 8.49,
+    "Product" : "Toilet Bowl Cleaner, Lysol Advanced",
+    "Quantity" : 4,
+    "Size" : 32
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 9.49,
+    "Product" : "Cups, Chinet Crystal Plastic 10 oz",
+    "Quantity" : 150,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 10.49,
+    "Product" : "Cups, Dixie cold cup 5 oz",
+    "Quantity" : 450,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 11.39,
+    "Product" : "Cups, Dixie cold cup 12 oz",
+    "Quantity" : 300,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 7.49,
+    "Product" : "Cups, Dixie water cup 3 oz",
+    "Quantity" : 600,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 9.79,
+    "Product" : "Cups, Kirkland Signature 18 oz red",
+    "Quantity" : 240,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 11.79,
+    "Product" : "Cups, Solo clear cup 12 oz",
+    "Quantity" : 200,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 12.49,
+    "Product" : "Cups, Solo clear cup 16 oz",
+    "Quantity" : 200,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 7.59,
+    "Product" : "Cups, Solo hot cup 8 oz",
+    "Quantity" : 200,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 9.39,
+    "Product" : "Cups, Solo hot cup 12 oz",
+    "Quantity" : 200,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 10.89,
+    "Product" : "Cups, Solo hot cup 16 oz",
+    "Quantity" : 160,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 11.69,
+    "Product" : "Cutlery, Kirkland Signature clear",
+    "Quantity" : 360,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 9.59,
+    "Product" : "Cutlery, Solo Heavyweight Forks",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 9.49,
+    "Product" : "Cutlery, Solo Heavyweight Knives",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 9.59,
+    "Product" : "Cutlery, Solo Heavyweight Spoons",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 23.99,
+    "Product" : "Facial tissues, Kirkland Signature",
+    "Quantity" : 30,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 13.79,
+    "Product" : "Facial tissues, Kirkland Signature, upright",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 17.59,
+    "Product" : "Facial tissues, Kleenex",
+    "Quantity" : 10,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 15.99,
+    "Product" : "Facial tissues, Kleenex, lotion family pack",
+    "Quantity" : 10,
+    "Size" : 170
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 16.59,
+    "Product" : "Facial tissues, Kleenex, upright",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 8.49,
+    "Product" : "Napkins, Kirkland Signature Casual",
+    "Quantity" : 4,
+    "Size" : 260
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 19.99,
+    "Product" : "Paper towels, Bounty",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 15.69,
+    "Product" : "Paper towels, Kirkland Signature",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 15.69,
+    "Product" : "Plates, Chinet lunch",
+    "Quantity" : 225,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 17.99,
+    "Product" : "Plates, Chinet 10.5",
+    "Quantity" : 165,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 15.99,
+    "Product" : "Plates, Dixie 8.5",
+    "Quantity" : 276,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 8.99,
+    "Product" : "Plates, Hefty 8.7",
+    "Quantity" : 200,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Plates, Strongholder 9",
+    "Quantity" : 645,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "roll",
+    "Price" : 15.99,
+    "Product" : "Toilet paper, 2-ply, Kirkland Signature",
+    "Quantity" : 30,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "roll",
+    "Price" : 22.69,
+    "Product" : "Toilet paper, 2-ply, Marathon",
+    "Quantity" : 48,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "roll",
+    "Price" : 21.99,
+    "Product" : "Toilet paper, Charmin Ultra Soft",
+    "Quantity" : 30,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 15.49,
+    "Product" : "Wipes, Cottonelle Flushable",
+    "Quantity" : 504,
+    "Size" : 1
+  }, {
+    "Category" : "Paper products",
+    "Measure" : "ct",
+    "Price" : 14.99,
+    "Product" : "Wipes, Kirkland Signature Flushable",
+    "Quantity" : 600,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 14.99,
+    "Product" : "Body wash, Dove Deep Moisture",
+    "Quantity" : 3,
+    "Size" : 24
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 9.97,
+    "Product" : "Body wash, Dove Winter Care",
+    "Quantity" : 3,
+    "Size" : 24
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 14.99,
+    "Product" : "Body wash, Honest Company Baby",
+    "Quantity" : 2,
+    "Size" : 17
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Body wash, Kirkland Signature natural citrus",
+    "Quantity" : 2,
+    "Size" : 27
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 11.99,
+    "Product" : "Body wash, Olay Moisture",
+    "Quantity" : 3,
+    "Size" : 23.6
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 9.39,
+    "Product" : "Cold and allergy medicine, Afrin",
+    "Quantity" : 3,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 16.49,
+    "Product" : "Cold and allergy medicine, Airborne effervescent",
+    "Quantity" : 2,
+    "Size" : 18
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 16.49,
+    "Product" : "Cold and allergy medicine, Airborne chewable",
+    "Quantity" : 116,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 34.79,
+    "Product" : "Cold and allergy medicine, Allegra 24hr",
+    "Quantity" : 90,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 13.69,
+    "Product" : "Cold and allergy medicine, Benadryl ultratabs",
+    "Quantity" : 3,
+    "Size" : 48
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 13.99,
+    "Product" : "Cold and allergy medicine, Breathe Right nasal strips",
+    "Quantity" : 44,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 28.99,
+    "Product" : "Cold and allergy medicine, Claritin 24hr reditabs",
+    "Quantity" : 60,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 29.99,
+    "Product" : "Cold and allergy medicine, Claritin Children's chewables",
+    "Quantity" : 50,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 19.99,
+    "Product" : "Cold and allergy medicine, Claritin Children's syrup",
+    "Quantity" : 2,
+    "Size" : 6
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 38.89,
+    "Product" : "Cold and allergy medicine, Claritin non-drowsy 24hr",
+    "Quantity" : 105,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 19.69,
+    "Product" : "Cold and allergy medicine, Delsym 12 hour cough suppressant",
+    "Quantity" : 2,
+    "Size" : 5
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 10.99,
+    "Product" : "Cold and allergy medicine, Dimetapp Children's Day and Night",
+    "Quantity" : 2,
+    "Size" : 4
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 19.99,
+    "Product" : "Cold and allergy medicine, Emergenc-C",
+    "Quantity" : 90,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "sprays",
+    "Price" : 45.99,
+    "Product" : "Cold and allergy medicine, Flonase",
+    "Quantity" : 3,
+    "Size" : 120
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "sprays",
+    "Price" : 15.97,
+    "Product" : "Cold and allergy medicine, Flonase children's",
+    "Quantity" : 2,
+    "Size" : 60
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 10.49,
+    "Product" : "Cold and allergy medicine, Hall's Assorted Cough Drops",
+    "Quantity" : 4,
+    "Size" : 80
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 4.49,
+    "Product" : "Cold and allergy medicine, Kirkland Signature Allergy minitab",
+    "Quantity" : 600,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Cold and allergy medicine, Kirkland Signature Aller-clear",
+    "Quantity" : 365,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 33.99,
+    "Product" : "Cold and allergy medicine, Kirkland Signature Aller-fex",
+    "Quantity" : 180,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "sprays",
+    "Price" : 27.99,
+    "Product" : "Cold and allergy medicine, Kirkland Signature Aller-flo",
+    "Quantity" : 5,
+    "Size" : 120
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 13.99,
+    "Product" : "Cold and allergy medicine, Kirkland Signature Aller-tec",
+    "Quantity" : 365,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Cold and allergy medicine, Kirkland Signature Children's Aller-tec",
+    "Quantity" : 2,
+    "Size" : 8
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Cold and allergy medicine, Kirkland Signature Mucus Relief",
+    "Quantity" : 2,
+    "Size" : 200
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 8.99,
+    "Product" : "Cold and allergy medicine, Kirkland Signature Severe Cold & Flu",
+    "Quantity" : 2,
+    "Size" : 60
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 29.99,
+    "Product" : "Cold and allergy medicine, Mucinex DM 12 hour",
+    "Quantity" : 48,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 27.99,
+    "Product" : "Cold and allergy medicine, Mucinex Expectorant Maximum Strength",
+    "Quantity" : 48,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 21.99,
+    "Product" : "Cold and allergy medicine, Mucinex Fast Max Severe Congestion",
+    "Quantity" : 2,
+    "Size" : 9
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 19.49,
+    "Product" : "Cold and allergy medicine, Mucinex Sinus Maximum Strength combo",
+    "Quantity" : 48,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "sprays",
+    "Price" : 32.99,
+    "Product" : "Cold and allergy medicine, Nasacort",
+    "Quantity" : 3,
+    "Size" : 120
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Cold and allergy medicine, Ricola Original Natural",
+    "Quantity" : 2,
+    "Size" : 130
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Cold and allergy medicine, Ricola Sugar Free Cough Drops",
+    "Quantity" : 2,
+    "Size" : 105
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 18.99,
+    "Product" : "Cold and allergy medicine, Vick's Dayquil and Nyquil",
+    "Quantity" : 72,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 16.49,
+    "Product" : "Cold and allergy medicine, Vick's Nyquil liquid",
+    "Quantity" : 3,
+    "Size" : 12
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "Cold and allergy medicine, Zyrtec",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 31.99,
+    "Product" : "Cold and allergy medicine, Zyrtec liquid gel",
+    "Quantity" : 65,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 13.99,
+    "Product" : "Deodorant, Degree",
+    "Quantity" : 5,
+    "Size" : 2.7
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 13.99,
+    "Product" : "Deodorant, Dove Advanced Care",
+    "Quantity" : 4,
+    "Size" : 2.6
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 16.99,
+    "Product" : "Deodorant, Dove Dry Spray",
+    "Quantity" : 4,
+    "Size" : 3.8
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 14.99,
+    "Product" : "Deodorant, Gillette Men's Clear",
+    "Quantity" : 6,
+    "Size" : 3.8
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Digestive Health, Alka Seltzer",
+    "Quantity" : 116,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 15.79,
+    "Product" : "Digestive Health, Gas-x Extra Strength",
+    "Quantity" : 120,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 13.89,
+    "Product" : "Digestive Health, Imodium Advanced",
+    "Quantity" : 2,
+    "Size" : 30
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 8.49,
+    "Product" : "Digestive Health, Kirkland Signature Acid Controller Max Strength",
+    "Quantity" : 2,
+    "Size" : 85
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 8.99,
+    "Product" : "Digestive Health, Kirkland Signature Acid Reducer 150mg",
+    "Quantity" : 2,
+    "Size" : 95
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 5.49,
+    "Product" : "Digestive Health, Kirkland Signature Anti-Diarrheal",
+    "Quantity" : 2,
+    "Size" : 200
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 14.89,
+    "Product" : "Digestive Health, Kirkland Signature Lansoprazole 15mg",
+    "Quantity" : 3,
+    "Size" : 14
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 13.99,
+    "Product" : "Digestive Health, Kirkland Signature Omeprazole 20mg",
+    "Quantity" : 3,
+    "Size" : 14
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 14.99,
+    "Product" : "Digestive Health, Kirkland Signature Optifiber Natural",
+    "Quantity" : 200,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 8.79,
+    "Product" : "Digestive Health, Kirkland Signature Ultra Strength Antacid",
+    "Quantity" : 2,
+    "Size" : 265
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 29.99,
+    "Product" : "Digestive Health, Metamucil",
+    "Quantity" : 2,
+    "Size" : 130
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 23.69,
+    "Product" : "Digestive Health, Nexium 24hr capsule",
+    "Quantity" : 42,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 23.99,
+    "Product" : "Digestive Health, Pepcid AC Maximum Strength",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 23.99,
+    "Product" : "Digestive Health, Pepcid Complete Chewtab",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 13.49,
+    "Product" : "Digestive Health, Pepto Bismol",
+    "Quantity" : 2,
+    "Size" : 16
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 24.79,
+    "Product" : "Digestive Health, Prevacid 15mg 24 hour",
+    "Quantity" : 3,
+    "Size" : 14
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 22.99,
+    "Product" : "Digestive Health, Prilosec OTC",
+    "Quantity" : 3,
+    "Size" : 14
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 11.49,
+    "Product" : "Digestive Health, Tums Assorted Fruit Smoothies",
+    "Quantity" : 250,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 10.69,
+    "Product" : "Digestive Health, Tums Ultra Strength",
+    "Quantity" : 265,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 24.99,
+    "Product" : "Digestive Health, Zantac 150mg Extra Strength",
+    "Quantity" : 2,
+    "Size" : 60
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Facial cleaning towelettes, Kirkland Signature",
+    "Quantity" : 150,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Feminine Hygiene, Always Infinity Heavy Pads",
+    "Quantity" : 64,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Feminine Hygiene, Always Long Super Maxi with Wings",
+    "Quantity" : 90,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Feminine Hygiene, Always Regular Ultra Thin with Wings",
+    "Quantity" : 96,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Feminine Hygiene, Always Overnight Ultra Thin",
+    "Quantity" : 76,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 13.49,
+    "Product" : "Feminine Hygiene, Tampax Pearl",
+    "Quantity" : 96,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 1.99,
+    "Product" : "First aid, Cumberland Swan Hydrogen Peroxide",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 3.59,
+    "Product" : "First aid, Cumberland Swan Isopropyl Alcohol 70%",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 4.49,
+    "Product" : "First aid, Curad Alcohol Prep Pads",
+    "Quantity" : 4,
+    "Size" : 100
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "lbs",
+    "Price" : 7.99,
+    "Product" : "First aid, Dr. Teal's Epsom Salt",
+    "Quantity" : 2,
+    "Size" : 6
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "First aid, Kirkland Signature Hydrocortisone Cream 1% Plus",
+    "Quantity" : 4,
+    "Size" : 2
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 10.49,
+    "Product" : "First aid, Neosporin Antibiotic Ointment",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 19.99,
+    "Product" : "Hair Care, Tigi Bedhead Shampoo and Conditioner",
+    "Quantity" : 2,
+    "Size" : 25.36
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 19.99,
+    "Product" : "Lens Care, Bausch and Lomb Biotrue",
+    "Quantity" : 2,
+    "Size" : 16
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 17.69,
+    "Product" : "Lens Care, Bausch and Lomb Renu-Fresh",
+    "Quantity" : 2,
+    "Size" : 16
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 18.99,
+    "Product" : "Lens Care, Clear Care Disinfecting Solution",
+    "Quantity" : 2,
+    "Size" : 16
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Lens Care, Kirkland Signature Multipurpose Disinfecting",
+    "Quantity" : 3,
+    "Size" : 16
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 19.99,
+    "Product" : "Lens Care, Opti-Free Pure Moist Multipurpose Solution",
+    "Quantity" : 2,
+    "Size" : 14
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 19.99,
+    "Product" : "Lens Care, Opti-Free Replenish Multipurpose Solution",
+    "Quantity" : 2,
+    "Size" : 14
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 18.99,
+    "Product" : "Lotion, Cetaphil Moisturizing Lotion",
+    "Quantity" : 2,
+    "Size" : 20
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 13.49,
+    "Product" : "Lotion, Lubriderm Daily Moisture",
+    "Quantity" : 2,
+    "Size" : 20
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 16.99,
+    "Product" : "Pain reliever, Advil",
+    "Quantity" : 360,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 17.49,
+    "Product" : "Pain reliever, Advil Liquigel",
+    "Quantity" : 2,
+    "Size" : 120
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 17.99,
+    "Product" : "Pain reliever, Aleve Caplets",
+    "Quantity" : 320,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 17.99,
+    "Product" : "Pain reliever, Aleve Liquid Gels",
+    "Quantity" : 160,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 17.99,
+    "Product" : "Pain reliever, Advil PM",
+    "Quantity" : 200,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 12.39,
+    "Product" : "Pain reliever, Bayer Aspirin",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Pain reliever, Bayer Low Dose Aspirin",
+    "Quantity" : 400,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 15.99,
+    "Product" : "Pain reliever, Excedrin Extra Strength",
+    "Quantity" : 300,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 15.99,
+    "Product" : "Pain reliever, Excedrin Migraine",
+    "Quantity" : 300,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 11.49,
+    "Product" : "Pain reliever, Kirkland Signature Acetaminophen",
+    "Quantity" : 400,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 8.49,
+    "Product" : "Pain reliever, Kirkland Signature Acetaminophen Extra Strength",
+    "Quantity" : 2,
+    "Size" : 500
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 10.99,
+    "Product" : "Pain reliever, Kirkland Signature Acetaminophen PM",
+    "Quantity" : 375,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 5.89,
+    "Product" : "Pain reliever, Kirkland Signature Enteric Coated Aspirin",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 8.79,
+    "Product" : "Pain reliever, Kirkland Signature Ibuprofen",
+    "Quantity" : 2,
+    "Size" : 500
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Pain reliever, Kirkland Signature Ibuprofen liquid softgel",
+    "Quantity" : 2,
+    "Size" : 180
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 4.49,
+    "Product" : "Pain reliever, Kirkland Signature low dose aspirin",
+    "Quantity" : 2,
+    "Size" : 365
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 12.49,
+    "Product" : "Pain reliever, Kirkland Signature naproxen sodium",
+    "Quantity" : 400,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Pian reliever, Motrin Children's Suspension",
+    "Quantity" : 2,
+    "Size" : 4
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 15.99,
+    "Product" : "Pain reliever, Tylenol Arthritis Pain",
+    "Quantity" : 290,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Pain reliever, Tylenol Children's Suspension",
+    "Quantity" : 2,
+    "Size" : 4
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 15.99,
+    "Product" : "Pain reliever, Tylenol Extra Strength",
+    "Quantity" : 325,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 16.49,
+    "Product" : "Pain reliever, Tylenol Extra Strength Rapid Release",
+    "Quantity" : 290,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 12.49,
+    "Product" : "Pain reliever, Tylenol Infant",
+    "Quantity" : 2,
+    "Size" : 2
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 14.99,
+    "Product" : "Pain reliever, Tylenol PM",
+    "Quantity" : 225,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 54.99,
+    "Product" : "Probiotics, Align Daily Capsules",
+    "Quantity" : 2,
+    "Size" : 42
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 29.99,
+    "Product" : "Probiotics, Culturelle Digestive Health",
+    "Quantity" : 80,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 24.99,
+    "Product" : "Probiotics, Culturelle Kids Chewable",
+    "Quantity" : 60,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 24.99,
+    "Product" : "Probiotics, Nature's Bounty Ultra Strength",
+    "Quantity" : 140,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 16.99,
+    "Product" : "Probiotics, Trunature Digestive",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 8.99,
+    "Product" : "Q-tips",
+    "Quantity" : 1875,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 25.99,
+    "Product" : "Razors, Gillette Custom Plus 3 disposable",
+    "Quantity" : 26,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 49.99,
+    "Product" : "Razors, Gillette Fusion Proglide cartridges",
+    "Quantity" : 16,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 29.99,
+    "Product" : "Razors, Gillette Mach3",
+    "Quantity" : 14,
+    "Size" : 1
+  }, {
+    "Category" : "Personal Care",
+    "Measure" : "ct",
+    "Price" : 29.99,
+    "Product" : "Razors, Gillette Venus Spa Breeze",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "Razors, Gillette Venus Swirl",
+    "Quantity" : 9,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "Razors, Schick Hydro 5 Sensitive",
+    "Quantity" : 17,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 24.99,
+    "Product" : "Razors, Venus Disposable",
+    "Quantity" : 14,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 6.99,
+    "Product" : "Sleep aid, Kirkland Signature Tablets",
+    "Quantity" : 2,
+    "Size" : 96
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Sleep aid, Natrol Melatonin 5mg Fast Dissolve",
+    "Quantity" : 250,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 7.49,
+    "Product" : "Sleep aid, Schiff Melatonin Ultra 3mg",
+    "Quantity" : 365,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 19.99,
+    "Product" : "Soap, Cetaphil Skin Cleanser",
+    "Quantity" : 2,
+    "Size" : 20
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 15.99,
+    "Product" : "Soap, Dove Moisturizing",
+    "Quantity" : 16,
+    "Size" : 4
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 15.99,
+    "Product" : "Soap, Dove Sensitive Skin Bar",
+    "Quantity" : 16,
+    "Size" : 4
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Soap, Irish Spring Bar Soap",
+    "Quantity" : 20,
+    "Size" : 4
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Soap, Kirkland Signature Body Soap",
+    "Quantity" : 15,
+    "Size" : 4.5
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 8.99,
+    "Product" : "Soap, Softsoap Advanced",
+    "Quantity" : 2,
+    "Size" : 80
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 14.99,
+    "Product" : "Tooth care, Colgate High Impact Toothpaste",
+    "Quantity" : 4,
+    "Size" : 4.5
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 12.99,
+    "Product" : "Tooth care, Colgate Total Advanced Toothpaste",
+    "Quantity" : 4,
+    "Size" : 8
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 12.99,
+    "Product" : "Tooth care, Crest Complete Plus Scope",
+    "Quantity" : 5,
+    "Size" : 8.2
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "liters",
+    "Price" : 9.49,
+    "Product" : "Tooth care, Crest Pro-Health Rinse",
+    "Quantity" : 2,
+    "Size" : 1.5
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "liters",
+    "Price" : 7.89,
+    "Product" : "Tooth care, Kirkland Signature Antiseptic Mouth Rinse",
+    "Quantity" : 3,
+    "Size" : 1.5
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Tooth care, Kirkland Signature Pro Complete Toothpaste",
+    "Quantity" : 6,
+    "Size" : 7.5
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "liters",
+    "Price" : 10.99,
+    "Product" : "Tooth care, Listerine Ultraclean",
+    "Quantity" : 2,
+    "Size" : 1.5
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 14.99,
+    "Product" : "Tooth care, Oral-B 3D White Pulsar Battery Toothbrush",
+    "Quantity" : 4,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "ct",
+    "Price" : 13.99,
+    "Product" : "Tooth care, Oral-B Prohealth Criss Cross Toothbrush",
+    "Quantity" : 8,
+    "Size" : 1
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 21.99,
+    "Product" : "Tooth care, Pronamel Gentle Whitening",
+    "Quantity" : 4,
+    "Size" : 6.5
+  }, {
+    "Category" : "Personal care",
+    "Measure" : "oz",
+    "Price" : 21.99,
+    "Product" : "Tooth care, Sensodyne Extra Whitening",
+    "Quantity" : 4,
+    "Size" : 6.5
+  }, {
+    "Category" : "Pet Care",
+    "Measure" : "ct",
+    "Price" : 14.99,
+    "Product" : "Absorbant Pads, Kirkland Signature",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Pet Care",
+    "Measure" : "oz",
+    "Price" : 25.39,
+    "Product" : "Cat food, Fancy Feast Variety Pack",
+    "Quantity" : 48,
+    "Size" : 3
+  }, {
+    "Category" : "Pet Care",
+    "Measure" : "oz",
+    "Price" : 21.99,
+    "Product" : "Cat food, Friskies Variety Pack",
+    "Quantity" : 48,
+    "Size" : 5.5
+  }, {
+    "Category" : "Pet Care",
+    "Measure" : "oz",
+    "Price" : 18.99,
+    "Product" : "Dog Food, Kirkland Signature Premium",
+    "Quantity" : 24,
+    "Size" : 14
+  }, {
+    "Category" : "Pet Care",
+    "Measure" : "oz",
+    "Price" : 19.99,
+    "Product" : "Dog Food, Kirkland Signature Turkey Stew",
+    "Quantity" : 24,
+    "Size" : 13.2
+  }, {
+    "Category" : "Pet Care",
+    "Measure" : "ct",
+    "Price" : 22.79,
+    "Product" : "Dog treats, American Farms Full Size Pig Ears",
+    "Quantity" : 25,
+    "Size" : 1
+  }, {
+    "Category" : "Pet Care",
+    "Measure" : "ct",
+    "Price" : 16.59,
+    "Product" : "Dog treats, Mars Petcare Dentastix",
+    "Quantity" : 51,
+    "Size" : 1
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "lbs",
+    "Price" : 14.99,
+    "Product" : "Bacon, Fletcher's dry cured",
+    "Quantity" : 2,
+    "Size" : 2
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "lbs",
+    "Price" : 12.99,
+    "Product" : "Bacon, Hempler's Uncured ABF Bacon",
+    "Quantity" : 2,
+    "Size" : 1.5
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "4lbs",
+    "Price" : 11.39,
+    "Product" : "Bacon, Kirkland Signature Premium Sliced",
+    "Quantity" : 4,
+    "Size" : 1
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "lbs",
+    "Price" : 13.49,
+    "Product" : "Bacon, Sunny Valley Hickory Smoked low sodium",
+    "Quantity" : 2,
+    "Size" : 2
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "lbs",
+    "Price" : 10.79,
+    "Product" : "Canadian Bacon, Rose's",
+    "Quantity" : 2,
+    "Size" : 16
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "lbs",
+    "Price" : 9.99,
+    "Product" : "Ham, Kirkland Signature extra lean",
+    "Quantity" : 2,
+    "Size" : 15
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "lbs",
+    "Price" : 9.99,
+    "Product" : "Hot dogs, Kirkland Signature hot dogs, beef",
+    "Quantity" : 3,
+    "Size" : 1.5
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "lbs",
+    "Price" : 10.69,
+    "Product" : "Lunch meat, Hillshire Farm Deli Select",
+    "Quantity" : 3,
+    "Size" : 1
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "oz",
+    "Price" : 11.89,
+    "Product" : "Lunch meat, Kirkland Signature variety",
+    "Quantity" : 3,
+    "Size" : 14
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "ct",
+    "Price" : 9.49,
+    "Product" : "Sausage, Jimmy Dean turkey, fully cooked",
+    "Quantity" : 48,
+    "Size" : 1
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "oz",
+    "Price" : 9.59,
+    "Product" : "Turkey, Hillshire Farm Naturals",
+    "Quantity" : 3,
+    "Size" : 11
+  }, {
+    "Category" : "Processed Meats",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Turkey, Kirkland Signature oven roasted",
+    "Quantity" : 3,
+    "Size" : 14
+  }, {
+    "Category" : "Produce",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Apples, sliced, organic",
+    "Quantity" : 8,
+    "Size" : 4
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 6.99,
+    "Product" : "Avocado, Hass",
+    "Quantity" : 6,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 6.79,
+    "Product" : "Bell peppers, red",
+    "Quantity" : 6,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 6.99,
+    "Product" : "Bell Peppers, variety",
+    "Quantity" : 6,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 4.99,
+    "Product" : "Cantaloupe",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 3.39,
+    "Product" : "Cucumbers, English, hothouse grown",
+    "Quantity" : 3,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 3.99,
+    "Product" : "Lettuce, Butter",
+    "Quantity" : 3,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 3.79,
+    "Product" : "Lettuce, Romaine Hearts",
+    "Quantity" : 6,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 3.49,
+    "Product" : "Lettuce, Romaine Hearts, Artisan",
+    "Quantity" : 5,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 3.99,
+    "Product" : "Lettuce, Romaine Hearts, organic",
+    "Quantity" : 6,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 6.99,
+    "Product" : "Mangos",
+    "Quantity" : 6,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 7.49,
+    "Product" : "Papaya",
+    "Quantity" : 4,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 5.99,
+    "Product" : "Squash, butternut, organic",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 5.99,
+    "Product" : "Squash, spaghetti, organic",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 6.49,
+    "Product" : "Watermelon, mini, seedless",
+    "Quantity" : 2,
+    "Size" : 1
+  }, {
+    "Category" : "Produce",
+    "Measure" : "ct",
+    "Price" : 7.99,
+    "Product" : "Watermelon, seedless",
+    "Quantity" : 1,
+    "Size" : 1
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 9.49,
+    "Product" : "Broccoli cheddar soup, Kirkland Signature",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 9.39,
+    "Product" : "Clam Chowder, Ivar's",
+    "Quantity" : 2,
+    "Size" : 24
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 10.49,
+    "Product" : "Dressing, Litehouse Bleu",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Grapefruit cups, Kirkland Signature",
+    "Quantity" : 12,
+    "Size" : 8
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 10.99,
+    "Product" : "Guacamole, Good Food Singles",
+    "Quantity" : 12,
+    "Size" : 2.5
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 11.99,
+    "Product" : "Guacamole, Wholly Organic",
+    "Quantity" : 3,
+    "Size" : 16
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 6.49,
+    "Product" : "Hummus, Kirkland Signature Organic",
+    "Quantity" : 20,
+    "Size" : 2.4
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 6.99,
+    "Product" : "Hummus, Sabra Garlic and Original",
+    "Quantity" : 2,
+    "Size" : 23.5
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 7.99,
+    "Product" : "Juice, Kirkland Signature organic",
+    "Quantity" : 2,
+    "Size" : 59
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 14.49,
+    "Product" : "Juice, Naked Variety Smoothies",
+    "Quantity" : 12,
+    "Size" : 10
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 8.79,
+    "Product" : "Juice, Tropicana Pure Premium",
+    "Quantity" : 3,
+    "Size" : 59
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 12.99,
+    "Product" : "Kombucha, Brew Dr. Organic Variety",
+    "Quantity" : 6,
+    "Size" : 14
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "ct",
+    "Price" : 18.49,
+    "Product" : "Perfect Bar",
+    "Quantity" : 12,
+    "Size" : 1
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 10.49,
+    "Product" : "Tapioca Pudding, Harry's Organic",
+    "Quantity" : 2,
+    "Size" : 32
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 5.69,
+    "Product" : "Tofu, House Foods Organic Firm",
+    "Quantity" : 4,
+    "Size" : 14
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "oz",
+    "Price" : 9.99,
+    "Product" : "Tortelloni, Kirkland Signature Five Cheese",
+    "Quantity" : 2,
+    "Size" : 24
+  }, {
+    "Category" : "Refrigerated",
+    "Measure" : "ct",
+    "Price" : 6.59,
+    "Product" : "Tortillas, Tortillaland uncooked",
+    "Quantity" : 2,
+    "Size" : 25
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 19.99,
+    "Product" : "5-HTP, Natrol, 100 mg",
+    "Quantity" : 150,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Biotin, Natrol Fast-Dissolve, 5000mcg",
+    "Quantity" : 250,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 6.59,
+    "Product" : "Calcium, Kirkland Signature 600mg + D3",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Calcium, Kirkland Signature gummy",
+    "Quantity" : 240,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 9.97,
+    "Product" : "Calcium, Sundown Naturals + D3",
+    "Quantity" : 300,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 13.99,
+    "Product" : "Calcium, Vitafusion Gummy Chews",
+    "Quantity" : 2,
+    "Size" : 100
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 15.79,
+    "Product" : "Calcium Citrate, Citracal Maximum + D",
+    "Quantity" : 280,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Calcium Citrate, Kirkland Signature",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 18.59,
+    "Product" : "Cinsulin, Trunature, 500mg",
+    "Quantity" : 170,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 19.99,
+    "Product" : "CoQ10, Kirkland Signature, 300mg",
+    "Quantity" : 100,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "CoQ10, Nature Made, 200mg",
+    "Quantity" : 140,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 34.99,
+    "Product" : "CoQ10, Qunol Mega 100mg",
+    "Quantity" : 120,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 15.79,
+    "Product" : "CoQ10, Trunature, 100mg",
+    "Quantity" : 220,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 15.49,
+    "Product" : "Cranberry, Trunature, 300mg",
+    "Quantity" : 250,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 18.59,
+    "Product" : "Diabetes Health Pack, Nature Made",
+    "Quantity" : 60,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Fish oil, Kirkland Signature, 1000mg",
+    "Quantity" : 400,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 15.99,
+    "Product" : "Fish oil, Kirkland Signature Enteric Coated",
+    "Quantity" : 180,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 22.99,
+    "Product" : "Fish oil, Kirkland Signature Krill 500mg",
+    "Quantity" : 160,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 19.99,
+    "Product" : "Fish oil, Kirkland Signature Wild Alaskan, 1400mg",
+    "Quantity" : 230,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 16.49,
+    "Product" : "Fish oil, Nature Made, 1200 mg",
+    "Quantity" : 2,
+    "Size" : 200
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 19.99,
+    "Product" : "Fish oil, Nature's Bounty, 1400mg",
+    "Quantity" : 130,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 16.99,
+    "Product" : "Fish oil, Pure Alaska Omega 100% Wild Salmon, 1000 mg",
+    "Quantity" : 180,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 22.99,
+    "Product" : "Fish oil, Schiff Mega Red Krill",
+    "Quantity" : 130,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 15.49,
+    "Product" : "Flaxseed oil, Nature Made organic 1400mg",
+    "Quantity" : 300,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 14.49,
+    "Product" : "Ginkgo Biloba, Trunature, 120mg",
+    "Quantity" : 300,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 14.79,
+    "Product" : "Hair, Skin, and Nails, Nature's Bounty",
+    "Quantity" : 250,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 13.69,
+    "Product" : "Hair, Skin, and Nails, Nature's Bounty Gummies",
+    "Quantity" : 230,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 8.99,
+    "Product" : "Iron, Nature Made, 65mg",
+    "Quantity" : 365,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Magnesium, Nature Made, 400 mg",
+    "Quantity" : 150,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 18.99,
+    "Product" : "Multivitamin, Centrum",
+    "Quantity" : 425,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 18.99,
+    "Product" : "Multivitamin, Centrum Silver",
+    "Quantity" : 325,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 18.99,
+    "Product" : "Multivitamin, Centrum Silver Women or Men 50+",
+    "Quantity" : 250,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 10.79,
+    "Product" : "Multivitamin, Kirkland Signature Adult Gummies",
+    "Quantity" : 2,
+    "Size" : 160
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Multivitamin, Kirkland Signature Children's Gummies",
+    "Quantity" : 2,
+    "Size" : 160
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 12.69,
+    "Product" : "Multivitamin, Kirkland Signature Daily",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 11.49,
+    "Product" : "Multivitamin, Kirkland Signature Mature Adult",
+    "Quantity" : 400,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Multivitamin, Lil Critters Gummy Vites",
+    "Quantity" : 275,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 19.49,
+    "Product" : "Multivitamin, Nature Made Prenatal",
+    "Quantity" : 150,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 17.99,
+    "Product" : "Multivitamin, One a Day 50+ Healthy Advantage Womens or Mens",
+    "Quantity" : 220,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 16.49,
+    "Product" : "Multivitamin, One a Day Men's or Women's",
+    "Quantity" : 300,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 29.99,
+    "Product" : "Multivitamin, One a Day Prenatal",
+    "Quantity" : 90,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 15.99,
+    "Product" : "Multivitamin, One a Day Vitacraves Mens or Womens",
+    "Quantity" : 230,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 16.99,
+    "Product" : "Multivitamin, Smarty Pants Kids",
+    "Quantity" : 180,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Multivitamin, Vitafusion Women's Gummy",
+    "Quantity" : 220,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 18.99,
+    "Product" : "Omega-3, Nature Made Triple Omega softgels",
+    "Quantity" : 180,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 9.99,
+    "Product" : "Omega-3, Lil Critters Fruit Flavor Gummy Fish",
+    "Quantity" : 180,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 24.99,
+    "Product" : "Prostate Plus, Trunature Health Complex",
+    "Quantity" : 250,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 25.99,
+    "Product" : "Tumeric, Youtheory Extra Strength",
+    "Quantity" : 120,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 12.99,
+    "Product" : "Vitamin B, Kirkland Signature Energy B Complex Gummies",
+    "Quantity" : 2,
+    "Size" : 150
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 18.99,
+    "Product" : "Vitamin B, Kirkland Signature Sublingual B12 5000mcg",
+    "Quantity" : 300,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Vitamin B, Kirkland Signature Super Complex with Electrolytes",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 19.99,
+    "Product" : "Vitamin B, Nature Made B-12 1000 mcg",
+    "Quantity" : 400,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 14.99,
+    "Product" : "Vitamin B, Nature Made Super Complex",
+    "Quantity" : 460,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 16.49,
+    "Product" : "Vitamin B, Nature's Bounty Sublingual B12",
+    "Quantity" : 250,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 13.49,
+    "Product" : "Vitamin C, Kirkland Signature adult gummy 250mg",
+    "Quantity" : 360,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 11.99,
+    "Product" : "Vitamin C, Kirkland Signature chewable, 500mg",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 13.99,
+    "Product" : "Vitamin C, Kirkland Signature with rose hip, 1000mg",
+    "Quantity" : 500,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 15.69,
+    "Product" : "Vitamin C, Nature Made, 500mg",
+    "Quantity" : 180,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 10.49,
+    "Product" : "Vitamin D, Kirkland Signature 2000iu",
+    "Quantity" : 600,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 14.99,
+    "Product" : "Vitamin D, Lifestix 2000iu",
+    "Quantity" : 90,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 14.49,
+    "Product" : "Vitamin D, Nature Made, 1000 iu",
+    "Quantity" : 650,
+    "Size" : 1
+  }, {
+    "Category" : "Vitamins and Supplements",
+    "Measure" : "ct",
+    "Price" : 16.89,
+    "Product" : "Vitamin D, Nature's Bounty, 5000iu",
+    "Quantity" : 300,
+    "Size" : 1
+  } ]
+}
