@@ -26,10 +26,36 @@ Source: [Facebook](https://facebook.github.io/react-native/docs/getting-started.
 Create a Free Account: [Here](https://firebase.google.com/)
 
 ### 8. Create a New Firebase Project
+![create new project](./images/1.png)
 
-
+![name new project](./images/2.png)
 
 ### 9. Download the Yuzu Data
 Download Yuzu's Product and Location Data: [Here](https://github.com/lisally/yuzu/tree/master/documentation/yuzu_data.json)
 
+### 10. Navigate to Your Project's Database and Import Data
+![navigate to database](./images/3.png)
 
+![import data](./images/4.png)
+
+![select data](./images/5.png)
+
+### 11. Navigate Back to Overview Page For Web App Key
+![add web app key](./images/6.png)
+
+### 12. Copy the Highlighted Account Key
+![copy key](./images/7.png)
+
+### 13. Open the Yuzu Repository and Navigate to App File
+	yuzu > src > app.js
+
+![open app file](./images/8.png)
+
+### 14. Paste Your Account Key to the Highlighted Section
+![paste key](./images/9.png)
+
+### 15. Open up the Command Line and Navigate to the Yuzu Folder Location and Run the App
+	react-native run-ios
+<kbd>
+![yuzu app](./images/10.png)
+</kbd>
