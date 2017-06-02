@@ -56,6 +56,7 @@ Download Yuzu's Product and Location Data: [Here](https://github.com/lisally/yuz
 
 ### 15. Open up the Command Line and Navigate to the Yuzu Folder Location and Run the App
 	react-native run-ios
+	
 <kbd>
 ![yuzu app](./images/10.png)
 </kbd>
