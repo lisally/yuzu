@@ -36,13 +36,19 @@ The Yuzu team conducted user-research on 52 survey participants.
 ## Mobile Application (Beta)
 
 ### Add
-![add](./documentation/images/add.gif)
+<kbd>
+  <img src="./documentation/images/add.gif">
+</kbd>
 
 ### Match
-![match](./documentation/images/match.gif)
+<kbd>
+  <img src="./documentation/images/match.gif">
+</kbd>
 
 ### Message
-![message](./documentation/images/message.gif)
+<kbd>
+  <img src="./documentation/images/message.gif">
+</kbd>
 
 <a name="decisions"></a>
 ## Summary of the Major Technology Decisions
@@ -84,5 +90,6 @@ UI Designer | jessro95@uw.edu | [LinkedIn](https://www.linkedin.com/in/jessicahy
 ### Stacy (Yunpei) Zeng 
 UX Designer | stacyz@uw.edu | [LinkedIn](https://www.linkedin.com/in/yunpeizeng/)
 
-Yuzu: [Email](yuzu.me@outlook.com) | [Website](http://yu-zu.me/) | [Capstone Website](https://ischool.uw.edu/capstone/projects/2017/yuzu)
+### Yuzu
+yuzu.me@outlook.com | [Website](http://yu-zu.me/) | [Capstone Website](https://ischool.uw.edu/capstone/projects/2017/yuzu)
 -

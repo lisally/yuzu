@@ -10,11 +10,11 @@ Source: [Homebrew](https://brew.sh/)
 	
 ### 3. Install the React Native CLI
 	npm install -g react-native-cli
+
+Source: [Facebook](https://facebook.github.io/react-native/docs/getting-started.html)
 	
 ### 4. Install Xcode
 Visit the Mac App Store: [Here](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
-
-Source: [Facebook](https://facebook.github.io/react-native/docs/getting-started.html)
 
 ### 5. Clone the Repository
 	https://github.com/lisally/yuzu.git
