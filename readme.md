@@ -1,7 +1,7 @@
 # Yuzu
 
 ### Overview
-![logo]["./images/logo.png"]
+![logo][./images/logo.png]
 
 Yuzu is a mobile application that targets to solve the pain points when buying in bulk. While wholesale stores offer great value when bulk shopping, it also contributes to the food waste crisis by the excessive quantity of bulk items left unfinished. Yuzu allows its users (Yuzu-ers) to find shoppers in real-time, at the same location, to split items with. Shoppers purchase items at bulk prices and reduced quantities by being matched with each other depending on the shared items of interest. This solution creates a social community where sharing is not only caring, but saving money and reducing waste.
 
@@ -51,4 +51,4 @@ Stacy (Yunpei) Zeng : [Email](stacyz@uw.edu), [LinkedIn](https://www.linkedin.co
 
 
 
-![poster]["./images/poster.pdf"]
+![poster][./images/poster.pdf]
