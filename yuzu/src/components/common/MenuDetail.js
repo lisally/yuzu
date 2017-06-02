@@ -16,7 +16,6 @@ const MenuDetail = ( {children, onPress }) => {
 const styles = {
   nameStyle: {
     fontSize: 16,
-    // fontWeight: 'bold',
     color: '#404040'
   },
   containerStyle: {

@@ -9,7 +9,6 @@ class MessageScene extends Component {
     this.state = {
       ref: firebase.database().ref(),
       location: this.props.location,
-      // location: 'Seattle',
       user: this.props.user,
       match: this.props.match,
       message: '',
@@ -21,8 +20,6 @@ class MessageScene extends Component {
       userProfile: {},
       height: 0,
       showList: false,
-      // match: '4Ind4pawLnd0rmTPdb5mKhkK4MG3',
-      // matchUsername: 'saladsalsa'
 
      };
   }
@@ -66,39 +63,6 @@ class MessageScene extends Component {
           </Text>
         </TouchableOpacity>
 
-        {/*
-        <TouchableOpacity style={listStyle} onPress={this.onShowList.bind(this)}>
-          <Image style={{ height: 30, width: 25}}source={require('../images/list.png')} />
-        </TouchableOpacity>
-        */}
- {/*############################################################*/}
-  {/*
-        <Modal
-          animationType={"none"}
-          transparent={true}
-          // transparent={false}
-          visible={this.state.showList}
-          onRequestClost={() => this.setState({ showList: false })}
-        >
-
-        <TouchableOpacity activeOpacity={0.3} style={{ height: 217, backgroundColor: 'black', position: 'absolute', marginTop: 225, width: 32, opacity: 0.3 }} onPress={this.onHideList.bind(this)} />
-
-        <TouchableOpacity activeOpacity={0.3} style={{ height: 217, backgroundColor: 'black', position: 'absolute', marginTop: 225, width: 32, alignSelf: 'flex-end', opacity: 0.3 }} onPress={this.onHideList.bind(this)} />
-
-        <TouchableOpacity activeOpacity={0.3} style={{ height: 225, backgroundColor: 'black', opacity: 0.3 }} onPress={this.onHideList.bind(this)} />
-          
-          <View style={{ flex: 1 }}>
-            <ScrollView style={listContainerStyle}>
-              {this.renderItemList()}
-            </ScrollView>
-          </View>
-
-        <TouchableOpacity activeOpacity={0.3} style={{ height: 225, backgroundColor: 'black', opacity: 0.3 }} onPress={this.onHideList.bind(this)} />      
-
-        </Modal>
-
-        */}
- {/*############################################################*/}
         <ScrollView
           keyboardDismissMode='none'
           keyboardShouldPersistTaps='never'
@@ -142,27 +106,6 @@ class MessageScene extends Component {
     )
   }
 
-  // renderItemList() {
-  //   const { ref, user, location, match } = this.state
-    
-  //   var matchedList = []
-  //   var itemList = []
-  //   var result = []
-
-  //   ref.child('users/' + user + '/itemList/').once('value', snapshot => {
-  //     snapshot.forEach(function(item) {
-  //       ref.child('users/' + match.uid+ '/itemList/' + item.key).once('value', snapshot2 => {
-  //         if (snapshot2.val() != null) {
-  //           matchedList.push(item.key)
-  //         } else {
-  //           itemList.push(item.key)
-  //         }
-  //       })
-  //     })
-  //   })
-    
-  // }
-
   onShowList() {
     this.setState({ showList: true })
   }
@@ -173,7 +116,6 @@ class MessageScene extends Component {
 
   onSendMessage() {
     const { ref, user, match, message, date, dateFormat, userProfile } = this.state
-    // Keyboard.dismiss()
     this.setState({ message: '' })
     this.refs['messageInput'].setNativeProps({text: ''});
 

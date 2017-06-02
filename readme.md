@@ -26,11 +26,11 @@ The Yuzu team conducted user-research on 52 survey participants.
 * 40%of the survey respondents reported. disposing of goods purchased in bulk quantities
 
 ### Solution
-[<img src="./documentation/images/poster_image.png">](https://github.com/lisally/yuzu/blob/master/documentation/images/poster.pdf)
+[<img target="_blank" src="./documentation/images/poster_image.png">](https://github.com/lisally/yuzu/blob/master/documentation/images/poster.pdf)
 
 <a name="prototype"></a>
 ## Clickable Prototype
-[<img src="./documentation/images/prototype.png">](https://marvelapp.com/g8a8b56/screen/27573694)
+[<img target="_blank" src="./documentation/images/prototype.png">](https://marvelapp.com/g8a8b56/screen/27573694)
 
 <a name="app"></a>
 ## Mobile Application (Beta)
@@ -50,6 +50,8 @@ The Yuzu team conducted user-research on 52 survey participants.
   <img src="./documentation/images/message.gif">
 </kbd>
 
+### [Get Started with the Yuzu App](https://github.com/lisally/yuzu/tree/master/documentation)
+
 <a name="decisions"></a>
 ## Summary of the Major Technology Decisions
 Programming Framework: React-Native
@@ -68,12 +70,12 @@ We decided to use Firebase, a mobile and web application development platform bu
 
 <a name="video"></a>
 ## Promotion Video
-[<img src="./documentation/images/video.png">](https://www.youtube.com/watch?v=KgJaBIA6nvk)
+[<img target="_blank" src="./documentation/images/video.png">](https://www.youtube.com/watch?v=KgJaBIA6nvk)
 
 <a name="award"></a>
 ## Award Recognition
 ### UW iSchool 2017 Commercial Potential Award
-[<img src="./documentation/images/team.jpg">](https://ischool.uw.edu/news/2017/06/capstone-showcases-work-hundreds-ischool-students)
+[<img target="_blank" src="./documentation/images/team.jpg">](https://ischool.uw.edu/news/2017/06/capstone-showcases-work-hundreds-ischool-students)
 
 <a name="team"></a>
 ## The Team
@@ -92,4 +94,3 @@ UX Designer | stacyz@uw.edu | [LinkedIn](https://www.linkedin.com/in/yunpeizeng/
 
 ### Yuzu
 yuzu.me@outlook.com | [Website](http://yu-zu.me/) | [Capstone Website](https://ischool.uw.edu/capstone/projects/2017/yuzu)
--

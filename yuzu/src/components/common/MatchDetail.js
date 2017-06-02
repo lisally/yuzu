@@ -15,14 +15,10 @@ const MatchDetail = ({ match, onPress }) => {
           
           {list.map(item =>
             <View style={{paddingLeft: 5, paddingRight: 5, paddingBottom: 2}}>
-              <View style={{ borderColor: '#ddd', borderTopWidth: 0.5, paddingTop: 5, }} />
-              
-              <Text style={productStyle}>{item.Product}</Text>
-          
-              <Text style={itemStyle}>Price: {item.Price}</Text>
-             
+              <View style={{ borderColor: '#ddd', borderTopWidth: 0.5, paddingTop: 5, }} />             
+              <Text style={productStyle}>{item.Product}</Text>         
+              <Text style={itemStyle}>Price: {item.Price}</Text>          
               <Text style={itemStyle}>Quantity: {item.Quantity} × {item.Size} {item.Measure}</Text> 
-
               <View style={{ paddingTop: 5 }} />
               
             </View>

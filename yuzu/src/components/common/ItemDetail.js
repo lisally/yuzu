@@ -28,7 +28,6 @@ const styles = {
   productStyle: {
     fontSize: 14.5,
     fontWeight: 'bold',
-    // color: '#89bc4f',
     color: '#404040',
     marginRight: 110
   },

@@ -9,7 +9,6 @@ class MainScene extends Component {
     this.state = {
       ref: firebase.database().ref(),
       location: this.props.location,
-      // location: 'Seattle',
       user: this.props.user, 
       itemListLoaded: false, 
       loading: false, 

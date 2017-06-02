@@ -5,11 +5,6 @@ const MessageSenderDetail = ({ message }) => {
     const { text, sender, time } = message
     const { containerStyle, messageStyle } = styles 
 
-
-    // if ( ) {
-
-    // }
-
     return (
       <View style={containerStyle}>
         <Text style={messageStyle}>{text}</Text>
