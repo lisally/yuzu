@@ -26,17 +26,17 @@ Our team conducted user-research on 52 survey participants.
 
 ### Add
 <kbd>
-![add](https://media.giphy.com/media/11h3L8lUQUNeo/giphy.gif)
+![add](./documentation/images/add.gif)
 </kbd>
 
 ### Match
 <kbd>
-![match](https://media.giphy.com/media/tnYtSnflBmHBu/giphy.gif)
+![match](./documentation/images/match.gif)
 </kbd>
 
 ### Message
 <kbd>
-![message](https://media.giphy.com/media/AQ5DxKKMScBwI/giphy.gif)
+![message](./documentation/images/message.gif)
 </kbd>
 
 ## Summary of the Major Technology Decisions
